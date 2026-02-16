@@ -1,9 +1,7 @@
-/* TECHNOLOGY ADVISORY - Master Style */
+/* TECHNOLOGY ADVISORY - Master Style (Versión Blindada) */
 :root {
     --bg: #0a0f1a;
-    --bg-darker: #020617;
     --card: #151c2c;
-    --card-hover: #1e293b;
     --accent: #3b82f6;
     --text: #f8fafc;
     --text-muted: #94a3b8;
@@ -19,13 +17,13 @@ body {
     line-height: 1.6;
 }
 
-/* HEADER Y NAVEGACIÓN */
+/* 1. HEADER (Global) */
 .main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
-    background: rgba(10, 15, 26, 0.9);
+    padding: 1.2rem 5%;
+    background: rgba(10, 15, 26, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     position: sticky;
@@ -33,18 +31,30 @@ body {
     z-index: 1000;
 }
 
-.logo { font-weight: 800; text-decoration: none; color: white; font-size: 1.2rem; }
-
-.nav-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 600;
-}
-
+.logo { font-weight: 800; text-decoration: none; color: white; }
+.nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 20px; font-weight: 600; }
 .nav-links a.active { color: var(--accent); }
 
-/* LAYOUT DE INVESTIGACIÓN */
+/* 2. DASHBOARD (index.html) - AQUÍ ESTABA EL FALLO */
+.full-layout {
+    display: flex; /* Cambiado a Flex para mayor control */
+    gap: 2.5rem;
+    padding: 3rem 5%;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.main-content {
+    flex: 1; /* Ocupa todo el espacio restante */
+    min-width: 0; /* Evita que el contenido desborde el flex */
+}
+
+.side-panel {
+    width: 350px;
+    flex-shrink: 0; /* Evita que el lateral se encoja */
+}
+
+/* 3. INVESTIGACIÓN (cluster-hyperv.html) */
 .article-page .article-layout {
     display: grid;
     grid-template-columns: 320px 1fr;
@@ -54,88 +64,62 @@ body {
     padding: 0 5%;
 }
 
-.content-body {
+/* 4. COMPONENTES COMUNES */
+.feature-card {
     background: var(--card);
-    padding: 3rem;
     border-radius: 24px;
+    display: flex;
+    overflow: hidden;
     border: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+    width: 100%;
 }
 
-/* ÍNDICE INDUSTRIAL SIDEBAR */
+.feature-content { flex: 1.2; padding: 3rem; }
+.feature-image { flex: 1; }
+.feature-image img { width: 100%; height: 100%; object-fit: cover; }
+
+.grid-expanded {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.glass-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+}
+
+/* 5. SIDEBAR (Componentes) */
+.panel-box {
+    background: var(--card);
+    padding: 1.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+
+/* Estilo del índice industrial */
 .sticky-index {
     position: sticky;
     top: 100px;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 20px;
-    padding: 24px;
-}
-
-.index-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-}
-
-.index-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--accent);
-}
-
-.index-link {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    text-decoration: none;
-    padding: 12px;
-    border-radius: 12px;
-    margin-bottom: 8px;
-    transition: 0.3s;
-}
-
-.index-link:hover { background: var(--bg-darker); }
-.index-link.active { background: rgba(59, 130, 246, 0.1); border: 1px solid var(--accent); }
-
-.index-icon { font-size: 1.2rem; }
-.index-label { font-size: 0.65rem; color: var(--accent); font-weight: 800; display: block; }
-.index-title { font-size: 0.95rem; color: var(--text); font-weight: 600; }
-
-/* TERMINAL Y CÓDIGO */
-.terminal-window {
-    background: #010409;
-    border-radius: 12px;
-    border: 1px solid #30363d;
-    margin: 2rem 0;
-    overflow: hidden;
-}
-
-.terminal-header {
-    background: #161b22;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-}
-
-.terminal-header .dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
-
-pre {
     padding: 20px;
-    font-family: 'JetBrains Mono', monospace;
-    color: #e6edf3;
-    font-size: 0.9rem;
-    overflow-x: auto;
 }
 
-/* OTROS ELEMENTOS */
-.badge { background: rgba(59, 130, 246, 0.1); color: var(--accent); padding: 5px 12px; border-radius: 20px; font-weight: 800; font-size: 0.7rem; }
-.note-box { background: rgba(59, 130, 246, 0.05); border-left: 4px solid var(--accent); padding: 20px; margin: 2rem 0; border-radius: 0 12px 12px 0; }
-.minimal-footer { text-align: center; padding: 4rem 0; border-top: 1px solid var(--border); color: var(--text-muted); }
-
-@media (max-width: 1024px) {
-    .article-page .article-layout { grid-template-columns: 1fr; }
+/* 6. RESPONSIVE (Para que no se rompa en móvil) */
+@media (max-width: 1100px) {
+    .full-layout, .article-layout {
+        flex-direction: column;
+        grid-template-columns: 1fr;
+    }
+    .side-panel { width: 100%; }
+    .feature-card { flex-direction: column; }
     .article-sidebar { display: none; }
 }
