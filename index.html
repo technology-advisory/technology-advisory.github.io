@@ -38,59 +38,27 @@
         </div>
 
         <h2 class="section-label">Notas Técnicas Recientes</h2>
-        <div class="grid-expanded">
-            <a href="notas-tecnicas/wazuh-rocky.html" class="glass-card">
-                <div class="card-tag">SIEM</div>
-                <h3>Wazuh en Rocky Linux</h3>
-                <p>Despliegue de seguridad activa en entornos productivos.</p>
-            </a>
-            <a href="#" class="glass-card">
-                <div class="card-tag">Storage</div>
-                <h3>Multipath iSCSI SAN</h3>
-                <p>Optimización de redundancia en redes de almacenamiento.</p>
-            </a>
-            <a href="#" class="glass-card">
-                <div class="card-tag">Cloud</div>
-                <h3>Azure Landing Zones</h3>
-                <p>Arquitecturas de referencia para escalabilidad híbrida.</p>
-            </a>
-        </div>
+        <div id="notas-container" class="grid-expanded">
+            </div>
     </section>
 
     <aside class="side-panel">
         <div class="panel-box">
             <h3 class="panel-title">Threat Intelligence (CVEs)</h3>
-            <div class="vuln-feed">
-                <div class="vuln-item critical">
-                    <div class="vuln-header">
-                        <span class="cve-id">CVE-2025-1234</span>
-                        <span class="severity">9.8</span>
-                    </div>
-                    <p>RCE en Windows Kernel - Análisis de explotación.</p>
+            <div id="vuln-container" class="vuln-feed">
                 </div>
-                <div class="vuln-item high">
-                    <div class="vuln-header">
-                        <span class="cve-id">CVE-2025-5678</span>
-                        <span class="severity">7.5</span>
-                    </div>
-                    <p>Privilege Escalation en sistemas Linux modernos.</p>
-                </div>
-                <div class="vuln-item medium">
-                    <div class="vuln-header">
-                        <span class="cve-id">CVE-2024-9999</span>
-                        <span class="severity">5.4</span>
-                    </div>
-                    <p>DoS en servicios de red Apache/Nginx.</p>
-                </div>
-            </div>
         </div>
 
         <div class="panel-box">
             <h3 class="panel-title">Tecnologías en Foco</h3>
-            <div class="tag-cloud">
-                <span>#HyperV</span> <span>#Azure</span> <span>#Cybersecurity</span>
-                <span>#SIEM</span> <span>#Networking</span> <span>#DevSecOps</span>
-            </div>
+            <div id="tendencias-container" class="tag-cloud">
+                </div>
+        </div>
+        
+        <div class="panel-box" style="background: linear-gradient(135deg, #151c2c 0%, #0a0f1a 100%); border-color: var(--accent);">
+            <h3 class="panel-title" style="margin-bottom: 5px;">Comunidad Técnica</h3>
+            <p style="font-size: 2rem; font-weight: 800; color: var(--accent);"><span id="suscriptores-count">0</span></p>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Especialistas siguiendo nuestras investigaciones.</p>
         </div>
     </aside>
 </main>
@@ -98,6 +66,8 @@
 <footer class="minimal-footer">
     <p>© 2026 Technology Advisory · Enterprise Infrastructure & Research</p>
 </footer>
+
+<script src="assets/js/script.js"></script>
 
 </body>
 </html>
