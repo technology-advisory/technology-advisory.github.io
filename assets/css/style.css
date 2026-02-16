@@ -1,29 +1,45 @@
+/* TECHNOLOGY ADVISORY - Master Style
+   Estructura: Variables > Global > Layout > Componentes > Específicos (Docs/CVE)
+*/
+
 :root {
+    /* Paleta Principal - Estilo Industrial Dark */
     --bg: #0a0f1a;
+    --bg-darker: #020617;
     --card: #151c2c;
-    --accent: #3b82f6;
+    --card-hover: #1e293b;
+    --accent: #3b82f6;        /* Azul Eléctrico */
+    --accent-glow: rgba(59, 130, 246, 0.3);
+    --border: rgba(255, 255, 255, 0.08);
+    
+    /* Tipografía y Colores de Texto */
     --text: #f8fafc;
     --text-muted: #94a3b8;
-    --border: rgba(255, 255, 255, 0.08);
+    
+    /* Estados de Seguridad */
+    --critical: #ef4444;
+    --high: #f97316;
+    --medium: #eab308;
 }
 
+/* 1. RESET Y BASE */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    margin: 0;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: var(--bg);
+    background-color: var(--bg);
     color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* HEADER */
+/* 2. HEADER (Común a todas las páginas) */
 .main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
-    background: rgba(10, 15, 26, 0.9);
+    padding: 1.2rem 5%;
+    background: rgba(10, 15, 26, 0.85);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--border);
     position: sticky;
@@ -31,43 +47,47 @@ body {
     z-index: 1000;
 }
 
-.logo { font-weight: 800; letter-spacing: -1px; font-size: 1.2rem; }
+.logo { 
+    font-weight: 800; 
+    letter-spacing: -1px; 
+    font-size: 1.2rem; 
+    text-decoration: none;
+    color: var(--text);
+}
 
 .nav-links a {
     color: var(--text-muted);
     text-decoration: none;
-    margin-left: 20px;
+    margin-left: 25px;
     font-weight: 600;
     font-size: 0.9rem;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .nav-links a.active, .nav-links a:hover { color: var(--accent); }
 
-/* LAYOUT */
+/* 3. LAYOUT DASHBOARD (index.html) */
 .full-layout {
     display: grid;
     grid-template-columns: 1fr 350px;
     gap: 2.5rem;
     padding: 3rem 5%;
-    max-width: 1900px;
+    max-width: 1800px;
     margin: auto;
 }
 
-/* FEATURE CARD */
+/* 4. COMPONENTES: TARJETAS Y GRID */
 .feature-card {
     background: var(--card);
     border-radius: 24px;
     display: flex;
     overflow: hidden;
     border: 1px solid var(--border);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
 
 .feature-content { flex: 1.2; padding: 3.5rem; }
-.feature-content h1 { font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.2; }
-.feature-content p { color: var(--text-muted); margin-bottom: 2rem; }
-.feature-image { flex: 1; }
+.feature-image { flex: 1; border-left: 1px solid var(--border); }
 .feature-image img { width: 100%; height: 100%; object-fit: cover; }
 
 .badge {
@@ -77,7 +97,7 @@ body {
     border-radius: 30px;
     font-size: 0.75rem;
     font-weight: 800;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     display: inline-block;
     text-transform: uppercase;
 }
@@ -85,74 +105,124 @@ body {
 .btn-primary {
     background: var(--accent);
     color: white;
-    padding: 12px 30px;
+    padding: 12px 35px;
     border-radius: 12px;
     text-decoration: none;
-    font-weight: bold;
-    transition: transform 0.2s;
+    font-weight: 700;
+    display: inline-block;
+    box-shadow: 0 4px 15px var(--accent-glow);
+    transition: 0.3s ease;
 }
 
-.btn-primary:hover { transform: translateY(-2px); }
-
-/* GRID */
-.section-label { font-size: 1.4rem; margin: 3rem 0 1.5rem; font-weight: 800; color: var(--text); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px var(--accent-glow); }
 
 .grid-expanded {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
 }
 
 .glass-card {
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--border);
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: 20px;
     text-decoration: none;
-    color: white;
+    color: var(--text);
     transition: 0.3s;
 }
 
-.glass-card:hover { background: rgba(255,255,255,0.05); border-color: var(--accent); }
+.glass-card:hover { 
+    background: var(--card-hover); 
+    border-color: var(--accent); 
+    transform: translateY(-5px); 
+}
 
-.card-tag { font-size: 0.7rem; font-weight: 800; color: var(--accent); margin-bottom: 10px; text-transform: uppercase; }
-
-/* SIDE PANEL */
+/* 5. SIDEBAR Y WIDGETS */
 .panel-box {
     background: var(--card);
     padding: 1.8rem;
     border-radius: 20px;
     border: 1px solid var(--border);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
-.panel-title { font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 700; }
+.vuln-item { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+.vuln-item:last-child { border: none; }
+.cve-id { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-weight: 600; }
 
-.vuln-item { padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
-.vuln-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.cve-id { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 0.9rem; }
-.severity { font-weight: 800; color: #ef4444; }
+/* 6. ESTILOS ESPECÍFICOS PARA PÁGINAS DE INVESTIGACIÓN (.article-page) */
+.article-page .article-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 4rem;
+    max-width: 1300px;
+    margin: 50px auto;
+    padding: 0 5%;
+}
 
-.tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
-.tag-cloud span { background: rgba(255,255,255,0.05); padding: 5px 12px; border-radius: 8px; font-size: 0.8rem; color: var(--text-muted); border: 1px solid var(--border); }
+.content-body {
+    background: var(--card);
+    padding: 4rem;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+}
 
-/* FOOTER CENTRADO */
+.content-body h1 { font-size: 3.5rem; margin-bottom: 1.5rem; line-height: 1.1; }
+.content-body h2 { margin-top: 3rem; margin-bottom: 1rem; color: var(--accent); }
+
+/* Ventana de Terminal para código */
+.terminal-window {
+    background: #010409;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    margin: 2.5rem 0;
+    overflow: hidden;
+}
+
+.terminal-header {
+    background: #161b22;
+    padding: 12px 18px;
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid #30363d;
+}
+
+.terminal-header .dot { width: 12px; height: 12px; border-radius: 50%; background: #30363d; }
+
+pre {
+    padding: 25px;
+    font-family: 'JetBrains Mono', monospace;
+    color: #e6edf3;
+    font-size: 0.95rem;
+    overflow-x: auto;
+    line-height: 1.5;
+}
+
+/* 7. ESTILOS PARA VULNERABILIDADES (.vuln-page) */
+.vuln-page .severity-banner {
+    padding: 3rem;
+    border-radius: 24px;
+    text-align: center;
+    margin-bottom: 3rem;
+    border: 1px solid var(--border);
+}
+
+.severity-critical { background: rgba(239, 68, 68, 0.1); border-color: var(--critical) !important; }
+.severity-high { background: rgba(249, 115, 22, 0.1); border-color: var(--high) !important; }
+
+/* 8. FOOTER CENTRADO */
 .minimal-footer {
-    padding: 4rem 0;
+    padding: 5rem 0;
     text-align: center;
     border-top: 1px solid var(--border);
-    margin-top: 4rem;
-    width: 100%;
+    margin-top: 5rem;
 }
 
-.minimal-footer p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-@media (max-width: 1100px) {
-    .full-layout { grid-template-columns: 1fr; }
+/* 9. RESPONSIVE */
+@media (max-width: 1200px) {
+    .full-layout, .article-layout { grid-template-columns: 1fr; }
     .feature-card { flex-direction: column; }
-    .feature-image { height: 250px; }
+    .feature-image { border-left: none; border-top: 1px solid var(--border); height: 300px; }
+    .article-sidebar { display: none; }
 }
