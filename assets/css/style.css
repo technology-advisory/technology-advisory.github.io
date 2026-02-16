@@ -1,229 +1,92 @@
-/* TECHNOLOGY ADVISORY - Master Style 2026
-   Estructura: Variables > Global > Layout > Componentes > Artículos > Vulnerabilidades
-*/
-
-:root {
-    /* Paleta Principal - Estilo Industrial Dark */
-    --bg: #0a0f1a;
-    --bg-darker: #020617;
-    --card: #151c2c;
-    --card-hover: #1e293b;
-    --accent: #3b82f6;        
-    --accent-glow: rgba(59, 130, 246, 0.3);
-    --border: rgba(255, 255, 255, 0.08);
-    
-    /* Tipografía y Colores de Texto */
-    --text: #f8fafc;
-    --text-muted: #94a3b8;
-    
-    /* Estados de Seguridad */
-    --critical: #ef4444;
-    --high: #f97316;
-    --medium: #eab308;
+/* SIDEBAR DE INVESTIGACIÓN - ESTILO INDUSTRIAL */
+.article-sidebar {
+    padding-top: 20px;
 }
 
-/* 1. RESET Y BASE */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* 2. HEADER (Común a todas las páginas) */
-.main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 5%;
-    background: rgba(10, 15, 26, 0.85);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid var(--border);
+.sticky-index {
     position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo { 
-    font-weight: 800; 
-    letter-spacing: -1px; 
-    font-size: 1.2rem; 
-    text-decoration: none;
-    color: var(--text);
-}
-
-.nav-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    margin-left: 25px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: 0.3s;
-}
-
-.nav-links a.active, .nav-links a:hover { color: var(--accent); }
-
-/* 3. LAYOUT DASHBOARD (index.html) */
-.full-layout {
-    display: grid;
-    grid-template-columns: 1fr 350px;
-    gap: 2.5rem;
-    padding: 3rem 5%;
-    max-width: 1800px;
-    margin: auto;
-}
-
-/* 4. COMPONENTES: TARJETAS Y GRID */
-.feature-card {
+    top: 100px;
     background: var(--card);
-    border-radius: 24px;
-    display: flex;
-    overflow: hidden;
     border: 1px solid var(--border);
-    margin-bottom: 2.5rem;
+    border-radius: 16px;
+    padding: 20px;
 }
 
-.feature-content { flex: 1.2; padding: 3.5rem; }
-.feature-image { flex: 1; border-left: 1px solid var(--border); }
-.feature-image img { width: 100%; height: 100%; object-fit: cover; }
-
-.badge {
-    background: rgba(59, 130, 246, 0.15);
-    color: var(--accent);
-    padding: 6px 14px;
-    border-radius: 30px;
-    font-size: 0.75rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    display: inline-block;
-    text-transform: uppercase;
+.index-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
 }
 
-.btn-primary {
+.index-dot {
+    width: 8px;
+    height: 8px;
     background: var(--accent);
-    color: white;
-    padding: 12px 35px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 700;
-    display: inline-block;
-    box-shadow: 0 4px 15px var(--accent-glow);
-    transition: 0.3s ease;
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent);
 }
 
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px var(--accent-glow); }
-
-.grid-expanded {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
-.glass-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--border);
-    padding: 2.5rem;
-    border-radius: 20px;
-    text-decoration: none;
-    color: var(--text);
-    transition: 0.3s;
-}
-
-.glass-card:hover { 
-    background: var(--card-hover); 
-    border-color: var(--accent); 
-    transform: translateY(-5px); 
-}
-
-/* 5. SIDEBAR Y WIDGETS */
-.panel-box {
-    background: var(--card);
-    padding: 1.8rem;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    margin-bottom: 1.5rem;
-}
-
-.vuln-item { padding: 1rem 0; border-bottom: 1px solid var(--border); }
-.vuln-item:last-child { border: none; }
-.cve-id { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-weight: 600; }
-
-/* 6. ESTILOS DE INVESTIGACIÓN (.article-page) */
-.article-page .article-layout {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 4rem;
-    max-width: 1300px;
-    margin: 50px auto;
-    padding: 0 5%;
-}
-
-.content-body {
-    background: var(--card);
-    padding: 4rem;
-    border-radius: 24px;
-    border: 1px solid var(--border);
-}
-
-.content-body h1 { font-size: 3.5rem; margin-bottom: 1.5rem; line-height: 1.1; }
-.content-body h2 { margin-top: 3rem; margin-bottom: 1rem; color: var(--accent); border-left: 4px solid var(--accent); padding-left: 15px; }
-
-/* Ventana de Terminal para código */
-.terminal-window {
-    background: #010409;
-    border: 1px solid #30363d;
-    border-radius: 12px;
-    margin: 2.5rem 0;
-    overflow: hidden;
-}
-
-.terminal-header {
-    background: #161b22;
-    padding: 12px 18px;
+.index-nav {
     display: flex;
+    flex-direction: column;
     gap: 8px;
-    border-bottom: 1px solid #30363d;
 }
 
-.terminal-header .dot { width: 12px; height: 12px; border-radius: 50%; background: #30363d; }
-
-pre {
-    padding: 25px;
-    font-family: 'JetBrains Mono', monospace;
-    color: #e6edf3;
-    font-size: 0.95rem;
-    overflow-x: auto;
-    line-height: 1.5;
+.index-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
 }
 
-/* 7. ESTILOS PARA VULNERABILIDADES (.vuln-page) */
-.vuln-page .severity-banner {
-    padding: 3rem;
-    border-radius: 24px;
+.index-link:hover {
+    background: var(--bg-hover);
+    border-color: var(--border);
+}
+
+.index-link.active {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: var(--accent);
+}
+
+.index-icon { font-size: 1.2rem; }
+
+.index-text { display: flex; flex-direction: column; }
+
+.index-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.index-title {
+    font-size: 0.9rem;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.sidebar-help {
+    margin-top: 30px;
+    padding: 15px;
+    background: var(--bg-darker);
+    border-radius: 10px;
+    font-size: 0.8rem;
     text-align: center;
-    margin-bottom: 3rem;
-    border: 1px solid var(--border);
 }
 
-.severity-critical { background: rgba(239, 68, 68, 0.1); border-color: var(--critical) !important; color: var(--critical); }
-.severity-high { background: rgba(249, 115, 22, 0.1); border-color: var(--high) !important; color: var(--high); }
-
-/* 8. FOOTER CENTRADO */
-.minimal-footer {
-    padding: 5rem 0;
-    text-align: center;
-    border-top: 1px solid var(--border);
-    margin-top: 5rem;
-}
-
-/* 9. RESPONSIVE */
-@media (max-width: 1200px) {
-    .full-layout, .article-layout { grid-template-columns: 1fr; }
-    .feature-card { flex-direction: column; }
-    .feature-image { border-left: none; border-top: 1px solid var(--border); height: 300px; }
-    .article-sidebar { display: none; }
-    .content-body { padding: 2rem; }
+.sidebar-help a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    margin-top: 5px;
 }
