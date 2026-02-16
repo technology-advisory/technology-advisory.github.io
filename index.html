@@ -3,9 +3,510 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technology Advisory | Portal Técnico</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Technology Advisory · Infraestructura Crítica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #60a5fa;
+            --primary-gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --secondary: #7c3aed;
+            --accent: #f59e0b;
+            
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-elevated: #f1f5f9;
+            
+            --header-bg: #0f172a;
+            --header-glow: rgba(37, 99, 235, 0.2);
+            
+            --text-main: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --text-light: #f8fafc;
+            
+            --border: #e2e8f0;
+            --border-focus: #94a3b8;
+            
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header mejorado con glassmorphism */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        header .brand {
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.02em;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 10px var(--header-glow);
+        }
+
+        header nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: #cbd5e1;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        header nav a:hover {
+            color: #ffffff;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.2s;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Layout mejorado */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+        }
+
+        /* Hero Section mejorado */
+        .hero {
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hero:hover {
+            box-shadow: var(--shadow-xl);
+        }
+
+        .hero-text {
+            flex: 1;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.03) 0%, rgba(124, 58, 237, 0.03) 100%);
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin: 0 0 1rem 0;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero img {
+            width: 50%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .hero:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Botones mejorados */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            background: var(--primary-gradient);
+            color: white;
+            text-align: center;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Section titles */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 2.5rem 0 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--primary-gradient);
+            border-radius: 4px;
+        }
+
+        /* Grid mejorado */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Cards mejoradas */
+        .card {
+            background: var(--bg-card);
+            padding: 1.75rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-light);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0.75rem 0 0.5rem;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Tags mejorados */
+        .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            letter-spacing: 0.5px;
+        }
+
+        .tag.critical {
+            background: #fee2e2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        .tag.high {
+            background: #ffedd5;
+            color: #ea580c;
+            border: 1px solid #fed7aa;
+        }
+
+        .tag.medium {
+            background: #fef9c3;
+            color: #854d0e;
+            border: 1px solid #fde047;
+        }
+
+        /* Sidebar mejorado */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .widget {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .widget h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin: 0 0 1.25rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .widget h3::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border), transparent);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            background: var(--bg-body);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Widget de vulnerabilidades */
+        .vuln-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .vuln-item:last-child {
+            border-bottom: none;
+        }
+
+        .vuln-title {
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .vuln-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Newsletter widget */
+        .widget.newsletter {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+        }
+
+        .widget.newsletter h3 {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .widget.newsletter h3::after {
+            background: linear-gradient(90deg, rgba(255,255,255,0.3), transparent);
+        }
+
+        .widget.newsletter p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .widget.newsletter .search-input {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            margin-bottom: 0.75rem;
+        }
+
+        .widget.newsletter .search-input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .widget.newsletter .btn {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Footer mejorado */
+        footer {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        /* Badge de fecha */
+        .date-badge {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-top: 0.75rem;
+        }
+
+        /* Separador */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 1rem 0;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card, .hero, .widget {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            header nav a {
+                margin: 0 1rem;
+            }
+
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero img {
+                width: 100%;
+                height: 200px;
+            }
+
+            .hero-text {
+                padding: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -24,9 +525,13 @@
     <main class="main-content">
         <section class="hero">
             <div class="hero-text">
+                <span class="tag high" style="margin-bottom: 1rem; display: inline-block;">🔍 Análisis en profundidad</span>
                 <h1>Clúster Hyper‑V Enterprise</h1>
                 <p>Análisis profundo sobre alta disponibilidad y almacenamiento crítico en infraestructura on-premise.</p>
-                <a href="investigacion/cluster-hyperv.html" class="btn" style="width: auto; display: inline-block;">Leer investigación</a>
+                <a href="investigacion/cluster-hyperv.html" class="btn">
+                    Leer investigación 
+                    <span>→</span>
+                </a>
             </div>
             <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Hardware">
         </section>
@@ -34,60 +539,117 @@
         <h2 class="section-title">Notas Técnicas Recientes</h2>
         <div class="grid">
             <a href="notas-tecnicas/wazuh-rocky.html" class="card">
+                <span class="tag medium">SIEM</span>
                 <h3>Wazuh en Rocky Linux</h3>
                 <p>Guía paso a paso para desplegar un SIEM de grado empresarial.</p>
+                <div class="date-badge">
+                    <span>📅</span> Actualizado hace 2 días
+                </div>
             </a>
             <a href="#" class="card">
+                <span class="tag high">Storage</span>
                 <h3>Optimización iSCSI SAN</h3>
                 <p>Configuración de MPIO y Jumbo Frames para alto rendimiento.</p>
+                <div class="date-badge">
+                    <span>📅</span> Actualizado hace 5 días
+                </div>
+            </a>
+            <a href="#" class="card">
+                <span class="tag medium">Hardening</span>
+                <h3>Hardening Kubernetes</h3>
+                <p>Guía de seguridad para clusters Kubernetes en producción.</p>
+                <div class="date-badge">
+                    <span>📅</span> Nueva
+                </div>
             </a>
         </div>
 
         <h2 class="section-title">Análisis de Vulnerabilidades</h2>
         <div class="grid">
             <a href="vulnerabilidades/cve-2025-1234.html" class="card">
-                <span class="tag">Critical</span>
-                <h3 style="margin-top:10px;">CVE-2025-1234</h3>
-                <p>Investigación sobre RCE en protocolos de red heredados.</p>
+                <span class="tag critical">CVE-2025-1234 · CRITICAL</span>
+                <h3>RCE en protocolos heredados</h3>
+                <p>Investigación sobre RCE en protocolos de red heredados. PoC disponible.</p>
+                <div class="date-badge">
+                    <span>⚠️</span> Parche disponible
+                </div>
             </a>
             <a href="#" class="card">
-                <span class="tag" style="background:#ffedd5; color:#ea580c;">High</span>
-                <h3 style="margin-top:10px;">CVE-2025-5678</h3>
-                <p>Escalada de privilegios en kernels modernos de Linux.</p>
+                <span class="tag high">CVE-2025-5678 · HIGH</span>
+                <h3>Escalada de privilegios en Linux</h3>
+                <p>Escalada de privilegios en kernels modernos de Linux &gt; 5.10.</p>
+                <div class="date-badge">
+                    <span>🔧</span> Mitigación disponible
+                </div>
             </a>
         </div>
     </main>
 
     <aside class="sidebar">
         <div class="widget">
-            <h3>Buscar Investigación</h3>
+            <h3>🔍 Buscar</h3>
             <input type="text" class="search-input" placeholder="CVE, tecnología, logs...">
         </div>
 
         <div class="widget">
-            <h3>Vulnerabilidades Recientes</h3>
-            <div style="font-size: 14px; display: flex; flex-direction: column; gap: 12px;">
-                <div style="border-bottom: 1px solid var(--border); padding-bottom: 8px;">
-                    <span class="tag">Critical</span>
-                    <div style="font-weight: 600; margin-top:4px;">Análisis de Logs iSCSI SAN</div>
+            <h3>📊 Últimas Vulnerabilidades</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <div class="vuln-item">
+                    <div class="vuln-meta">
+                        <span class="tag critical">Critical</span>
+                        <span class="vuln-title">CVE-2025-8901</span>
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">RCE en SMBv3</div>
                 </div>
-                <div>
-                    <span class="tag" style="background:#ffedd5; color:#ea580c;">High</span>
-                    <div style="font-weight: 600; margin-top:4px;">Exploit iSCSI SAN v2.1</div>
+                <div class="vuln-item">
+                    <div class="vuln-meta">
+                        <span class="tag high">High</span>
+                        <span class="vuln-title">CVE-2025-8902</span>
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Escalada en Docker</div>
+                </div>
+                <div class="vuln-item">
+                    <div class="vuln-meta">
+                        <span class="tag medium">Medium</span>
+                        <span class="vuln-title">CVE-2025-8903</span>
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">XSS en Panel Admin</div>
                 </div>
             </div>
         </div>
 
+        <div class="widget">
+            <h3>📌 Tendencias</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                <span class="tag medium" style="background: #e0f2fe; color: #0369a1;">#Kubernetes</span>
+                <span class="tag medium" style="background: #dcfce7; color: #166534;">#ZeroTrust</span>
+                <span class="tag medium" style="background: #fef9c3; color: #854d0e;">#Ransomware</span>
+                <span class="tag medium" style="background: #fae8ff; color: #a21caf;">#CloudNative</span>
+                <span class="tag medium" style="background: #ffe4e6; color: #be123c;">#DevSecOps</span>
+            </div>
+        </div>
+
         <div class="widget newsletter">
-            <h3 style="color: white;">Newsletter Técnica</h3>
-            <p style="font-size: 13px; color: #cbd5e1;">Recibe investigaciones directamente en tu bandeja de entrada.</p>
-            <input type="email" class="search-input" placeholder="tu@email.com" style="margin-bottom: 10px; border: none;">
+            <h3>📬 Newsletter Técnica</h3>
+            <p>Recibe investigaciones directamente en tu bandeja de entrada.</p>
+            <input type="email" class="search-input" placeholder="tu@email.com">
             <button class="btn">Suscribirse</button>
+            <div style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.7;">
+                ✉️ 5.200+ suscriptores
+            </div>
         </div>
     </aside>
 
     <footer>
-        © 2026 Technology Advisory · Documentando Infraestructura Crítica
+        <div style="margin-bottom: 1.5rem;">
+            <span style="font-weight: 700; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Technology Advisory</span>
+        </div>
+        <div>© 2026 Technology Advisory · Documentando Infraestructura Crítica · v2.0</div>
+        <div style="margin-top: 1rem; display: flex; gap: 2rem; justify-content: center;">
+            <span>🔒 Seguridad</span>
+            <span>⚡ Performance</span>
+            <span>🏢 Enterprise</span>
+        </div>
     </footer>
 </div>
 
