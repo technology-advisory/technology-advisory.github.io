@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,66 +17,109 @@ body {
 }
 
 header {
-    padding: 50px 20px 30px 20px;
-    text-align: center;
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 36px;
+header nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: #374151;
+    font-weight: 500;
+}
+
+header nav a:hover {
+    color: #2563eb;
+}
+
+.brand {
     font-weight: 600;
-}
-
-header p {
-    margin-top: 10px;
-    color: #6b7280;
+    font-size: 20px;
 }
 
 .container {
     max-width: 1100px;
     margin: auto;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
 .hero {
     margin-top: 40px;
-    padding: 50px;
-    background: #f3f4f6;
-    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    background: #f9fafb;
+    border-radius: 14px;
+    overflow: hidden;
 }
 
-.hero h2 {
-    font-size: 30px;
-    margin: 0 0 15px 0;
+.hero-text {
+    flex: 1;
+    padding: 60px;
 }
 
-.hero p {
+.hero-text h1 {
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
     color: #4b5563;
+    font-size: 18px;
+}
+
+.hero-text a {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 22px;
+    background: #2563eb;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.hero img {
+    flex: 1;
+    max-height: 400px;
+    object-fit: cover;
 }
 
 .section {
-    margin-top: 70px;
+    margin-top: 80px;
 }
 
-.section h3 {
-    font-size: 22px;
+.section h2 {
+    font-size: 24px;
     margin-bottom: 30px;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 10px;
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    gap: 30px;
 }
 
 .card {
-    padding: 25px;
+    padding: 30px;
     border: 1px solid #e5e7eb;
-    border-radius: 10px;
+    border-radius: 12px;
     background: #ffffff;
+    transition: 0.3s ease;
 }
 
-.card h4 {
+.card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.card h3 {
     margin-top: 0;
 }
 
@@ -84,11 +128,11 @@ header p {
 }
 
 footer {
-    margin-top: 80px;
-    padding: 30px;
+    margin-top: 100px;
+    padding: 40px;
     text-align: center;
-    color: #9ca3af;
     border-top: 1px solid #e5e7eb;
+    color: #9ca3af;
 }
 </style>
 </head>
@@ -96,51 +140,62 @@ footer {
 <body>
 
 <header>
-    <h1>Technology Advisory</h1>
-    <p>Infraestructura Empresarial · Cloud · Investigación en Seguridad</p>
+    <div class="brand">Technology Advisory</div>
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Investigación</a>
+        <a href="#">Notas Técnicas</a>
+        <a href="#">Vulnerabilidades</a>
+        <a href="#">Publicaciones</a>
+        <a href="#">Sobre</a>
+    </nav>
 </header>
 
 <div class="container">
 
     <div class="hero">
-        <h2>Diseño de un Clúster Hyper-V en entorno Enterprise</h2>
-        <p>Arquitectura, decisiones técnicas y lecciones aprendidas en entornos críticos.</p>
+        <div class="hero-text">
+            <h1>Diseño de un Clúster Hyper‑V en entorno Enterprise</h1>
+            <p>Arquitectura, decisiones técnicas y lecciones aprendidas en entornos críticos de infraestructura empresarial.</p>
+            <a href="#">Leer investigación</a>
+        </div>
+        <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80" alt="Servidor">
     </div>
 
     <div class="section">
-        <h3>Notas Técnicas Recientes</h3>
+        <h2>Notas Técnicas Recientes</h2>
         <div class="grid">
             <div class="card">
-                <h4>Implementación de Wazuh en Rocky Linux</h4>
-                <p>Guía técnica detallada para despliegue seguro.</p>
+                <h3>Implementación de Wazuh en Rocky Linux</h3>
+                <p>Despliegue seguro y configuración avanzada en entornos empresariales.</p>
             </div>
             <div class="card">
-                <h4>Optimización Multipath con iSCSI SAN</h4>
-                <p>Configuración avanzada de MPIO para alta disponibilidad.</p>
+                <h3>Optimización Multipath con iSCSI SAN</h3>
+                <p>Configuración MPIO para alta disponibilidad y rendimiento.</p>
             </div>
             <div class="card">
-                <h4>Arquitectura HA en Azure</h4>
-                <p>Diseño resiliente para entornos cloud empresariales.</p>
+                <h3>Arquitectura HA en Azure</h3>
+                <p>Diseño resiliente y buenas prácticas en entornos cloud.</p>
             </div>
         </div>
     </div>
 
     <div class="section">
-        <h3>Investigación de Vulnerabilidades</h3>
+        <h2>Investigación de Vulnerabilidades</h2>
         <div class="card">
-            <h4>Análisis CVE-2025-1234</h4>
-            <p>Desglose técnico y mitigaciones recomendadas.</p>
+            <h3>Análisis CVE-2025-1234</h3>
+            <p>Desglose técnico, impacto y mitigaciones recomendadas.</p>
         </div>
         <div class="card" style="margin-top:20px;">
-            <h4>Análisis CVE-2025-5678</h4>
-            <p>Investigación técnica y evaluación de impacto.</p>
+            <h3>Análisis CVE-2025-5678</h3>
+            <p>Investigación avanzada y evaluación de riesgo.</p>
         </div>
     </div>
 
 </div>
 
 <footer>
-    © 2026 Technology Advisory · GitHub Pages
+    © 2026 Technology Advisory · Research & Infrastructure Notes
 </footer>
 
 </body>
