@@ -36,51 +36,13 @@
         </section>
 
         <h2 class="section-title">Notas Técnicas Recientes</h2>
-        <div class="grid">
-            <a href="notas-tecnicas/wazuh-rocky.html" class="card">
-                <span class="tag medium">SIEM</span>
-                <h3>Wazuh en Rocky Linux</h3>
-                <p>Guía paso a paso para desplegar un SIEM de grado empresarial.</p>
-                <div class="date-badge">
-                    <span>📅</span> Actualizado hace 2 días
-                </div>
-            </a>
-            <a href="#" class="card">
-                <span class="tag high">Storage</span>
-                <h3>Optimización iSCSI SAN</h3>
-                <p>Configuración de MPIO y Jumbo Frames para alto rendimiento.</p>
-                <div class="date-badge">
-                    <span>📅</span> Actualizado hace 5 días
-                </div>
-            </a>
-            <a href="#" class="card">
-                <span class="tag medium">Hardening</span>
-                <h3>Hardening Kubernetes</h3>
-                <p>Guía de seguridad para clusters Kubernetes en producción.</p>
-                <div class="date-badge">
-                    <span>📅</span> Nueva
-                </div>
-            </a>
+        <div class="grid" id="notas-container">
+            <!-- Las notas se cargarán aquí automáticamente desde noticias.json -->
         </div>
 
         <h2 class="section-title">Análisis de Vulnerabilidades</h2>
-        <div class="grid">
-            <a href="vulnerabilidades/cve-2025-1234.html" class="card">
-                <span class="tag critical">CVE-2025-1234 · CRITICAL</span>
-                <h3>RCE en protocolos heredados</h3>
-                <p>Investigación sobre RCE en protocolos de red heredados. PoC disponible.</p>
-                <div class="date-badge">
-                    <span>⚠️</span> Parche disponible
-                </div>
-            </a>
-            <a href="#" class="card">
-                <span class="tag high">CVE-2025-5678 · HIGH</span>
-                <h3>Escalada de privilegios en Linux</h3>
-                <p>Escalada de privilegios en kernels modernos de Linux &gt; 5.10.</p>
-                <div class="date-badge">
-                    <span>🔧</span> Mitigación disponible
-                </div>
-            </a>
+        <div class="grid" id="vulnerabilidades-container">
+            <!-- Las vulnerabilidades se cargarán aquí automáticamente desde noticias.json -->
         </div>
     </main>
 
@@ -92,39 +54,15 @@
 
         <div class="widget">
             <h3>📊 Últimas Vulnerabilidades</h3>
-            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                <div class="vuln-item">
-                    <div class="vuln-meta">
-                        <span class="tag critical">Critical</span>
-                        <span class="vuln-title">CVE-2025-8901</span>
-                    </div>
-                    <div style="font-size: 0.85rem; color: var(--text-secondary);">RCE en SMBv3</div>
-                </div>
-                <div class="vuln-item">
-                    <div class="vuln-meta">
-                        <span class="tag high">High</span>
-                        <span class="vuln-title">CVE-2025-8902</span>
-                    </div>
-                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Escalada en Docker</div>
-                </div>
-                <div class="vuln-item">
-                    <div class="vuln-meta">
-                        <span class="tag medium">Medium</span>
-                        <span class="vuln-title">CVE-2025-8903</span>
-                    </div>
-                    <div style="font-size: 0.85rem; color: var(--text-secondary);">XSS en Panel Admin</div>
-                </div>
+            <div id="ultimas-vuln">
+                <!-- Se cargará dinámicamente -->
             </div>
         </div>
 
         <div class="widget">
             <h3>📌 Tendencias</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                <span class="tag medium" style="background: #e0f2fe; color: #0369a1;">#Kubernetes</span>
-                <span class="tag medium" style="background: #dcfce7; color: #166534;">#ZeroTrust</span>
-                <span class="tag medium" style="background: #fef9c3; color: #854d0e;">#Ransomware</span>
-                <span class="tag medium" style="background: #fae8ff; color: #a21caf;">#CloudNative</span>
-                <span class="tag medium" style="background: #ffe4e6; color: #be123c;">#DevSecOps</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;" id="tendencias-container">
+                <!-- Se cargará dinámicamente -->
             </div>
         </div>
 
@@ -134,7 +72,7 @@
             <input type="email" class="search-input" placeholder="tu@email.com">
             <button class="btn">Suscribirse</button>
             <div style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.7;">
-                ✉️ 5.200+ suscriptores
+                ✉️ <span id="suscriptores">5.200</span>+ suscriptores
             </div>
         </div>
     </aside>
@@ -152,5 +90,7 @@
     </footer>
 </div>
 
+<!-- AÑADE ESTAS DOS LÍNEAS AL FINAL -->
+<script src="script.js"></script>
 </body>
 </html>
