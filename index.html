@@ -3,96 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technology Advisory · Infraestructura Crítica</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- ✅ RUTA CORRECTA DEL CSS -->
+    <title>Technology Advisory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <header>
-    <div class="brand">Technology Advisory</div>
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="investigacion/">Investigación</a>
-        <a href="notas-tecnicas/">Notas</a>
-        <a href="vulnerabilidades/">Vulnerabilidades</a>
-    </nav>
+    <div class="container nav">
+        <div class="brand">Technology Advisory</div>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Investigación</a>
+            <a href="#">Notas Técnicas</a>
+            <a href="#">Vulnerabilidades</a>
+        </nav>
+    </div>
 </header>
 
-<div class="container">
-    
-    <main class="main-content">
-        <section class="hero">
-            <div class="hero-text">
-                <span class="tag high" style="margin-bottom: 1rem; display: inline-block;">🔍 Análisis en profundidad</span>
-                <h1>Clúster Hyper‑V Enterprise</h1>
-                <p>Análisis profundo sobre alta disponibilidad y almacenamiento crítico en infraestructura on-premise.</p>
-                <a href="investigacion/cluster-hyperv.html" class="btn">
-                    Leer investigación 
-                    <span>→</span>
-                </a>
-            </div>
-            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Hardware">
-        </section>
-
-        <h2 class="section-title">Notas Técnicas Recientes</h2>
-        <div class="grid" id="notas-container">
-            <!-- Las notas se cargarán aquí automáticamente -->
+<section class="hero">
+    <div class="container hero-inner">
+        <div class="hero-text">
+            <h1>Clúster Hyper‑V en Entorno Enterprise</h1>
+            <p>Análisis profundo sobre alta disponibilidad y almacenamiento crítico en infraestructuras empresariales.</p>
+            <a href="#" class="btn">Leer investigación</a>
         </div>
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80" alt="Infraestructura">
+    </div>
+</section>
 
-        <h2 class="section-title">Análisis de Vulnerabilidades</h2>
-        <div class="grid" id="vulnerabilidades-container">
-            <!-- Las vulnerabilidades se cargarán aquí automáticamente -->
+<section class="container section">
+    <h2>Notas Técnicas Recientes</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Wazuh en Rocky Linux</h3>
+            <p>Implementación segura paso a paso en entorno empresarial.</p>
         </div>
-    </main>
+        <div class="card">
+            <h3>Optimización iSCSI SAN</h3>
+            <p>Configuración avanzada de MPIO y Jumbo Frames.</p>
+        </div>
+        <div class="card">
+            <h3>Arquitectura HA en Azure</h3>
+            <p>Diseño resiliente para cargas críticas en cloud.</p>
+        </div>
+    </div>
+</section>
 
-    <aside class="sidebar">
-        <div class="widget">
-            <h3>🔍 Buscar</h3>
-            <input type="text" class="search-input" placeholder="CVE, tecnología, logs...">
+<section class="container section">
+    <h2>Análisis de Vulnerabilidades</h2>
+    <div class="grid">
+        <div class="card">
+            <span class="tag critical">Critical</span>
+            <h3>CVE‑2025‑1234</h3>
+            <p>Análisis técnico y mitigaciones recomendadas.</p>
         </div>
+        <div class="card">
+            <span class="tag high">High</span>
+            <h3>CVE‑2025‑5678</h3>
+            <p>Escalada de privilegios en kernels Linux modernos.</p>
+        </div>
+    </div>
+</section>
 
-        <div class="widget">
-            <h3>📊 Últimas Vulnerabilidades</h3>
-            <div id="ultimas-vuln">
-                <!-- Se cargará dinámicamente -->
-            </div>
-        </div>
+<footer>
+    © 2026 Technology Advisory · Infraestructura & Security Research
+</footer>
 
-        <div class="widget">
-            <h3>📌 Tendencias</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;" id="tendencias-container">
-                <!-- Se cargará dinámicamente -->
-            </div>
-        </div>
-
-        <div class="widget newsletter">
-            <h3>📬 Newsletter Técnica</h3>
-            <p>Recibe investigaciones directamente en tu bandeja de entrada.</p>
-            <input type="email" class="search-input" placeholder="tu@email.com">
-            <button class="btn">Suscribirse</button>
-            <div style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.7;">
-                ✉️ <span id="suscriptores">5.200</span>+ suscriptores
-            </div>
-        </div>
-    </aside>
-
-    <footer>
-        <div style="margin-bottom: 1.5rem;">
-            <span style="font-weight: 700; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Technology Advisory</span>
-        </div>
-        <div>© 2026 Technology Advisory · Documentando Infraestructura Crítica · v2.0</div>
-        <div style="margin-top: 1rem; display: flex; gap: 2rem; justify-content: center;">
-            <span>🔒 Seguridad</span>
-            <span>⚡ Performance</span>
-            <span>🏢 Enterprise</span>
-        </div>
-    </footer>
-</div>
-
-<!-- ✅ SCRIPTS - AHORA SÍ ACTIVADO -->
-<script src="script.js"></script>
 </body>
 </html>

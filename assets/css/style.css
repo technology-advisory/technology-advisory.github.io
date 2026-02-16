@@ -1,82 +1,147 @@
-// script.js - Carga dinámica de contenido
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('data/noticias.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error cargando noticias');
-            }
-            return response.json();
-        })
-        .then(data => {
-            // 1. Cargar Notas Técnicas
-            const notasContainer = document.getElementById('notas-container');
-            if (notasContainer) {
-                notasContainer.innerHTML = data.notas_tecnicas.map(nota => `
-                    <a href="notas-tecnicas/${nota.archivo}" class="card">
-                        <span class="tag ${nota.severidad}">${nota.tag}</span>
-                        <h3>${nota.titulo}</h3>
-                        <p>${nota.desc}</p>
-                        <div class="date-badge">
-                            <span>📅</span> ${nota.fecha}
-                        </div>
-                    </a>
-                `).join('');
-            }
+:root {
+    --primary: #2563eb;
+    --dark: #0f172a;
+    --light-bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+}
 
-            // 2. Cargar Vulnerabilidades principales
-            const vulnContainer = document.getElementById('vulnerabilidades-container');
-            if (vulnContainer) {
-                vulnContainer.innerHTML = data.vulnerabilidades.slice(0, 3).map(vuln => `
-                    <a href="vulnerabilidades/${vuln.archivo}" class="card">
-                        <span class="tag ${vuln.severidad}">${vuln.cve} · ${vuln.severidad.toUpperCase()}</span>
-                        <h3>${vuln.titulo}</h3>
-                        <p>${vuln.desc}</p>
-                        <div class="date-badge">
-                            <span>⚠️</span> ${vuln.estado}
-                        </div>
-                    </a>
-                `).join('');
-            }
+* {
+    box-sizing: border-box;
+}
 
-            // 3. Cargar Últimas Vulnerabilidades (sidebar)
-            const ultimasVuln = document.getElementById('ultimas-vuln');
-            if (ultimasVuln) {
-                ultimasVuln.innerHTML = data.vulnerabilidades.slice(0, 5).map(vuln => `
-                    <div class="vuln-item">
-                        <div class="vuln-meta">
-                            <span class="tag ${vuln.severidad}">${vuln.severidad}</span>
-                            <span class="vuln-title">${vuln.cve}</span>
-                        </div>
-                        <div style="font-size: 0.85rem; color: var(--text-secondary);">${vuln.titulo}</div>
-                    </div>
-                `).join('');
-            }
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--light-bg);
+    color: var(--text);
+}
 
-            // 4. Cargar Tendencias
-            const tendenciasContainer = document.getElementById('tendencias-container');
-            if (tendenciasContainer && data.tendencias) {
-                tendenciasContainer.innerHTML = data.tendencias.map(tag => `
-                    <span class="tag medium" style="background: ${tag.color}; color: ${tag.texto};">${tag.nombre}</span>
-                `).join('');
-            }
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
 
-            // 5. Actualizar contador de suscriptores
-            const suscriptoresSpan = document.getElementById('suscriptores');
-            if (suscriptoresSpan && data.suscriptores) {
-                suscriptoresSpan.textContent = data.suscriptores;
-            }
-        })
-        .catch(error => {
-            console.error('Error cargando datos:', error);
-            // Mensaje de error visible
-            const notasContainer = document.getElementById('notas-container');
-            if (notasContainer) {
-                notasContainer.innerHTML = `
-                    <div class="card" style="grid-column: 1/-1; text-align: center;">
-                        <h3>Error cargando noticias</h3>
-                        <p>Comprueba que el archivo data/noticias.json existe y es accesible.</p>
-                    </div>
-                `;
-            }
-        });
-});
+header {
+    background: var(--dark);
+    padding: 20px 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: white;
+}
+
+.hero {
+    padding: 70px 0;
+    background: white;
+    border-bottom: 1px solid var(--border);
+}
+
+.hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.hero-text h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+.hero img {
+    width: 500px;
+    border-radius: 12px;
+}
+
+.section {
+    padding: 60px 0;
+}
+
+.section h2 {
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.card h3 {
+    margin-top: 10px;
+}
+
+.tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.critical {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.high {
+    background: #ffedd5;
+    color: #ea580c;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+}
