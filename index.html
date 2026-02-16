@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technology Advisory | Research & Infrastructure</title>
+    <title>Technology Advisory | Portal Técnico</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -16,52 +16,80 @@
         <a href="investigacion/">Investigación</a>
         <a href="notas-tecnicas/">Notas</a>
         <a href="vulnerabilidades/">Vulnerabilidades</a>
-        <a href="sobre/">Sobre</a>
     </nav>
 </header>
 
-<main class="container">
+<div class="container">
+    
+    <main class="main-content">
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Clúster Hyper‑V Enterprise</h1>
+                <p>Análisis profundo sobre alta disponibilidad y almacenamiento crítico en infraestructura on-premise.</p>
+                <a href="investigacion/cluster-hyperv.html" class="btn" style="width: auto; display: inline-block;">Leer investigación</a>
+            </div>
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Hardware">
+        </section>
 
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Clúster Hyper‑V Enterprise</h1>
-            <p>Análisis profundo sobre alta disponibilidad y almacenamiento crítico.</p>
-            <a href="investigacion/cluster-hyperv.html" class="btn">Leer investigación</a>
+        <h2 class="section-title">Notas Técnicas Recientes</h2>
+        <div class="grid">
+            <a href="notas-tecnicas/wazuh-rocky.html" class="card">
+                <h3>Wazuh en Rocky Linux</h3>
+                <p>Guía paso a paso para desplegar un SIEM de grado empresarial.</p>
+            </a>
+            <a href="#" class="card">
+                <h3>Optimización iSCSI SAN</h3>
+                <p>Configuración de MPIO y Jumbo Frames para alto rendimiento.</p>
+            </a>
         </div>
-        <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80" alt="Datacenter">
-    </section>
 
-    <h2 class="section-title">Notas Técnicas Recientes</h2>
-    <div class="grid">
-        <a href="notas-tecnicas/wazuh-rocky.html" class="card">
-            <h3>Wazuh en Rocky Linux</h3>
-            <p>Guía de despliegue SIEM paso a paso en entornos productivos.</p>
-        </a>
-        <a href="#" class="card">
-            <h3>Optimización iSCSI SAN</h3>
-            <p>Configuración de Multipath (MPIO) para alto rendimiento.</p>
-        </a>
-    </div>
+        <h2 class="section-title">Análisis de Vulnerabilidades</h2>
+        <div class="grid">
+            <a href="vulnerabilidades/cve-2025-1234.html" class="card">
+                <span class="tag">Critical</span>
+                <h3 style="margin-top:10px;">CVE-2025-1234</h3>
+                <p>Investigación sobre RCE en protocolos de red heredados.</p>
+            </a>
+            <a href="#" class="card">
+                <span class="tag" style="background:#ffedd5; color:#ea580c;">High</span>
+                <h3 style="margin-top:10px;">CVE-2025-5678</h3>
+                <p>Escalada de privilegios en kernels modernos de Linux.</p>
+            </a>
+        </div>
+    </main>
 
-    <h2 class="section-title">Análisis de Vulnerabilidades</h2>
-    <div class="grid">
-        <a href="vulnerabilidades/cve-2025-1234.html" class="card">
-            <span class="tag tag-crit">Critical</span>
-            <h3>Análisis CVE-2025-1234</h3>
-            <p>Explotación de ejecución remota de comandos en servicios legacy.</p>
-        </a>
-        <a href="#" class="card">
-            <span class="tag tag-high">High</span>
-            <h3>Análisis CVE-2025-5678</h3>
-            <p>Investigación sobre escalada de privilegios en sistemas UNIX.</p>
-        </a>
-    </div>
+    <aside class="sidebar">
+        <div class="widget">
+            <h3>Buscar Investigación</h3>
+            <input type="text" class="search-input" placeholder="CVE, tecnología, logs...">
+        </div>
 
-</main>
+        <div class="widget">
+            <h3>Vulnerabilidades Recientes</h3>
+            <div style="font-size: 14px; display: flex; flex-direction: column; gap: 12px;">
+                <div style="border-bottom: 1px solid var(--border); padding-bottom: 8px;">
+                    <span class="tag">Critical</span>
+                    <div style="font-weight: 600; margin-top:4px;">Análisis de Logs iSCSI SAN</div>
+                </div>
+                <div>
+                    <span class="tag" style="background:#ffedd5; color:#ea580c;">High</span>
+                    <div style="font-weight: 600; margin-top:4px;">Exploit iSCSI SAN v2.1</div>
+                </div>
+            </div>
+        </div>
 
-<footer>
-    © 2026 Technology Advisory · Documentando Infraestructura Crítica
-</footer>
+        <div class="widget newsletter">
+            <h3 style="color: white;">Newsletter Técnica</h3>
+            <p style="font-size: 13px; color: #cbd5e1;">Recibe investigaciones directamente en tu bandeja de entrada.</p>
+            <input type="email" class="search-input" placeholder="tu@email.com" style="margin-bottom: 10px; border: none;">
+            <button class="btn">Suscribirse</button>
+        </div>
+    </aside>
+
+    <footer>
+        © 2026 Technology Advisory · Documentando Infraestructura Crítica
+    </footer>
+</div>
 
 </body>
 </html>
