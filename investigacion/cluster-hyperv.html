@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clúster Hyper-V Enterprise | Technology Advisory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        /* Estilos específicos para artículos de investigación */
+        .article-content {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .post-meta {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .article-content h2 {
+            margin-top: 40px;
+            color: #111827;
+        }
+        /* Bloques de código tipo Terminal */
+        pre {
+            background: #1e1e1e;
+            color: #dcdcdc;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            border: 1px solid #333;
+        }
+        code { font-family: 'Fira Code', monospace; }
+        
+        /* Caja de notas técnicas */
+        .note {
+            background: #eff6ff;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .note strong { color: var(--primary); display: block; margin-bottom: 5px; }
+
+        img.article-img {
+            width: 100%;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="brand">Technology Advisory</div>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="index.html">Investigación</a>
+        <a href="../notas-tecnicas/">Notas</a>
+        <a href="../vulnerabilidades/">Vulnerabilidades</a>
+    </nav>
+</header>
+
+<article class="article-content">
+    <div class="post-meta">Publicado el 16 de Febrero, 2026 • 8 min de lectura</div>
+    <h1>Diseño de un Clúster Hyper‑V Enterprise: Alta Disponibilidad</h1>
+    
+    <p>La implementación de un clúster de conmutación por error (Failover Clustering) en Hyper-V es la piedra angular de cualquier infraestructura local que aspire a la resiliencia empresarial. En esta investigación analizamos la configuración óptima.</p>
+
+    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Arquitectura de Servidores" class="article-img">
+
+    <h2>1. Requisitos de Red (Networking)</h2>
+    <p>Uno de los errores más comunes es infradimensionar el tráfico de <strong>Live Migration</strong>. Para un entorno de producción, recomendamos separar el tráfico en al menos cuatro redes lógicas:</p>
+    <ul>
+        <li><strong>Management:</strong> Gestión del host.</li>
+        <li><strong>Cluster Communications:</strong> Heartbeat y CSV (Cluster Shared Volumes).</li>
+        <li><strong>Live Migration:</strong> Red dedicada de baja latencia.</li>
+        <li><strong>iSCSI/Storage:</strong> Conmutación por error mediante MPIO.</li>
+    </ul>
+
+    <div class="note">
+        <strong>💡 Recomendación Pro:</strong> 
+        Utilice adaptadores de 10Gbps como mínimo para el tráfico de migración en vivo para evitar cuellos de botella durante picos de mantenimiento.
+    </div>
+
+    <h2>2. Configuración mediante PowerShell</h2>
+    <p>Para automatizar el despliegue y asegurar la consistencia entre nodos, utilizamos el siguiente bloque de comandos:</p>
+
+<pre><code># Validación del clúster
+Test-Cluster -Node "Nodo01","Nodo02"
+
+# Creación del Clúster con IP Estática
+New-Cluster -Name CLUS-PROD01 -Node "Nodo01","Nodo02" -StaticAddress 192.168.10.50
+
+# Configuración del Quórum (Testigo de Disco)
+Set-ClusterQuorum -NodeAndDiskWitness "Cluster Disk 1"</code></pre>
+
+    <h2>3. Conclusiones</h2>
+    <p>Un clúster bien configurado no solo protege contra fallos de hardware, sino que permite una agilidad operativa total. En la siguiente entrega, analizaremos la optimización de cabinas de almacenamiento para este escenario.</p>
+
+    <hr style="margin-top: 60px; border: 0; border-top: 1px solid var(--border);">
+    
+    <section style="text-align: center; padding: 20px;">
+        <p style="color: var(--text-muted);">¿Tienes dudas sobre esta arquitectura?</p>
+        <a href="https://linkedin.com" class="btn">Conectar en LinkedIn</a>
+    </section>
+</article>
+
+<footer>
+    © 2026 Technology Advisory · Especialistas en Infraestructura
+</footer>
+
+</body>
+</html>
