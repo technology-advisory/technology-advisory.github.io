@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
         })
         .then(data => {
+            console.log('Datos cargados correctamente:', data); // Para depurar
+            
             // 1. Cargar Notas Técnicas
             const notasContainer = document.getElementById('notas-container');
             if (notasContainer) {
@@ -68,11 +70,17 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => {
             console.error('Error cargando datos:', error);
-            // Fallback: mostrar mensaje amigable
-            document.getElementById('notas-container').innerHTML = `
-                <div class="card" style="grid-column: 1/-1; text-align: center;">
-                    <p>Error cargando noticias. Por favor, recarga la página.</p>
-                </div>
-            `;
+            
+            // Mostrar mensaje de error amigable
+            const notasContainer = document.getElementById('notas-container');
+            if (notasContainer) {
+                notasContainer.innerHTML = `
+                    <div class="card" style="grid-column: 1/-1; text-align: center; padding: 2rem;">
+                        <h3>⚠️ Error cargando noticias</h3>
+                        <p>Comprueba que el archivo data/noticias.json existe y es accesible.</p>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">${error.message}</p>
+                    </div>
+                `;
+            }
         });
 });
