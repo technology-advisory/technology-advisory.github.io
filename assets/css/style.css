@@ -1,4 +1,4 @@
-/* TECHNOLOGY ADVISORY - Master Style (Optimizado para Móvil) */
+/* TECHNOLOGY ADVISORY - Master Style (PC & Mobile Optimized) */
 :root {
     --bg: #0a0f1a;
     --card: #151c2c;
@@ -10,136 +10,108 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+body { 
+    background: var(--bg); 
+    color: var(--text); 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
 }
 
-/* --- HEADER ADAPTATIVO --- */
+/* HEADER */
 .main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
-    background: rgba(10, 15, 26, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 5%; background: rgba(10, 15, 26, 0.95);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 1000;
 }
+.logo { font-weight: 800; text-decoration: none; color: white; font-size: 1.2rem; }
+.nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 0.9rem; }
+.nav-links a.active { color: var(--accent); }
 
-.logo { font-weight: 800; text-decoration: none; color: white; font-size: 1.1rem; }
-
-/* --- 1. DASHBOARD LAYOUT --- */
+/* --- 1. DASHBOARD LAYOUT (FLEX) --- */
 .full-layout {
-    display: flex;
-    gap: 2.5rem;
-    padding: 2rem 5%;
-    max-width: 1800px;
-    margin: 0 auto;
+    display: flex; gap: 2.5rem; padding: 3rem 5%;
+    max-width: 1800px; margin: 0 auto;
 }
-
 .main-content { flex: 1; min-width: 0; }
 .side-panel { width: 350px; flex-shrink: 0; }
 
-/* --- 2. INVESTIGACIÓN LAYOUT (PC) --- */
+/* --- 2. INVESTIGACIÓN LAYOUT (GRID PREMIUM) --- */
 .article-page .article-layout {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 3rem;
-    max-width: 1400px;
-    margin: 40px auto;
-    padding: 0 5%;
+    display: grid; grid-template-columns: 320px 1fr;
+    gap: 3rem; max-width: 1400px; margin: 40px auto; padding: 0 5%;
 }
-
 .article-page .content-body {
-    background: var(--card);
-    padding: 3rem;
-    border-radius: 24px;
-    border: 1px solid var(--border);
+    background: var(--card); padding: 4rem;
+    border-radius: 24px; border: 1px solid var(--border);
 }
+.article-page h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
 
-/* --- COMPONENTES --- */
+/* COMPONENTES */
 .feature-card {
-    background: var(--card);
-    border-radius: 24px;
-    display: flex;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    margin-bottom: 2rem;
+    background: var(--card); border-radius: 24px; display: flex;
+    overflow: hidden; border: 1px solid var(--border); margin-bottom: 2.5rem;
+    width: 100%;
 }
-
-.feature-content { flex: 1.2; padding: 2.5rem; }
-.feature-image { flex: 1; min-height: 200px; }
+.feature-content { flex: 1.2; padding: 3rem; }
+.feature-image { flex: 1; min-height: 300px; }
 .feature-image img { width: 100%; height: 100%; object-fit: cover; }
 
 .grid-expanded {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
 }
 
+/* TERMINAL */
 .terminal-window {
-    background: #010409;
-    border-radius: 12px;
-    margin: 1.5rem 0;
-    overflow-x: auto; /* Permite scroll horizontal en el código */
+    background: #010409; border: 1px solid #30363d; border-radius: 12px; margin: 2.5rem 0; overflow: hidden;
 }
+pre { padding: 25px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #e6edf3; overflow-x: auto; }
 
-/* --- 📱 MOBILE BREAKPOINT (EL ARREGLO) --- */
+/* =========================================
+   REGLAS PARA MÓVIL (Punto crítico < 1024px)
+   ========================================= */
 @media (max-width: 1024px) {
-    /* 1. Dashboard: Pasamos de columnas a una sola fila vertical */
-    .full-layout {
-        flex-direction: column;
+    /* Header: Reducir espacio */
+    .main-header { padding: 1rem 5%; }
+    .nav-links { display: none; } /* Ocultar menú para usar hamburguesa o simplificar */
+    
+    /* Dashboard: Una columna */
+    .full-layout { 
+        flex-direction: column; 
         padding: 1.5rem 5%;
+        gap: 1.5rem;
     }
+    .side-panel { width: 100%; order: 2; } /* Lateral abajo */
+    .main-content { order: 1; }
+
+    /* Investigación: Una columna y menos padding */
+    .article-page .article-layout { 
+        grid-template-columns: 1fr; 
+        margin: 10px auto;
+        gap: 1rem;
+    }
+    .article-sidebar { display: none; } /* Ocultar índice lateral en móvil */
     
-    .side-panel {
-        width: 100%;
-        order: 2; /* El panel lateral se va abajo de las noticias */
+    .article-page .content-body { 
+        padding: 1.5rem; 
+        border-radius: 0; /* Ocupa todo el ancho visual */
+        border-left: none; border-right: none;
     }
 
-    /* 2. Investigación: El índice desaparece o se mueve */
-    .article-page .article-layout {
+    .article-page h1 { font-size: 2.2rem; }
+
+    /* Feature Card: Vertical */
+    .feature-card { flex-direction: column; }
+    .feature-image { min-height: 200px; }
+    .feature-content { padding: 1.5rem; }
+    .feature-content h1 { font-size: 1.8rem; }
+
+    /* Grid de notas */
+    .grid-expanded {
         grid-template-columns: 1fr;
-        margin: 20px auto;
     }
     
-    .article-sidebar {
-        display: none; /* Ocultamos el índice en móvil para priorizar lectura */
-    }
-
-    /* 3. Feature Card: Imagen arriba, texto abajo */
-    .feature-card {
-        flex-direction: column;
-    }
-    
-    .feature-content {
-        padding: 1.5rem;
-    }
-    
-    .feature-content h1 {
-        font-size: 1.8rem; /* Fuente más pequeña para que no se corte */
-    }
-
-    /* 4. Contenido del artículo */
-    .article-page .content-body {
-        padding: 1.5rem;
-        border-radius: 0; /* Ocupa todo el ancho visualmente */
-        border-left: none;
-        border-right: none;
-    }
-    
-    .article-page h1 {
-        font-size: 2rem;
-    }
-
-    /* 5. Navegación: Ocultamos links secundarios si hay muchos */
-    .nav-links a:not(.active) {
-        display: none; 
-    }
+    /* Terminal: Ajustar padding */
+    pre { padding: 15px; font-size: 0.8rem; }
 }
