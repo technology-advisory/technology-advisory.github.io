@@ -1,6 +1,5 @@
 {
     "suscriptores": 5840,
-    
     "tendencias": [
         {"nombre": "#Kubernetes", "color": "#e0f2fe", "texto": "#0369a1"},
         {"nombre": "#ZeroTrust", "color": "#dcfce7", "texto": "#166534"},
@@ -8,7 +7,6 @@
         {"nombre": "#CloudNative", "color": "#fae8ff", "texto": "#a21caf"},
         {"nombre": "#DevSecOps", "color": "#ffe4e6", "texto": "#be123c"}
     ],
-    
     "notas_tecnicas": [
         {
             "archivo": "wazuh-rocky.html",
@@ -35,7 +33,6 @@
             "severidad": "critical"
         }
     ],
-    
     "vulnerabilidades": [
         {
             "archivo": "cve-2025-1234.html",
@@ -52,30 +49,6 @@
             "desc": "Escalada de privilegios en kernels modernos de Linux > 5.10.",
             "severidad": "high",
             "estado": "Mitigación disponible"
-        },
-        {
-            "archivo": "cve-2025-8901.html",
-            "cve": "CVE-2025-8901",
-            "titulo": "RCE en SMBv3",
-            "desc": "Vulnerabilidad crítica en protocolo SMBv3 de Windows Server.",
-            "severidad": "critical",
-            "estado": "En análisis"
-        },
-        {
-            "archivo": "cve-2025-8902.html",
-            "cve": "CVE-2025-8902",
-            "titulo": "Escalada en Docker",
-            "desc": "Escalada de privilegios en contenedores Docker.",
-            "severidad": "high",
-            "estado": "Mitigación disponible"
-        },
-        {
-            "archivo": "cve-2025-8903.html",
-            "cve": "CVE-2025-8903",
-            "titulo": "XSS en Panel Admin",
-            "desc": "Cross-site scripting en panel de administración.",
-            "severidad": "medium",
-            "estado": "Parche disponible"
         }
     ]
 }
