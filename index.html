@@ -22,18 +22,19 @@
 </header>
 
 <main class="full-layout">
-    <section class="main-feature">
+    <section class="main-content">
+        
         <div class="feature-card">
             <div class="feature-content">
                 <span class="badge">Investigación Destacada</span>
                 <h1>Diseño de Clúster Hyper‑V para Infraestructuras Críticas</h1>
-                <p>Análisis de alta disponibilidad, configuración de MPIO y optimización de latencia en cabinas iSCSI.</p>
+                <p>Análisis de alta disponibilidad, configuración de MPIO y optimización de latencia en cabinas iSCSI Enterprise.</p>
                 <div class="feature-footer">
                     <a href="investigacion/cluster-hyperv.html" class="btn-primary">Ver</a>
                 </div>
             </div>
             <div class="feature-image">
-                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Datacenter">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Datacenter Core">
             </div>
         </div>
 
@@ -43,6 +44,7 @@
     </section>
 
     <aside class="side-panel">
+        
         <div class="panel-box">
             <h3 class="panel-title">Threat Intelligence (CVEs)</h3>
             <div id="vuln-container" class="vuln-feed">
@@ -54,12 +56,16 @@
             <div id="tendencias-container" class="tag-cloud">
                 </div>
         </div>
-        
-        <div class="panel-box" style="background: linear-gradient(135deg, #151c2c 0%, #0a0f1a 100%); border-color: var(--accent);">
-            <h3 class="panel-title" style="margin-bottom: 5px;">Comunidad Técnica</h3>
-            <p style="font-size: 2rem; font-weight: 800; color: var(--accent);"><span id="suscriptores-count">0</span></p>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Especialistas siguiendo nuestras investigaciones.</p>
+
+        <div class="panel-box community-widget">
+            <h3 class="panel-title">Comunidad</h3>
+            <div class="counter-wrapper">
+                <span id="suscriptores-count" class="counter-value">0</span>
+                <span class="counter-label">Especialistas</span>
+            </div>
+            <p class="panel-footer-text">Suscriptores a la newsletter técnica.</p>
         </div>
+
     </aside>
 </main>
 
