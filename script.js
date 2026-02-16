@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
         })
         .then(data => {
-            console.log('Datos cargados correctamente:', data); // Para depurar
+            console.log('Datos cargados:', data);
             
             // 1. Cargar Notas Técnicas
             const notasContainer = document.getElementById('notas-container');
             if (notasContainer) {
                 notasContainer.innerHTML = data.notas_tecnicas.map(nota => `
-                    <a href="notas-tecnicas/${nota.archivo}" class="card">
+                    <a href="notas-tecnicas/${nota.archivo}" class="card">  <!-- ✅ CLASE AÑADIDA -->
                         <span class="tag ${nota.severidad}">${nota.tag}</span>
                         <h3>${nota.titulo}</h3>
                         <p>${nota.desc}</p>
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const vulnContainer = document.getElementById('vulnerabilidades-container');
             if (vulnContainer) {
                 vulnContainer.innerHTML = data.vulnerabilidades.slice(0, 3).map(vuln => `
-                    <a href="vulnerabilidades/${vuln.archivo}" class="card">
+                    <a href="vulnerabilidades/${vuln.archivo}" class="card">  <!-- ✅ CLASE AÑADIDA -->
                         <span class="tag ${vuln.severidad}">${vuln.cve} · ${vuln.severidad.toUpperCase()}</span>
                         <h3>${vuln.titulo}</h3>
                         <p>${vuln.desc}</p>
@@ -69,18 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => {
-            console.error('Error cargando datos:', error);
-            
-            // Mostrar mensaje de error amigable
-            const notasContainer = document.getElementById('notas-container');
-            if (notasContainer) {
-                notasContainer.innerHTML = `
-                    <div class="card" style="grid-column: 1/-1; text-align: center; padding: 2rem;">
-                        <h3>⚠️ Error cargando noticias</h3>
-                        <p>Comprueba que el archivo data/noticias.json existe y es accesible.</p>
-                        <p style="font-size: 0.85rem; color: var(--text-muted);">${error.message}</p>
-                    </div>
-                `;
-            }
+            console.error('Error:', error);
         });
 });
