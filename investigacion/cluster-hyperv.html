@@ -22,12 +22,37 @@
 <div class="article-layout">
     <aside class="article-sidebar">
         <div class="sticky-index">
-            <h4>En este artículo</h4>
-            <ul>
-                <li><a href="#arquitectura">Arquitectura Base</a></li>
-                <li><a href="#powershell">Despliegue PowerShell</a></li>
-                <li><a href="#conclusiones">Conclusiones</a></li>
-            </ul>
+            <div class="index-header">
+                <span class="index-dot"></span>
+                <h4>Índice del Artículo</h4>
+            </div>
+            <nav class="index-nav">
+                <a href="#arquitectura" class="index-link active">
+                    <span class="index-icon">🏗️</span>
+                    <div class="index-text">
+                        <span class="index-label">Fase 01</span>
+                        <span class="index-title">Arquitectura Base</span>
+                    </div>
+                </a>
+                <a href="#powershell" class="index-link">
+                    <span class="index-icon">💻</span>
+                    <div class="index-text">
+                        <span class="index-label">Fase 02</span>
+                        <span class="index-title">Despliegue Shell</span>
+                    </div>
+                </a>
+                <a href="#conclusiones" class="index-link">
+                    <span class="index-icon">🏁</span>
+                    <div class="index-text">
+                        <span class="index-label">Fase 03</span>
+                        <span class="index-title">Conclusiones</span>
+                    </div>
+                </a>
+            </nav>
+            <div class="sidebar-help">
+                <p>¿Necesitas el diseño completo?</p>
+                <a href="mailto:research@techadvisory.io">Contactar Advisor</a>
+            </div>
         </div>
     </aside>
 
@@ -36,59 +61,52 @@
             <span class="badge">Infraestructura Crítica</span>
             <h1>Diseño de un Clúster Hyper‑V en entorno Enterprise</h1>
             <div class="post-meta">
-                <span>📅 16 Feb, 2026</span> • <span>⏱️ 12 min de lectura</span> • <span>👤 Research Team</span>
+                <span>📅 16 Feb, 2026</span> • <span>⏱️ 12 min</span>
             </div>
         </header>
 
         <section id="arquitectura">
-            <p class="lead">La alta disponibilidad no es una opción en entornos de producción modernos. Un clúster de Hyper-V mal diseñado es un punto de fallo único glorificado.</p>
+            <p class="lead">La alta disponibilidad es el pilar de cualquier centro de datos moderno. Aquí analizamos cómo configurar un clúster de cómputo robusto.</p>
             
-            <h2>1. Arquitectura Base y Requisitos</h2>
-            <p>Para este escenario, se diseñó un esquema de dos nodos activos con almacenamiento redundante:</p>
-            <ul>
-                <li><strong>Cómputo:</strong> 2x Nodos con Windows Server 2022.</li>
-                <li><strong>Red de Heartbeat:</strong> Interfaces dedicadas de 10Gbps con baja latencia.</li>
-                <li><strong>Almacenamiento:</strong> Conectividad iSCSI con MPIO configurado para evitar cortes por error de ruta.</li>
-            </ul>
+            <h2>1. Arquitectura Base</h2>
+            <p>Se ha optado por una configuración de nodos redundantes con almacenamiento centralizado iSCSI.</p>
+            
+            
 
             <div class="note-box">
-                <strong>💡 Recomendación Pro:</strong> 
-                Utilice adaptadores de 10Gbps como mínimo para el tráfico de migración en vivo.
+                <strong>💡 Recomendación Pro:</strong> No mezcle tráfico de Management con Live Migration. Use VLANs dedicadas para cada servicio.
             </div>
         </section>
 
-        [Image of Hyper-V failover cluster architecture diagram]
-
         <section id="powershell">
-            <h2>2. Configuración mediante PowerShell</h2>
-            <p>La automatización asegura la consistencia. Este es el bloque de comandos para el despliegue inicial:</p>
+            <h2>2. Despliegue mediante PowerShell</h2>
+            <p>El uso de la CLI garantiza que la configuración en ambos nodos sea idéntica, evitando errores humanos.</p>
 
             <div class="terminal-window">
                 <div class="terminal-header">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                    <span class="terminal-title">PowerShell - Cluster Deployment</span>
+                    <span class="dot" style="background: #ff5f56;"></span>
+                    <span class="dot" style="background: #ffbd2e;"></span>
+                    <span class="dot" style="background: #27c93f;"></span>
+                    <span class="terminal-title">PowerShell - Cluster Setup</span>
                 </div>
-                <pre><code># Validación del clúster
-Test-Cluster -Node "Nodo01","Nodo02"
+                <pre><code># Validar nodos antes de crear el clúster
+Test-Cluster -Node "Srv-HV01","Srv-HV02"
 
-# Creación del Clúster con IP Estática
-New-Cluster -Name CLUS-PROD01 -Node "Nodo01","Nodo02" -StaticAddress 192.168.10.50
-
-# Configuración del Quórum (Testigo de Disco)
-Set-ClusterQuorum -NodeAndDiskWitness "Cluster Disk 1"</code></pre>
+# Crear el objeto de clúster en AD
+New-Cluster -Name CLUS-HYPERV01 -Node "Srv-HV01","Srv-HV02" -StaticAddress 10.0.10.50</code></pre>
             </div>
         </section>
 
         <section id="conclusiones">
             <h2>3. Conclusiones</h2>
-            <p>Un clúster bien configurado protege contra fallos de hardware y permite agilidad operativa. En la siguiente entrega, analizaremos la optimización de cabinas de almacenamiento.</p>
+            <p>Este diseño asegura que ante la caída de un host físico, las máquinas virtuales se reinicien automáticamente en el nodo superviviente en menos de 60 segundos.</p>
         </section>
-
-        <footer class="article-footer">
-            <p>¿Te ha sido útil? Comparte esta investigación con otros ingenieros.</p>
-        </footer>
     </article>
 </div>
+
+<footer class="minimal-footer">
+    <p>© 2026 Technology Advisory · Enterprise Research</p>
+</footer>
 
 </body>
 </html>

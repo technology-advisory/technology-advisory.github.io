@@ -1,24 +1,81 @@
-/* SIDEBAR DE INVESTIGACIÓN - ESTILO INDUSTRIAL */
-.article-sidebar {
-    padding-top: 20px;
+/* TECHNOLOGY ADVISORY - Master Style */
+:root {
+    --bg: #0a0f1a;
+    --bg-darker: #020617;
+    --card: #151c2c;
+    --card-hover: #1e293b;
+    --accent: #3b82f6;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: rgba(255, 255, 255, 0.08);
 }
 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    line-height: 1.6;
+}
+
+/* HEADER Y NAVEGACIÓN */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(10, 15, 26, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo { font-weight: 800; text-decoration: none; color: white; font-size: 1.2rem; }
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+}
+
+.nav-links a.active { color: var(--accent); }
+
+/* LAYOUT DE INVESTIGACIÓN */
+.article-page .article-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 5%;
+}
+
+.content-body {
+    background: var(--card);
+    padding: 3rem;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+}
+
+/* ÍNDICE INDUSTRIAL SIDEBAR */
 .sticky-index {
     position: sticky;
     top: 100px;
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px;
+    border-radius: 20px;
+    padding: 24px;
 }
 
 .index-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
+    gap: 12px;
+    margin-bottom: 24px;
 }
 
 .index-dot {
@@ -29,64 +86,56 @@
     box-shadow: 0 0 10px var(--accent);
 }
 
-.index-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
 .index-link {
     display: flex;
     align-items: center;
     gap: 15px;
     text-decoration: none;
     padding: 12px;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    transition: 0.3s;
 }
 
-.index-link:hover {
-    background: var(--bg-hover);
-    border-color: var(--border);
-}
-
-.index-link.active {
-    background: rgba(59, 130, 246, 0.1);
-    border-color: var(--accent);
-}
+.index-link:hover { background: var(--bg-darker); }
+.index-link.active { background: rgba(59, 130, 246, 0.1); border: 1px solid var(--accent); }
 
 .index-icon { font-size: 1.2rem; }
+.index-label { font-size: 0.65rem; color: var(--accent); font-weight: 800; display: block; }
+.index-title { font-size: 0.95rem; color: var(--text); font-weight: 600; }
 
-.index-text { display: flex; flex-direction: column; }
-
-.index-label {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--accent);
-    font-weight: 800;
+/* TERMINAL Y CÓDIGO */
+.terminal-window {
+    background: #010409;
+    border-radius: 12px;
+    border: 1px solid #30363d;
+    margin: 2rem 0;
+    overflow: hidden;
 }
 
-.index-title {
+.terminal-header {
+    background: #161b22;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.terminal-header .dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+
+pre {
+    padding: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    color: #e6edf3;
     font-size: 0.9rem;
-    color: var(--text);
-    font-weight: 600;
+    overflow-x: auto;
 }
 
-.sidebar-help {
-    margin-top: 30px;
-    padding: 15px;
-    background: var(--bg-darker);
-    border-radius: 10px;
-    font-size: 0.8rem;
-    text-align: center;
-}
+/* OTROS ELEMENTOS */
+.badge { background: rgba(59, 130, 246, 0.1); color: var(--accent); padding: 5px 12px; border-radius: 20px; font-weight: 800; font-size: 0.7rem; }
+.note-box { background: rgba(59, 130, 246, 0.05); border-left: 4px solid var(--accent); padding: 20px; margin: 2rem 0; border-radius: 0 12px 12px 0; }
+.minimal-footer { text-align: center; padding: 4rem 0; border-top: 1px solid var(--border); color: var(--text-muted); }
 
-.sidebar-help a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: bold;
-    display: block;
-    margin-top: 5px;
+@media (max-width: 1024px) {
+    .article-page .article-layout { grid-template-columns: 1fr; }
+    .article-sidebar { display: none; }
 }
