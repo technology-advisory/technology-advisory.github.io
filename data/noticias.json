@@ -1,0 +1,81 @@
+{
+    "suscriptores": 5840,
+    
+    "tendencias": [
+        {"nombre": "#Kubernetes", "color": "#e0f2fe", "texto": "#0369a1"},
+        {"nombre": "#ZeroTrust", "color": "#dcfce7", "texto": "#166534"},
+        {"nombre": "#Ransomware", "color": "#fef9c3", "texto": "#854d0e"},
+        {"nombre": "#CloudNative", "color": "#fae8ff", "texto": "#a21caf"},
+        {"nombre": "#DevSecOps", "color": "#ffe4e6", "texto": "#be123c"}
+    ],
+    
+    "notas_tecnicas": [
+        {
+            "archivo": "wazuh-rocky.html",
+            "titulo": "Wazuh en Rocky Linux",
+            "desc": "Guía paso a paso para desplegar un SIEM de grado empresarial.",
+            "tag": "SIEM",
+            "fecha": "Actualizado hace 2 días",
+            "severidad": "medium"
+        },
+        {
+            "archivo": "iscsi-san.html",
+            "titulo": "Optimización iSCSI SAN",
+            "desc": "Configuración de MPIO y Jumbo Frames para alto rendimiento.",
+            "tag": "Storage",
+            "fecha": "Actualizado hace 5 días",
+            "severidad": "high"
+        },
+        {
+            "archivo": "zero-trust.html",
+            "titulo": "Zero Trust en On-Premise",
+            "desc": "Arquitectura de seguridad para centros de datos tradicionales.",
+            "tag": "Seguridad",
+            "fecha": "Nueva",
+            "severidad": "critical"
+        }
+    ],
+    
+    "vulnerabilidades": [
+        {
+            "archivo": "cve-2025-1234.html",
+            "cve": "CVE-2025-1234",
+            "titulo": "RCE en protocolos heredados",
+            "desc": "Investigación sobre RCE en protocolos de red heredados. PoC disponible.",
+            "severidad": "critical",
+            "estado": "Parche disponible"
+        },
+        {
+            "archivo": "cve-2025-5678.html",
+            "cve": "CVE-2025-5678",
+            "titulo": "Escalada de privilegios en Linux",
+            "desc": "Escalada de privilegios en kernels modernos de Linux > 5.10.",
+            "severidad": "high",
+            "estado": "Mitigación disponible"
+        },
+        {
+            "archivo": "cve-2025-8901.html",
+            "cve": "CVE-2025-8901",
+            "titulo": "RCE en SMBv3",
+            "desc": "Vulnerabilidad crítica en protocolo SMBv3 de Windows Server.",
+            "severidad": "critical",
+            "estado": "En análisis"
+        },
+        {
+            "archivo": "cve-2025-8902.html",
+            "cve": "CVE-2025-8902",
+            "titulo": "Escalada en Docker",
+            "desc": "Escalada de privilegios en contenedores Docker.",
+            "severidad": "high",
+            "estado": "Mitigación disponible"
+        },
+        {
+            "archivo": "cve-2025-8903.html",
+            "cve": "CVE-2025-8903",
+            "titulo": "XSS en Panel Admin",
+            "desc": "Cross-site scripting en panel de administración.",
+            "severidad": "medium",
+            "estado": "Parche disponible"
+        }
+    ]
+}
