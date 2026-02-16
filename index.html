@@ -3,271 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technology Advisory · Infraestructura Crítica</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Technology Advisory | Infrastructure Intelligence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<!-- NAVBAR MODERNA -->
-<nav class="navbar">
-    <div class="nav-container">
-        <div class="logo">
-            <span class="logo-icon">🔬</span>
-            <span class="logo-text">Technology Advisory</span>
-        </div>
-        <div class="nav-links">
-            <a href="#" class="active">Inicio</a>
-            <a href="#">Investigación</a>
-            <a href="#">Notas Técnicas</a>
-            <a href="#">Vulnerabilidades</a>
-            <a href="#" class="nav-cta">Newsletter</a>
+<header class="main-header">
+    <div class="header-left">
+        <span class="logo">TECHNOLOGY ADVISORY</span>
+        <div class="search-bar">
+            <span class="search-icon">/</span>
+            <input type="text" placeholder="Buscar investigación, CVE o tecnología...">
         </div>
     </div>
-</nav>
+    <nav class="nav-links">
+        <a href="index.html" class="active">Dashboard</a>
+        <a href="investigacion/">Investigación</a>
+        <a href="notas-tecnicas/">Notas</a>
+        <a href="vulnerabilidades/">Vulnerabilidades</a>
+    </nav>
+</header>
 
-<!-- HERO SECTION IMPACTANTE -->
-<section class="hero">
-    <div class="hero-background">
-        <div class="hero-pattern"></div>
-    </div>
-    <div class="hero-container">
-        <div class="hero-content">
-            <span class="hero-badge">🔍 Análisis en profundidad</span>
-            <h1 class="hero-title">
-                Clúster Hyper‑V <br>
-                <span class="gradient-text">Enterprise</span>
-            </h1>
-            <p class="hero-description">
-                Análisis profundo sobre alta disponibilidad y almacenamiento crítico 
-                en infraestructura on-premise. Descubre las mejores prácticas y configuraciones.
-            </p>
-            <div class="hero-buttons">
-                <a href="#" class="btn-primary">
-                    Leer investigación
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="#" class="btn-secondary">
-                    <i class="fas fa-play"></i>
-                    Ver resumen
-                </a>
+<main class="full-layout">
+    <section class="main-feature">
+        <div class="feature-card">
+            <div class="feature-content">
+                <span class="badge">Investigación Destacada</span>
+                <h1>Diseño de Clúster Hyper‑V para Infraestructuras Críticas</h1>
+                <p>Análisis de alta disponibilidad, configuración de MPIO y optimización de latencia en cabinas iSCSI.</p>
+                <div class="feature-footer">
+                    <a href="investigacion/cluster-hyperv.html" class="btn-primary">Explorar Investigación Full-View</a>
+                    <span class="read-time">12 min de lectura</span>
+                </div>
+            </div>
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Datacenter">
             </div>
         </div>
-        <div class="hero-image">
-            <div class="image-wrapper">
-                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Infraestructura">
-                <div class="image-overlay"></div>
-            </div>
-            <div class="stats-card">
-                <div class="stat-item">
-                    <span class="stat-value">99.9%</span>
-                    <span class="stat-label">Uptime</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <span class="stat-value"><24h</span>
-                    <span class="stat-label">Response</span>
-                </div>
-            </div>
+
+        <h2 class="section-label">Notas Técnicas Recientes</h2>
+        <div class="grid-expanded">
+            <a href="notas-tecnicas/wazuh-rocky.html" class="glass-card">
+                <div class="card-tag">SIEM</div>
+                <h3>Wazuh en Rocky Linux</h3>
+                <p>Despliegue de seguridad activa en entornos productivos.</p>
+            </a>
+            <a href="#" class="glass-card">
+                <div class="card-tag">Storage</div>
+                <h3>Multipath iSCSI SAN</h3>
+                <p>Optimización de redundancia en redes de almacenamiento.</p>
+            </a>
+            <a href="#" class="glass-card">
+                <div class="card-tag">Cloud</div>
+                <h3>Azure Landing Zones</h3>
+                <p>Arquitecturas de referencia para escalabilidad híbrida.</p>
+            </a>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- SECCIÓN DE NOTAS TÉCNICAS -->
-<section class="section">
-    <div class="container">
-        <div class="section-header">
-            <div>
-                <span class="section-subtitle">Conocimiento técnico</span>
-                <h2 class="section-title">Notas Técnicas Recientes</h2>
-            </div>
-            <a href="#" class="section-link">Ver todas <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <div class="cards-grid">
-            <!-- Card 1 -->
-            <article class="card">
-                <div class="card-icon">
-                    <i class="fas fa-shield-alt"></i>
+    <aside class="side-panel">
+        <div class="panel-box">
+            <h3 class="panel-title">Threat Intelligence (CVEs)</h3>
+            <div class="vuln-feed">
+                <div class="vuln-item critical">
+                    <div class="vuln-header">
+                        <span class="cve-id">CVE-2025-1234</span>
+                        <span class="severity">9.8</span>
+                    </div>
+                    <p>RCE en Windows Kernel - Análisis de explotación.</p>
                 </div>
-                <div class="card-tags">
-                    <span class="tag tag-siem">SIEM</span>
+                <div class="vuln-item high">
+                    <div class="vuln-header">
+                        <span class="cve-id">CVE-2025-5678</span>
+                        <span class="severity">7.5</span>
+                    </div>
+                    <p>Privilege Escalation en sistemas Linux modernos.</p>
                 </div>
-                <h3 class="card-title">Wazuh en Rocky Linux</h3>
-                <p class="card-description">Guía paso a paso para desplegar un SIEM de grado empresarial con Wazuh en Rocky Linux 9.</p>
-                <div class="card-footer">
-                    <span class="card-date"><i class="far fa-calendar"></i> Actualizado hace 2 días</span>
-                    <span class="card-read">8 min lectura</span>
-                </div>
-                <div class="card-hover"></div>
-            </article>
-
-            <!-- Card 2 -->
-            <article class="card">
-                <div class="card-icon">
-                    <i class="fas fa-database"></i>
-                </div>
-                <div class="card-tags">
-                    <span class="tag tag-storage">Storage</span>
-                </div>
-                <h3 class="card-title">Optimización iSCSI SAN</h3>
-                <p class="card-description">Configuración de MPIO y Jumbo Frames para alto rendimiento en entornos de almacenamiento crítico.</p>
-                <div class="card-footer">
-                    <span class="card-date"><i class="far fa-calendar"></i> Actualizado hace 5 días</span>
-                    <span class="card-read">12 min lectura</span>
-                </div>
-                <div class="card-hover"></div>
-            </article>
-
-            <!-- Card 3 -->
-            <article class="card">
-                <div class="card-icon">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <div class="card-tags">
-                    <span class="tag tag-security">Seguridad</span>
-                </div>
-                <h3 class="card-title">Zero Trust en On-Premise</h3>
-                <p class="card-description">Arquitectura de seguridad para centros de datos tradicionales con modelo Zero Trust.</p>
-                <div class="card-footer">
-                    <span class="card-date"><i class="far fa-calendar"></i> Nueva</span>
-                    <span class="card-read">10 min lectura</span>
-                </div>
-                <div class="card-hover"></div>
-            </article>
-        </div>
-    </div>
-</section>
-
-<!-- SECCIÓN DE VULNERABILIDADES -->
-<section class="section section-dark">
-    <div class="container">
-        <div class="section-header">
-            <div>
-                <span class="section-subtitle">Security Research</span>
-                <h2 class="section-title">Análisis de Vulnerabilidades</h2>
-            </div>
-            <a href="#" class="section-link">Ver todos <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <div class="vuln-grid">
-            <!-- Vulnerability Card 1 -->
-            <div class="vuln-card vuln-critical">
-                <div class="vuln-header">
-                    <span class="vuln-cve">CVE-2025-1234</span>
-                    <span class="vuln-badge">Critical</span>
-                </div>
-                <h4 class="vuln-title">RCE en protocolos heredados</h4>
-                <p class="vuln-description">Investigación sobre RCE en protocolos de red heredados. PoC disponible.</p>
-                <div class="vuln-footer">
-                    <span class="vuln-status"><i class="fas fa-exclamation-triangle"></i> Parche disponible</span>
-                    <a href="#" class="vuln-link">Analizar <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- Vulnerability Card 2 -->
-            <div class="vuln-card vuln-high">
-                <div class="vuln-header">
-                    <span class="vuln-cve">CVE-2025-5678</span>
-                    <span class="vuln-badge">High</span>
-                </div>
-                <h4 class="vuln-title">Escalada de privilegios en Linux</h4>
-                <p class="vuln-description">Escalada de privilegios en kernels modernos de Linux > 5.10.</p>
-                <div class="vuln-footer">
-                    <span class="vuln-status"><i class="fas fa-shield-alt"></i> Mitigación disponible</span>
-                    <a href="#" class="vuln-link">Analizar <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- Vulnerability Card 3 -->
-            <div class="vuln-card vuln-medium">
-                <div class="vuln-header">
-                    <span class="vuln-cve">CVE-2025-9012</span>
-                    <span class="vuln-badge">Medium</span>
-                </div>
-                <h4 class="vuln-title">XSS en paneles de administración</h4>
-                <p class="vuln-description">Cross-site scripting en paneles de administración de aplicaciones web.</p>
-                <div class="vuln-footer">
-                    <span class="vuln-status"><i class="fas fa-clock"></i> En análisis</span>
-                    <a href="#" class="vuln-link">Analizar <i class="fas fa-arrow-right"></i></a>
+                <div class="vuln-item medium">
+                    <div class="vuln-header">
+                        <span class="cve-id">CVE-2024-9999</span>
+                        <span class="severity">5.4</span>
+                    </div>
+                    <p>DoS en servicios de red Apache/Nginx.</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- NEWSLETTER SECTION -->
-<section class="newsletter-section">
-    <div class="newsletter-container">
-        <div class="newsletter-content">
-            <span class="newsletter-badge">📬 Mantente informado</span>
-            <h2 class="newsletter-title">Newsletter Técnica</h2>
-            <p class="newsletter-description">
-                Recibe las últimas investigaciones, vulnerabilidades zero-day y guías de hardening directamente en tu bandeja de entrada.
-            </p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="tu@email.com" value="t.me/email.com">
-                <button type="submit">Suscribirme <i class="fas fa-paper-plane"></i></button>
-            </form>
-            <div class="newsletter-stats">
-                <span><i class="fas fa-users"></i> 5.840+ suscriptores</span>
-                <span><i class="fas fa-envelope"></i> Semanal</span>
+        <div class="panel-box">
+            <h3 class="panel-title">Tecnologías en Foco</h3>
+            <div class="tag-cloud">
+                <span>#HyperV</span> <span>#Azure</span> <span>#Cybersecurity</span>
+                <span>#SIEM</span> <span>#Networking</span> <span>#DevSecOps</span>
             </div>
         </div>
-        <div class="newsletter-social">
-            <a href="#" class="social-link telegram"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="#" class="social-link twitter"><i class="fab fa-twitter"></i> SocorroBarrel</a>
-        </div>
-    </div>
-</section>
+    </aside>
+</main>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-grid">
-            <div class="footer-about">
-                <div class="footer-logo">
-                    <span class="logo-icon">🔬</span>
-                    <span class="logo-text">Technology Advisory</span>
-                </div>
-                <p class="footer-description">
-                    Documentando infraestructura crítica con análisis técnicos en profundidad.
-                </p>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-            <div class="footer-links">
-                <h4>Recursos</h4>
-                <ul>
-                    <li><a href="#">Investigaciones</a></li>
-                    <li><a href="#">Notas Técnicas</a></li>
-                    <li><a href="#">Vulnerabilidades</a></li>
-                    <li><a href="#">Newsletter</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Términos</a></li>
-                    <li><a href="#">Privacidad</a></li>
-                    <li><a href="#">Cookies</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h4>Contacto</h4>
-                <p><i class="fas fa-envelope"></i> research@techadvisory.io</p>
-                <p><i class="fas fa-phone"></i> +34 123 456 789</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 Technology Advisory · Infraestructura & Security Research</p>
-        </div>
-    </div>
+<footer class="minimal-footer">
+    <p>© 2026 Technology Advisory · Enterprise Infrastructure & Research</p>
 </footer>
 
 </body>
-</html>
+</html> 
