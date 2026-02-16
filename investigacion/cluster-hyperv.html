@@ -49,10 +49,6 @@
                     </div>
                 </a>
             </nav>
-            <div class="sidebar-help">
-                <p>¿Necesitas el diseño completo?</p>
-                <a href="mailto:research@techadvisory.io">Contactar Advisor</a>
-            </div>
         </div>
     </aside>
 
@@ -66,22 +62,19 @@
         </header>
 
         <section id="arquitectura">
-            <p class="lead">La alta disponibilidad es el pilar de cualquier centro de datos moderno. Aquí analizamos cómo configurar un clúster de cómputo robusto.</p>
-            
+            <p class="lead">Un clúster de Hyper-V no es solo unir dos servidores; es garantizar que los servicios nunca se detengan ante fallos de hardware.</p>
             <h2>1. Arquitectura Base</h2>
-            <p>Se ha optado por una configuración de nodos redundantes con almacenamiento centralizado iSCSI.</p>
+            <p>Se ha implementado una topología de nodos redundantes con almacenamiento compartido mediante cabinas iSCSI.</p>
             
             
 
             <div class="note-box">
-                <strong>💡 Recomendación Pro:</strong> No mezcle tráfico de Management con Live Migration. Use VLANs dedicadas para cada servicio.
+                <strong>💡 Recomendación Pro:</strong> No olvide configurar MPIO (Multi-Path I/O) para evitar que un cable de red suelto tire abajo todo el almacenamiento del clúster.
             </div>
         </section>
 
         <section id="powershell">
             <h2>2. Despliegue mediante PowerShell</h2>
-            <p>El uso de la CLI garantiza que la configuración en ambos nodos sea idéntica, evitando errores humanos.</p>
-
             <div class="terminal-window">
                 <div class="terminal-header">
                     <span class="dot" style="background: #ff5f56;"></span>
@@ -89,24 +82,15 @@
                     <span class="dot" style="background: #27c93f;"></span>
                     <span class="terminal-title">PowerShell - Cluster Setup</span>
                 </div>
-                <pre><code># Validar nodos antes de crear el clúster
-Test-Cluster -Node "Srv-HV01","Srv-HV02"
+                <pre><code># Validar configuración de nodos
+Test-Cluster -Node "Nodo01","Nodo02"
 
-# Crear el objeto de clúster en AD
-New-Cluster -Name CLUS-HYPERV01 -Node "Srv-HV01","Srv-HV02" -StaticAddress 10.0.10.50</code></pre>
+# Crear el clúster con IP estática de gestión
+New-Cluster -Name CLUS-HYPERV01 -Node "Nodo01","Nodo02" -StaticAddress 10.10.10.50</code></pre>
             </div>
-        </section>
-
-        <section id="conclusiones">
-            <h2>3. Conclusiones</h2>
-            <p>Este diseño asegura que ante la caída de un host físico, las máquinas virtuales se reinicien automáticamente en el nodo superviviente en menos de 60 segundos.</p>
         </section>
     </article>
 </div>
-
-<footer class="minimal-footer">
-    <p>© 2026 Technology Advisory · Enterprise Research</p>
-</footer>
 
 </body>
 </html>
