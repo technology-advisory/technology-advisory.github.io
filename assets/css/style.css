@@ -89,9 +89,6 @@ body {
 .vuln-item h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--accent); }
 .vuln-item p { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
 
-.tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
-.tag { font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; }
-
 /* TERMINAL WINDOW */
 .terminal-window {
     background: #010409; border: 1px solid #30363d; border-radius: 10px; margin: 1.5rem 0; overflow: hidden;
@@ -100,3 +97,33 @@ pre { padding: 18px; font-family: 'JetBrains Mono', monospace; font-size: 0.85re
 
 /* FOOTER */
 .minimal-footer { text-align: center; padding: 3rem 0; border-top: 1px solid var(--border); margin-top: 3rem; font-size: 0.8rem; }
+
+/* --- MODIFICACIÓN PARA BOTÓN VER MÁS --- */
+.sidebar-footer {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+}
+
+.btn-ver-mas {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: rgba(59, 130, 246, 0.05);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-ver-mas:hover {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
