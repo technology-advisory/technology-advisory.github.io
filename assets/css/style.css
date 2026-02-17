@@ -1,193 +1,153 @@
 /* ==========================================================================
-   VARIABLES Y CONFIGURACIÓN GLOBAL
+   CONFIGURACIÓN Y VARIABLES (Tu paleta original)
    ========================================================================== */
 :root {
-    --bg-dark: #0a0c10;
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --border: rgba(255, 255, 255, 0.08);
-    --accent: #3498db;
+    --bg-dark: #05070a;
+    --card-bg: #0d1117;
+    --border: #1f2937;
+    --accent: #3b82f6;
     --accent-red: #ef4444;
-    --text: #e2e8f0;
+    --text: #f8fafc;
     --text-muted: #94a3b8;
-    --glass: rgba(15, 23, 42, 0.8);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background-color: var(--bg-dark);
     color: var(--text);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', -apple-system, sans-serif;
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
 /* ==========================================================================
-   LAYOUT (CONTENEDORES)
+   LAYOUT DASHBOARD (Rejilla de tu captura)
    ========================================================================== */
 .main-container {
     display: grid;
-    grid-template-columns: 1fr 350px;
-    gap: 2rem;
+    grid-template-columns: 1fr 320px; /* Columna principal + Sidebar */
+    gap: 25px;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 30px;
 }
 
-@media (max-width: 1024px) {
-    .main-container {
-        grid-template-columns: 1fr;
-    }
+/* Header / Navbar */
+header {
+    padding: 20px 30px;
+    border-bottom: 1px solid var(--border);
 }
 
 /* ==========================================================================
-   NOTAS TÉCNICAS (GLASS CARDS)
+   COLUMNA PRINCIPAL (Investigación y Notas)
    ========================================================================== */
+.investigacion-destacada {
+    background: linear-gradient(to right, #0d1117, #161b22);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    border: 1px solid var(--border);
+    margin-bottom: 30px;
+}
+
+.destacada-info { padding: 40px; flex: 1; }
+.destacada-img { 
+    width: 45%; 
+    background-image: url('../img/server-room.jpg'); /* Ajusta tu ruta de imagen */
+    background-size: cover;
+    background-position: center;
+}
+
+.notas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
 .glass-card {
-    display: block;
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    padding: 20px;
+    border-radius: 10px;
     text-decoration: none;
     color: inherit;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
+    transition: 0.2s;
 }
 
-.glass-card:hover {
-    background: rgba(255, 255, 255, 0.06);
-    transform: translateY(-5px);
-    border-color: var(--accent);
-}
+.glass-card:hover { border-color: var(--accent); transform: translateY(-3px); }
 
 /* ==========================================================================
-   SIDEBAR Y COMPONENTES
+   SIDEBAR (Sección CVEs exacta a tu foto)
    ========================================================================== */
-.sidebar {
-    position: sticky;
-    top: 2rem;
-}
-
 .sidebar-section {
-    background: var(--card-bg);
+    background: #0d1117;
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+    padding: 20px;
 }
 
 .sidebar-section h3 {
-    font-size: 0.9rem;
-    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-bottom: 20px;
     letter-spacing: 1px;
-    margin-bottom: 1.5rem;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
-/* TAGS / TENDENCIAS */
-.tag-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.tag {
-    transition: opacity 0.2s;
-    cursor: default;
-}
-
-.tag:hover {
-    opacity: 0.8;
-}
-
-/* ==========================================================================
-   INTELIGENCIA DE AMENAZAS (VULN-ITEM)
-   ========================================================================== */
-#vuln-container {
-    display: flex;
-    flex-direction: column;
-}
+#vuln-container { display: flex; flex-direction: column; gap: 15px; }
 
 .vuln-item {
-    padding: 12px 0;
     border-bottom: 1px solid var(--border);
-    transition: all 0.2s;
+    padding-bottom: 15px;
 }
 
-.vuln-item:last-child {
-    border-bottom: none;
-}
+.vuln-item:last-child { border: none; }
 
 .vuln-item h4 {
-    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-family: monospace;
 }
 
-/* BOTÓN VER MÁS (FOOTER SIDEBAR) */
+.status-badge {
+    color: #ef4444;
+    border: 1px solid #ef4444;
+    font-size: 0.6rem;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+/* BOTÓN VER MÁS (Añadido) */
 .sidebar-footer {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
+    margin-top: 20px;
+    padding-top: 15px;
     border-top: 1px solid var(--border);
 }
 
 .btn-ver-mas {
     display: block;
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     background: transparent;
     border: 1px solid var(--accent);
     color: var(--accent);
     text-align: center;
     text-decoration: none;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: bold;
-    border-radius: 6px;
-    transition: all 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    border-radius: 5px;
+    transition: 0.3s;
 }
 
 .btn-ver-mas:hover {
     background: var(--accent);
     color: white;
-    box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
 }
 
 /* ==========================================================================
-   CONTADOR Y ESTADÍSTICAS
+   RESPONSIVE
    ========================================================================== */
-.stats-card {
-    text-align: center;
-    padding: 2rem;
-    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), transparent);
-}
-
-#suscriptores-count {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--accent);
-    display: block;
-}
-
-/* ==========================================================================
-   UTILIDADES
-   ========================================================================== */
-.error-text {
-    color: var(--accent-red);
-    font-size: 0.8rem;
-    text-align: center;
-}
-
-.loading-text {
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    font-style: italic;
+@media (max-width: 1100px) {
+    .main-container { grid-template-columns: 1fr; }
+    .notas-grid { grid-template-columns: 1fr 1fr; }
 }
