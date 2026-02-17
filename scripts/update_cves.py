@@ -1,58 +1,48 @@
 import requests
 import json
 import os
-import time
+from datetime import datetime
 
-CISA_FILE = "data/cve.json"
-NVD_CACHE_FILE = "data/nvd_scores.json"
-NVD_API_URL = "https://services.nvd.nist.gov/api/rest/json/cves/2.0?cveId="
+# Configuración de rutas
+CISA_URL = "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+OUTPUT_FILE = "data/cve.json"
 
-def load_json(path):
-    if os.path.exists(path):
-        with open(path, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    return {}
-
-def save_json(path, data):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=4)
-
-def update_nvd():
-    # 1. Cargar lo que ya tenemos para no repetir peticiones innecesarias
-    cisa_data = load_json(CISA_FILE)
-    nvd_cache = load_json(NVD_CACHE_FILE) # Estructura: {"CVE-XXXX": 9.8}
+def update_cves():
+    print(f"[{datetime.now()}] Iniciando descarga de CISA KEV...")
     
-    vulnerabilities = cisa_data.get('vulnerabilities', [])
-    updated = False
-
-    for v in vulnerabilities:
-        cve_id = v['cveID']
+    try:
+        # 1. Descargar el feed oficial
+        response = requests.get(CISA_URL, timeout=15)
+        response.raise_for_status()
+        data = response.json()
         
-        # Si no tenemos el score en el caché, lo buscamos
-        if cve_id not in nvd_cache:
-            print(f"Consultando NVD para {cve_id}...")
-            try:
-                time.sleep(6) # Respetar rate limit de NIST
-                res = requests.get(f"{NVD_API_URL}{cve_id}", timeout=10)
-                if res.status_code == 200:
-                    data = res.json()
-                    metrics = data['vulnerabilities'][0]['cve'].get('metrics', {})
-                    # Prioridad v4.0 -> v3.1
-                    score = "N/A"
-                    if 'cvssMetricV40' in metrics:
-                        score = metrics['cvssMetricV40'][0]['cvssData']['baseScore']
-                    elif 'cvssMetricV31' in metrics:
-                        score = metrics['cvssMetricV31'][0]['cvssData']['baseScore']
-                    
-                    nvd_cache[cve_id] = score
-                    updated = True
-            except:
-                continue
+        # 2. Extraer y ordenar vulnerabilidades
+        # Las ordenamos por 'dateAdded' descendente para que 2026 esté arriba
+        vulnerabilities = data.get('vulnerabilities', [])
+        vulnerabilities.sort(key=lambda x: x['dateAdded'], reverse=True)
+        
+        # 3. Limpieza y preparación de datos
+        # Nos aseguramos de que todos tengan el campo shortDescription
+        for v in vulnerabilities:
+            if 'shortDescription' not in v or not v['shortDescription']:
+                v['shortDescription'] = v.get('vulnerabilityName', "No hay descripción técnica disponible.")
 
-    if updated:
-        save_json(NVD_CACHE_FILE, nvd_cache)
-        print("Caché NVD actualizado.")
+        # 4. Estructura final del JSON
+        final_data = {
+            "title": "CISA Intelligence Dashboard",
+            "last_update_check": datetime.utcnow().isoformat() + "Z",
+            "vulnerabilities": vulnerabilities
+        }
+        
+        # 5. Guardar en la carpeta data
+        os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
+        with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
+            json.dump(final_data, f, indent=4, ensure_ascii=False)
+            
+        print(f"Éxito: {len(vulnerabilities)} vulnerabilidades guardadas en {OUTPUT_FILE}")
+
+    except Exception as e:
+        print(f"Error crítico actualizando CISA: {e}")
 
 if __name__ == "__main__":
-    update_nvd()
+    update_cves()
