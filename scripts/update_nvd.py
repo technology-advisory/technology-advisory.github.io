@@ -5,7 +5,6 @@ import time
 
 CISA_FILE = "data/cve.json"
 NVD_CACHE_FILE = "data/nvd_scores.json"
-# Esta API es el espejo de GCVE y es muy rápida
 API_URL = "https://cve.circl.lu/api/cve/"
 
 def load_json(path):
@@ -26,18 +25,16 @@ def update_nvd():
     vulnerabilities = cisa_data.get('vulnerabilities', [])
     updated = False
 
-    # Procesamos solo los 30 más recientes para que el Action vuele
+    # Procesamos solo los 30 más recientes para ir rápido
     for v in vulnerabilities[:30]:
         cve_id = v['cveID']
-        
         if cve_id not in nvd_cache or nvd_cache[cve_id] == "N/A":
-            print(f"Obteniendo severidad para {cve_id}...")
+            print(f"Buscando score para {cve_id}...")
             try:
                 time.sleep(0.5) 
                 res = requests.get(f"{API_URL}{cve_id}", timeout=10)
                 if res.status_code == 200:
                     data = res.json()
-                    # CIRCL guarda el score en cvss3 o cvss
                     score = data.get('cvss3') or data.get('cvss') or "N/A"
                     nvd_cache[cve_id] = score
                     updated = True
@@ -46,7 +43,7 @@ def update_nvd():
 
     if updated:
         save_json(NVD_CACHE_FILE, nvd_cache)
-        print("Caché actualizado.")
+        print("Caché de scores actualizado.")
 
 if __name__ == "__main__":
     update_nvd()
