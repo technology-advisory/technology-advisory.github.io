@@ -1,18 +1,158 @@
 {
-  "vulnerabilities": [
-    {
-      "cveID": "CVE-2024-21408",
-      "vendorProject": "Microsoft",
-      "product": "Hyper-V",
-      "vulnerabilityName": "Denegación de servicio crítica en Windows Hyper-V",
-      "dateAdded": "2026-02-10"
-    },
-    {
-      "cveID": "CVE-2024-21338",
-      "vendorProject": "Microsoft",
-      "product": "Windows Kernel",
-      "vulnerabilityName": "Escalada de privilegios en AppLocker",
-      "dateAdded": "2026-02-08"
-    }
-  ]
+    "title": "CISA Export - Local Mirror",
+    "last_update": "2026-02-13T23:49:15.628Z",
+    "vulnerabilities": [
+        {
+            "cveID": "CVE-2020-29583",
+            "vendorProject": "Zyxel",
+            "product": "Multiple Products",
+            "vulnerabilityName": "Zyxel Multiple Products Use of Hard-Coded Credentials Vulnerability",
+            "dateAdded": "2021-11-03",
+            "shortDescription": "Zyxel firewalls (ATP, USG, VM) and AP Controllers (NXC2500 and NXC5500) contain a use of hard-coded credentials vulnerability in an undocumented account (\"zyfwp\") with an unchangeable password.",
+            "requiredAction": "Apply updates per vendor instructions.",
+            "dueDate": "2022-05-03",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2020-29583",
+            "cwes": [
+                "CWE-522"
+            ]
+        },
+        {
+            "cveID": "CVE-2019-8394",
+            "vendorProject": "Zoho",
+            "product": "ManageEngine",
+            "vulnerabilityName": "Zoho ManageEngine ServiceDesk Plus (SDP) File Upload Vulnerability",
+            "dateAdded": "2021-11-03",
+            "shortDescription": "Zoho ManageEngine ServiceDesk Plus (SDP) contains an unspecified vulnerability that allows remote users to upload files via login page customization.",
+            "requiredAction": "Apply updates per vendor instructions.",
+            "dueDate": "2022-05-03",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2019-8394",
+            "cwes": [
+                "CWE-434"
+            ]
+        },
+        {
+            "cveID": "CVE-2020-10189",
+            "vendorProject": "Zoho",
+            "product": "ManageEngine",
+            "vulnerabilityName": "Zoho ManageEngine Desktop Central File Upload Vulnerability",
+            "dateAdded": "2021-11-03",
+            "shortDescription": "Zoho ManageEngine Desktop Central contains a file upload vulnerability that allows for unauthenticated remote code execution.",
+            "requiredAction": "Apply updates per vendor instructions.",
+            "dueDate": "2022-05-03",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2020-10189",
+            "cwes": [
+                "CWE-502"
+            ]
+        },
+        {
+            "cveID": "CVE-2021-40539",
+            "vendorProject": "Zoho",
+            "product": "ManageEngine",
+            "vulnerabilityName": "Zoho ManageEngine ADSelfService Plus Authentication Bypass Vulnerability",
+            "dateAdded": "2021-11-03",
+            "shortDescription": "Zoho ManageEngine ADSelfService Plus contains an authentication bypass vulnerability affecting the REST API URLs which allow for remote code execution.",
+            "requiredAction": "Apply updates per vendor instructions.",
+            "dueDate": "2021-11-17",
+            "knownRansomwareCampaignUse": "Known",
+            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2021-40539",
+            "cwes": [
+                "CWE-55"
+            ]
+        },
+        {
+            "cveID": "CVE-2021-27561",
+            "vendorProject": "Yealink",
+            "product": "Device Management",
+            "vulnerabilityName": "Yealink Device Management Server-Side Request Forgery (SSRF) Vulnerability",
+            "dateAdded": "2021-11-03",
+            "shortDescription": "Yealink Device Management contains a server-side request forgery (SSRF) vulnerability that allows for unauthenticated remote code execution.",
+            "requiredAction": "Apply updates per vendor instructions.",
+            "dueDate": "2021-11-17",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2021-27561",
+            "cwes": [
+                "CWE-78"
+            ]
+        },
+        {
+            "cveID": "CVE-2019-9978",
+            "vendorProject": "WordPress",
+            "product": "Social Warfare Plugin",
+            "vulnerabilityName": "WordPress Social Warfare Plugin Cross-Site Scripting (XSS) Vulnerability",
+            "dateAdded": "2021-11-03",
+            "shortDescription": "WordPress Social Warfare plugin contains a cross-site scripting (XSS) vulnerability that allows for remote code execution. This vulnerability affects Social Warfare and Social Warfare Pro.",
+            "requiredAction": "Apply updates per vendor instructions.",
+            "dueDate": "2022-05-03",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2019-9978",
+            "cwes": [
+                "CWE-79"
+            ]
+        },
+        {
+            "cveID": "CVE-2020-11738",
+            "vendorProject": "WordPress",
+            "product": "Snap Creek Duplicator Plugin",
+            "vulnerabilityName": "WordPress Snap Creek Duplicator Plugin File Download Vulnerability",
+            "dateAdded": "2021-11-03",
+            "shortDescription": "WordPress Snap Creek Duplicator plugin contains a file download vulnerability when an administrator creates a new copy of their site that allows an attacker to download the generated files from their Wordpress dashboard. This vulnerability affects Duplicator and Dulplicator Pro.",
+            "requiredAction": "Apply updates per vendor instructions.",
+            "dueDate": "2022-05-03",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2020-11738",
+            "cwes": [
+                "CWE-22"
+            ]
+        },
+        {
+            "cveID": "CVE-2020-25213",
+            "vendorProject": "WordPress",
+            "product": "File Manager Plugin",
+            "vulnerabilityName": "WordPress File Manager Plugin Remote Code Execution Vulnerability",
+            "dateAdded": "2021-11-03",
+            "shortDescription": "WordPress File Manager plugin contains a remote code execution vulnerability that allows unauthenticated users to execute PHP code and upload malicious files on a target site.",
+            "requiredAction": "Apply updates per vendor instructions.",
+            "dueDate": "2022-05-03",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2020-25213",
+            "cwes": [
+                "CWE-434"
+            ]
+        },
+        {
+            "cveID": "CVE-2020-4006",
+            "vendorProject": "VMware",
+            "product": "Multiple Products",
+            "vulnerabilityName": "Multiple VMware Products Command Injection Vulnerability",
+            "dateAdded": "2021-11-03",
+            "shortDescription": "VMware Workspace One Access, Access Connector, Identity Manager, and Identity Manager Connector contain a command injection vulnerability. An attacker with network access to the administrative configurator on port 8443 and a valid password for the configurator administrator account can execute commands with unrestricted privileges on the underlying operating system.",
+            "requiredAction": "Apply updates per vendor instructions.",
+            "dueDate": "2022-05-03",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2020-4006",
+            "cwes": [
+                "CWE-78"
+            ]
+        },
+        {
+            "cveID": "CVE-2021-21985",
+            "vendorProject": "VMware",
+            "product": "vCenter Server",
+            "vulnerabilityName": "VMware vCenter Server Improper Input Validation Vulnerability",
+            "dateAdded": "2021-11-03",
+            "shortDescription": "VMware vSphere Client contains an improper input validation vulnerability in the Virtual SAN Health Check plug-in, which is enabled by default in vCenter Server, which allows for remote code execution.",
+            "requiredAction": "Apply updates per vendor instructions.",
+            "dueDate": "2021-11-17",
+            "knownRansomwareCampaignUse": "Known",
+            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2021-21985",
+            "cwes": [
+                "CWE-20",
+                "CWE-470",
+                "CWE-918"
+            ]
+        }
+    ]
 }
