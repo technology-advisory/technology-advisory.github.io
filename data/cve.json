@@ -1,157 +1,155 @@
 {
-    "title": "CISA Export - Local Mirror",
-    "last_update": "2026-02-13T23:49:15.628Z",
+    "title": "CISA Intelligence Dashboard",
+    "last_update_check": "2026-02-13T23:49:15.628Z",
     "vulnerabilities": [
         {
-            "cveID": "CVE-2020-29583",
-            "vendorProject": "Zyxel",
-            "product": "Multiple Products",
-            "vulnerabilityName": "Zyxel Multiple Products Use of Hard-Coded Credentials Vulnerability",
-            "dateAdded": "2021-11-03",
-            "shortDescription": "Zyxel firewalls (ATP, USG, VM) and AP Controllers (NXC2500 and NXC5500) contain a use of hard-coded credentials vulnerability in an undocumented account (\"zyfwp\") with an unchangeable password.",
-            "requiredAction": "Apply updates per vendor instructions.",
-            "dueDate": "2022-05-03",
+            "cveID": "CVE-2026-1731",
+            "vendorProject": "BeyondTrust",
+            "product": "Remote Support (RS) and Privileged Remote Access (PRA)",
+            "vulnerabilityName": "BeyondTrust Remote Support (RS) and Privileged Remote Access (PRA) OS Command Injection Vulnerability",
+            "dateAdded": "2026-02-13",
+            "shortDescription": "BeyondTrust Remote Support (RS) and Privileged Remote Access (PRA)contain an OS command injection vulnerability. Successful exploitation could allow an unauthenticated remote attacker to execute operating system commands in the context of the site user. Successful exploitation requires no authentication or user interaction and may lead to system compromise, including unauthorized access, data exfiltration, and service disruption.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2026-02-16",
             "knownRansomwareCampaignUse": "Unknown",
-            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2020-29583",
-            "cwes": [
-                "CWE-522"
-            ]
-        },
-        {
-            "cveID": "CVE-2019-8394",
-            "vendorProject": "Zoho",
-            "product": "ManageEngine",
-            "vulnerabilityName": "Zoho ManageEngine ServiceDesk Plus (SDP) File Upload Vulnerability",
-            "dateAdded": "2021-11-03",
-            "shortDescription": "Zoho ManageEngine ServiceDesk Plus (SDP) contains an unspecified vulnerability that allows remote users to upload files via login page customization.",
-            "requiredAction": "Apply updates per vendor instructions.",
-            "dueDate": "2022-05-03",
-            "knownRansomwareCampaignUse": "Unknown",
-            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2019-8394",
-            "cwes": [
-                "CWE-434"
-            ]
-        },
-        {
-            "cveID": "CVE-2020-10189",
-            "vendorProject": "Zoho",
-            "product": "ManageEngine",
-            "vulnerabilityName": "Zoho ManageEngine Desktop Central File Upload Vulnerability",
-            "dateAdded": "2021-11-03",
-            "shortDescription": "Zoho ManageEngine Desktop Central contains a file upload vulnerability that allows for unauthenticated remote code execution.",
-            "requiredAction": "Apply updates per vendor instructions.",
-            "dueDate": "2022-05-03",
-            "knownRansomwareCampaignUse": "Unknown",
-            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2020-10189",
-            "cwes": [
-                "CWE-502"
-            ]
-        },
-        {
-            "cveID": "CVE-2021-40539",
-            "vendorProject": "Zoho",
-            "product": "ManageEngine",
-            "vulnerabilityName": "Zoho ManageEngine ADSelfService Plus Authentication Bypass Vulnerability",
-            "dateAdded": "2021-11-03",
-            "shortDescription": "Zoho ManageEngine ADSelfService Plus contains an authentication bypass vulnerability affecting the REST API URLs which allow for remote code execution.",
-            "requiredAction": "Apply updates per vendor instructions.",
-            "dueDate": "2021-11-17",
-            "knownRansomwareCampaignUse": "Known",
-            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2021-40539",
-            "cwes": [
-                "CWE-55"
-            ]
-        },
-        {
-            "cveID": "CVE-2021-27561",
-            "vendorProject": "Yealink",
-            "product": "Device Management",
-            "vulnerabilityName": "Yealink Device Management Server-Side Request Forgery (SSRF) Vulnerability",
-            "dateAdded": "2021-11-03",
-            "shortDescription": "Yealink Device Management contains a server-side request forgery (SSRF) vulnerability that allows for unauthenticated remote code execution.",
-            "requiredAction": "Apply updates per vendor instructions.",
-            "dueDate": "2021-11-17",
-            "knownRansomwareCampaignUse": "Unknown",
-            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2021-27561",
+            "notes": "Please adhere to the vendor's guidelines to assess exposure and mitigate risks. Check for signs of potential compromise on all internet accessible BeyondTrust products affected by this vulnerability. For more information please: see: https://www.beyondtrust.com/trust-center/security-advisories/bt26-02 ; https://nvd.nist.gov/vuln/detail/CVE-2026-1731",
             "cwes": [
                 "CWE-78"
             ]
         },
         {
-            "cveID": "CVE-2019-9978",
-            "vendorProject": "WordPress",
-            "product": "Social Warfare Plugin",
-            "vulnerabilityName": "WordPress Social Warfare Plugin Cross-Site Scripting (XSS) Vulnerability",
-            "dateAdded": "2021-11-03",
-            "shortDescription": "WordPress Social Warfare plugin contains a cross-site scripting (XSS) vulnerability that allows for remote code execution. This vulnerability affects Social Warfare and Social Warfare Pro.",
-            "requiredAction": "Apply updates per vendor instructions.",
-            "dueDate": "2022-05-03",
-            "knownRansomwareCampaignUse": "Unknown",
-            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2019-9978",
-            "cwes": [
-                "CWE-79"
-            ]
-        },
-        {
-            "cveID": "CVE-2020-11738",
-            "vendorProject": "WordPress",
-            "product": "Snap Creek Duplicator Plugin",
-            "vulnerabilityName": "WordPress Snap Creek Duplicator Plugin File Download Vulnerability",
-            "dateAdded": "2021-11-03",
-            "shortDescription": "WordPress Snap Creek Duplicator plugin contains a file download vulnerability when an administrator creates a new copy of their site that allows an attacker to download the generated files from their Wordpress dashboard. This vulnerability affects Duplicator and Dulplicator Pro.",
-            "requiredAction": "Apply updates per vendor instructions.",
-            "dueDate": "2022-05-03",
-            "knownRansomwareCampaignUse": "Unknown",
-            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2020-11738",
-            "cwes": [
-                "CWE-22"
-            ]
-        },
-        {
-            "cveID": "CVE-2020-25213",
-            "vendorProject": "WordPress",
-            "product": "File Manager Plugin",
-            "vulnerabilityName": "WordPress File Manager Plugin Remote Code Execution Vulnerability",
-            "dateAdded": "2021-11-03",
-            "shortDescription": "WordPress File Manager plugin contains a remote code execution vulnerability that allows unauthenticated users to execute PHP code and upload malicious files on a target site.",
-            "requiredAction": "Apply updates per vendor instructions.",
-            "dueDate": "2022-05-03",
-            "knownRansomwareCampaignUse": "Unknown",
-            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2020-25213",
-            "cwes": [
-                "CWE-434"
-            ]
-        },
-        {
-            "cveID": "CVE-2020-4006",
-            "vendorProject": "VMware",
+            "cveID": "CVE-2026-20700",
+            "vendorProject": "Apple",
             "product": "Multiple Products",
-            "vulnerabilityName": "Multiple VMware Products Command Injection Vulnerability",
-            "dateAdded": "2021-11-03",
-            "shortDescription": "VMware Workspace One Access, Access Connector, Identity Manager, and Identity Manager Connector contain a command injection vulnerability. An attacker with network access to the administrative configurator on port 8443 and a valid password for the configurator administrator account can execute commands with unrestricted privileges on the underlying operating system.",
-            "requiredAction": "Apply updates per vendor instructions.",
-            "dueDate": "2022-05-03",
+            "vulnerabilityName": "Apple Multiple Buffer Overflow Vulnerability",
+            "dateAdded": "2026-02-12",
+            "shortDescription": "Apple iOS, macOS, tvOS, watchOS, and visionOS contain an improper restriction of operations within the bounds of a memory buffer vulnerability that could allow an attacker with memory write the capability to execute arbitrary code.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2026-03-05",
             "knownRansomwareCampaignUse": "Unknown",
-            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2020-4006",
+            "notes": "https://support.apple.com/en-us/126346 ; https://support.apple.com/en-us/126348 ; https://support.apple.com/en-us/126351 ; https://support.apple.com/en-us/126352 ; https://support.apple.com/en-us/126353 ; https://nvd.nist.gov/vuln/detail/CVE-2026-20700",
             "cwes": [
-                "CWE-78"
+                "CWE-119"
             ]
         },
         {
-            "cveID": "CVE-2021-21985",
-            "vendorProject": "VMware",
-            "product": "vCenter Server",
-            "vulnerabilityName": "VMware vCenter Server Improper Input Validation Vulnerability",
-            "dateAdded": "2021-11-03",
-            "shortDescription": "VMware vSphere Client contains an improper input validation vulnerability in the Virtual SAN Health Check plug-in, which is enabled by default in vCenter Server, which allows for remote code execution.",
-            "requiredAction": "Apply updates per vendor instructions.",
-            "dueDate": "2021-11-17",
-            "knownRansomwareCampaignUse": "Known",
-            "notes": "https://nvd.nist.gov/vuln/detail/CVE-2021-21985",
+            "cveID": "CVE-2024-43468",
+            "vendorProject": "Microsoft",
+            "product": "Configuration Manager",
+            "vulnerabilityName": "Microsoft Configuration Manager SQL Injection Vulnerability",
+            "dateAdded": "2026-02-12",
+            "shortDescription": "Microsoft Configuration Manager contains an SQL injection vulnerability. An unauthenticated attacker could exploit this vulnerability by sending specially crafted requests to the target environment which are processed in an unsafe manner enabling the attacker to execute commands on the server and/or underlying database.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2026-03-05",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-43468 ; https://nvd.nist.gov/vuln/detail/CVE-2024-43468",
             "cwes": [
-                "CWE-20",
-                "CWE-470",
-                "CWE-918"
+                "CWE-89"
+            ]
+        },
+        {
+            "cveID": "CVE-2025-15556",
+            "vendorProject": "Notepad++",
+            "product": "Notepad++",
+            "vulnerabilityName": "Notepad++ Download of Code Without Integrity Check Vulnerability",
+            "dateAdded": "2026-02-12",
+            "shortDescription": "Notepad++ when using the WinGUp updater, contains a download of code without integrity check vulnerability that could allow an attacker to intercept or redirect update traffic to download and execute an attacker-controlled installer. This could lead to arbitrary code execution with the privileges of the user.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2026-03-05",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://notepad-plus-plus.org/news/clarification-security-incident/ ; https://community.notepad-plus-plus.org/topic/27298/notepad-v8-8-9-vulnerability-fix ; https://nvd.nist.gov/vuln/detail/CVE-2025-15556",
+            "cwes": [
+                "CWE-494"
+            ]
+        },
+        {
+            "cveID": "CVE-2025-40536",
+            "vendorProject": "SolarWinds",
+            "product": "Web Help Desk",
+            "vulnerabilityName": "SolarWinds Web Help Desk Security Control Bypass Vulnerability",
+            "dateAdded": "2026-02-12",
+            "shortDescription": "SolarWinds Web Help Desk contains a security control bypass vulnerability that could allow an unauthenticated attacker to gain access to certain restricted functionality.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2026-02-15",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://documentation.solarwinds.com/en/success_center/whd/content/release_notes/whd_2026-1_release_notes.htm ; https://www.solarwinds.com/trust-center/security-advisories/CVE-2025-40536 ; https://nvd.nist.gov/vuln/detail/CVE-2025-40536",
+            "cwes": [
+                "CWE-693"
+            ]
+        },
+        {
+            "cveID": "CVE-2026-21513",
+            "vendorProject": "Microsoft",
+            "product": "Windows",
+            "vulnerabilityName": "Microsoft MSHTML Framework Protection Mechanism Failure Vulnerability",
+            "dateAdded": "2026-02-10",
+            "shortDescription": "Microsoft MSHTML Framework contains a protection mechanism failure vulnerability that could allow an unauthorized attacker to bypass a security feature over a network.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2026-03-03",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://msrc.microsoft.com/update-guide/advisory/CVE-2026-21513 ; https://nvd.nist.gov/vuln/detail/CVE-2026-21513",
+            "cwes": [
+                "CWE-693"
+            ]
+        },
+        {
+            "cveID": "CVE-2026-21525",
+            "vendorProject": "Microsoft",
+            "product": "Windows",
+            "vulnerabilityName": "Microsoft Windows NULL Pointer Dereference Vulnerability",
+            "dateAdded": "2026-02-10",
+            "shortDescription": "Microsoft Windows Remote Access Connection Manager contains a NULL pointer dereference that could allow an unauthorized attacker to deny service locally.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2026-03-03",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21525 ; https://nvd.nist.gov/vuln/detail/CVE-2026-21525",
+            "cwes": [
+                "CWE-476"
+            ]
+        },
+        {
+            "cveID": "CVE-2026-21510",
+            "vendorProject": "Microsoft",
+            "product": "Windows",
+            "vulnerabilityName": "Microsoft Windows Shell Protection Mechanism Failure Vulnerability",
+            "dateAdded": "2026-02-10",
+            "shortDescription": "Microsoft Windows Shell contains a protection mechanism failure vulnerability that could allow an unauthorized attacker to bypass a security feature over a network. ",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2026-03-03",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21510 ; https://nvd.nist.gov/vuln/detail/CVE-2026-21510 ",
+            "cwes": [
+                "CWE-693"
+            ]
+        },
+        {
+            "cveID": "CVE-2026-21533",
+            "vendorProject": "Microsoft",
+            "product": "Windows",
+            "vulnerabilityName": "Microsoft Windows Improper Privilege Management Vulnerability",
+            "dateAdded": "2026-02-10",
+            "shortDescription": "Microsoft Windows Remote Desktop Services contains an improper privilege management vulnerability that could allow an authorized attacker to elevate privileges locally.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2026-03-03",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21533 ; https://nvd.nist.gov/vuln/detail/CVE-2026-21533",
+            "cwes": [
+                "CWE-269"
+            ]
+        },
+        {
+            "cveID": "CVE-2026-21519",
+            "vendorProject": "Microsoft",
+            "product": "Windows",
+            "vulnerabilityName": "Microsoft Windows Type Confusion Vulnerability",
+            "dateAdded": "2026-02-10",
+            "shortDescription": "Microsoft Desktop Windows Manager contains a type confusion vulnerability that could allow an authorized attacker to elevate privileges locally.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2026-03-03",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21519 ; https://nvd.nist.gov/vuln/detail/CVE-2026-21519",
+            "cwes": [
+                "CWE-843"
             ]
         }
     ]
