@@ -1,10 +1,10 @@
 /* ==========================================================================
-   CONFIGURACIÓN Y VARIABLES (Tu paleta original)
+   CONFIGURACIÓN BASE (Basado en tu diseño original)
    ========================================================================== */
 :root {
-    --bg-dark: #05070a;
+    --bg-dark: #0a0e14;
     --card-bg: #0d1117;
-    --border: #1f2937;
+    --border: #1e293b;
     --accent: #3b82f6;
     --accent-red: #ef4444;
     --text: #f8fafc;
@@ -17,48 +17,62 @@ body {
     background-color: var(--bg-dark);
     color: var(--text);
     font-family: 'Inter', -apple-system, sans-serif;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 /* ==========================================================================
-   LAYOUT DASHBOARD (Rejilla de tu captura)
+   CONTENEDOR PRINCIPAL (GRID)
    ========================================================================== */
 .main-container {
     display: grid;
-    grid-template-columns: 1fr 320px; /* Columna principal + Sidebar */
-    gap: 25px;
+    grid-template-columns: 1fr 350px; /* Ancho fijo para el sidebar */
+    gap: 24px;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 30px;
-}
-
-/* Header / Navbar */
-header {
-    padding: 20px 30px;
-    border-bottom: 1px solid var(--border);
+    padding: 24px;
 }
 
 /* ==========================================================================
-   COLUMNA PRINCIPAL (Investigación y Notas)
+   COLUMNA IZQUIERDA: INVESTIGACIÓN Y NOTAS
    ========================================================================== */
+
+/* Tarjeta Destacada Superior */
 .investigacion-destacada {
-    background: linear-gradient(to right, #0d1117, #161b22);
-    border-radius: 15px;
-    overflow: hidden;
-    display: flex;
+    background-color: var(--card-bg);
     border: 1px solid var(--border);
-    margin-bottom: 30px;
+    border-radius: 12px;
+    display: flex;
+    min-height: 300px;
+    overflow: hidden;
+    margin-bottom: 32px;
 }
 
-.destacada-info { padding: 40px; flex: 1; }
-.destacada-img { 
-    width: 45%; 
-    background-image: url('../img/server-room.jpg'); /* Ajusta tu ruta de imagen */
+.destacada-info {
+    padding: 32px;
+    flex: 1;
+}
+
+.destacada-info h2 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.destacada-img {
+    width: 50%;
+    background-image: url('../img/server-room.jpg'); /* Verifica esta ruta */
     background-size: cover;
     background-position: center;
 }
 
-.notas-grid {
+/* Título de Sección */
+h2.section-title {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}
+
+/* Grid de Notas Técnicas (3 columnas) */
+#notas-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -68,59 +82,76 @@ header {
     background: var(--card-bg);
     border: 1px solid var(--border);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 8px;
     text-decoration: none;
     color: inherit;
-    transition: 0.2s;
+    transition: transform 0.2s, border-color 0.2s;
 }
 
-.glass-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.glass-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
 
 /* ==========================================================================
-   SIDEBAR (Sección CVEs exacta a tu foto)
+   SIDEBAR DERECHA: THREAT INTELLIGENCE
    ========================================================================== */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
 .sidebar-section {
-    background: #0d1117;
+    background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 20px;
+    padding: 24px;
 }
 
 .sidebar-section h3 {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     margin-bottom: 20px;
-    letter-spacing: 1px;
 }
 
-#vuln-container { display: flex; flex-direction: column; gap: 15px; }
+/* Contenedor de Vulnerabilidades */
+#vuln-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
 
 .vuln-item {
     border-bottom: 1px solid var(--border);
-    padding-bottom: 15px;
+    padding-bottom: 16px;
 }
 
-.vuln-item:last-child { border: none; }
+.vuln-item:last-child {
+    border-bottom: none;
+}
 
 .vuln-item h4 {
-    font-size: 0.85rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
     color: var(--accent);
-    font-family: monospace;
 }
 
 .status-badge {
-    color: #ef4444;
-    border: 1px solid #ef4444;
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
     font-size: 0.6rem;
     padding: 1px 4px;
     border-radius: 3px;
     font-weight: bold;
 }
 
-/* BOTÓN VER MÁS (Añadido) */
+/* BOTÓN VER MÁS (NUEVO) */
 .sidebar-footer {
-    margin-top: 20px;
-    padding-top: 15px;
+    margin-top: 16px;
+    padding-top: 16px;
     border-top: 1px solid var(--border);
 }
 
@@ -133,9 +164,9 @@ header {
     color: var(--accent);
     text-align: center;
     text-decoration: none;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 6px;
     transition: 0.3s;
 }
 
@@ -148,6 +179,11 @@ header {
    RESPONSIVE
    ========================================================================== */
 @media (max-width: 1100px) {
-    .main-container { grid-template-columns: 1fr; }
-    .notas-grid { grid-template-columns: 1fr 1fr; }
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+    
+    #notas-container {
+        grid-template-columns: 1fr 1fr;
+    }
 }
