@@ -1,0 +1,18 @@
+{
+  "vulnerabilities": [
+    {
+      "cveID": "CVE-2024-21408",
+      "vendorProject": "Microsoft",
+      "product": "Hyper-V",
+      "vulnerabilityName": "Denegación de servicio crítica en Windows Hyper-V",
+      "dateAdded": "2026-02-10"
+    },
+    {
+      "cveID": "CVE-2024-21338",
+      "vendorProject": "Microsoft",
+      "product": "Windows Kernel",
+      "vulnerabilityName": "Escalada de privilegios en AppLocker",
+      "dateAdded": "2026-02-08"
+    }
+  ]
+}

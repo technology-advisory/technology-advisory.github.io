@@ -1,0 +1,42 @@
+name: Actualizar Inteligencia CVE
+
+# 1. Definimos cuándo se ejecuta
+on:
+  schedule:
+    - cron: '0 0 * * *' # Se ejecuta automáticamente todas las noches a las 00:00 UTC
+  workflow_dispatch:   # Esto permite que te aparezca el botón "Run workflow" para probarlo a mano
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Usamos un servidor Linux de GitHub
+
+    steps:
+      # A. Descarga tu código en el servidor de GitHub
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      # B. Instala Python en ese servidor
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # C. Instala la librería necesaria para el script de CISA
+      - name: Instalar dependencias
+        run: pip install requests
+
+      # D. Entra en tu carpeta scripts y ejecuta el alimentador
+      - name: Ejecutar script de actualización
+        run: |
+          cd scripts
+          python update_cves.py
+
+      # E. Guarda el nuevo cve.json en tu GitHub
+      - name: Guardar cambios en el repositorio
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/cve.json
+          # El commit solo se hace si el archivo ha cambiado realmente
+          git commit -m "🤖 Actualización automática CVEs (CISA KEV)" || echo "No hay cambios para actualizar"
+          git push
