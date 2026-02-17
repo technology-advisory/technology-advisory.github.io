@@ -1,48 +1,70 @@
-import requests
-import json
-import os
-from datetime import datetime
-
-# Configuración de rutas
-CISA_URL = "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-OUTPUT_FILE = "data/cve.json"
-
-def update_cves():
-    print(f"[{datetime.now()}] Iniciando descarga de CISA KEV...")
-    
-    try:
-        # 1. Descargar el feed oficial
-        response = requests.get(CISA_URL, timeout=15)
-        response.raise_for_status()
-        data = response.json()
-        
-        # 2. Extraer y ordenar vulnerabilidades
-        # Las ordenamos por 'dateAdded' descendente para que 2026 esté arriba
-        vulnerabilities = data.get('vulnerabilities', [])
-        vulnerabilities.sort(key=lambda x: x['dateAdded'], reverse=True)
-        
-        # 3. Limpieza y preparación de datos
-        # Nos aseguramos de que todos tengan el campo shortDescription
-        for v in vulnerabilities:
-            if 'shortDescription' not in v or not v['shortDescription']:
-                v['shortDescription'] = v.get('vulnerabilityName', "No hay descripción técnica disponible.")
-
-        # 4. Estructura final del JSON
-        final_data = {
-            "title": "CISA Intelligence Dashboard",
-            "last_update_check": datetime.utcnow().isoformat() + "Z",
-            "vulnerabilities": vulnerabilities
-        }
-        
-        # 5. Guardar en la carpeta data
-        os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
-        with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-            json.dump(final_data, f, indent=4, ensure_ascii=False)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Archivo CVE | Technology Advisory</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        body { background: #0a0f1a; color: #f8fafc; font-family: sans-serif; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .search-box { width: 100%; padding: 12px; background: #111827; border: 1px solid #374151; border-radius: 8px; color: white; margin-bottom: 20px; }
+        .cve-table { width: 100%; border-collapse: collapse; background: #111827; }
+        .cve-table th { text-align: left; padding: 15px; background: #1f2937; color: #3b82f6; font-size: 0.8rem; }
+        .cve-table td { padding: 15px; border-bottom: 1px solid #374151; font-size: 0.85rem; }
+        .cvss-badge { font-weight: bold; padding: 4px 8px; border-radius: 4px; border: 1px solid; }
+        .critical { color: #f87171; border-color: #ef4444; }
+        .high { color: #fb923c; border-color: #f97316; }
+        .na { color: #94a3b8; border-color: #374151; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" style="color:#3b82f6; text-decoration:none;">← Dashboard</a>
+        <h1>Catálogo Maestro de Vulnerabilidades</h1>
+        <input type="text" id="cveSearch" class="search-box" placeholder="Buscar por CVE, Fabricante...">
+        <table class="cve-table">
+            <thead>
+                <tr>
+                    <th>CVE ID</th>
+                    <th>Producto</th>
+                    <th>Fecha</th>
+                    <th>Score</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody id="cve-body"></tbody>
+        </table>
+    </div>
+    <script>
+        async function init() {
+            const [rCisa, rNvd] = await Promise.all([
+                fetch('../data/cve.json?t=' + Date.now()),
+                fetch('../data/nvd_scores.json?t=' + Date.now()).catch(() => ({}))
+            ]);
+            const cisa = (await rCisa.json()).vulnerabilities;
+            const nvd = await rNvd.json();
             
-        print(f"Éxito: {len(vulnerabilities)} vulnerabilidades guardadas en {OUTPUT_FILE}")
+            const render = (list) => {
+                document.getElementById('cve-body').innerHTML = list.map(v => {
+                    const s = nvd[v.cveID] || "N/A";
+                    const cls = s >= 9 ? 'critical' : (s >= 7 ? 'high' : 'na');
+                    return `<tr>
+                        <td><a href="https://db.gcve.eu/cve/${v.cveID}" target="_blank" style="color:#3b82f6; font-weight:bold; text-decoration:none;">${v.cveID}</a></td>
+                        <td><b>${v.vendorProject}</b><br><small>${v.product}</small></td>
+                        <td>${v.dateAdded}</td>
+                        <td><span class="cvss-badge ${cls}">${s}</span></td>
+                        <td style="font-size:0.75rem; color:#94a3b8;">${v.shortDescription || v.vulnerabilityName}</td>
+                    </tr>`;
+                }).join('');
+            };
 
-    except Exception as e:
-        print(f"Error crítico actualizando CISA: {e}")
-
-if __name__ == "__main__":
-    update_cves()
+            render(cisa);
+            document.getElementById('cveSearch').oninput = (e) => {
+                const t = e.target.value.toLowerCase();
+                render(cisa.filter(v => v.cveID.toLowerCase().includes(t) || v.vendorProject.toLowerCase().includes(t)));
+            };
+        }
+        init();
+    </script>
+</body>
+</html>

@@ -1,39 +1,46 @@
 name: Actualizar Inteligencia CVE
 
+# 1. Definimos cuándo se ejecuta
 on:
   schedule:
-    - cron: '0 0 * * *' # Ejecución diaria a las 00:00 UTC
-  workflow_dispatch:   # Botón manual activo
+    - cron: '0 */12 * * *' # Se ejecuta automáticamente cada 12 horas
+  workflow_dispatch:      # Permite ejecutarlo manualmente con el botón "Run workflow"
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Servidor Linux de GitHub
 
     steps:
+      # A. Descarga tu código en el servidor
       - name: Checkout del código
         uses: actions/checkout@v4
 
+      # B. Instala Python
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
+      # C. Instala la librería necesaria para las peticiones API
       - name: Instalar dependencias
         run: pip install requests
 
-      # Ejecutamos ambos scripts uno tras otro
-      - name: Ejecutar scripts de actualización (CISA + NVD)
+      # D. Ejecuta los dos scripts en cadena (CISA -> Enriquecedor)
+      - name: Ejecutar scripts de actualización
         run: |
           python scripts/update_cves.py
           python scripts/update_nvd.py
 
+      # E. Guarda los archivos cve.json y nvd_scores.json en tu GitHub
       - name: Guardar cambios en el repositorio
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # IMPORTANTE: Añadimos ambos archivos JSON
-          git add data/cve.json data/nvd_scores.json
+          # Añadimos todos los archivos JSON actualizados en la carpeta data
+          git add data/*.json
           
-          git commit -m "🤖 Actualización automática: CISA KEV y NVD Scores" || echo "No hay cambios para actualizar"
+          # Solo hace commit si hay cambios reales para no ensuciar el historial
+          git commit -m "🤖 Actualización automática: CISA KEV y Severidad CVE" || echo "No hay cambios para actualizar"
+          
           git push

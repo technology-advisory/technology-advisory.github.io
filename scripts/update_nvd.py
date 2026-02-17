@@ -5,12 +5,14 @@ import time
 
 CISA_FILE = "data/cve.json"
 NVD_CACHE_FILE = "data/nvd_scores.json"
-GCVE_API_URL = "https://db.gcve.eu/api/v1/cves/"
+# Esta API es el espejo de GCVE y es muy rápida
+API_URL = "https://cve.circl.lu/api/cve/"
 
 def load_json(path):
     if os.path.exists(path):
         with open(path, 'r', encoding='utf-8') as f:
-            return json.load(f)
+            try: return json.load(f)
+            except: return {}
     return {}
 
 def save_json(path, data):
@@ -24,33 +26,27 @@ def update_nvd():
     vulnerabilities = cisa_data.get('vulnerabilities', [])
     updated = False
 
-    for v in vulnerabilities:
+    # Procesamos solo los 30 más recientes para que el Action vuele
+    for v in vulnerabilities[:30]:
         cve_id = v['cveID']
         
-        # Consultamos si no está en el caché o si el valor es N/A
         if cve_id not in nvd_cache or nvd_cache[cve_id] == "N/A":
-            print(f"Consultando GCVE para {cve_id}...")
+            print(f"Obteniendo severidad para {cve_id}...")
             try:
-                time.sleep(0.5) # Mucho más rápido que antes
-                res = requests.get(f"{GCVE_API_URL}{cve_id}", timeout=10)
-                
+                time.sleep(0.5) 
+                res = requests.get(f"{API_URL}{cve_id}", timeout=10)
                 if res.status_code == 200:
                     data = res.json()
-                    # Extraemos el score de la estructura de GCVE
-                    score = data.get('cvss', {}).get('score', "N/A")
+                    # CIRCL guarda el score en cvss3 o cvss
+                    score = data.get('cvss3') or data.get('cvss') or "N/A"
                     nvd_cache[cve_id] = score
                     updated = True
-                    print(f" -> Score de GCVE: {score}")
-                else:
-                    nvd_cache[cve_id] = "N/A"
             except:
-                nvd_cache[cve_id] = "N/A"
+                continue
 
     if updated:
         save_json(NVD_CACHE_FILE, nvd_cache)
-        print("Base de datos de severidad actualizada con éxito desde GCVE.")
-    else:
-        print("No hay nuevos datos que actualizar.")
+        print("Caché actualizado.")
 
 if __name__ == "__main__":
     update_nvd()
