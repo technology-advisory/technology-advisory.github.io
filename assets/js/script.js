@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. CARGA DE NOTICIAS Y CONFIGURACIÓN (Archivo Local)
+    // 1. CARGA DE NOTICIAS, TAGS Y CONTADOR (Tu código original intacto)
     fetch('data/noticias.json')
         .then(response => {
             if (!response.ok) throw new Error("No se encuentra noticias.json");
@@ -46,33 +46,24 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error("Error en noticias:", error));
 
-    // 2. CARGA DE INTELIGENCIA DE AMENAZAS (CISA KEV Automático)
+    // 2. CARGA DE INTELIGENCIA DE AMENAZAS (Ahora solo lee tu cve.json local)
+    // El robot de GitHub ya actualizó este archivo por ti
     const vulnCont = document.getElementById('vuln-container');
-    const cisaUrl = 'https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json';
 
-    fetch(cisaUrl)
-        .then(response => response.json())
-        .then(data => {
-            // CISA usa la propiedad "vulnerabilities"
-            const lista = data.vulnerabilities;
-            // Tomamos las últimas 5 (las más recientes suelen estar al final del JSON de CISA)
-            renderVulnerabilidades(lista.slice(-5).reverse());
+    fetch(`data/cve.json?t=${new Date().getTime()}`) // t= evita que el navegador use datos viejos
+        .then(res => res.json())
+        .then(localData => {
+            // Aquí limitamos a los 3 primeros (Top 3)
+            const top3 = localData.vulnerabilities.slice(0, 3);
+            renderVulnerabilidades(top3);
         })
-        .catch(err => {
-            console.warn("CISA no disponible (CORS/Red). Cargando respaldo local...");
-            // RESPALDO: Si falla la API externa, cargamos tu cve.json local
-            fetch('data/cve.json')
-                .then(res => res.json())
-                .then(localData => {
-                    renderVulnerabilidades(localData.vulnerabilities);
-                })
-                .catch(localErr => {
-                    if(vulnCont) vulnCont.innerHTML = "<p style='font-size:0.8rem;'>Inteligencia no disponible.</p>";
-                });
+        .catch(localErr => {
+            console.error("Error cargando cve.json:", localErr);
+            if(vulnCont) vulnCont.innerHTML = "<p style='font-size:0.8rem;'>Inteligencia no disponible.</p>";
         });
 });
 
-// Función auxiliar para pintar las CVEs con el estilo industrial
+// Función auxiliar para pintar las CVEs (Tu estilo industrial mantenido)
 function renderVulnerabilidades(items) {
     const vulnCont = document.getElementById('vuln-container');
     if (!vulnCont) return;
