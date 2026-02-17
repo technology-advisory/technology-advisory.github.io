@@ -3,10 +3,9 @@ import json
 import os
 import time
 
-# Configuración de rutas
 CISA_FILE = "data/cve.json"
 NVD_CACHE_FILE = "data/nvd_scores.json"
-NVD_API_URL = "https://services.nvd.nist.gov/api/rest/json/cves/2.0?cveId="
+GCVE_API_URL = "https://db.gcve.eu/api/v1/cves/"
 
 def load_json(path):
     if os.path.exists(path):
@@ -20,54 +19,38 @@ def save_json(path, data):
         json.dump(data, f, indent=4)
 
 def update_nvd():
-    # 1. Cargar la lista de CISA (generada por tu otro script)
     cisa_data = load_json(CISA_FILE)
-    # 2. Cargar el caché de scores (si ya existe)
-    nvd_cache = load_json(NVD_CACHE_FILE) 
-    
+    nvd_cache = load_json(NVD_CACHE_FILE)
     vulnerabilities = cisa_data.get('vulnerabilities', [])
     updated = False
 
-    # Solo procesamos los IDs que no tengamos ya en el caché
     for v in vulnerabilities:
         cve_id = v['cveID']
         
-        if cve_id not in nvd_cache:
-            print(f"Buscando score para {cve_id} en NIST...")
+        # Consultamos si no está en el caché o si el valor es N/A
+        if cve_id not in nvd_cache or nvd_cache[cve_id] == "N/A":
+            print(f"Consultando GCVE para {cve_id}...")
             try:
-                # Pausa técnica para evitar que el gobierno de EEUU nos bloquee
-                time.sleep(6) 
-                res = requests.get(f"{NVD_API_URL}{cve_id}", timeout=10)
+                time.sleep(0.5) # Mucho más rápido que antes
+                res = requests.get(f"{GCVE_API_URL}{cve_id}", timeout=10)
                 
                 if res.status_code == 200:
                     data = res.json()
-                    vulns = data.get('vulnerabilities', [])
-                    if not vulns:
-                        continue
-                        
-                    metrics = vulns[0]['cve'].get('metrics', {})
-                    score = "N/A"
-                    
-                    # Intentar obtener CVSS v4.0, v3.1 o v3.0
-                    if 'cvssMetricV40' in metrics:
-                        score = metrics['cvssMetricV40'][0]['cvssData']['baseScore']
-                    elif 'cvssMetricV31' in metrics:
-                        score = metrics['cvssMetricV31'][0]['cvssData']['baseScore']
-                    elif 'cvssMetricV30' in metrics:
-                        score = metrics['cvssMetricV30'][0]['cvssData']['baseScore']
-                    
+                    # Extraemos el score de la estructura de GCVE
+                    score = data.get('cvss', {}).get('score', "N/A")
                     nvd_cache[cve_id] = score
                     updated = True
-                    print(f"-> {cve_id}: {score}")
-            except Exception as e:
-                print(f"Error con {cve_id}: {e}")
-                continue
+                    print(f" -> Score de GCVE: {score}")
+                else:
+                    nvd_cache[cve_id] = "N/A"
+            except:
+                nvd_cache[cve_id] = "N/A"
 
     if updated:
         save_json(NVD_CACHE_FILE, nvd_cache)
-        print("Caché de scores NVD actualizado correctamente.")
+        print("Base de datos de severidad actualizada con éxito desde GCVE.")
     else:
-        print("No se encontraron nuevos CVEs para enriquecer.")
+        print("No hay nuevos datos que actualizar.")
 
 if __name__ == "__main__":
     update_nvd()
