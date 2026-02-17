@@ -3,81 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligence Archive | CVSS v4.0 Integration</title>
+    <title>Archivo de Inteligencia | Cruce CISA + NVD</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         body { background: #0a0f1a; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; }
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 4%; }
+        .container { max-width: 1300px; margin: 40px auto; padding: 0 4%; }
         
-        .cve-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #111827; border-radius: 12px; overflow: hidden; }
-        .cve-table th { text-align: left; color: var(--accent); font-size: 0.75rem; text-transform: uppercase; padding: 18px; background: #1f2937; }
-        .cve-table td { padding: 18px; border-bottom: 1px solid #374151; font-size: 0.85rem; }
-        
-        /* Badges dinámicos de severidad */
-        .cvss-badge { font-weight: 800; padding: 4px 10px; border-radius: 6px; font-family: 'JetBrains Mono'; font-size: 0.75rem; }
-        .critical { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; }
-        .high { background: rgba(249, 115, 22, 0.2); color: #fb923c; border: 1px solid #f97316; }
-        .medium { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid #f59e0b; }
-        
-        .back-link { color: var(--accent); text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 20px; }
+        /* Buscador */
+        .search-container { margin-bottom: 30px; }
+        .search-input { 
+            width: 100%; padding: 15px 25px; background: #111827; border: 1px solid #374151; 
+            border-radius: 12px; color: white; font-size: 1rem; outline: none; transition: 0.3s;
+        }
+        .search-input:focus { border-color: var(--accent); box-shadow: 0 0 15px rgba(59, 130, 246, 0.1); }
+
+        /* Tabla */
+        .cve-table { width: 100%; border-collapse: collapse; background: #111827; border-radius: 12px; overflow: hidden; }
+        .cve-table th { text-align: left; color: var(--accent); font-size: 0.75rem; text-transform: uppercase; padding: 20px; background: #1f2937; }
+        .cve-table td { padding: 20px; border-bottom: 1px solid #374151; font-size: 0.85rem; vertical-align: top; }
+        .cve-table tr:hover { background: rgba(255, 255, 255, 0.02); }
+
+        /* Severidad */
+        .cvss-badge { font-weight: 800; padding: 4px 10px; border-radius: 6px; font-family: 'JetBrains Mono'; font-size: 0.75rem; border: 1px solid currentColor; }
+        .critical { color: #f87171; background: rgba(239, 68, 68, 0.1); }
+        .high { color: #fb923c; background: rgba(249, 115, 22, 0.1); }
+        .medium { color: #fbbf24; background: rgba(245, 158, 11, 0.1); }
+        .na { color: #94a3b8; background: rgba(148, 163, 184, 0.1); }
+
+        .description-text { font-size: 0.8rem; color: #94a3b8; line-height: 1.6; max-width: 500px; }
+        .back-nav { color: var(--accent); text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <a href="../index.html" class="back-link">← Volver al Dashboard</a>
-        <h1 style="font-size: 1.8rem; margin-bottom: 10px;">Catálogo Maestro de Vulnerabilidades</h1>
-        <p style="color: #94a3b8; margin-bottom: 30px;">Cruce de datos CISA KEV + NIST NVD (Métricas CVSS v4.0)</p>
+        <a href="../index.html" class="back-nav">← Volver al Dashboard</a>
+        <h1 style="margin-bottom: 10px;">Catálogo Maestro de Vulnerabilidades</h1>
+        <p style="color: #94a3b8; margin-bottom: 30px;">Cruce de datos en tiempo real: CISA KEV (Amenazas) + NIST NVD (Severidad CVSS v4.0)</p>
+
+        <div class="search-container">
+            <input type="text" id="cveSearch" class="search-input" placeholder="Buscar por CVE, Fabricante o Producto (ej: Microsoft, Windows, 2026)...">
+        </div>
 
         <table class="cve-table">
             <thead>
                 <tr>
-                    <th>CVE ID</th>
-                    <th>Fabricante y Producto</th>
-                    <th>Fecha KEV</th>
-                    <th>CVSS Score</th>
-                    <th>Acción Requerida</th>
+                    <th style="width: 150px;">CVE ID</th>
+                    <th style="width: 250px;">Fabricante / Producto</th>
+                    <th style="width: 120px;">Fecha KEV</th>
+                    <th style="width: 110px;">CVSS v4.0</th>
+                    <th>Descripción de la Amenaza</th>
                 </tr>
             </thead>
-            <tbody id="cve-full-body">
+            <tbody id="cve-body">
                 </tbody>
         </table>
     </div>
 
     <script>
-        async function loadData() {
+        let rawCISA = [];
+        let rawNVD = {};
+
+        async function init() {
             try {
-                const res = await fetch('../data/cve.json');
-                const data = await res.json();
-                const tbody = document.getElementById('cve-full-body');
+                // 1. Cargamos ambos JSON al mismo tiempo (Punto 2 de tu pregunta)
+                const [resCisa, resNvd] = await Promise.all([
+                    fetch('../data/cve.json?t=' + Date.now()),
+                    fetch('../data/nvd_scores.json?t=' + Date.now()).catch(() => ({ json: () => ({}) })) // Fallback si nvd_scores no existe aún
+                ]);
 
-                // Ordenamos por fecha (2026 arriba)
-                const sorted = data.vulnerabilities.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                rawCISA = (await resCisa.json()).vulnerabilities;
+                // Si el segundo fetch falló o el archivo está vacío, manejamos el error elegantemente
+                try { rawNVD = await resNvd.json(); } catch(e) { rawNVD = {}; }
 
-                tbody.innerHTML = sorted.map(v => {
-                    // Si el score no viene en el JSON, ponemos uno de ejemplo o N/A
-                    const score = v.cvssScore || "N/A";
-                    let sevClass = "medium";
-                    
+                // Ordenamos por fecha descendente
+                rawCISA.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+
+                render(rawCISA);
+            } catch (e) {
+                console.error("Error cargando la inteligencia de datos:", e);
+            }
+        }
+
+        function render(dataList) {
+            const tbody = document.getElementById('cve-body');
+            tbody.innerHTML = dataList.map(v => {
+                // Buscamos el score en el objeto NVD usando el cveID como llave
+                const score = rawNVD[v.cveID] || "N/A";
+                
+                let sevClass = "na";
+                if (score !== "N/A") {
                     if (score >= 9.0) sevClass = "critical";
                     else if (score >= 7.0) sevClass = "high";
+                    else sevClass = "medium";
+                }
 
-                    return `
-                        <tr>
-                            <td style="color:var(--accent); font-weight:800; font-family:'JetBrains Mono';">${v.cveID}</td>
-                            <td>
-                                <div style="font-weight:700;">${v.vendorProject}</div>
-                                <div style="font-size:0.75rem; color:#94a3b8;">${v.product}</div>
-                            </td>
-                            <td style="color:#94a3b8; font-size:0.8rem;">${v.dateAdded}</td>
-                            <td><span class="cvss-badge ${sevClass}">${score}</span></td>
-                            <td style="font-size:0.75rem; color:#cbd5e1; max-width:300px;">${v.requiredAction}</td>
-                        </tr>
-                    `;
-                }).join('');
-            } catch (e) { console.error(e); }
+                return `
+                    <tr>
+                        <td style="color:var(--accent); font-weight:800; font-family:'JetBrains Mono';">${v.cveID}</td>
+                        <td>
+                            <div style="font-weight:700;">${v.vendorProject}</div>
+                            <div style="font-size:0.75rem; color:#64748b;">${v.product}</div>
+                        </td>
+                        <td style="font-family:'JetBrains Mono'; font-size:0.8rem; color:#94a3b8;">${v.dateAdded}</td>
+                        <td><span class="cvss-badge ${sevClass}">${score}</span></td>
+                        <td class="description-text">${v.shortDescription || "Descripción técnica no disponible en el feed actual."}</td>
+                    </tr>
+                `;
+            }).join('');
         }
-        loadData();
+
+        // Lógica de búsqueda
+        document.getElementById('cveSearch').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = rawCISA.filter(v => 
+                v.cveID.toLowerCase().includes(term) ||
+                v.vendorProject.toLowerCase().includes(term) ||
+                v.product.toLowerCase().includes(term)
+            );
+            render(filtered);
+        });
+
+        init();
     </script>
 </body>
 </html>
