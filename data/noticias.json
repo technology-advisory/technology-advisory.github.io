@@ -1,5 +1,13 @@
 {
     "suscriptores": 5840,
+    "noticia_hero": {
+        "archivo": "cluster-hyperv.html",
+        "titulo": "Hyper-V en Windows Server 2025: La Nueva Era Post-Gratuita",
+        "desc": "Análisis profundo sobre la desaparición del rol gratuito y las nuevas capacidades de escalabilidad extrema en infraestructuras Enterprise.",
+        "tag": "EXCLUSIVO",
+        "severidad": "high",
+        "imagen": "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=800"
+    },
     "tendencias": [
         {"nombre": "#Kubernetes", "color": "#e0f2fe", "texto": "#0369a1"},
         {"nombre": "#ZeroTrust", "color": "#dcfce7", "texto": "#166534"},
@@ -45,10 +53,10 @@
         {
             "archivo": "cve-2025-5678.html",
             "cve": "CVE-2025-5678",
-            "titulo": "Escalada de privilegios en Linux",
-            "desc": "Escalada de privilegios en kernels modernos de Linux > 5.10.",
+            "titulo": "Fuga de memoria en Kernel",
+            "desc": "Análisis de vulnerabilidad en la gestión de memoria de sistemas x64.",
             "severidad": "high",
-            "estado": "Mitigación disponible"
+            "estado": "En investigación"
         }
     ]
 }
