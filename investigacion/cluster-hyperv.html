@@ -3,244 +3,238 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cluster Hyper-V Enterprise | Technology Advisory</title>
+<title>Clustering Hyper-V en Windows Server 2025 | Technology Advisory</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-:root {
-    --bg: #0f172a;
-    --card: #1e293b;
-    --accent: #3b82f6;
-    --accent2: #06b6d4;
-    --text: #f1f5f9;
-    --muted: #94a3b8;
-    --border: rgba(255,255,255,0.08);
+:root{
+--bg:#0f172a;
+--card:#1e293b;
+--accent:#3b82f6;
+--text:#f1f5f9;
+--text-muted:#94a3b8;
+--border:rgba(255,255,255,0.08);
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
-
-body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text);
+body{
+margin:0;
+font-family:'Plus Jakarta Sans',sans-serif;
+background:var(--bg);
+color:var(--text);
 }
 
-header {
-    padding: 40px 8%;
-    border-bottom: 1px solid var(--border);
+.main-header{
+padding:30px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid var(--border);
 }
 
-header h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
+.logo{
+font-weight:800;
+text-decoration:none;
+color:var(--text);
+letter-spacing:1px;
 }
 
-header p {
-    margin-top: 10px;
-    color: var(--muted);
+.nav-links a{
+margin-left:20px;
+text-decoration:none;
+color:var(--text-muted);
 }
 
-.section {
-    padding: 70px 8%;
+.article-layout{
+max-width:1000px;
+margin:60px auto;
+padding:0 30px;
 }
 
-.grid-4 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-    gap: 25px;
+.content-body{
+background:var(--card);
+padding:60px;
+border-radius:24px;
+border:1px solid var(--border);
+line-height:1.8;
 }
 
-.card {
-    background: var(--card);
-    padding: 30px;
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    transition: 0.3s ease;
+h1{
+font-size:2.5rem;
+margin-bottom:20px;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
+h2{
+margin-top:50px;
+font-size:1.9rem;
+border-bottom:1px solid var(--border);
+padding-bottom:10px;
+color:var(--accent);
 }
 
-.metric {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--accent);
+h3{
+margin-top:30px;
 }
 
-h2 {
-    font-size: 2rem;
-    margin-bottom: 25px;
+p{
+margin-top:15px;
 }
 
-.tech-box {
-    background: #0b1220;
-    padding: 25px;
-    border-radius: 12px;
-    border-left: 4px solid var(--accent2);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.9rem;
-    overflow-x: auto;
+ul{
+margin-top:15px;
+padding-left:20px;
 }
 
-.architecture {
-    background: linear-gradient(145deg,#1e293b,#0f172a);
-    padding: 40px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
+.tech-box{
+background:#0b1220;
+padding:25px;
+border-radius:12px;
+margin-top:20px;
+font-family:'JetBrains Mono',monospace;
+font-size:0.9rem;
+border-left:4px solid var(--accent);
+overflow-x:auto;
 }
 
-.architecture-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    text-align: center;
+.badge{
+display:inline-block;
+padding:6px 12px;
+background:var(--accent);
+border-radius:20px;
+font-size:0.8rem;
+margin-bottom:15px;
 }
 
-.node {
-    padding: 20px;
-    background: var(--card);
-    border-radius: 12px;
-}
-
-footer {
-    padding: 40px;
-    text-align: center;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
+footer{
+margin-top:80px;
+padding:40px;
+text-align:center;
+color:var(--text-muted);
+border-top:1px solid var(--border);
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Arquitectura de Alta Disponibilidad – Cluster Hyper-V Enterprise</h1>
-    <p>Diseño avanzado basado en Windows Server 2019/2022, Failover Clustering, almacenamiento compartido y administración centralizada con SCVMM.</p>
+<header class="main-header">
+<a href="#" class="logo">TECHNOLOGY ADVISORY</a>
+<nav class="nav-links">
+<a href="#">Dashboard</a>
+<a href="#" class="active">Investigación</a>
+</nav>
 </header>
 
-<section class="section">
-    <h2>📊 Métricas del Entorno</h2>
-    <div class="grid-4">
-        <div class="card">
-            <div class="metric">2</div>
-            <p>Nodos Hyper-V</p>
-        </div>
-        <div class="card">
-            <div class="metric">99.99%</div>
-            <p>Disponibilidad estimada</p>
-        </div>
-        <div class="card">
-            <div class="metric">16 vCPU</div>
-            <p>Capacidad total cluster</p>
-        </div>
-        <div class="card">
-            <div class="metric">400GB</div>
-            <p>Almacenamiento compartido</p>
-        </div>
-    </div>
-</section>
+<main class="article-layout">
+<article class="content-body">
 
-<section class="section">
-    <h2>🏗 Arquitectura del Sistema</h2>
-    <div class="architecture">
-        <div class="architecture-grid">
-            <div class="node">
-                <h3>PFC-CLU1</h3>
-                <p>Hyper-V Node</p>
-                <p>8 vCPU / 16GB RAM</p>
-            </div>
-            <div class="node">
-                <h3>PFC-CLUSTER</h3>
-                <p>Failover Cluster</p>
-                <p>IP Virtual 10.10.0.20</p>
-            </div>
-            <div class="node">
-                <h3>PFC-CLU2</h3>
-                <p>Hyper-V Node</p>
-                <p>8 vCPU / 16GB RAM</p>
-            </div>
-        </div>
-    </div>
-</section>
+<span class="badge">Whitepaper Técnico</span>
+<h1>Clustering Hyper-V en Windows Server 2025</h1>
 
-<section class="section">
-    <h2>🔐 Componentes Clave</h2>
+<p>
+Windows Server 2025 introduce mejoras significativas en la arquitectura de clustering Hyper-V, ampliando los límites de escalabilidad y optimizando el soporte para entornos empresariales críticos, edge computing y cargas aceleradas por GPU.
+</p>
 
-    <div class="card" style="margin-bottom:20px;">
-        <h3>Active Directory (PFC-DC1)</h3>
-        <p>Servidor DNS + Servicios de dominio. Controla autenticación, políticas GPO y resolución interna.</p>
-    </div>
+<h2>1. Escalabilidad y Rendimiento</h2>
 
-    <div class="card" style="margin-bottom:20px;">
-        <h3>System Center VMM</h3>
-        <p>Administración centralizada del clúster, despliegue automatizado de VMs, gestión de redes lógicas y control RBAC.</p>
-    </div>
+<p>La nueva versión amplía considerablemente la capacidad por host y por máquina virtual:</p>
 
-    <div class="card">
-        <h3>SQL Server 2019</h3>
-        <p>Base de datos backend para SCVMM. Gestiona metadatos, configuraciones y estado del clúster.</p>
-    </div>
-</section>
+<h3>Capacidad por Host</h3>
+<ul>
+<li>Hasta <strong>4 Petabytes (PB) de memoria RAM por host</strong></li>
+<li>Hasta <strong>2.048 procesadores lógicos por host</strong></li>
+<li>Optimización avanzada para arquitecturas NUMA</li>
+</ul>
 
-<section class="section">
-    <h2>⚙️ Despliegue Automatizado</h2>
+<h3>Capacidad por Máquina Virtual (Gen2)</h3>
+<ul>
+<li>Hasta <strong>2.048 vCPUs por VM</strong></li>
+<li>Hasta <strong>240 TB de memoria RAM por VM</strong></li>
+<li>Secure Boot y vTPM habilitados por defecto</li>
+</ul>
+
+<h2>2. Clústeres en Workgroup (Sin Active Directory)</h2>
+
+<p>
+Windows Server 2025 permite implementar clústeres sin dependencia de Active Directory, lo que simplifica despliegues en escenarios edge y sucursales remotas.
+</p>
+
+<ul>
+<li>Arquitecturas desconectadas</li>
+<li>Infraestructura perimetral</li>
+<li>Reducción de complejidad operativa</li>
+</ul>
+
+<h2>3. GPU Partitioning Mejorado</h2>
+
+<p>
+Se mejora el soporte para GPU Partitioning (GPU-P), permitiendo que múltiples máquinas virtuales compartan una GPU física con aislamiento seguro.
+</p>
+
+<ul>
+<li>Soporte de Live Migration con GPU asignada</li>
+<li>Ideal para IA, VDI y renderizado</li>
+<li>Optimización de recursos gráficos</li>
+</ul>
+
+<h2>4. Redes y Almacenamiento</h2>
+
+<h3>SMB over QUIC</h3>
+<ul>
+<li>Compartición segura de archivos remotos</li>
+<li>Cifrado TLS integrado</li>
+</ul>
+
+<h3>Cluster Shared Volumes (CSV)</h3>
+<ul>
+<li>Acceso concurrente a almacenamiento compartido</li>
+<li>Migración en caliente sin pérdida de conectividad</li>
+</ul>
+
+<h2>5. Procedimiento de Implementación</h2>
+
+<p>Instalación de roles:</p>
 
 <div class="tech-box">
-Install-WindowsFeature Hyper-V, Failover-Clustering -IncludeManagementTools
-
-Test-Cluster -Node PFC-CLU1,PFC-CLU2
-
-New-Cluster -Name PFC-CLUSTER -Node PFC-CLU1,PFC-CLU2 -StaticAddress 10.10.0.20
-
-Set-ClusterQuorum -NodeAndDiskWitness "Cluster Disk 1"
+Install-WindowsFeature -Name Hyper-V, Failover-Clustering -IncludeManagementTools
 </div>
 
-</section>
+<p>Validación del clúster:</p>
 
-<section class="section">
-    <h2>🌐 Segmentación de Red</h2>
-
-<div class="grid-4">
-    <div class="card">
-        <h3>Red Gestión</h3>
-        <p>Administración del dominio y servidores</p>
-    </div>
-    <div class="card">
-        <h3>Heartbeat</h3>
-        <p>Comunicación interna entre nodos</p>
-    </div>
-    <div class="card">
-        <h3>Live Migration</h3>
-        <p>Movimiento de RAM entre nodos sin downtime</p>
-    </div>
-    <div class="card">
-        <h3>iSCSI Storage</h3>
-        <p>Acceso compartido a discos CSV</p>
-    </div>
+<div class="tech-box">
+Test-Cluster -Node NODE1,NODE2
 </div>
 
-</section>
+<p>Creación del clúster:</p>
 
-<section class="section">
-    <h2>🚀 Ventajas Estratégicas</h2>
+<div class="tech-box">
+New-Cluster -Name CLUSTER-2025 -Node NODE1,NODE2 -StaticAddress 10.0.0.100
+</div>
 
-<div class="card">
+<p>
+La configuración del heartbeat opera con 1 latido por segundo y 5 fallos en 10 segundos desencadenan migración automática.
+</p>
+
+<h2>6. Alta Disponibilidad</h2>
+
 <ul>
-<li>✔ Eliminación de Single Point of Failure</li>
-<li>✔ Migraciones en caliente sin impacto usuario</li>
-<li>✔ Escalabilidad horizontal</li>
-<li>✔ Reducción de CapEx mediante virtualización</li>
-<li>✔ Preparado para DR y réplica geográfica</li>
+<li>Monitorización constante entre nodos</li>
+<li>Failover automático</li>
+<li>Protección contra split-brain</li>
+<li>Continuidad operativa 24x7</li>
 </ul>
-</div>
 
-</section>
+<h2>7. Conclusión Estratégica</h2>
+
+<p>
+Hyper-V Clustering en Windows Server 2025 se posiciona como una plataforma de virtualización preparada para infraestructuras de alta densidad, entornos híbridos y cargas aceleradas por hardware, combinando escalabilidad masiva, seguridad avanzada y flexibilidad operativa.
+</p>
+
+</article>
+</main>
 
 <footer>
-© 2026 Technology Advisory · Enterprise Infrastructure Architecture
+© 2026 Technology Advisory · Enterprise Infrastructure
 </footer>
 
 </body>
