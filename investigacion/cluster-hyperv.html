@@ -1,125 +1,246 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investigación: Infraestructura de Alta Disponibilidad | Technology Advisory</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <style>
-        /* Estilos para versión ultra-amplia sin sidebar */
-        .article-page .article-layout { 
-            display: block; /* Eliminamos el grid de dos columnas */
-            max-width: 900px; 
-            margin: 40px auto; 
-            padding: 0 20px;
-        }
-        .content-body { 
-            padding: 4rem; 
-            line-height: 1.8; 
-            background: var(--card);
-            border-radius: 24px;
-            border: 1px solid var(--border);
-        }
-        h2 { font-size: 2rem; margin-top: 3.5rem; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-        h3 { font-size: 1.4rem; margin-top: 2rem; color: var(--text); }
-        .tech-deep-dive { background: rgba(255,255,255,0.03); padding: 25px; border-radius: 12px; margin: 20px 0; border-left: 4px solid var(--accent); }
-        .step-block { margin-bottom: 40px; }
-    </style>
-</head>
-<body class="article-page">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cluster Hyper-V Enterprise | Technology Advisory</title>
 
-<header class="main-header">
-    <div class="header-left">
-        <a href="../index.html" class="logo">TECHNOLOGY ADVISORY</a>
-    </div>
-    <nav class="nav-links">
-        <a href="../index.html">Dashboard</a>
-        <a href="../investigacion/" class="active">Investigación</a>
-    </nav>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --accent: #3b82f6;
+    --accent2: #06b6d4;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: rgba(255,255,255,0.08);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+header {
+    padding: 40px 8%;
+    border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+header p {
+    margin-top: 10px;
+    color: var(--muted);
+}
+
+.section {
+    padding: 70px 8%;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 25px;
+}
+
+.card {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.metric {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+
+.tech-box {
+    background: #0b1220;
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent2);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+}
+
+.architecture {
+    background: linear-gradient(145deg,#1e293b,#0f172a);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+.architecture-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    text-align: center;
+}
+
+.node {
+    padding: 20px;
+    background: var(--card);
+    border-radius: 12px;
+}
+
+footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Arquitectura de Alta Disponibilidad – Cluster Hyper-V Enterprise</h1>
+    <p>Diseño avanzado basado en Windows Server 2019/2022, Failover Clustering, almacenamiento compartido y administración centralizada con SCVMM.</p>
 </header>
 
-<main class="article-layout">
-    <article class="content-body">
-        <header>
-            <span class="badge">Whitepaper Técnico</span>
-            <h1>Implementación y Gestión de Clústeres Hyper-V de Conmutación por Error</h1>
-            <p style="color: var(--text-muted); font-size: 1.2rem; margin-top: 1rem;">
-                Un análisis exhaustivo sobre la arquitectura de redundancia de cómputo, almacenamiento iSCSI y la continuidad de servicios críticos.
-            </p>
-        </header>
+<section class="section">
+    <h2>📊 Métricas del Entorno</h2>
+    <div class="grid-4">
+        <div class="card">
+            <div class="metric">2</div>
+            <p>Nodos Hyper-V</p>
+        </div>
+        <div class="card">
+            <div class="metric">99.99%</div>
+            <p>Disponibilidad estimada</p>
+        </div>
+        <div class="card">
+            <div class="metric">16 vCPU</div>
+            <p>Capacidad total cluster</p>
+        </div>
+        <div class="card">
+            <div class="metric">400GB</div>
+            <p>Almacenamiento compartido</p>
+        </div>
+    </div>
+</section>
 
-        <section class="step-block">
-            <h2>1. Fundamentos de la Alta Disponibilidad (HA)</h2>
-            <p>La virtualización moderna exige que los servicios no dependan de un único hardware físico. El **Failover Clustering** de Microsoft proporciona una infraestructura donde varios servidores (nodos) trabajan coordinados. Si un nodo experimenta un fallo de hardware, las máquinas virtuales se reinician automáticamente en los nodos restantes.</p>
-            
-            <div class="tech-deep-dive">
-                <strong>Análisis de Tolerancia a Fallos:</strong> No solo se protege contra fallos de CPU o RAM; un clúster bien diseñado protege contra fallos de red y de almacenamiento mediante rutas redundantes (MPIO).
+<section class="section">
+    <h2>🏗 Arquitectura del Sistema</h2>
+    <div class="architecture">
+        <div class="architecture-grid">
+            <div class="node">
+                <h3>PFC-CLU1</h3>
+                <p>Hyper-V Node</p>
+                <p>8 vCPU / 16GB RAM</p>
             </div>
-        </section>
-
-        <section class="step-block">
-            <h2>2. Infraestructura de Almacenamiento Compartido</h2>
-            <p>El pilar central de un clúster es que todos los nodos "vean" el mismo disco al mismo tiempo. En esta implementación, se utiliza el protocolo **iSCSI** para conectar los servidores a una cabina de almacenamiento externa (SAN/NAS).</p>
-            
-            
-            
-            <h3>El Rol Crítico del CSV (Cluster Shared Volumes)</h3>
-            <p>A diferencia de los sistemas de archivos tradicionales donde solo un servidor puede escribir a la vez, el CSV permite que todos los nodos del clúster lean y escriban en el mismo LUN simultáneamente, permitiendo que las máquinas virtuales se muevan entre nodos sin perder la conexión con sus discos duros virtuales (VHDX).</p>
-        </section>
-
-        <section class="step-block">
-            <h2>3. El Mecanismo de Quórum y Testigo (Witness)</h2>
-            <p>En un clúster, las decisiones se toman por mayoría de votos. Si un clúster tiene 2 nodos y pierden comunicación, ambos intentarían tomar el control, causando una corrupción de datos (Split-Brain). Para evitarlo, implementamos un **Testigo de Disco**.</p>
-            <p>Este testigo actúa como un "voto de desempate". El nodo que logre bloquear el acceso al testigo se mantiene activo, mientras que el otro se apaga de forma segura para proteger la integridad de la información.</p>
-        </section>
-
-        <section class="step-block">
-            <h2>4. Configuración de Redes de Clúster</h2>
-            <p>Una arquitectura profesional separa los flujos de datos en redes lógicas aisladas:</p>
-            <ul>
-                <li><strong>Red de Gestión:</strong> Para la administración del sistema operativo y Active Directory.</li>
-                <li><strong>Red de Heartbeat:</strong> Una línea de vida privada entre nodos para monitorizar el estado de salud.</li>
-                <li><strong>Red de Live Migration:</strong> Dedicada al movimiento de la memoria RAM de las máquinas virtuales entre servidores.</li>
-            </ul>
-        </section>
-
-        <section class="step-block">
-            <h2>5. Procedimiento de Despliegue mediante PowerShell</h2>
-            <p>La validación es el paso más importante. Este proceso verifica que la latencia de red y los tiempos de reserva de disco son óptimos para la producción.</p>
-
-            <div class="terminal-window">
-                <div class="terminal-header">
-                    <span class="dot" style="background: #ff5f56; width: 8px; height: 8px;"></span>
-                    <span class="terminal-title">PS - Enterprise Deployment</span>
-                </div>
-                <pre><code># Instalación de los componentes de Windows
-Install-WindowsFeature -Name Hyper-V, Failover-Clustering -IncludeManagementTools
-
-# Test de validación total (obligatorio para soporte de MS)
-Test-Cluster -Node "NODE-01", "NODE-02"
-
-# Creación del clúster con punto de acceso administrativo
-New-Cluster -Name CLUS-INFRA -Node "NODE-01", "NODE-02" -StaticAddress 10.0.50.20
-
-# Configuración del Quórum con disco dedicado
-Set-ClusterQuorum -NodeAndDiskWitness "Cluster Disk 1"</code></pre>
+            <div class="node">
+                <h3>PFC-CLUSTER</h3>
+                <p>Failover Cluster</p>
+                <p>IP Virtual 10.10.0.20</p>
             </div>
-        </section>
+            <div class="node">
+                <h3>PFC-CLU2</h3>
+                <p>Hyper-V Node</p>
+                <p>8 vCPU / 16GB RAM</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-        <section class="step-block">
-            <h2>6. Conclusiones y Mantenimiento</h2>
-            <p>Con esta estructura, se pueden realizar mantenimientos en caliente. Gracias a la **Live Migration**, podemos mover las máquinas virtuales al Nodo B, actualizar el Nodo A, reiniciarlo y devolver las cargas de trabajo sin que los usuarios finales perciban una caída en el servicio.</p>
-        </section>
+<section class="section">
+    <h2>🔐 Componentes Clave</h2>
 
-        <footer style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center;">
-            <p style="color: var(--text-muted); italic">Investigación basada en estándares de alta disponibilidad de Microsoft Server 2022.</p>
-        </footer>
-    </article>
-</main>
+    <div class="card" style="margin-bottom:20px;">
+        <h3>Active Directory (PFC-DC1)</h3>
+        <p>Servidor DNS + Servicios de dominio. Controla autenticación, políticas GPO y resolución interna.</p>
+    </div>
 
-<footer class="minimal-footer">
-    <p>© 2026 Technology Advisory · Enterprise Infrastructure</p>
+    <div class="card" style="margin-bottom:20px;">
+        <h3>System Center VMM</h3>
+        <p>Administración centralizada del clúster, despliegue automatizado de VMs, gestión de redes lógicas y control RBAC.</p>
+    </div>
+
+    <div class="card">
+        <h3>SQL Server 2019</h3>
+        <p>Base de datos backend para SCVMM. Gestiona metadatos, configuraciones y estado del clúster.</p>
+    </div>
+</section>
+
+<section class="section">
+    <h2>⚙️ Despliegue Automatizado</h2>
+
+<div class="tech-box">
+Install-WindowsFeature Hyper-V, Failover-Clustering -IncludeManagementTools
+
+Test-Cluster -Node PFC-CLU1,PFC-CLU2
+
+New-Cluster -Name PFC-CLUSTER -Node PFC-CLU1,PFC-CLU2 -StaticAddress 10.10.0.20
+
+Set-ClusterQuorum -NodeAndDiskWitness "Cluster Disk 1"
+</div>
+
+</section>
+
+<section class="section">
+    <h2>🌐 Segmentación de Red</h2>
+
+<div class="grid-4">
+    <div class="card">
+        <h3>Red Gestión</h3>
+        <p>Administración del dominio y servidores</p>
+    </div>
+    <div class="card">
+        <h3>Heartbeat</h3>
+        <p>Comunicación interna entre nodos</p>
+    </div>
+    <div class="card">
+        <h3>Live Migration</h3>
+        <p>Movimiento de RAM entre nodos sin downtime</p>
+    </div>
+    <div class="card">
+        <h3>iSCSI Storage</h3>
+        <p>Acceso compartido a discos CSV</p>
+    </div>
+</div>
+
+</section>
+
+<section class="section">
+    <h2>🚀 Ventajas Estratégicas</h2>
+
+<div class="card">
+<ul>
+<li>✔ Eliminación de Single Point of Failure</li>
+<li>✔ Migraciones en caliente sin impacto usuario</li>
+<li>✔ Escalabilidad horizontal</li>
+<li>✔ Reducción de CapEx mediante virtualización</li>
+<li>✔ Preparado para DR y réplica geográfica</li>
+</ul>
+</div>
+
+</section>
+
+<footer>
+© 2026 Technology Advisory · Enterprise Infrastructure Architecture
 </footer>
 
 </body>
