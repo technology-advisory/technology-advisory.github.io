@@ -18,49 +18,29 @@ def save_json(path, data):
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4)
 
-def get_data_from_ncsc(cve_id):
-    """Extrae Inteligencia Real del CSAF del NCSC-NL"""
+def get_score(cve_id):
+    """Busca el score en NCSC (v4/v3) y CIRCL como respaldo"""
     try:
         year = cve_id.split('-')[1]
-        url = f"https://vulnerabilities.ncsc.nl/csaf/v2/{year}/{cve_id.lower()}.json"
-        res = requests.get(url, timeout=10)
+        # Fuente 1: NCSC-NL (CSAF) - Muy fiable para nuevos de 2026
+        res = requests.get(f"https://vulnerabilities.ncsc.nl/csaf/v2/{year}/{cve_id.lower()}.json", timeout=5)
         if res.status_code == 200:
             data = res.json()
-            vuln = data.get('vulnerabilities', [{}])[0]
-            
-            # 1. Búsqueda de Score (Prioridad CVSS v4 > v3 > v2)
-            score = "N/A"
-            # Buscamos en las notas el 'CVSSV4 base score' que vimos en tu archivo (9.9)
-            for note in vuln.get('notes', []):
-                if note.get('title') == "CVSSV4 base score":
-                    score = str(note.get('text'))
-                    break
-            
-            # Si no hay v4, buscamos en el array de scores normal
-            if score == "N/A":
-                for s in vuln.get('scores', []):
-                    cvss = s.get('cvss_v3', {}) or s.get('cvss_v4', {})
-                    if cvss.get('baseScore'):
-                        score = str(cvss.get('baseScore'))
-                        break
+            for note in data.get('vulnerabilities', [{}])[0].get('notes', []):
+                if "score" in note.get('title', '').lower():
+                    return str(note.get('text'))
+    except: pass
 
-            # 2. Captura de STATUS (del tracking del documento)
-            # Puede ser: interim, final, draft...
-            doc_status = data.get('document', {}).get('tracking', {}).get('status', 'unknown')
-
-            # 3. EXPLOITED (Buscamos si hay mención a explotación activa)
-            exploited = "NO"
-            for note in vuln.get('notes', []):
-                if "exploit data available" in note.get('text', '').lower():
-                    exploited = "YES"
-                    break
-
-            return {
-                "score": score,
-                "status": doc_status.upper(),
-                "exploited": exploited
-            }
-    except: return None
+    try:
+        # Fuente 2: CIRCL API
+        res = requests.get(f"https://cve.circl.lu/api/cve/{cve_id}", timeout=5)
+        if res.status_code == 200:
+            d = res.json()
+            score = d.get('cvss3') or d.get('cvss')
+            if isinstance(score, dict): score = score.get('baseScore')
+            return str(score) if score else "N/A"
+    except: pass
+    return "N/A"
 
 def update_nvd():
     cisa_data = load_json(CISA_FILE)
@@ -68,26 +48,29 @@ def update_nvd():
     vulnerabilities = cisa_data.get('vulnerabilities', [])
     updated = False
 
-    # Analizamos los 40 más recientes
-    for v in vulnerabilities[:40]:
+    # Procesamos todos para asegurar que no hay huecos, 
+    # pero solo pedimos a la API los que no tienen score
+    for v in vulnerabilities:
         cve_id = v['cveID']
+        current = nvd_cache.get(cve_id)
         
-        # Siempre intentamos actualizar si el dato no es un objeto completo
-        # o si el status es 'unknown'
-        current = nvd_cache.get(cve_id, {})
-        if not isinstance(current, dict) or current.get('status') in [None, "UNKNOWN", "N/A"]:
-            print(f"Investigando {cve_id}...")
-            
-            data = get_data_from_ncsc(cve_id)
-            
-            if data:
-                nvd_cache[cve_id] = data
+        # Si no existe, es un string "N/A" o un objeto con score "N/A"
+        is_missing = not current or \
+                     (isinstance(current, dict) and current.get('score') == "N/A") or \
+                     current == "N/A"
+
+        if is_missing:
+            print(f"Buscando score para {cve_id}...")
+            score = get_score(cve_id)
+            if score != "N/A":
+                nvd_cache[cve_id] = {"score": score}
                 updated = True
-                print(f" -> Encontrado: {data['score']} | Status: {data['status']} | Exploit: {data['exploited']}")
+                print(f" -> [OK] {score}")
+                time.sleep(0.3) 
 
     if updated:
         save_json(NVD_CACHE_FILE, nvd_cache)
-        print("Inteligencia CSAF sincronizada.")
+        print("Caché de severidad actualizado.")
 
 if __name__ == "__main__":
     update_nvd()
