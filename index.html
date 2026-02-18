@@ -20,20 +20,6 @@
         .status-data { display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; }
         .ip-text { color: #22d3ee; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.5px; }
         .isp-text { color: #94a3b8; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-        /* Estilos para el Widget de Acceso Restringido */
-        .login-form { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
-        .login-input {
-            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border);
-            padding: 10px; border-radius: 6px; color: white; font-size: 0.8rem; outline: none;
-        }
-        .login-input:focus { border-color: var(--accent); }
-        .btn-login {
-            background: var(--accent); color: white; border: none; padding: 10px;
-            border-radius: 6px; font-weight: 700; font-size: 0.75rem; cursor: pointer;
-            text-transform: uppercase; transition: 0.3s;
-        }
-        .btn-login:hover { opacity: 0.9; box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
     </style>
 </head>
 <body>
@@ -104,19 +90,6 @@
             <h3 class="panel-title">Tecnologías en Foco</h3>
             <div id="tendencias-container" class="tag-cloud"></div>
         </div>
-
-        <div class="panel-box login-widget">
-            <h3 class="panel-title">Acceso Restringido</h3>
-            <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 10px; border-radius: 8px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800;">Estado del Sistema</span>
-                <span id="visit-count" style="font-family: 'JetBrains Mono'; color: #10b981; font-weight: 800; font-size: 0.8rem;">ONLINE</span>
-            </div>
-            <form class="login-form" onsubmit="return false;">
-                <input type="text" placeholder="ID de Usuario" class="login-input">
-                <input type="password" placeholder="Passcode" class="login-input">
-                <button class="btn-login">Sincronizar Credenciales</button>
-            </form>
-        </div>
     </aside>
 </main>
 
@@ -159,12 +132,6 @@
             document.getElementById('cisa-counter').style.display = 'block';
         }
     });
-
-    // 3. Contador de Visitas Global
-    fetch('https://api.countapi.xyz/hit/technology-advisory-research/visits')
-        .then(res => res.json()).then(data => {
-            document.getElementById('visit-count').innerText = "V_" + data.value;
-        }).catch(() => { document.getElementById('visit-count').innerText = "ONLINE"; });
 </script>
 
 </body>
