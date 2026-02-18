@@ -3,156 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archivo de Inteligencia | CISA + GCVE</title>
+    <title>Archivo de Inteligencia | Tecnología Advisory</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
-        body { background: #0a0f1a; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; }
+        body { background: #0a0f1a; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; }
         .container { max-width: 1300px; margin: 40px auto; padding: 0 4%; }
+        .search-box { width: 100%; padding: 15px; background: #111827; border: 1px solid #374151; border-radius: 12px; color: white; margin-bottom: 30px; }
+        .cve-table { width: 100%; border-collapse: collapse; background: #111827; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .cve-table th { text-align: left; color: #3b82f6; padding: 20px; background: #1f2937; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .cve-table td { padding: 20px; border-bottom: 1px solid #1f2937; font-size: 0.85rem; vertical-align: top; }
         
-        /* Buscador Profesional */
-        .search-container { margin-bottom: 30px; }
-        .search-input { 
-            width: 100%; padding: 15px 25px; background: #111827; border: 1px solid #374151; 
-            border-radius: 12px; color: white; font-size: 1rem; outline: none; transition: 0.3s;
-        }
-        .search-input:focus { border-color: var(--accent); box-shadow: 0 0 15px rgba(59, 130, 246, 0.1); }
-
-        /* Estructura de Tabla Industrial */
-        .cve-table { width: 100%; border-collapse: collapse; background: #111827; border-radius: 12px; overflow: hidden; }
-        .cve-table th { text-align: left; color: var(--accent); font-size: 0.75rem; text-transform: uppercase; padding: 20px; background: #1f2937; }
-        .cve-table td { padding: 20px; border-bottom: 1px solid #374151; font-size: 0.85rem; vertical-align: top; }
-        .cve-table tr:hover { background: rgba(255, 255, 255, 0.02); }
-
-        /* Badges de Severidad (CVSS) */
-        .cvss-badge { font-weight: 800; padding: 4px 10px; border-radius: 6px; font-family: 'JetBrains Mono'; font-size: 0.75rem; border: 1px solid currentColor; display: inline-block; }
-        .critical { color: #f87171; background: rgba(239, 68, 68, 0.1); }
-        .high { color: #fb923c; background: rgba(249, 115, 22, 0.1); }
-        .medium { color: #fbbf24; background: rgba(245, 158, 11, 0.1); }
-        .na { color: #94a3b8; background: rgba(148, 163, 184, 0.1); }
-
-        .description-text { font-size: 0.8rem; color: #94a3b8; line-height: 1.6; max-width: 500px; }
-        .back-nav { color: var(--accent); text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 20px; font-size: 0.9rem; }
+        /* Badges de Score */
+        .cvss-badge { font-weight: 800; padding: 6px 12px; border-radius: 6px; font-family: monospace; font-size: 0.9rem; border: 1px solid; display: inline-block; }
+        .critical { color: #f87171; border-color: rgba(239, 68, 68, 0.5); background: rgba(239, 68, 68, 0.1); }
+        .high { color: #fb923c; border-color: rgba(249, 115, 22, 0.5); background: rgba(249, 115, 22, 0.1); }
+        .na { color: #94a3b8; border-color: #374151; background: rgba(148, 163, 184, 0.1); }
         
-        .cve-id-link { color: var(--accent); text-decoration: none; font-weight: 800; font-family: 'JetBrains Mono'; }
-        .cve-id-link:hover { text-decoration: underline; }
+        /* Status & Exploited */
+        .exploit-tag { display: inline-flex; align-items: center; gap: 5px; color: #f87171; font-weight: 700; font-size: 0.65rem; background: rgba(239, 68, 68, 0.15); padding: 2px 6px; border-radius: 4px; margin-top: 5px; }
+        .status-tag { display: block; font-size: 0.65rem; color: #64748b; margin-top: 5px; text-transform: uppercase; font-weight: 600; }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <header>
-            <a href="../index.html" class="back-nav">← Volver al Dashboard</a>
-            <h1 style="margin-bottom: 10px; font-size: 2rem;">Catálogo Maestro de Vulnerabilidades</h1>
-            <p style="color: #94a3b8; margin-bottom: 30px;">Cruce de inteligencia: CISA KEV (Explotación Activa) + GCVE API (Severidad CVSS v4.0)</p>
-        </header>
-
-        <div class="search-container">
-            <input type="text" id="cveSearch" class="search-input" placeholder="Filtrar por CVE ID, Fabricante o Producto (ej: BeyondTrust, Apple, 2026)...">
+        <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h1 style="margin:0;">Archivo de Vulnerabilidades</h1>
+            <a href="../index.html" style="color:#3b82f6; text-decoration:none; font-weight:bold;">← Volver al Dashboard</a>
         </div>
+        
+        <input type="text" id="cveSearch" class="search-box" placeholder="Filtrar por CVE, Fabricante o Producto...">
 
         <table class="cve-table">
             <thead>
                 <tr>
-                    <th style="width: 150px;">CVE ID</th>
-                    <th style="width: 250px;">Fabricante / Producto</th>
-                    <th style="width: 120px;">Fecha KEV</th>
-                    <th style="width: 110px;">CVSS Score</th>
+                    <th>Identificador</th>
+                    <th>Fabricante / Producto</th>
+                    <th>Añadido el</th>
+                    <th>Severidad / Estado</th>
                     <th>Descripción Técnica</th>
                 </tr>
             </thead>
-            <tbody id="cve-body">
-                </tbody>
+            <tbody id="cve-body"></tbody>
         </table>
     </div>
 
     <script>
-        let rawCISA = [];
-        let rawNVD = {};
-
         async function init() {
             try {
-                // Descarga paralela de ambos archivos JSON
                 const [resCisa, resNvd] = await Promise.all([
                     fetch('../data/cve.json?t=' + Date.now()),
                     fetch('../data/nvd_scores.json?t=' + Date.now()).catch(() => ({ json: () => ({}) }))
                 ]);
-
-                const cisaJson = await resCisa.json();
-                rawCISA = cisaJson.vulnerabilities;
                 
-                try { 
-                    rawNVD = await resNvd.json(); 
-                } catch(e) { 
-                    rawNVD = {}; 
-                }
+                const cisaData = await resCisa.json();
+                const nvdData = await resNvd.json();
+                const cves = cisaData.vulnerabilities;
 
-                // Asegurar orden por fecha (más recientes primero)
-                rawCISA.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                const render = (list) => {
+                    const tbody = document.getElementById('cve-body');
+                    tbody.innerHTML = list.map(v => {
+                        // Extraemos la inteligencia del nuevo formato de objeto
+                        const intel = nvdData[v.cveID] || { score: "N/A", status: "UNKNOWN", exploited: "NO" };
+                        
+                        // Manejo de compatibilidad (por si el valor es solo un string)
+                        const score = typeof intel === 'object' ? intel.score : intel;
+                        const status = intel.status || "N/A";
+                        const isExploited = intel.exploited === "YES";
 
-                render(rawCISA);
-            } catch (e) {
-                console.error("Error en la carga de inteligencia:", e);
-                document.getElementById('cve-body').innerHTML = '<tr><td colspan="5">Error al cargar los datos.</td></tr>';
-            }
+                        // Determinar clase de color
+                        let sevClass = "na";
+                        if (score !== "N/A") {
+                            const s = parseFloat(score);
+                            if (s >= 9.0) sevClass = "critical";
+                            else if (s >= 7.0) sevClass = "high";
+                        }
+
+                        return `
+                            <tr>
+                                <td>
+                                    <a href="https://db.gcve.eu/cve/${v.cveID}" target="_blank" style="color:#3b82f6; font-weight:bold; text-decoration:none;">${v.cveID}</a>
+                                    ${isExploited ? '<div class="exploit-tag">🔥 EXPLOITED</div>' : ''}
+                                </td>
+                                <td>
+                                    <div style="font-weight:700;">${v.vendorProject}</div>
+                                    <div style="font-size:0.75rem; color:#64748b;">${v.product}</div>
+                                </td>
+                                <td style="color:#94a3b8; font-family:monospace;">${v.dateAdded}</td>
+                                <td>
+                                    <span class="cvss-badge ${sevClass}">${score}</span>
+                                    <span class="status-tag">Status: ${status}</span>
+                                </td>
+                                <td style="font-size:0.8rem; color:#94a3b8; line-height:1.4; max-width:450px;">
+                                    ${v.shortDescription || "Sin descripción disponible."}
+                                </td>
+                            </tr>
+                        `;
+                    }).join('');
+                };
+
+                render(cves);
+
+                // Buscador dinámico
+                document.getElementById('cveSearch').addEventListener('input', (e) => {
+                    const term = e.target.value.toLowerCase();
+                    render(cves.filter(v => 
+                        v.cveID.toLowerCase().includes(term) || 
+                        v.vendorProject.toLowerCase().includes(term) || 
+                        v.product.toLowerCase().includes(term)
+                    ));
+                });
+
+            } catch (err) { console.error("Error cargando inteligencia:", err); }
         }
-
-        function render(dataList) {
-            const tbody = document.getElementById('cve-body');
-            if (dataList.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:40px; color:#94a3b8;">No se han encontrado vulnerabilidades que coincidan con la búsqueda.</td></tr>';
-                return;
-            }
-
-            tbody.innerHTML = dataList.map(v => {
-                // Obtenemos el score del archivo nvd_scores.json usando el cveID
-                const score = rawNVD[v.cveID] || "N/A";
-                
-                let sevClass = "na";
-                if (score !== "N/A") {
-                    const s = parseFloat(score);
-                    if (s >= 9.0) sevClass = "critical";
-                    else if (s >= 7.0) sevClass = "high";
-                    else if (s >= 4.0) sevClass = "medium";
-                }
-
-                return `
-                    <tr>
-                        <td>
-                            <a href="https://db.gcve.eu/cve/${v.cveID}" target="_blank" class="cve-id-link">
-                                ${v.cveID}
-                            </a>
-                        </td>
-                        <td>
-                            <div style="font-weight:700; color:#fff;">${v.vendorProject}</div>
-                            <div style="font-size:0.75rem; color:#64748b;">${v.product}</div>
-                        </td>
-                        <td style="font-family:'JetBrains Mono'; font-size:0.8rem; color:#94a3b8;">
-                            ${v.dateAdded}
-                        </td>
-                        <td>
-                            <a href="https://db.gcve.eu/cve/${v.cveID}" target="_blank" style="text-decoration:none;">
-                                <span class="cvss-badge ${sevClass}">${score}</span>
-                            </a>
-                        </td>
-                        <td class="description-text">
-                            ${v.shortDescription || v.vulnerabilityName || "Sin descripción detallada."}
-                        </td>
-                    </tr>
-                `;
-            }).join('');
-        }
-
-        // Evento de búsqueda en tiempo real
-        document.getElementById('cveSearch').addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            const filtered = rawCISA.filter(v => 
-                v.cveID.toLowerCase().includes(term) ||
-                v.vendorProject.toLowerCase().includes(term) ||
-                v.product.toLowerCase().includes(term)
-            );
-            render(filtered);
-        });
-
         init();
     </script>
 </body>
