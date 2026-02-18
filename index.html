@@ -67,6 +67,20 @@
             color: white; 
             box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); 
         }
+
+        /* Estilo para las cajitas de CVE laterales */
+        .vuln-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            transition: 0.3s;
+        }
+        .vuln-card:hover {
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.05);
+        }
     </style>
 </head>
 <body>
@@ -122,6 +136,7 @@
                 <span style="font-size: 0.65rem; color: var(--text); font-weight: 700; text-transform: uppercase;">Amenazas Explotadas Activas</span>
             </div>
             <div id="vuln-container" class="vuln-feed"></div>
+            
             <div style="padding-top: 15px; border-top: 1px solid var(--border); margin-top: 15px;">
                 <a href="cve/listado-cve-CISA_Catalog_exploited.html" style="color: var(--accent); font-size: 0.75rem; text-decoration: none; font-weight: 800; text-transform: uppercase;">Ver Catálogo Completo →</a>
             </div>
@@ -140,37 +155,24 @@
 
 <script src="assets/js/script.js"></script>
 <script>
-	// 1. SINCRONIZACIÓN DE NOTICIA PRINCIPAL (HERO) DESDE JSON
+	// 1. CARGA DE NOTICIA HERO
 	async function loadHeroNews() {
 		try {
-			// Añadimos un timestamp para evitar caché del navegador
 			const response = await fetch('data/noticias.json?t=' + Date.now());
 			const data = await response.json();
-			
 			if (data.noticia_hero) {
 				const hero = data.noticia_hero;
-				
-				// Actualizar Textos
 				document.getElementById('hero-tag').innerText = hero.tag || "INVESTIGACIÓN DESTACADA";
 				document.getElementById('hero-title').innerText = hero.titulo;
 				document.getElementById('hero-desc').innerText = hero.desc;
 				document.getElementById('hero-link').href = "investigacion/" + hero.archivo;
-				
-				// ACTUALIZAR IMAGEN (Corrección aquí)
 				const imgContainer = document.getElementById('hero-img');
 				if(hero.imagen && imgContainer) {
 					imgContainer.style.backgroundImage = `url('${hero.imagen}')`;
-					imgContainer.style.backgroundSize = "cover";
-					imgContainer.style.backgroundPosition = "center";
 				}
 			}
-		} catch (error) {
-			console.error("Error cargando noticia hero:", error);
-		}
+		} catch (error) { console.error("Error hero:", error); }
 	}
-
-	// Llamar a la función al cargar la página
-	loadHeroNews();
 
     // 2. SINCRONIZACIÓN DE RED
     async function syncNetworkInfo() {
@@ -187,27 +189,50 @@
                 const isp = (data.isp || "ISP_UNKNOWN").toUpperCase();
                 ipEl.innerText = ip;
                 ispEl.innerText = isp;
-                if(keywords.some(kw => isp.includes(kw))) {
+                const isSecure = keywords.some(kw => isp.includes(kw));
+                if(isSecure) {
                     lbEl.innerText = '🛡️ NAVEGACIÓN SEGURA (VPN/DC)';
                     lbEl.style.color = '#10b981';
+                    ipEl.style.color = '#10b981';
                 } else {
                     lbEl.innerText = '🌐 NAVEGACIÓN POR ISP (PÚBLICA)';
                     lbEl.style.color = '#f59e0b';
+                    ipEl.style.color = '#22d3ee';
                 }
             }
         } catch (error) { console.log("Network sync error"); }
     }
 
-    // INICIALIZACIÓN
-    loadHeroNews();
-    syncNetworkInfo();
-
+    // 3. CARGAR CVEs (Contador y Cajitas laterales)
     fetch('data/cve.json').then(res => res.json()).then(data => {
         if(data.vulnerabilities) {
+            // Actualizar contador
             document.getElementById('cve-count-val').innerText = data.vulnerabilities.length;
             document.getElementById('cisa-counter').style.display = 'block';
+
+            // Dibujar cajitas (Feed)
+            const vulnContainer = document.getElementById('vuln-container');
+            const recent = data.vulnerabilities.slice(0, 5); // Mostrar los 5 más recientes
+            
+            vulnContainer.innerHTML = recent.map(v => `
+                <div class="vuln-card">
+                    <a href="https://nvd.nist.gov/vuln/detail/${v.cveID}" target="_blank" 
+                       style="color: var(--accent); font-family: 'JetBrains Mono'; font-size: 0.8rem; font-weight: 800; text-decoration: none; display: block; margin-bottom: 4px;">
+                       ${v.cveID}
+                    </a>
+                    <p style="font-size: 0.75rem; color: #fff; font-weight: 600; margin: 0; line-height: 1.3;">
+                        ${v.vendorProject} - ${v.product}
+                    </p>
+                    <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                        ${v.shortDescription}
+                    </p>
+                </div>
+            `).join('');
         }
     });
+
+    loadHeroNews();
+    syncNetworkInfo();
 </script>
 </body>
 </html>

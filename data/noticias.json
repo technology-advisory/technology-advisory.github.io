@@ -17,11 +17,11 @@
     ],
     "notas_tecnicas": [
         {
-            "archivo": "wazuh-rocky.html",
-            "titulo": "Wazuh en Rocky Linux",
-            "desc": "Guía paso a paso para desplegar un SIEM de grado empresarial.",
-            "tag": "SIEM",
-            "fecha": "Actualizado hace 2 días",
+            "archivo": "CVE_explotado_en_produccion.html",
+            "titulo": "CVE explotado en producción: ¿Tu empresa reacciona… o improvisa?",
+            "desc": "Cada vez que un proveedor publica un hotfix para un CVE explotado activamente, la pregunta no es técnica. Es organizativa.",
+            "tag": "Seguridad",
+            "fecha": "Actualizado hace 1 días",
             "severidad": "medium"
         },
         {
