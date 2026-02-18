@@ -1,310 +1,222 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clustering Hyper-V en Windows Server 2025 | Technology Advisory</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280">
+    <title>Clustering Hyper-V en Windows Server 2025 | Technology Advisory</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<style>
-:root{
---bg:#0f172a;
---card:#1e293b;
---accent:#3b82f6;
---text:#f1f5f9;
---text-muted:#94a3b8;
---border:rgba(255,255,255,0.08);
-}
+    <style>
+        :root{
+            --bg:#0f172a;
+            --card:#1e293b;
+            --accent:#3b82f6;
+            --text:#f1f5f9;
+            --text-muted:#94a3b8;
+            --border:rgba(255,255,255,0.08);
+        }
 
-body{
-margin:0;
-font-family:'Plus Jakarta Sans',sans-serif;
-background:var(--bg);
-color:var(--text);
-}
+        body{
+            margin:0;
+            font-family:'Plus Jakarta Sans',sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            min-width: 1280px; /* Consistencia con el resto del sitio */
+        }
 
-/* ================= HEADER ================= */
+        /* ================= HEADER ================= */
+        .main-header{
+            padding:25px 60px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            border-bottom:1px solid var(--border);
+            background:rgba(15,23,42,0.9);
+            backdrop-filter:blur(6px);
+        }
 
-.main-header{
-padding:25px 60px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:1px solid var(--border);
-background:rgba(15,23,42,0.9);
-backdrop-filter:blur(6px);
-flex-wrap:wrap;
-}
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+        }
 
-.logo{
-font-weight:800;
-text-decoration:none;
-color:var(--text);
-letter-spacing:1px;
-font-size:1.1rem;
-}
+        .logo{
+            font-weight:800;
+            text-decoration:none;
+            color:var(--text);
+            letter-spacing:1px;
+            font-size:1.1rem;
+        }
 
-.logo-sub{
-font-size:0.65rem;
-letter-spacing:2px;
-color:var(--text-muted);
-margin-top:4px;
-}
+        .logo-sub{
+            font-size:0.65rem;
+            letter-spacing:2px;
+            color:var(--text-muted);
+            margin-top:4px;
+        }
 
-.nav-links{
-display:flex;
-gap:25px;
-}
+        .nav-links{
+            display:flex;
+            gap:25px;
+        }
 
-.nav-links a{
-text-decoration:none;
-color:var(--text-muted);
-font-weight:700;
-font-size:0.9rem;
-}
+        .nav-links a{
+            text-decoration:none;
+            color:var(--text-muted);
+            font-weight:700;
+            font-size:0.9rem;
+        }
 
-.nav-links a:hover{
-color:var(--accent);
-transition:0.2s ease;
-}
+        .nav-links a:hover, .nav-links .active{
+            color:var(--accent);
+            transition:0.2s ease;
+        }
 
-.nav-links .active{
-color:var(--accent);
-}
+        /* Estilo del botón unificado (Copiado de CVE) */
+        .btn-dashboard {
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            background: rgba(59, 130, 246, 0.05);
+            color: var(--accent); 
+            text-decoration: none; 
+            padding: 8px 16px; 
+            border-radius: 8px;
+            border: 1px solid rgba(59, 130, 246, 0.2); 
+            font-size: 0.75rem; 
+            font-weight: 800;
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: 0.3s;
+            margin-bottom: 25px;
+        }
+        .btn-dashboard:hover { 
+            background: var(--accent); 
+            color: white; 
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); 
+        }
 
-/* ================= CONTENIDO ================= */
+        /* ================= CONTENIDO ================= */
+        .article-layout{
+            max-width:1000px;
+            margin:40px auto;
+            padding:0 30px;
+        }
 
-.article-layout{
-max-width:1000px;
-margin:60px auto;
-padding:0 30px;
-}
+        .content-body{
+            background:var(--card);
+            padding:60px;
+            border-radius:24px;
+            border:1px solid var(--border);
+            line-height:1.8;
+        }
 
-.content-body{
-background:var(--card);
-padding:60px;
-border-radius:24px;
-border:1px solid var(--border);
-line-height:1.8;
-}
+        h1{ font-size:2.5rem; margin-bottom:20px; }
+        h2{ margin-top:50px; font-size:1.9rem; border-bottom:1px solid var(--border); padding-bottom:10px; color:var(--accent); }
+        h3{ margin-top:30px; }
+        p{ margin-top:15px; }
+        ul{ margin-top:15px; padding-left:20px; }
 
-h1{
-font-size:2.5rem;
-margin-bottom:20px;
-}
+        .tech-box{
+            background:#0b1220;
+            padding:25px;
+            border-radius:12px;
+            margin-top:20px;
+            font-family:'JetBrains Mono',monospace;
+            font-size:0.9rem;
+            border-left:4px solid var(--accent);
+            overflow-x:auto;
+        }
 
-h2{
-margin-top:50px;
-font-size:1.9rem;
-border-bottom:1px solid var(--border);
-padding-bottom:10px;
-color:var(--accent);
-}
+        .badge-pill{
+            display:inline-block;
+            padding:6px 12px;
+            background:var(--accent);
+            border-radius:20px;
+            font-size:0.8rem;
+            margin-bottom:15px;
+            color: white;
+            font-weight: 700;
+        }
 
-h3{
-margin-top:30px;
-}
-
-p{
-margin-top:15px;
-}
-
-ul{
-margin-top:15px;
-padding-left:20px;
-}
-
-.tech-box{
-background:#0b1220;
-padding:25px;
-border-radius:12px;
-margin-top:20px;
-font-family:'JetBrains Mono',monospace;
-font-size:0.9rem;
-border-left:4px solid var(--accent);
-overflow-x:auto;
-}
-
-.badge{
-display:inline-block;
-padding:6px 12px;
-background:var(--accent);
-border-radius:20px;
-font-size:0.8rem;
-margin-bottom:15px;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-margin-top:80px;
-padding:40px;
-text-align:center;
-color:var(--text-muted);
-border-top:1px solid var(--border);
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 768px) {
-
-.main-header{
-padding:20px;
-flex-direction:column;
-align-items:flex-start;
-gap:15px;
-}
-
-.nav-links{
-flex-wrap:wrap;
-}
-
-.article-layout{
-margin:30px auto;
-padding:0 15px;
-}
-
-.content-body{
-padding:30px;
-}
-
-h1{
-font-size:1.8rem;
-}
-
-h2{
-font-size:1.4rem;
-}
-
-}
-</style>
+        footer{
+            margin-top:80px;
+            padding:40px;
+            text-align:center;
+            color:var(--text-muted);
+            border-top:1px solid var(--border);
+            font-size: 0.8rem;
+        }
+    </style>
 </head>
 
 <body>
 
 <header class="main-header">
-    <div style="display:flex; flex-direction:column;">
+    <div class="logo-container">
         <a href="../index.html" class="logo">TECHNOLOGY ADVISORY</a>
         <span class="logo-sub">ENTERPRISE INFRASTRUCTURE INTELLIGENCE</span>
     </div>
 
     <nav class="nav-links">
         <a href="../index.html">Dashboard</a>
-        <a href="../investigacion/" class="active">Investigación</a>
+        <a href="#" class="active">Investigación</a>
     </nav>
 </header>
 
 <main class="article-layout">
-<article class="content-body">
+    <a href="../index.html" class="btn-dashboard">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Dashboard Principal
+    </a>
 
-<span class="badge">Whitepaper Técnico</span>
-<h1>Clustering Hyper-V en Windows Server 2025</h1>
+    <article class="content-body">
+        <span class="badge-pill">Whitepaper Técnico</span>
+        <h1>Clustering Hyper-V en Windows Server 2025</h1>
 
-<p>
-Windows Server 2025 introduce mejoras significativas en la arquitectura de clustering Hyper-V, ampliando los límites de escalabilidad y optimizando el soporte para entornos empresariales críticos, edge computing y cargas aceleradas por GPU.
-</p>
+        <p>Windows Server 2025 introduce mejoras significativas en la arquitectura de clustering Hyper-V.</p>
 
-<h2>1. Escalabilidad y Rendimiento</h2>
+        <h2>1. Escalabilidad y Rendimiento</h2>
+        <p>La nueva versión amplía la capacidad por host: hasta 4 PB de RAM y 2.048 procesadores lógicos.</p>
 
-<p>La nueva versión amplía considerablemente la capacidad por host y por máquina virtual:</p>
+        <h3>Capacidad por Máquina Virtual (Gen2)</h3>
+        <ul>
+            <li>Hasta 2.048 vCPUs por VM</li>
+            <li>Hasta 240 TB de memoria RAM por VM</li>
+            <li>Secure Boot y vTPM habilitados por defecto</li>
+        </ul>
 
-<h3>Capacidad por Host</h3>
-<ul>
-<li>Hasta <strong>4 Petabytes (PB) de memoria RAM por host</strong></li>
-<li>Hasta <strong>2.048 procesadores lógicos por host</strong></li>
-<li>Optimización avanzada para arquitecturas NUMA</li>
-</ul>
+        <h2>2. Clústeres en Workgroup</h2>
+        <p>Permite implementar clústeres sin dependencia de Active Directory para escenarios edge.</p>
 
-<h3>Capacidad por Máquina Virtual (Gen2)</h3>
-<ul>
-<li>Hasta <strong>2.048 vCPUs por VM</strong></li>
-<li>Hasta <strong>240 TB de memoria RAM por VM</strong></li>
-<li>Secure Boot y vTPM habilitados por defecto</li>
-</ul>
+        <h2>3. GPU Partitioning Mejorado</h2>
+        <ul>
+            <li>Soporte de Live Migration con GPU asignada</li>
+            <li>Aislamiento seguro para IA y VDI</li>
+        </ul>
 
-<h2>2. Clústeres en Workgroup (Sin Active Directory)</h2>
+        <h2>4. Redes y Almacenamiento</h2>
+        <ul>
+            <li><strong>SMB over QUIC:</strong> Cifrado TLS integrado</li>
+            <li><strong>CSV:</strong> Acceso concurrente y migración en caliente</li>
+        </ul>
 
-<p>
-Windows Server 2025 permite implementar clústeres sin dependencia de Active Directory, lo que simplifica despliegues en escenarios edge y sucursales remotas.
-</p>
+        <h2>5. Procedimiento de Implementación</h2>
+        <div class="tech-box">
+            Install-WindowsFeature -Name Hyper-V, Failover-Clustering -IncludeManagementTools
+        </div>
+        <div class="tech-box">
+            New-Cluster -Name CLUSTER-2025 -Node NODE1,NODE2 -StaticAddress 10.0.0.100
+        </div>
 
-<ul>
-<li>Arquitecturas desconectadas</li>
-<li>Infraestructura perimetral</li>
-<li>Reducción de complejidad operativa</li>
-</ul>
-
-<h2>3. GPU Partitioning Mejorado</h2>
-
-<p>
-Se mejora el soporte para GPU Partitioning (GPU-P), permitiendo que múltiples máquinas virtuales compartan una GPU física con aislamiento seguro.
-</p>
-
-<ul>
-<li>Soporte de Live Migration con GPU asignada</li>
-<li>Ideal para IA, VDI y renderizado</li>
-<li>Optimización de recursos gráficos</li>
-</ul>
-
-<h2>4. Redes y Almacenamiento</h2>
-
-<h3>SMB over QUIC</h3>
-<ul>
-<li>Compartición segura de archivos remotos</li>
-<li>Cifrado TLS integrado</li>
-</ul>
-
-<h3>Cluster Shared Volumes (CSV)</h3>
-<ul>
-<li>Acceso concurrente a almacenamiento compartido</li>
-<li>Migración en caliente sin pérdida de conectividad</li>
-</ul>
-
-<h2>5. Procedimiento de Implementación</h2>
-
-<p>Instalación de roles:</p>
-
-<div class="tech-box">
-Install-WindowsFeature -Name Hyper-V, Failover-Clustering -IncludeManagementTools
-</div>
-
-<p>Validación del clúster:</p>
-
-<div class="tech-box">
-Test-Cluster -Node NODE1,NODE2
-</div>
-
-<p>Creación del clúster:</p>
-
-<div class="tech-box">
-New-Cluster -Name CLUSTER-2025 -Node NODE1,NODE2 -StaticAddress 10.0.0.100
-</div>
-
-<p>
-La configuración del heartbeat opera con 1 latido por segundo y 5 fallos en 10 segundos desencadenan migración automática.
-</p>
-
-<h2>6. Alta Disponibilidad</h2>
-
-<ul>
-<li>Monitorización constante entre nodos</li>
-<li>Failover automático</li>
-<li>Protección contra split-brain</li>
-<li>Continuidad operativa 24x7</li>
-</ul>
-
-<h2>7. Conclusión Estratégica</h2>
-
-<p>
-Hyper-V Clustering en Windows Server 2025 se posiciona como una plataforma de virtualización preparada para infraestructuras de alta densidad, entornos híbridos y cargas aceleradas por hardware, combinando escalabilidad masiva, seguridad avanzada y flexibilidad operativa.
-</p>
-
-</article>
+        <h2>6. Conclusión Estratégica</h2>
+        <p>Plataforma preparada para infraestructuras de alta densidad y entornos híbridos.</p>
+    </article>
 </main>
 
 <footer>
-© 2026 Technology Advisory · Enterprise Infrastructure
+    © 2026 Technology Advisory · Enterprise Infrastructure Intelligence
 </footer>
 
 </body>
