@@ -19,7 +19,8 @@
         {
             "archivo": "CVE_explotado_en_produccion.html",
             "titulo": "CVE explotado en producción: ¿Tu empresa reacciona… o improvisa?",
-            "desc": "Cada vez que un proveedor publica un hotfix para un CVE explotado activamente, la pregunta no es técnica. Es organizativa.",
+			"desc": "Ante un CVE explotado in the wild, la diferencia entre reacción y improvisación depende del modelo de gestión de vulnerabilidades. Un análisis sobre inteligencia de amenazas, priorización real y reducción del tiempo de exposición.",
+			"dir": "post",
             "tag": "Seguridad",
             "fecha": "Actualizado hace 1 días",
             "severidad": "medium"
@@ -28,6 +29,7 @@
             "archivo": "iscsi-san.html",
             "titulo": "Optimización iSCSI SAN",
             "desc": "Configuración de MPIO y Jumbo Frames para alto rendimiento.",
+			"dir": " ",
             "tag": "Storage",
             "fecha": "Actualizado hace 5 días",
             "severidad": "high"
@@ -36,6 +38,7 @@
             "archivo": "zero-trust.html",
             "titulo": "Zero Trust en On-Premise",
             "desc": "Arquitectura de seguridad para centros de datos tradicionales.",
+			"dir": " ",
             "tag": "Seguridad",
             "fecha": "Nueva",
             "severidad": "critical"
