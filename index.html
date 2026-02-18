@@ -7,6 +7,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
+        /* Estilos para la IP en el header */
+        .header-status {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: 20px;
+            padding-left: 20px;
+            border-left: 1px solid rgba(255,255,255,0.1);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+        }
+        .status-tag {
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .network-type { color: #64748b; }
+
         .login-form { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
         .login-input {
             background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border);
@@ -18,14 +38,18 @@
             border-radius: 6px; font-weight: 700; font-size: 0.75rem; cursor: pointer;
             text-transform: uppercase; transition: 0.3s;
         }
-        .btn-login:hover { opacity: 0.9; }
     </style>
 </head>
 <body>
 
 <header class="main-header">
-    <div class="header-left">
+    <div class="header-left" style="display: flex; align-items: center;">
         <span class="logo">TECHNOLOGY ADVISORY</span>
+        <div class="header-status">
+            <span class="network-type" id="node-label">NODE_ID:</span>
+            <span id="user-ip-header" class="status-tag">Detectando...</span>
+            <span id="user-isp" style="color: #475569; font-size: 0.6rem;">---</span>
+        </div>
     </div>
     <nav class="nav-links">
         <a href="index.html" class="active">Dashboard</a>
@@ -81,15 +105,9 @@
 
         <div class="panel-box login-widget">
             <h3 class="panel-title">Acceso Restringido</h3>
-            <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 12px; border-radius: 8px; margin-bottom: 15px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                    <span style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800;">Accesos Globales</span>
-                    <span id="visit-count" style="font-family: 'JetBrains Mono'; color: #10b981; font-weight: 800; font-size: 0.9rem;">...</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800;">Tu Origen</span>
-                    <span id="user-ip" style="font-family: 'JetBrains Mono'; color: var(--accent); font-weight: 800; font-size: 0.7rem;">Detectando...</span>
-                </div>
+            <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 10px; border-radius: 8px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800;">Estado del Sistema</span>
+                <span id="visit-count" style="font-family: 'JetBrains Mono'; color: #10b981; font-weight: 800; font-size: 0.8rem;">ONLINE</span>
             </div>
             <form class="login-form" onsubmit="return false;">
                 <input type="text" placeholder="ID de Usuario" class="login-input">
@@ -114,14 +132,32 @@
         }
     });
 
-    // Visitas e IP
+    // Contador de Accesos Globales
     fetch('https://api.countapi.xyz/hit/technology-advisory-research/visits')
-        .then(res => res.json()).then(data => document.getElementById('visit-count').innerText = data.value.toLocaleString())
+        .then(res => res.json()).then(data => document.getElementById('visit-count').innerText = "V_" + data.value)
         .catch(() => document.getElementById('visit-count').innerText = "ONLINE");
 
-    fetch('https://api.ipify.org?format=json')
-        .then(res => res.json()).then(data => document.getElementById('user-ip').innerText = data.ip)
-        .catch(() => document.getElementById('user-ip').innerText = "HIDDEN");
+    // Detección avanzada de IP e ISP en el Header
+    fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('user-ip-header').innerText = data.ip;
+            const isp = data.org.toUpperCase();
+            document.getElementById('user-isp').innerText = isp;
+            
+            // Lógica simple para detectar tipo de red
+            const nodeLabel = document.getElementById('node-label');
+            if(isp.includes('VPN') || isp.includes('HOST') || isp.includes('CLOUD') || isp.includes('DATACENTER')) {
+                nodeLabel.innerText = 'SECURE_VPN:';
+                nodeLabel.style.color = '#10b981';
+            } else {
+                nodeLabel.innerText = 'PUBLIC_NET:';
+            }
+        })
+        .catch(() => {
+            document.getElementById('user-ip-header').innerText = '127.0.0.1';
+            document.getElementById('node-label').innerText = 'LOCAL_HOST:';
+        });
 </script>
 </body>
 </html>
