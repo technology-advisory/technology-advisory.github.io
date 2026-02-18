@@ -2,21 +2,18 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1280">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technology Advisory | Infrastructure Intelligence</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="assets/css/style.css">
-
     <style>
-        /* Ajustes ligeros para asegurar que el header se vea profesional con los nuevos datos */
-        .header-status { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            padding-left: 20px; 
-            border-left: 1px solid rgba(255,255,255,0.1); 
+        /* Estilos para el estado de conexión en el Header */
+        .header-status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-left: 20px;
+            border-left: 1px solid rgba(255,255,255,0.1);
         }
         .status-info { display: flex; flex-direction: column; }
         .status-label { font-size: 0.6rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 2px; text-transform: uppercase; }
@@ -44,8 +41,8 @@
     </div>
     <nav class="nav-links">
         <a href="index.html" class="active">Dashboard</a>
-        <a href="investigacion/browser.html">Investigación</a>
-        <a href="cve/listado-cve-CISA_Catalog_exploited.html">Vulnerabilidades (CISA KEV)</a>
+        <a href="investigacion/listado-cve-CISA_Catalog_exploited.html">Vulnerabilidades (CISA KEV)</a>
+        <a href="#" style="opacity: 0.5; cursor: default;">Listado General (NVD)</a>
         <a href="#" style="opacity: 0.5; cursor: default;">Notas</a>
     </nav>
 </header>
@@ -80,9 +77,10 @@
                 <span style="font-size: 0.65rem; color: var(--text); font-weight: 600; text-transform: uppercase;">Amenazas Explotadas</span>
             </div>
             <div id="vuln-container" class="vuln-feed">
-                </div>
+                <p style="color: var(--text-muted); font-size: 0.8rem;">Sincronizando con CISA...</p>
+            </div>
             <div class="sidebar-footer" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border);">
-                <a href="cve/listado-cve-CISA_Catalog_exploited.html" class="btn-ver-mas" style="display: block; width: 100%; padding: 12px; background: rgba(59, 130, 246, 0.05); border: 1px solid var(--accent); color: var(--accent); text-align: center; text-decoration: none; font-size: 0.75rem; font-weight: 700; border-radius: 8px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;">
+                <a href="investigacion/listado-cve-CISA_Catalog_exploited.html" class="btn-ver-mas" style="display: block; width: 100%; padding: 12px; background: rgba(59, 130, 246, 0.05); border: 1px solid var(--accent); color: var(--accent); text-align: center; text-decoration: none; font-size: 0.75rem; font-weight: 700; border-radius: 8px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;">
                     Catálogo CISA Completo
                 </a>
             </div>
