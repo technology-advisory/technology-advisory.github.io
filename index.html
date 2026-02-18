@@ -15,7 +15,7 @@
     </div>
     <nav class="nav-links">
         <a href="index.html" class="active">Dashboard</a>
-        <a href="#" style="opacity: 0.5; cursor: default;">Investigación</a>
+        <a href="investigacion/listado-cve-CISA_Catalog_exploited.html">Investigación</a>
         <a href="#" style="opacity: 0.5; cursor: default;">Notas</a>
         <a href="#" style="opacity: 0.5; cursor: default;">Vulnerabilidades</a>
     </nav>
@@ -50,21 +50,25 @@
         <div class="panel-box">
             <h3 class="panel-title">Threat Intelligence (CVEs)</h3>
             
+            <div id="cisa-counter" style="background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; padding: 10px; margin-bottom: 15px; border-radius: 4px; display: none;">
+                <span id="cve-count-val" style="color: #ef4444; font-weight: 800; font-family: 'JetBrains Mono';">0</span> 
+                <span style="font-size: 0.65rem; color: var(--text); font-weight: 600; text-transform: uppercase;">Amenazas Explotadas</span>
+            </div>
+
             <div id="vuln-container" class="vuln-feed">
                 <p style="color: var(--text-muted); font-size: 0.8rem;">Sincronizando con CISA...</p>
             </div>
 
             <div class="sidebar-footer" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border);">
-                <a href="investigacion/listado-cve.html" class="btn-ver-mas" style="display: block; width: 100%; padding: 10px; background: rgba(59, 130, 246, 0.05); border: 1px solid var(--accent); color: var(--accent); text-align: center; text-decoration: none; font-size: 0.75rem; font-weight: 700; border-radius: 8px; transition: 0.3s; text-transform: uppercase;">
-                    Ver todas las amenazas
+                <a href="investigacion/listado-cve-CISA_Catalog_exploited.html" class="btn-ver-mas" style="display: block; width: 100%; padding: 12px; background: rgba(59, 130, 246, 0.05); border: 1px solid var(--accent); color: var(--accent); text-align: center; text-decoration: none; font-size: 0.75rem; font-weight: 700; border-radius: 8px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;">
+                    Catálogo CISA KEV completo
                 </a>
             </div>
         </div>
 
         <div class="panel-box">
             <h3 class="panel-title">Tecnologías en Foco</h3>
-            <div id="tendencias-container" class="tag-cloud">
-                </div>
+            <div id="tendencias-container" class="tag-cloud"></div>
         </div>
 
         <div class="panel-box community-widget">
@@ -83,6 +87,16 @@
 </footer>
 
 <script src="assets/js/script.js"></script>
+<script>
+    fetch('data/cve.json')
+        .then(res => res.json())
+        .then(data => {
+            if(data.vulnerabilities) {
+                document.getElementById('cve-count-val').innerText = data.vulnerabilities.length;
+                document.getElementById('cisa-counter').style.display = 'block';
+            }
+        }).catch(e => console.log("CISA Data no disponible"));
+</script>
 
 </body>
 </html>
