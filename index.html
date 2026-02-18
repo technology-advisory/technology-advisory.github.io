@@ -2,19 +2,12 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1280">
     <title>Technology Advisory | Infrastructure Intelligence</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        /* Estilos para el estado de conexión en el Header */
-        .header-status {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding-left: 20px;
-            border-left: 1px solid rgba(255,255,255,0.1);
-        }
+        .header-status { display: flex; align-items: center; gap: 12px; padding-left: 20px; border-left: 1px solid rgba(255,255,255,0.1); }
         .status-info { display: flex; flex-direction: column; }
         .status-label { font-size: 0.6rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 2px; text-transform: uppercase; }
         .status-data { display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; }
@@ -27,7 +20,6 @@
 <header class="main-header">
     <div class="header-left" style="display: flex; align-items: center;">
         <span class="logo">TECHNOLOGY ADVISORY</span>
-        
         <div class="header-status" id="connection-header">
             <div class="status-info">
                 <span id="node-label" class="status-label">Detectando Red...</span>
@@ -41,8 +33,8 @@
     </div>
     <nav class="nav-links">
         <a href="index.html" class="active">Dashboard</a>
-        <a href="investigacion/listado-cve-CISA_Catalog_exploited.html">Vulnerabilidades (CISA KEV)</a>
-        <a href="#" style="opacity: 0.5; cursor: default;">Listado General (NVD)</a>
+        <a href="investigacion/browser.html">Investigación</a>
+        <a href="cve/listado-cve-CISA_Catalog_exploited.html">Vulnerabilidades (CISA KEV)</a>
         <a href="#" style="opacity: 0.5; cursor: default;">Notas</a>
     </nav>
 </header>
@@ -80,7 +72,7 @@
                 <p style="color: var(--text-muted); font-size: 0.8rem;">Sincronizando con CISA...</p>
             </div>
             <div class="sidebar-footer" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border);">
-                <a href="investigacion/listado-cve-CISA_Catalog_exploited.html" class="btn-ver-mas" style="display: block; width: 100%; padding: 12px; background: rgba(59, 130, 246, 0.05); border: 1px solid var(--accent); color: var(--accent); text-align: center; text-decoration: none; font-size: 0.75rem; font-weight: 700; border-radius: 8px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;">
+                <a href="cve/listado-cve-CISA_Catalog_exploited.html" class="btn-ver-mas" style="display: block; width: 100%; padding: 12px; background: rgba(59, 130, 246, 0.05); border: 1px solid var(--accent); color: var(--accent); text-align: center; text-decoration: none; font-size: 0.75rem; font-weight: 700; border-radius: 8px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;">
                     Catálogo CISA Completo
                 </a>
             </div>
@@ -99,33 +91,50 @@
 
 <script src="assets/js/script.js"></script>
 <script>
-    // 1. Detección Avanzada de IP/ISP (Header)
-    fetch('https://ipapi.co/json/')
+    // --- NUEVO SISTEMA DE DETECCIÓN CON REPALDO ---
+    const ipEl = document.getElementById('user-ip-header');
+    const ispEl = document.getElementById('user-isp');
+    const lbEl = document.getElementById('node-label');
+    const keywords = ['VPN', 'PROXY', 'HOST', 'CLOUD', 'DATACENTER', 'HYDRA', 'OVH', 'DIGITALOCEAN', 'AMAZON', 'AWS', 'M247', 'INFRASTRUCTURE'];
+
+    function updateHeader(ip, org) {
+        ipEl.innerText = ip;
+        const isp = org.toUpperCase();
+        ispEl.innerText = isp;
+        const isSecure = keywords.some(kw => isp.includes(kw));
+        
+        if(isSecure) {
+            lbEl.innerText = '🛡️ NAVEGACIÓN SEGURA (VPN/DC)';
+            lbEl.style.color = '#10b981';
+            ipEl.style.color = '#10b981';
+        } else {
+            lbEl.innerText = '🌐 NAVEGACIÓN POR ISP (PÚBLICA)';
+            lbEl.style.color = '#f59e0b';
+            ipEl.style.color = '#22d3ee';
+        }
+    }
+
+    // Usamos ipwho.is que no tiene los límites tan estrictos como ipapi.co
+    fetch('https://ipwho.is/')
         .then(res => res.json())
         .then(data => {
-            const ipEl = document.getElementById('user-ip-header');
-            const ispEl = document.getElementById('user-isp');
-            const lbEl = document.getElementById('node-label');
-            const isp = (data.org || "ISP_UNKNOWN").toUpperCase();
-            
-            ipEl.innerText = data.ip;
-            ispEl.innerText = isp;
-
-            const secureKW = ['VPN', 'PROXY', 'HOST', 'CLOUD', 'DATACENTER', 'HYDRA', 'OVH', 'DIGITALOCEAN', 'AMAZON', 'AWS', 'M247', 'INFRASTRUCTURE'];
-            const isSecure = secureKW.some(kw => isp.includes(kw));
-
-            if(isSecure) {
-                lbEl.innerText = '🛡️ NAVEGACIÓN SEGURA (VPN/DC)';
-                lbEl.style.color = '#10b981';
-                ipEl.style.color = '#10b981';
+            if(data.success) {
+                updateHeader(data.ip, data.connection.isp);
             } else {
-                lbEl.innerText = '🌐 NAVEGACIÓN POR ISP (PÚBLICA)';
-                lbEl.style.color = '#f59e0b';
-                ipEl.style.color = '#22d3ee';
+                throw new Error("API Limit reached");
             }
-        }).catch(() => { document.getElementById('node-label').innerText = 'OFFLINE_MODE'; });
+        })
+        .catch(() => {
+            // Respaldamos con una API que solo da la IP si la principal falla
+            fetch('https://api.ipify.org?format=json')
+                .then(res => res.json())
+                .then(data => {
+                    ipEl.innerText = data.ip;
+                    lbEl.innerText = 'NODE_ACTIVE (IP_ONLY)';
+                });
+        });
 
-    // 2. Contador CISA
+    // Contador CISA
     fetch('data/cve.json').then(res => res.json()).then(data => {
         if(data.vulnerabilities) {
             document.getElementById('cve-count-val').innerText = data.vulnerabilities.length;
