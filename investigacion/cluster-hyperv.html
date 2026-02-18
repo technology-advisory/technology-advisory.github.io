@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1280">
-    <title>Implementación Hyper-V 2025 | Technology Advisory</title>
+    <title>Windows Server 2025 & Hyper-V | Technology Advisory</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
 
@@ -67,13 +67,14 @@
 <header class="main-header">
     <div style="display:flex; flex-direction:column;">
         <a href="../index.html" style="font-weight:800; text-decoration:none; color:#fff; font-size:1.1rem; line-height:1;">TECHNOLOGY ADVISORY</a>
-        <span style="font-size:0.65rem; letter-spacing:2px; color:#94a3b8; margin-top:5px; font-weight:600; text-transform:uppercase;">ENTERPRISE INFRASTRUCTURE INTELLIGENCE</span>
+        <span style="font-size:0.65rem; letter-spacing:2px; color:#94a3b8; margin-top:5px; font-weight:600; text-transform:uppercase;">
+            ENTERPRISE INFRASTRUCTURE INTELLIGENCE
+        </span>
     </div>
 
     <div class="header-right">
         <a href="../index.html" class="btn-dashboard-nav">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-            Dashboard Principal
+            ← Dashboard Principal
         </a>
         <nav class="nav-links">
             <a href="#" class="active" style="color:#3b82f6; text-decoration:none; font-weight:700; font-size:0.9rem;">Investigación</a>
@@ -83,44 +84,85 @@
 
 <main class="article-layout">
     <article class="content-body">
-        <span class="badge-pill">Technical Review</span>
-        <h1>Implementación de Hyper-V en Windows Server 2025</h1>
+        <span class="badge-pill">Strategic & Technical Review</span>
+        <h1>Windows Server 2025 y el Nuevo Escenario de Hyper-V</h1>
         
-        <p>Windows Server 2025 marca un hito en la virtualización de Microsoft, introduciendo mejoras masivas en rendimiento y escalabilidad diseñadas para centros de datos de próxima generación y despliegues críticos en el borde (Edge).</p>
+        <p>
+        Windows Server 2025 redefine la estrategia de virtualización de Microsoft. Mientras introduce mejoras masivas en escalabilidad, seguridad y soporte para cargas modernas, también marca el fin del Hyper-V gratuito independiente, consolidando el hipervisor exclusivamente como rol dentro de Windows Server licenciado.
+        </p>
 
-        <h2>1. Escalabilidad y Límites de Rendimiento</h2>
-        <p>La nueva arquitectura rompe las barreras previas, permitiendo la consolidación de cargas de trabajo que antes requerían hardware físico dedicado:</p>
+        <h2>1. Fin del Hyper-V Gratuito</h2>
+        <p>
+        Con Windows Server 2025 desaparece la edición independiente y gratuita de Hyper-V Server. A partir de esta versión, el hipervisor solo puede desplegarse como rol dentro de Windows Server Standard o Datacenter.
+        </p>
         <ul>
-            <li><strong>Capacidad de Computación:</strong> Soporte para hasta <strong>2,048 CPUs virtuales (vCPUs)</strong> por máquina virtual.</li>
-            <li><strong>Densidad de Memoria:</strong> Hasta <strong>240 TB de memoria RAM</strong> por instancia virtual.</li>
-            <li><strong>Hardware del Host:</strong> Optimización para servidores con hasta 4 PB de RAM y miles de procesadores lógicos.</li>
+            <li>Impacto directo en costes para pequeñas y medianas empresas.</li>
+            <li>Mayor alineación con modelo de licenciamiento empresarial.</li>
+            <li>Integración completa con soporte y ciclo de vida oficial.</li>
         </ul>
 
-        <h2>2. Innovaciones en Almacenamiento y Red</h2>
-        <p>Se han introducido protocolos avanzados para reducir la latencia y aumentar la seguridad:</p>
+        <h2>2. Escalabilidad Extrema</h2>
+        <p>La arquitectura amplía los límites de consolidación en centros de datos de alta densidad:</p>
         <ul>
-            <li><strong>SMB over QUIC:</strong> Acceso seguro a archivos mediante TLS 1.3, ideal para entornos móviles o redes externas.</li>
-            <li><strong>Cluster Shared Volumes (CSV):</strong> Mejoras en el acceso concurrente y optimización específica para almacenamiento NVMe.</li>
+            <li><strong>Host:</strong> Hasta 4 PB de memoria RAM y 2.048 procesadores lógicos.</li>
+            <li><strong>Máquina Virtual (Gen2):</strong> Hasta 2.048 vCPUs y 240 TB de RAM.</li>
+            <li><strong>Optimización NUMA:</strong> Mejoras en asignación de recursos para cargas intensivas.</li>
         </ul>
 
-        <h2>3. GPU Partitioning y Live Migration</h2>
-        <p>Una de las funciones más esperadas es el <strong>GPU-P (GPU Partitioning)</strong>. A diferencia de versiones anteriores, Windows Server 2025 permite compartir una GPU física entre varias VMs manteniendo la capacidad de <strong>Live Migration</strong>, lo que permite mover cargas de IA o VDI entre nodos sin interrumpir el servicio.</p>
+        <h2>3. Generación 2 como Estándar</h2>
+        <p>Windows Server 2025 establece Gen2 como configuración predeterminada:</p>
+        <ul>
+            <li>Firmware UEFI moderno.</li>
+            <li><strong>Secure Boot</strong> habilitado por defecto.</li>
+            <li><strong>vTPM</strong> para cifrado y protección avanzada.</li>
+            <li>Compatibilidad con Shielded VMs.</li>
+        </ul>
 
-        <h2>4. Despliegue de Clústeres sin Dominio</h2>
-        <p>Los nuevos <strong>Workgroup Clusters</strong> permiten crear infraestructuras de alta disponibilidad sin la necesidad obligatoria de Active Directory. Esta funcionalidad es clave para infraestructuras tácticas o despliegues en el borde donde la simplicidad operativa es prioritaria.</p>
+        <h2>4. GPU Partitioning y Live Migration</h2>
+        <p>
+        El nuevo soporte de <strong>GPU Partitioning (GPU-P)</strong> permite compartir una GPU física entre múltiples VMs manteniendo aislamiento y rendimiento.
+        </p>
+        <ul>
+            <li>Compatible con Live Migration.</li>
+            <li>Optimizado para IA, VDI y cargas de renderizado.</li>
+            <li>Mejora significativa frente a versiones anteriores.</li>
+        </ul>
 
-        <h2>5. Guía de Instalación Rápida</h2>
-        <p>Para habilitar el rol de Hyper-V junto con las herramientas de administración mediante consola:</p>
+        <h2>5. Clústeres sin Active Directory</h2>
+        <p>
+        La introducción de <strong>Workgroup Clusters</strong> elimina la dependencia obligatoria de Active Directory para alta disponibilidad.
+        </p>
+        <ul>
+            <li>Ideal para entornos Edge.</li>
+            <li>Sucursales remotas o infraestructuras tácticas.</li>
+            <li>Simplificación de despliegues distribuidos.</li>
+        </ul>
+
+        <h2>6. Innovaciones en Red y Almacenamiento</h2>
+        <ul>
+            <li><strong>SMB over QUIC:</strong> Acceso seguro mediante TLS 1.3.</li>
+            <li><strong>Cluster Shared Volumes (CSV):</strong> Optimización para almacenamiento NVMe.</li>
+            <li>Mejoras en Storage Live Migration y movilidad sin almacenamiento compartido.</li>
+        </ul>
+
+        <h2>7. Instalación del Rol Hyper-V</h2>
+        <p>Habilitación mediante PowerShell:</p>
         <div class="tech-box">
-            Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart
+Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart
         </div>
 
-        <h3>Requisitos Previos del Sistema</h3>
+        <h3>Requisitos Previos</h3>
         <ul>
-            <li>Procesador de 64 bits con <strong>SLAT</strong> (Second Level Address Translation).</li>
-            <li>Extensiones de virtualización (Intel VT-x o AMD-V) activas en firmware.</li>
-            <li>Se recomienda el uso de <strong>Generación 2</strong> para VMs, aprovechando Secure Boot y el stack UEFI moderno.</li>
+            <li>CPU x64 con <strong>SLAT</strong>.</li>
+            <li>Virtualización habilitada en BIOS/UEFI.</li>
+            <li>Uso recomendado de VMs Generación 2.</li>
         </ul>
+
+        <h2>Conclusión Estratégica</h2>
+        <p>
+        Windows Server 2025 consolida Hyper-V como plataforma empresarial de alta gama. Aunque el fin de la versión gratuita modifica el panorama económico, las mejoras en escalabilidad, seguridad, GPU virtualizada y clustering sin dominio posicionan la solución como una alternativa robusta y competitiva para infraestructuras modernas.
+        </p>
+
     </article>
 </main>
 
