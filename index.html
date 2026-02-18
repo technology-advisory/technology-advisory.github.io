@@ -7,26 +7,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        /* Estilos para la IP en el header */
+        /* Estilos para el estado de conexión en el Header */
         .header-status {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-left: 20px;
+            gap: 12px;
             padding-left: 20px;
             border-left: 1px solid rgba(255,255,255,0.1);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
         }
-        .status-tag {
-            padding: 2px 6px;
-            border-radius: 4px;
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent);
-            font-weight: 700;
-        }
-        .network-type { color: #64748b; }
+        .status-info { display: flex; flex-direction: column; }
+        .status-label { font-size: 0.6rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 2px; text-transform: uppercase; }
+        .status-data { display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; }
+        .ip-text { color: #22d3ee; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.5px; }
+        .isp-text { color: #94a3b8; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+        /* Estilos para el Widget de Acceso Restringido */
         .login-form { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
         .login-input {
             background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border);
@@ -38,6 +33,7 @@
             border-radius: 6px; font-weight: 700; font-size: 0.75rem; cursor: pointer;
             text-transform: uppercase; transition: 0.3s;
         }
+        .btn-login:hover { opacity: 0.9; box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
     </style>
 </head>
 <body>
@@ -45,10 +41,16 @@
 <header class="main-header">
     <div class="header-left" style="display: flex; align-items: center;">
         <span class="logo">TECHNOLOGY ADVISORY</span>
-        <div class="header-status">
-            <span class="network-type" id="node-label">NODE_ID:</span>
-            <span id="user-ip-header" class="status-tag">Detectando...</span>
-            <span id="user-isp" style="color: #475569; font-size: 0.6rem;">---</span>
+        
+        <div class="header-status" id="connection-header">
+            <div class="status-info">
+                <span id="node-label" class="status-label">Detectando Red...</span>
+                <div class="status-data">
+                    <span id="user-ip-header" class="ip-text">0.0.0.0</span>
+                    <span style="color: rgba(255,255,255,0.15);">|</span>
+                    <span id="user-isp" class="isp-text">---</span>
+                </div>
+            </div>
         </div>
     </div>
     <nav class="nav-links">
@@ -124,7 +126,33 @@
 
 <script src="assets/js/script.js"></script>
 <script>
-    // Contador CISA
+    // 1. Detección Avanzada de IP/ISP (Header)
+    fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(data => {
+            const ipEl = document.getElementById('user-ip-header');
+            const ispEl = document.getElementById('user-isp');
+            const lbEl = document.getElementById('node-label');
+            const isp = (data.org || "ISP_UNKNOWN").toUpperCase();
+            
+            ipEl.innerText = data.ip;
+            ispEl.innerText = isp;
+
+            const secureKW = ['VPN', 'PROXY', 'HOST', 'CLOUD', 'DATACENTER', 'HYDRA', 'OVH', 'DIGITALOCEAN', 'AMAZON', 'AWS', 'M247', 'INFRASTRUCTURE'];
+            const isSecure = secureKW.some(kw => isp.includes(kw));
+
+            if(isSecure) {
+                lbEl.innerText = '🛡️ NAVEGACIÓN SEGURA (VPN/DC)';
+                lbEl.style.color = '#10b981';
+                ipEl.style.color = '#10b981';
+            } else {
+                lbEl.innerText = '🌐 NAVEGACIÓN POR ISP (PÚBLICA)';
+                lbEl.style.color = '#f59e0b';
+                ipEl.style.color = '#22d3ee';
+            }
+        }).catch(() => { document.getElementById('node-label').innerText = 'OFFLINE_MODE'; });
+
+    // 2. Contador CISA
     fetch('data/cve.json').then(res => res.json()).then(data => {
         if(data.vulnerabilities) {
             document.getElementById('cve-count-val').innerText = data.vulnerabilities.length;
@@ -132,32 +160,12 @@
         }
     });
 
-    // Contador de Accesos Globales
+    // 3. Contador de Visitas Global
     fetch('https://api.countapi.xyz/hit/technology-advisory-research/visits')
-        .then(res => res.json()).then(data => document.getElementById('visit-count').innerText = "V_" + data.value)
-        .catch(() => document.getElementById('visit-count').innerText = "ONLINE");
-
-    // Detección avanzada de IP e ISP en el Header
-    fetch('https://ipapi.co/json/')
-        .then(res => res.json())
-        .then(data => {
-            document.getElementById('user-ip-header').innerText = data.ip;
-            const isp = data.org.toUpperCase();
-            document.getElementById('user-isp').innerText = isp;
-            
-            // Lógica simple para detectar tipo de red
-            const nodeLabel = document.getElementById('node-label');
-            if(isp.includes('VPN') || isp.includes('HOST') || isp.includes('CLOUD') || isp.includes('DATACENTER')) {
-                nodeLabel.innerText = 'SECURE_VPN:';
-                nodeLabel.style.color = '#10b981';
-            } else {
-                nodeLabel.innerText = 'PUBLIC_NET:';
-            }
-        })
-        .catch(() => {
-            document.getElementById('user-ip-header').innerText = '127.0.0.1';
-            document.getElementById('node-label').innerText = 'LOCAL_HOST:';
-        });
+        .then(res => res.json()).then(data => {
+            document.getElementById('visit-count').innerText = "V_" + data.value;
+        }).catch(() => { document.getElementById('visit-count').innerText = "ONLINE"; });
 </script>
+
 </body>
 </html>
