@@ -9,136 +9,205 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
-        /* Ajustes específicos para que no se rompa el layout */
-        .feature-card { min-height: 400px; display: flex; align-items: center; }
-        #news-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 20px; 
-            margin-top: 30px; 
+        /* Estilos para el Header con Subtítulo */
+        .brand-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .card { 
-            background: var(--card); 
-            padding: 25px; 
-            border-radius: 16px; 
-            border: 1px solid var(--border); 
+        .logo-main {
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: #fff;
+            line-height: 1;
+        }
+        .logo-sub {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-top: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .header-status { 
             display: flex; 
-            flex-direction: column; 
-            justify-content: space-between;
+            align-items: center; 
+            gap: 12px; 
+            padding-left: 20px; 
+            margin-left: 20px;
+            border-left: 1px solid rgba(255,255,255,0.1); 
+        }
+        .status-info { display: flex; flex-direction: column; }
+        .status-label { font-size: 0.6rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 2px; text-transform: uppercase; color: var(--text-muted); }
+        .status-data { display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; }
+        .ip-text { color: #22d3ee; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.5px; }
+        .isp-text { color: #94a3b8; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+        .btn-dashboard {
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            background: rgba(59, 130, 246, 0.05);
+            color: var(--accent); 
+            text-decoration: none; 
+            padding: 8px 16px; 
+            border-radius: 8px;
+            border: 1px solid rgba(59, 130, 246, 0.2); 
+            font-size: 0.75rem; 
+            font-weight: 800;
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+        .btn-dashboard:hover { 
+            background: var(--accent); 
+            color: white; 
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); 
         }
     </style>
 </head>
 <body>
 
 <header class="main-header">
-    <div class="brand-container">
-        <a href="index.html" class="logo-main" style="text-decoration:none;">TECHNOLOGY ADVISORY</a>
-        <span class="logo-sub">Enterprise Infrastructure Intelligence</span>
-    </div>
-
-    <div class="header-right">
-        <div class="header-status" style="display: flex; align-items: center; gap: 15px; border-left: 1px solid var(--border); padding-left: 20px;">
-            <div style="display: flex; flex-direction: column;">
-                <span id="net-label" style="font-size: 0.6rem; font-weight: 800; color: var(--text-muted);">SINCRONIZANDO...</span>
-                <span id="ip-display" style="font-family: 'JetBrains Mono'; font-size: 0.85rem; color: #22d3ee;">0.0.0.0</span>
+    <div class="header-left" style="display: flex; align-items: center;">
+        <div class="brand-container">
+            <span class="logo-main">TECHNOLOGY ADVISORY</span>
+            <span class="logo-sub">ENTERPRISE INFRASTRUCTURE INTELLIGENCE</span>
+        </div>
+        
+        <div class="header-status" id="connection-header">
+            <div class="status-info">
+                <span id="node-label" class="status-label">SINCRONIZANDO RED...</span>
+                <div class="status-data">
+                    <span id="user-ip-header" class="ip-text">---.---.---.---</span>
+                    <span style="color: rgba(255,255,255,0.15);">|</span>
+                    <span id="user-isp" class="isp-text">BUSCANDO_NODO</span>
+                </div>
             </div>
         </div>
-        <nav class="nav-links">
-            <a href="index.html" class="active">Dashboard</a>
-            <a href="investigacion/browser.html">Investigación</a>
-            <a href="cve/listado-cve-CISA_Catalog_exploited.html">CISA KEV</a>
-        </nav>
     </div>
+    <nav class="nav-links">
+        <a href="index.html" class="active">Dashboard</a>
+        <a href="investigacion/browser.html">Investigación</a>
+        <a href="cve/listado-cve-CISA_Catalog_exploited.html">Vulnerabilidades (CISA KEV)</a>
+    </nav>
 </header>
 
 <main class="full-layout">
-    <div class="main-content">
-        <div id="hero-noticia">
-            <p style="padding: 40px; color: var(--text-muted);">Iniciando sistemas de inteligencia...</p>
+    <section class="main-content">
+        <div class="feature-card" style="background: var(--card); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); display: flex; min-height: 350px;">
+            <div style="padding: 45px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                <span id="hero-tag" style="background: rgba(59, 130, 246, 0.1); color: var(--accent); padding: 5px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; width: fit-content; margin-bottom: 20px;">Cargando...</span>
+                <h1 id="hero-title" style="font-size: 2.2rem; margin: 0 0 15px 0; color: #fff; line-height: 1.2;">...</h1>
+                <p id="hero-desc" style="color: var(--text-muted); font-size: 1rem; margin-bottom: 25px;">Sincronizando noticia principal desde el repositorio...</p>
+                <a id="hero-link" href="#" style="background: var(--accent); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; width: fit-content;">Explorar Documento</a>
+            </div>
+            <div id="hero-img" style="width: 40%; background: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80') center/cover;"></div>
         </div>
 
-        <div id="news-grid"></div>
-    </div>
+        <h2 style="font-size: 1.1rem; margin: 40px 0 20px; color: #fff; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Notas Técnicas Recientes</h2>
+        <div id="notas-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <p style="color: var(--text-muted); font-size: 0.8rem;">Sincronizando con repositorio de notas...</p>
+        </div>
+    </section>
 
     <aside class="side-panel">
         <div class="panel-box">
-            <h3>System Status</h3>
-            <div style="text-align: center; padding: 20px 0;">
-                <span id="cve-count-val" style="font-size: 2.5rem; font-weight: 800; color: var(--accent); font-family: 'JetBrains Mono';">0</span>
-                <p style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px;">CVEs Detectados</p>
+            <h3 class="panel-title" style="font-size:0.9rem;">Threat Intelligence (CISA KEV)</h3>
+            <div id="cisa-counter" style="background: rgba(239, 68, 68, 0.1); border-left: 3px solid var(--danger); padding: 15px; margin-bottom: 20px; border-radius: 4px; display: none;">
+                <span id="cve-count-val" style="color: var(--danger); font-weight: 800; font-family: 'JetBrains Mono'; font-size: 1.5rem; display: block;">0</span>
+                <span style="font-size: 0.65rem; color: var(--text); font-weight: 700; text-transform: uppercase;">Amenazas Explotadas Activas</span>
             </div>
-            <a href="cve/listado-cve-CISA_Catalog_exploited.html" class="btn-ver-mas">Ver Catálogo KEV</a>
+            <div id="vuln-container" class="vuln-feed"></div>
+            <div style="padding-top: 15px; border-top: 1px solid var(--border); margin-top: 15px;">
+                <a href="cve/listado-cve-CISA_Catalog_exploited.html" style="color: var(--accent); font-size: 0.75rem; text-decoration: none; font-weight: 800; text-transform: uppercase;">Ver Catálogo Completo →</a>
+            </div>
+        </div>
+
+        <div class="panel-box">
+            <h3 class="panel-title">Tecnologías en Foco</h3>
+            <div id="tendencias-container" class="tag-cloud"></div>
         </div>
     </aside>
 </main>
 
+<footer class="minimal-footer" style="text-align: center; padding: 40px 0; color: var(--text-muted); font-size: 0.75rem;">
+    <p>© 2026 Technology Advisory · Enterprise Infrastructure Intelligence</p>
+</footer>
+
+<script src="assets/js/script.js"></script>
 <script>
-    // 1. GESTIÓN DE RED
+	// 1. SINCRONIZACIÓN DE NOTICIA PRINCIPAL (HERO) DESDE JSON
+	async function loadHeroNews() {
+		try {
+			// Añadimos un timestamp para evitar caché del navegador
+			const response = await fetch('data/noticias.json?t=' + Date.now());
+			const data = await response.json();
+			
+			if (data.noticia_hero) {
+				const hero = data.noticia_hero;
+				
+				// Actualizar Textos
+				document.getElementById('hero-tag').innerText = hero.tag || "INVESTIGACIÓN DESTACADA";
+				document.getElementById('hero-title').innerText = hero.titulo;
+				document.getElementById('hero-desc').innerText = hero.desc;
+				document.getElementById('hero-link').href = "investigacion/" + hero.archivo;
+				
+				// ACTUALIZAR IMAGEN (Corrección aquí)
+				const imgContainer = document.getElementById('hero-img');
+				if(hero.imagen && imgContainer) {
+					imgContainer.style.backgroundImage = `url('${hero.imagen}')`;
+					imgContainer.style.backgroundSize = "cover";
+					imgContainer.style.backgroundPosition = "center";
+				}
+			}
+		} catch (error) {
+			console.error("Error cargando noticia hero:", error);
+		}
+	}
+
+	// Llamar a la función al cargar la página
+	loadHeroNews();
+
+    // 2. SINCRONIZACIÓN DE RED
     async function syncNetworkInfo() {
-        const ipEl = document.getElementById('ip-display');
-        const lbEl = document.getElementById('net-label');
+        const ipEl = document.getElementById('user-ip-header');
+        const ispEl = document.getElementById('user-isp');
+        const lbEl = document.getElementById('node-label');
+        const keywords = ['VPN', 'PROXY', 'HOST', 'CLOUD', 'DATACENTER', 'AMAZON', 'AWS', 'M247'];
+
         try {
             const response = await fetch('https://ipwhois.app/json/');
             const data = await response.json();
             if (data.success) {
-                ipEl.innerText = data.ip;
-                lbEl.innerText = data.isp.toUpperCase().includes("VPN") ? '🛡️ NAVEGACIÓN SEGURA' : '🌐 NAVEGACIÓN PÚBLICA';
-                lbEl.style.color = data.isp.toUpperCase().includes("VPN") ? '#10b981' : '#f59e0b';
+                const ip = data.ip;
+                const isp = (data.isp || "ISP_UNKNOWN").toUpperCase();
+                ipEl.innerText = ip;
+                ispEl.innerText = isp;
+                if(keywords.some(kw => isp.includes(kw))) {
+                    lbEl.innerText = '🛡️ NAVEGACIÓN SEGURA (VPN/DC)';
+                    lbEl.style.color = '#10b981';
+                } else {
+                    lbEl.innerText = '🌐 NAVEGACIÓN POR ISP (PÚBLICA)';
+                    lbEl.style.color = '#f59e0b';
+                }
             }
-        } catch (e) { ipEl.innerText = "OFFLINE"; }
+        } catch (error) { console.log("Network sync error"); }
     }
 
-    // 2. CARGA DINÁMICA
-    async function loadDashboardData() {
-        try {
-            const response = await fetch('data/noticias.json?t=' + Date.now());
-            const data = await response.json();
-
-            // Renderizar Noticia Hero
-            const hero = data.noticia_hero;
-            if(hero) {
-                document.getElementById('hero-noticia').innerHTML = `
-                    <section class="feature-card">
-                        <div class="feature-content">
-                            <span class="badge ${hero.severidad || 'high'}" style="margin-bottom: 15px;">${hero.tag}</span>
-                            <h2 style="font-size: 2rem; margin-bottom: 15px; color: #fff;">${hero.titulo}</h2>
-                            <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 1.05rem;">${hero.desc}</p>
-                            <a href="investigacion/${hero.archivo}" class="btn-dashboard-nav">Analizar Investigación</a>
-                        </div>
-                        <div class="feature-image">
-                            <img src="${hero.imagen}" alt="Hero" style="width:100%; border-radius:12px; opacity:0.8;">
-                        </div>
-                    </section>
-                `;
-            }
-
-            // Renderizar Grid
-            if(data.notas_tecnicas) {
-                document.getElementById('news-grid').innerHTML = data.notas_tecnicas.map(nota => `
-                    <div class="card">
-                        <div>
-                            <span class="badge ${nota.severidad}" style="margin-bottom:10px;">${nota.tag}</span>
-                            <h3 style="margin: 10px 0; color:#fff;">${nota.titulo}</h3>
-                            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:20px;">${nota.desc}</p>
-                        </div>
-                        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border); padding-top:15px;">
-                            <span style="font-size:0.7rem; color:var(--text-muted); font-weight:700;">${nota.fecha}</span>
-                            <a href="investigacion/${nota.archivo}" style="color:var(--accent); text-decoration:none; font-weight:800; font-size:0.8rem;">DETALLES →</a>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        } catch (error) { console.error("Fallo en sincronización de datos:", error); }
-    }
-
-    // Contador de CVEs
-    fetch('data/cve.json').then(r => r.json()).then(d => {
-        if(d.vulnerabilities) document.getElementById('cve-count-val').innerText = d.vulnerabilities.length;
-    });
-
+    // INICIALIZACIÓN
+    loadHeroNews();
     syncNetworkInfo();
-    loadDashboardData();
-</script>
 
+    fetch('data/cve.json').then(res => res.json()).then(data => {
+        if(data.vulnerabilities) {
+            document.getElementById('cve-count-val').innerText = data.vulnerabilities.length;
+            document.getElementById('cisa-counter').style.display = 'block';
+        }
+    });
+</script>
 </body>
 </html>

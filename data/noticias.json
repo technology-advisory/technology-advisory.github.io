@@ -6,7 +6,7 @@
         "desc": "Análisis profundo sobre la desaparición del rol gratuito y las nuevas capacidades de escalabilidad extrema en infraestructuras Enterprise.",
         "tag": "EXCLUSIVO",
         "severidad": "high",
-        "imagen": "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=800"
+        "imagen": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80%27"
     },
     "tendencias": [
         {"nombre": "#Kubernetes", "color": "#e0f2fe", "texto": "#0369a1"},
