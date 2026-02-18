@@ -6,6 +6,20 @@
     <title>Technology Advisory | Infrastructure Intelligence</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .login-form { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        .login-input {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border);
+            padding: 10px; border-radius: 6px; color: white; font-size: 0.8rem; outline: none;
+        }
+        .login-input:focus { border-color: var(--accent); }
+        .btn-login {
+            background: var(--accent); color: white; border: none; padding: 10px;
+            border-radius: 6px; font-weight: 700; font-size: 0.75rem; cursor: pointer;
+            text-transform: uppercase; transition: 0.3s;
+        }
+        .btn-login:hover { opacity: 0.9; }
+    </style>
 </head>
 <body>
 
@@ -15,15 +29,14 @@
     </div>
     <nav class="nav-links">
         <a href="index.html" class="active">Dashboard</a>
-        <a href="investigacion/listado-cve-CISA_Catalog_exploited.html">Investigación</a>
+        <a href="investigacion/listado-cve-CISA_Catalog_exploited.html">Vulnerabilidades (CISA KEV)</a>
+        <a href="#" style="opacity: 0.5; cursor: default;">Listado General (NVD)</a>
         <a href="#" style="opacity: 0.5; cursor: default;">Notas</a>
-        <a href="#" style="opacity: 0.5; cursor: default;">Vulnerabilidades</a>
     </nav>
 </header>
 
 <main class="full-layout">
     <section class="main-content">
-        
         <div class="feature-card">
             <div class="feature-content">
                 <span class="badge" style="background: rgba(59, 130, 246, 0.1); color: var(--accent); padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem; display: inline-block;">Investigación Destacada</span>
@@ -39,29 +52,24 @@
         </div>
 
         <h2 class="section-label" style="font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--text); font-weight: 800;">Notas Técnicas Recientes</h2>
-        
         <div id="notas-container" class="grid-expanded">
             <p style="color: var(--text-muted); font-size: 0.8rem;">Sincronizando notas...</p>
         </div>
     </section>
 
     <aside class="side-panel">
-        
         <div class="panel-box">
-            <h3 class="panel-title">Threat Intelligence (CVEs)</h3>
-            
+            <h3 class="panel-title">Threat Intelligence (CISA KEV)</h3>
             <div id="cisa-counter" style="background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; padding: 10px; margin-bottom: 15px; border-radius: 4px; display: none;">
                 <span id="cve-count-val" style="color: #ef4444; font-weight: 800; font-family: 'JetBrains Mono';">0</span> 
                 <span style="font-size: 0.65rem; color: var(--text); font-weight: 600; text-transform: uppercase;">Amenazas Explotadas</span>
             </div>
-
             <div id="vuln-container" class="vuln-feed">
                 <p style="color: var(--text-muted); font-size: 0.8rem;">Sincronizando con CISA...</p>
             </div>
-
             <div class="sidebar-footer" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border);">
                 <a href="investigacion/listado-cve-CISA_Catalog_exploited.html" class="btn-ver-mas" style="display: block; width: 100%; padding: 12px; background: rgba(59, 130, 246, 0.05); border: 1px solid var(--accent); color: var(--accent); text-align: center; text-decoration: none; font-size: 0.75rem; font-weight: 700; border-radius: 8px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;">
-                    Catálogo CISA KEV completo
+                    Catálogo CISA Completo
                 </a>
             </div>
         </div>
@@ -71,14 +79,24 @@
             <div id="tendencias-container" class="tag-cloud"></div>
         </div>
 
-        <div class="panel-box community-widget">
-            <h3 class="panel-title">Comunidad</h3>
-            <div class="counter-wrapper" style="text-align: center; padding: 1rem 0;">
-                <span id="suscriptores-count" style="font-size: 2.2rem; font-weight: 800; color: var(--accent); display: block;">0</span>
-                <span class="counter-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Especialistas</span>
+        <div class="panel-box login-widget">
+            <h3 class="panel-title">Acceso Restringido</h3>
+            <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 12px; border-radius: 8px; margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                    <span style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800;">Accesos Globales</span>
+                    <span id="visit-count" style="font-family: 'JetBrains Mono'; color: #10b981; font-weight: 800; font-size: 0.9rem;">...</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800;">Tu Origen</span>
+                    <span id="user-ip" style="font-family: 'JetBrains Mono'; color: var(--accent); font-weight: 800; font-size: 0.7rem;">Detectando...</span>
+                </div>
             </div>
+            <form class="login-form" onsubmit="return false;">
+                <input type="text" placeholder="ID de Usuario" class="login-input">
+                <input type="password" placeholder="Passcode" class="login-input">
+                <button class="btn-login">Sincronizar Credenciales</button>
+            </form>
         </div>
-
     </aside>
 </main>
 
@@ -88,15 +106,22 @@
 
 <script src="assets/js/script.js"></script>
 <script>
-    fetch('data/cve.json')
-        .then(res => res.json())
-        .then(data => {
-            if(data.vulnerabilities) {
-                document.getElementById('cve-count-val').innerText = data.vulnerabilities.length;
-                document.getElementById('cisa-counter').style.display = 'block';
-            }
-        }).catch(e => console.log("CISA Data no disponible"));
-</script>
+    // Contador CISA
+    fetch('data/cve.json').then(res => res.json()).then(data => {
+        if(data.vulnerabilities) {
+            document.getElementById('cve-count-val').innerText = data.vulnerabilities.length;
+            document.getElementById('cisa-counter').style.display = 'block';
+        }
+    });
 
+    // Visitas e IP
+    fetch('https://api.countapi.xyz/hit/technology-advisory-research/visits')
+        .then(res => res.json()).then(data => document.getElementById('visit-count').innerText = data.value.toLocaleString())
+        .catch(() => document.getElementById('visit-count').innerText = "ONLINE");
+
+    fetch('https://api.ipify.org?format=json')
+        .then(res => res.json()).then(data => document.getElementById('user-ip').innerText = data.ip)
+        .catch(() => document.getElementById('user-ip').innerText = "HIDDEN");
+</script>
 </body>
 </html>
