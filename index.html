@@ -101,21 +101,22 @@
 
 <script src="assets/js/script.js"></script>
 <script>
-    // 1. Detección de Red e IP con API ipwho.is (Anti-Offline Mode)
-    fetch('https://ipwho.is/')
-        .then(res => res.json())
-        .then(data => {
-            const ipEl = document.getElementById('user-ip-header');
-            const ispEl = document.getElementById('user-isp');
-            const lbEl = document.getElementById('node-label');
-            
-            if(data.success) {
-                const ip = data.ip;
-                const isp = (data.connection.isp || "ISP_UNKNOWN").toUpperCase();
+    // Sistema de detección con redundancia (si falla una, usa la otra)
+    function getNetworkData() {
+        const ipEl = document.getElementById('user-ip-header');
+        const ispEl = document.getElementById('user-isp');
+        const lbEl = document.getElementById('node-label');
+
+        fetch('https://ipapi.co/json/')
+            .then(res => res.json())
+            .then(data => {
+                const ip = data.ip || "0.0.0.0";
+                const isp = (data.org || "ISP_UNKNOWN").toUpperCase();
                 
                 ipEl.innerText = ip;
                 ispEl.innerText = isp;
 
+                // Diccionario de seguridad
                 const secureKW = ['VPN', 'PROXY', 'HOST', 'CLOUD', 'DATACENTER', 'HYDRA', 'OVH', 'DIGITALOCEAN', 'AMAZON', 'AWS', 'M247', 'INFRASTRUCTURE'];
                 const isSecure = secureKW.some(kw => isp.includes(kw));
 
@@ -128,18 +129,30 @@
                     lbEl.style.color = '#f59e0b'; 
                     ipEl.style.color = '#22d3ee';
                 }
-            }
-        })
-        .catch(() => { 
-            fetch('https://api.ipify.org?format=json')
-                .then(r => r.json())
-                .then(d => {
-                    document.getElementById('user-ip-header').innerText = d.ip;
-                    document.getElementById('node-label').innerText = 'NODE_ACTIVE (IP_ONLY)';
-                });
-        });
+            })
+            .catch(() => {
+                // Si la primera falla, usamos esta de respaldo que es muy simple
+                fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://ipsidekick.com/json'))
+                    .then(response => {
+                        if (response.ok) return response.json();
+                        throw new Error('Network response was not ok.');
+                    })
+                    .then(data => {
+                        const parsed = JSON.parse(data.contents);
+                        ipEl.innerText = parsed.ip;
+                        ispEl.innerText = (parsed.isp.name || "ISP_ACTIVE").toUpperCase();
+                        lbEl.innerText = 'NODE_ACTIVE (BACKUP)';
+                    })
+                    .catch(() => {
+                        lbEl.innerText = 'OFFLINE_MODE';
+                    });
+            });
+    }
 
-    // 2. Contador de CISA
+    // Ejecutar detección
+    getNetworkData();
+
+    // Contador de CISA (Se mantiene igual)
     fetch('data/cve.json').then(res => res.json()).then(data => {
         if(data.vulnerabilities) {
             document.getElementById('cve-count-val').innerText = data.vulnerabilities.length;
