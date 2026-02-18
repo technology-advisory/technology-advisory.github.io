@@ -1,46 +1,48 @@
 name: Actualizar Inteligencia CVE
 
-# 1. Definimos cuándo se ejecuta
 on:
   schedule:
-    - cron: '0 */12 * * *' # Se ejecuta automáticamente cada 12 horas
-  workflow_dispatch:      # Permite ejecutarlo manualmente con el botón "Run workflow"
+    # Se ejecuta todos los días a las 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Permite ejecución manual desde la pestaña Actions
+
+permissions:
+  contents: write
 
 jobs:
   build:
-    runs-on: ubuntu-latest # Servidor Linux de GitHub
-
+    runs-on: ubuntu-latest
     steps:
-      # A. Descarga tu código en el servidor
-      - name: Checkout del código
+      - name: Checkout del repositorio
         uses: actions/checkout@v4
 
-      # B. Instala Python
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.10'
 
-      # C. Instala la librería necesaria para las peticiones API
       - name: Instalar dependencias
         run: pip install requests
 
-      # D. Ejecuta los dos scripts en cadena (CISA -> Enriquecedor)
       - name: Ejecutar scripts de actualización
         run: |
+          # 1. Siempre descargamos los últimos de CISA
           python scripts/update_cves.py
-          python scripts/update_nvd.py
+          
+          # 2. Lógica de actualización de Scores
+          # date +%w devuelve 0 para domingo, 1-6 para lunes-sábado
+          if [ "$(date +%w)" = "0" ]; then
+            echo "Es domingo: Iniciando ESCANEO COMPLETO (--full)"
+            python scripts/update_nvd.py --full
+          else
+            echo "Día laborable: Iniciando MANTENIMIENTO RÁPIDO"
+            python scripts/update_nvd.py
+          fi
 
-      # E. Guarda los archivos cve.json y nvd_scores.json en tu GitHub
-      - name: Guardar cambios en el repositorio
+      - name: Commit y Push de cambios
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          
-          # Añadimos todos los archivos JSON actualizados en la carpeta data
-          git add data/*.json
-          
-          # Solo hace commit si hay cambios reales para no ensuciar el historial
-          git commit -m "🤖 Actualización automática: CISA KEV y Severidad CVE" || echo "No hay cambios para actualizar"
-          
-          git push
+          git add data/cve.json data/nvd_scores.json
+          # Solo hace commit si hay cambios reales para evitar errores
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Actualización automática: CISA KEV e Inteligencia de Scores" && git push)
