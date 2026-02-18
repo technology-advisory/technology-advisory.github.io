@@ -101,58 +101,33 @@
 
 <script src="assets/js/script.js"></script>
 <script>
-    // Sistema de detección con redundancia (si falla una, usa la otra)
-    function getNetworkData() {
-        const ipEl = document.getElementById('user-ip-header');
-        const ispEl = document.getElementById('user-isp');
-        const lbEl = document.getElementById('node-label');
+    // 1. Detección Avanzada de IP/ISP (Header)
+    fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(data => {
+            const ipEl = document.getElementById('user-ip-header');
+            const ispEl = document.getElementById('user-isp');
+            const lbEl = document.getElementById('node-label');
+            const isp = (data.org || "ISP_UNKNOWN").toUpperCase();
+            
+            ipEl.innerText = data.ip;
+            ispEl.innerText = isp;
 
-        fetch('https://ipapi.co/json/')
-            .then(res => res.json())
-            .then(data => {
-                const ip = data.ip || "0.0.0.0";
-                const isp = (data.org || "ISP_UNKNOWN").toUpperCase();
-                
-                ipEl.innerText = ip;
-                ispEl.innerText = isp;
+            const secureKW = ['VPN', 'PROXY', 'HOST', 'CLOUD', 'DATACENTER', 'HYDRA', 'OVH', 'DIGITALOCEAN', 'AMAZON', 'AWS', 'M247', 'INFRASTRUCTURE'];
+            const isSecure = secureKW.some(kw => isp.includes(kw));
 
-                // Diccionario de seguridad
-                const secureKW = ['VPN', 'PROXY', 'HOST', 'CLOUD', 'DATACENTER', 'HYDRA', 'OVH', 'DIGITALOCEAN', 'AMAZON', 'AWS', 'M247', 'INFRASTRUCTURE'];
-                const isSecure = secureKW.some(kw => isp.includes(kw));
+            if(isSecure) {
+                lbEl.innerText = '🛡️ NAVEGACIÓN SEGURA (VPN/DC)';
+                lbEl.style.color = '#10b981';
+                ipEl.style.color = '#10b981';
+            } else {
+                lbEl.innerText = '🌐 NAVEGACIÓN POR ISP (PÚBLICA)';
+                lbEl.style.color = '#f59e0b';
+                ipEl.style.color = '#22d3ee';
+            }
+        }).catch(() => { document.getElementById('node-label').innerText = 'OFFLINE_MODE'; });
 
-                if(isSecure) {
-                    lbEl.innerText = '🛡️ NAVEGACIÓN SEGURA (VPN/DC)';
-                    lbEl.style.color = '#10b981'; 
-                    ipEl.style.color = '#10b981';
-                } else {
-                    lbEl.innerText = '🌐 NAVEGACIÓN POR ISP (PÚBLICA)';
-                    lbEl.style.color = '#f59e0b'; 
-                    ipEl.style.color = '#22d3ee';
-                }
-            })
-            .catch(() => {
-                // Si la primera falla, usamos esta de respaldo que es muy simple
-                fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://ipsidekick.com/json'))
-                    .then(response => {
-                        if (response.ok) return response.json();
-                        throw new Error('Network response was not ok.');
-                    })
-                    .then(data => {
-                        const parsed = JSON.parse(data.contents);
-                        ipEl.innerText = parsed.ip;
-                        ispEl.innerText = (parsed.isp.name || "ISP_ACTIVE").toUpperCase();
-                        lbEl.innerText = 'NODE_ACTIVE (BACKUP)';
-                    })
-                    .catch(() => {
-                        lbEl.innerText = 'OFFLINE_MODE';
-                    });
-            });
-    }
-
-    // Ejecutar detección
-    getNetworkData();
-
-    // Contador de CISA (Se mantiene igual)
+    // 2. Contador CISA
     fetch('data/cve.json').then(res => res.json()).then(data => {
         if(data.vulnerabilities) {
             document.getElementById('cve-count-val').innerText = data.vulnerabilities.length;
