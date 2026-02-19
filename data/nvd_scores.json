@@ -1,203 +1,123 @@
 {
     "CVE-2020-7796": {
-        "score": "9.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "4.6"
     },
     "CVE-2024-7694": {
-        "score": "7.2",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "5.9"
     },
     "CVE-2008-0015": {
-        "score": "8.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "5.9"
     },
     "CVE-2026-2441": {
-        "score": "8.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "7.3"
     },
     "CVE-2026-1731": {
-        "score": "9.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "9.9"
     },
     "CVE-2026-20700": {
-        "score": "7.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "6.1"
     },
     "CVE-2024-43468": {
-        "score": "9.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "7.4"
     },
     "CVE-2025-15556": {
-        "score": "7.5",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "7.7"
     },
     "CVE-2025-40536": {
-        "score": "8.1",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "6.4"
     },
     "CVE-2026-21513": {
-        "score": "8.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "8.5"
     },
     "CVE-2026-21525": {
-        "score": "6.2",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "8.4"
     },
     "CVE-2026-21510": {
-        "score": "8.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "8.6"
     },
     "CVE-2026-21533": {
-        "score": "7.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "8.6"
     },
     "CVE-2026-21519": {
-        "score": "7.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "8.5"
     },
     "CVE-2026-21514": {
-        "score": "7.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "8.1"
     },
     "CVE-2025-11953": {
-        "score": "9.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "6.1"
     },
     "CVE-2026-24423": {
-        "score": "9.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "9.3"
     },
     "CVE-2021-39935": {
-        "score": "7.5",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "7.2"
     },
     "CVE-2025-64328": {
-        "score": "7.2",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "8.6"
     },
     "CVE-2019-19006": {
-        "score": "9.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "4.6"
     },
     "CVE-2025-40551": {
-        "score": "9.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "7.6"
     },
     "CVE-2026-1281": {
-        "score": "9.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "6.9"
     },
     "CVE-2026-24858": {
-        "score": "9.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "7.8"
     },
     "CVE-2018-14634": {
-        "score": "7.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "4.9"
     },
     "CVE-2025-52691": {
-        "score": "10.0",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "6.5"
     },
     "CVE-2026-23760": {
-        "score": "9.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "9.3"
     },
     "CVE-2026-24061": {
-        "score": "9.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "6.5"
     },
     "CVE-2026-21509": {
-        "score": "7.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "7.9"
     },
     "CVE-2024-37079": {
-        "score": "9.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "7.6"
     },
     "CVE-2025-68645": {
-        "score": "8.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "5.7"
     },
     "CVE-2025-34026": {
-        "score": "7.5",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "9.2"
     },
     "CVE-2025-31125": {
-        "score": "5.3",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "5.2"
     },
     "CVE-2025-54313": {
-        "score": "7.5",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "4.8"
     },
     "CVE-2026-20045": {
-        "score": "8.2",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "6.9"
     },
     "CVE-2026-20805": {
-        "score": "5.5",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "8.7"
     },
     "CVE-2025-8110": {
-        "score": "8.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "8.7"
     },
     "CVE-2009-0556": {
-        "score": "8.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "6.5"
     },
     "CVE-2025-37164": {
-        "score": "10.0",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "6.0"
     },
     "CVE-2025-14847": {
-        "score": "7.5",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "8.7"
     },
     "CVE-2023-52163": {
-        "score": "8.8",
-        "status": "INTERIM",
-        "exploited": "YES"
+        "score": "5.2"
     },
     "CVE-2025-14733": {
         "score": "9.3"
@@ -4644,5 +4564,11 @@
     },
     "CVE-2020-29583": {
         "score": "5.6"
+    },
+    "CVE-2021-22175": {
+        "score": "4.5"
+    },
+    "CVE-2026-22769": {
+        "score": "6.5"
     }
 }
