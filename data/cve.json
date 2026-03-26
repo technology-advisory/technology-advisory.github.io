@@ -1,7 +1,24 @@
 {
     "title": "CISA Intelligence Dashboard",
-    "last_update_check": "2026-03-25T01:21:03.070632Z",
+    "last_update_check": "2026-03-26T01:26:15.795289Z",
     "vulnerabilities": [
+        {
+            "cveID": "CVE-2026-33017",
+            "vendorProject": "Langflow",
+            "product": "Langflow",
+            "vulnerabilityName": "Langflow Code Injection Vulnerability",
+            "dateAdded": "2026-03-25",
+            "shortDescription": "Langflow contains a code injection vulnerability that could allow building public flows without requiring authentication.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2026-04-08",
+            "knownRansomwareCampaignUse": "Unknown",
+            "notes": "https://github.com/langflow-ai/langflow/security/advisories/GHSA-vwmf-pq79-vjvx ; https://nvd.nist.gov/vuln/detail/CVE-2026-33017",
+            "cwes": [
+                "CWE-94",
+                "CWE-95",
+                "CWE-306"
+            ]
+        },
         {
             "cveID": "CVE-2025-32432",
             "vendorProject": "Craft CMS",
@@ -162,7 +179,7 @@
             "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
             "dueDate": "2026-03-27",
             "knownRansomwareCampaignUse": "Unknown",
-            "notes": "This vulnerability affects a common open-source component, third-party library, or a protocol used by different products. Please check with specific vendors for information on patching status. For more information, please see: https://chromereleases.googleblog.com/2026/03/stable-channel-update-for-desktop_12.html#:~:text=Google%20is%20aware ; https://nvd.nist.gov/vuln/detail/CVE-2026-3909",
+            "notes": "This vulnerability affects a common open-source component, third-party library, or a protocol used by different products. Please check with specific vendors for information on patching status. For more information, please see: https://chromereleases.googleblog.com/2026/03/stable-channel-update-for-desktop_13.html ; https://nvd.nist.gov/vuln/detail/CVE-2026-3909",
             "cwes": [
                 "CWE-787"
             ]
