@@ -1,9 +1,9 @@
 {
     "CVE-2026-45247": {
-        "score": "9.3"
+        "score": "Mirasvit Full Page Cache Warmer for Magento 2 before version 1.11.12 contains a PHP object injection vulnerability that allows unauthenticated attackers to achieve remote code execution by supplying a crafted serialized PHP object in the CacheWarmer cookie. Attackers can exploit the unrestricted call to PHP's native unserialize() function combined with gadget chains available in Magento and its dependencies to execute arbitrary code on the server."
     },
     "CVE-2022-0492": {
-        "score": "7.5"
+        "score": "7.4"
     },
     "CVE-2025-48595": {
         "score": "In multiple locations, there is a possible way to achieve code execution due to an integer overflow. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation."
@@ -162,7 +162,7 @@
         "score": "7.4"
     },
     "CVE-2026-3502": {
-        "score": "5.8"
+        "score": "5.9"
     },
     "CVE-2026-5281": {
         "score": "6.1"
@@ -366,7 +366,7 @@
         "score": "4.6"
     },
     "CVE-2026-20045": {
-        "score": "6.6"
+        "score": "6.9"
     },
     "CVE-2026-20805": {
         "score": "8.7"
@@ -483,7 +483,7 @@
         "score": "5.6"
     },
     "CVE-2025-6205": {
-        "score": "6.3"
+        "score": "6.4"
     },
     "CVE-2025-54236": {
         "score": "6.7"
@@ -513,7 +513,7 @@
         "score": "7.1"
     },
     "CVE-2025-47827": {
-        "score": "8.6"
+        "score": "8.5"
     },
     "CVE-2025-24990": {
         "score": "8.5"
@@ -693,7 +693,7 @@
         "score": "6.7"
     },
     "CVE-2025-47812": {
-        "score": "5.8"
+        "score": "5.3"
     },
     "CVE-2025-5777": {
         "score": "9.3"
@@ -1035,7 +1035,7 @@
         "score": "5.4"
     },
     "CVE-2025-21418": {
-        "score": "8.4"
+        "score": "8.3"
     },
     "CVE-2025-21391": {
         "score": "8.4"
@@ -1137,7 +1137,7 @@
         "score": "4.3"
     },
     "CVE-2024-55956": {
-        "score": "6.0"
+        "score": "5.9"
     },
     "CVE-2024-35250": {
         "score": "8.3"
@@ -1149,7 +1149,7 @@
         "score": "7.6"
     },
     "CVE-2024-49138": {
-        "score": "7.2"
+        "score": "7.4"
     },
     "CVE-2024-51378": {
         "score": "4.8"
@@ -1617,7 +1617,7 @@
         "score": "7.8"
     },
     "CVE-2023-22527": {
-        "score": "7.2"
+        "score": "7.1"
     },
     "CVE-2024-23222": {
         "score": "8.2"
@@ -1755,7 +1755,7 @@
         "score": "5.6"
     },
     "CVE-2023-22518": {
-        "score": "7.7"
+        "score": "7.5"
     },
     "CVE-2023-46604": {
         "score": "8.0"
@@ -1794,7 +1794,7 @@
         "score": "The HTTP/2 protocol allows a denial of service (server resource consumption) because request cancellation can reset many streams quickly, as exploited in the wild in August through October 2023."
     },
     "CVE-2023-22515": {
-        "score": "6.1"
+        "score": "5.7"
     },
     "CVE-2023-40044": {
         "score": "6.7"
@@ -1854,7 +1854,7 @@
         "score": "6.8"
     },
     "CVE-2023-4863": {
-        "score": "8.2"
+        "score": "8.4"
     },
     "CVE-2023-36761": {
         "score": "8.8"
@@ -1884,7 +1884,7 @@
         "score": "6.7"
     },
     "CVE-2023-26359": {
-        "score": "7.3"
+        "score": "7.4"
     },
     "CVE-2023-24489": {
         "score": "7.6"
@@ -2370,7 +2370,7 @@
         "score": "6.7"
     },
     "CVE-2022-27593": {
-        "score": "5.1"
+        "score": "6.3"
     },
     "CVE-2022-26258": {
         "score": "3.8"
