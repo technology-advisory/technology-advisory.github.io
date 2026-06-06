@@ -1,4 +1,7 @@
 {
+    "CVE-2026-28318": {
+        "score": "5.0"
+    },
     "CVE-2026-45247": {
         "score": "Mirasvit Full Page Cache Warmer for Magento 2 before version 1.11.12 contains a PHP object injection vulnerability that allows unauthenticated attackers to achieve remote code execution by supplying a crafted serialized PHP object in the CacheWarmer cookie. Attackers can exploit the unrestricted call to PHP's native unserialize() function combined with gadget chains available in Magento and its dependencies to execute arbitrary code on the server."
     },
@@ -102,10 +105,10 @@
         "score": "Insufficient granularity of access control in Microsoft Defender allows an authorized attacker to elevate privileges locally."
     },
     "CVE-2026-20122": {
-        "score": "7.1"
+        "score": "7.3"
     },
     "CVE-2026-20133": {
-        "score": "7.3"
+        "score": "7.5"
     },
     "CVE-2025-2749": {
         "score": "4.1"
@@ -117,7 +120,7 @@
         "score": "4.8"
     },
     "CVE-2026-20128": {
-        "score": "7.0"
+        "score": "7.1"
     },
     "CVE-2025-32975": {
         "score": "4.8"
@@ -246,10 +249,10 @@
         "score": "8.1"
     },
     "CVE-2022-20775": {
-        "score": "5.6"
+        "score": "5.8"
     },
     "CVE-2026-20127": {
-        "score": "7.6"
+        "score": "7.9"
     },
     "CVE-2026-25108": {
         "score": "8.7"
@@ -366,7 +369,7 @@
         "score": "4.6"
     },
     "CVE-2026-20045": {
-        "score": "6.9"
+        "score": "6.5"
     },
     "CVE-2026-20805": {
         "score": "8.7"
@@ -378,7 +381,7 @@
         "score": "6.5"
     },
     "CVE-2025-37164": {
-        "score": "6.0"
+        "score": "5.8"
     },
     "CVE-2025-14847": {
         "score": "8.7"
@@ -420,7 +423,7 @@
         "score": "6.8"
     },
     "CVE-2025-62221": {
-        "score": "8.6"
+        "score": "8.7"
     },
     "CVE-2022-37055": {
         "score": "4.8"
@@ -438,7 +441,7 @@
         "score": "7.6"
     },
     "CVE-2025-48572": {
-        "score": "8.1"
+        "score": "8.0"
     },
     "CVE-2021-26829": {
         "score": "5.0"
@@ -468,13 +471,13 @@
         "score": "6.7"
     },
     "CVE-2025-48703": {
-        "score": "4.5"
+        "score": "4.7"
     },
     "CVE-2025-11371": {
         "score": "5.2"
     },
     "CVE-2025-41244": {
-        "score": "6.5"
+        "score": "7.6"
     },
     "CVE-2025-24893": {
         "score": "6.6"
@@ -936,7 +939,7 @@
         "score": "8.6"
     },
     "CVE-2025-24991": {
-        "score": "8.6"
+        "score": "8.5"
     },
     "CVE-2025-24985": {
         "score": "8.5"
@@ -1020,7 +1023,7 @@
         "score": "7.4"
     },
     "CVE-2024-57727": {
-        "score": "6.0"
+        "score": "5.5"
     },
     "CVE-2025-24200": {
         "score": "7.7"
@@ -1266,7 +1269,7 @@
         "score": "8.5"
     },
     "CVE-2024-43573": {
-        "score": "8.1"
+        "score": "8.2"
     },
     "CVE-2024-43572": {
         "score": "8.4"
@@ -1397,12 +1400,6 @@
     "CVE-2024-38213": {
         "score": "8.3"
     },
-    "CVE-2024-38178": {
-        "score": "8.3"
-    },
-    "CVE-2024-38189": {
-        "score": "8.4"
-    },
     "CVE-2024-32113": {
         "score": "6.2"
     },
@@ -1427,14 +1424,11 @@
     "CVE-2024-39891": {
         "score": "5.0"
     },
-    "CVE-2012-4792": {
-        "score": "6.4"
-    },
     "CVE-2022-22948": {
         "score": "6.9"
     },
     "CVE-2024-28995": {
-        "score": "7.1"
+        "score": "7.0"
     },
     "CVE-2024-34102": {
         "score": "7.0"
@@ -1629,7 +1623,7 @@
         "score": "7.0"
     },
     "CVE-2024-0519": {
-        "score": "8.4"
+        "score": "8.5"
     },
     "CVE-2023-6549": {
         "score": "8.1"
@@ -1725,7 +1719,7 @@
         "score": "6.3"
     },
     "CVE-2023-36033": {
-        "score": "8.6"
+        "score": "8.5"
     },
     "CVE-2023-36025": {
         "score": "8.7"
@@ -1932,7 +1926,7 @@
         "score": "8.8"
     },
     "CVE-2023-35311": {
-        "score": "7.7"
+        "score": "7.9"
     },
     "CVE-2023-36874": {
         "score": "8.7"
@@ -2154,7 +2148,7 @@
         "score": "6.6"
     },
     "CVE-2023-23397": {
-        "score": "8.4"
+        "score": "8.2"
     },
     "CVE-2023-24880": {
         "score": "8.7"
@@ -2502,7 +2496,7 @@
         "score": "5.9"
     },
     "CVE-2022-30190": {
-        "score": "8.6"
+        "score": "8.3"
     },
     "CVE-2021-38163": {
         "score": "5.7"
@@ -2880,7 +2874,7 @@
         "score": "8.4"
     },
     "CVE-2022-0847": {
-        "score": "8.1"
+        "score": "8.0"
     },
     "CVE-2021-41357": {
         "score": "8.9"
@@ -4110,7 +4104,7 @@
         "score": "5.0"
     },
     "CVE-2021-27562": {
-        "score": "5.4"
+        "score": "5.2"
     },
     "CVE-2021-28664": {
         "score": "7.5"
@@ -4695,7 +4689,7 @@
         "score": "6.0"
     },
     "CVE-2021-35211": {
-        "score": "6.8"
+        "score": "7.1"
     },
     "CVE-2016-3643": {
         "score": "4.6"
