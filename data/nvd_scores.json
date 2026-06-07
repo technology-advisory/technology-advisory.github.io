@@ -1,18 +1,18 @@
 {
     "CVE-2026-28318": {
-        "score": "5.0"
+        "score": "SolarWinds Serv-U is susceptible to specially crafted POST requests that crash the Serv-U service without authentication using Content-Encoding: deflate. Mitigation steps are provided to secure customer environments in the SolarWinds Trust Center if you are unable to deploy the update"
     },
     "CVE-2026-45247": {
         "score": "Mirasvit Full Page Cache Warmer for Magento 2 before version 1.11.12 contains a PHP object injection vulnerability that allows unauthenticated attackers to achieve remote code execution by supplying a crafted serialized PHP object in the CacheWarmer cookie. Attackers can exploit the unrestricted call to PHP's native unserialize() function combined with gadget chains available in Magento and its dependencies to execute arbitrary code on the server."
     },
     "CVE-2022-0492": {
-        "score": "7.4"
+        "score": "A vulnerability was found in the Linux kernel\u2019s cgroup_release_agent_write in the kernel/cgroup/cgroup-v1.c function. This flaw, under certain circumstances, allows the use of the cgroups v1 release_agent feature to escalate privileges and bypass the namespace isolation unexpectedly."
     },
     "CVE-2025-48595": {
         "score": "In multiple locations, there is a possible way to achieve code execution due to an integer overflow. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation."
     },
     "CVE-2024-21182": {
-        "score": "7.3"
+        "score": "Vulnerability in the Oracle WebLogic Server product of Oracle Fusion Middleware (component: Core).  Supported versions that are affected are 12.2.1.4.0 and  14.1.1.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via T3, IIOP to compromise Oracle WebLogic Server.  Successful attacks of this vulnerability can result in  unauthorized access to critical data or complete access to all Oracle WebLogic Server accessible data. CVSS 3.1 Base Score 7.5 (Confidentiality impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N)."
     },
     "CVE-2026-0257": {
         "score": "Authentication bypass vulnerabilities in the GlobalProtect portal and gateway of Palo Alto Networks PAN-OS\u00ae software allows the attacker to bypass security restrictions and establish an unauthorized VPN connection.\n\nPanorama and Cloud NGFW are not impacted by these issues."
@@ -111,7 +111,7 @@
         "score": "7.5"
     },
     "CVE-2025-2749": {
-        "score": "4.1"
+        "score": "3.9"
     },
     "CVE-2023-27351": {
         "score": "7.1"
@@ -119,29 +119,14 @@
     "CVE-2025-48700": {
         "score": "4.8"
     },
-    "CVE-2026-20128": {
-        "score": "7.1"
-    },
     "CVE-2025-32975": {
         "score": "4.8"
     },
     "CVE-2024-27199": {
         "score": "6.6"
     },
-    "CVE-2026-34197": {
-        "score": "Improper Input Validation, Improper Control of Generation of Code ('Code Injection') vulnerability in Apache ActiveMQ Broker, Apache ActiveMQ.\n\nApache ActiveMQ Classic exposes the Jolokia JMX-HTTP bridge at /api/jolokia/ on the web console. The default Jolokia access policy permits exec operations on all ActiveMQ MBeans (org.apache.activemq:*), including\nBrokerService.addNetworkConnector(String) and BrokerService.addConnector(String).\n\nAn authenticated attacker can invoke these operations with a crafted discovery URI that triggers the VM transport's brokerConfig parameter to load a remote Spring XML application context using ResourceXmlApplicationContext.\nBecause Spring's ResourceXmlApplicationContext instantiates all singleton beans before the BrokerService validates the configuration, arbitrary code execution occurs on the broker's JVM through bean factory methods such as Runtime.exec().\n\n\n\nThis issue affects Apache ActiveMQ Broker: before 5.19.4, from 6.0.0 before 6.2.3; Apache ActiveMQ All: before 5.19.4, from 6.0.0 before 6.2.3; Apache ActiveMQ: before 5.19.4, from 6.0.0 before 6.2.3.\n\n\n\nUsers are recommended to upgrade to version 5.19.4 or 6.2.3, which fixes the issue"
-    },
-    "CVE-2009-0238": {
-        "score": "5.4"
-    },
     "CVE-2026-32201": {
         "score": "Improper input validation in Microsoft Office SharePoint allows an unauthorized attacker to perform spoofing over a network."
-    },
-    "CVE-2012-1854": {
-        "score": "4.3"
-    },
-    "CVE-2025-60710": {
-        "score": "8.0"
     },
     "CVE-2023-21529": {
         "score": "7.7"
@@ -185,9 +170,6 @@
     "CVE-2025-32432": {
         "score": "9.3"
     },
-    "CVE-2025-54068": {
-        "score": "9.2"
-    },
     "CVE-2025-43510": {
         "score": "7.1"
     },
@@ -195,7 +177,7 @@
         "score": "6.6"
     },
     "CVE-2025-31277": {
-        "score": "7.5"
+        "score": "7.4"
     },
     "CVE-2026-20131": {
         "score": "7.4"
@@ -894,7 +876,7 @@
         "score": "7.8"
     },
     "CVE-2025-22457": {
-        "score": "7.3"
+        "score": "7.4"
     },
     "CVE-2025-24813": {
         "score": "9.2"
@@ -936,7 +918,7 @@
         "score": "8.2"
     },
     "CVE-2025-24993": {
-        "score": "8.6"
+        "score": "8.5"
     },
     "CVE-2025-24991": {
         "score": "8.5"
@@ -1332,7 +1314,7 @@
         "score": "6.7"
     },
     "CVE-2024-38217": {
-        "score": "8.0"
+        "score": "7.9"
     },
     "CVE-2024-38014": {
         "score": "8.3"
@@ -1400,6 +1382,12 @@
     "CVE-2024-38213": {
         "score": "8.3"
     },
+    "CVE-2024-38178": {
+        "score": "8.4"
+    },
+    "CVE-2024-38189": {
+        "score": "8.4"
+    },
     "CVE-2024-32113": {
         "score": "6.2"
     },
@@ -1424,6 +1412,9 @@
     "CVE-2024-39891": {
         "score": "5.0"
     },
+    "CVE-2012-4792": {
+        "score": "6.4"
+    },
     "CVE-2022-22948": {
         "score": "6.9"
     },
@@ -1443,10 +1434,10 @@
         "score": "8.3"
     },
     "CVE-2024-38112": {
-        "score": "7.9"
+        "score": "8.1"
     },
     "CVE-2024-20399": {
-        "score": "7.2"
+        "score": "6.9"
     },
     "CVE-2020-13965": {
         "score": "6.6"
@@ -1767,7 +1758,7 @@
         "score": "5.7"
     },
     "CVE-2023-4966": {
-        "score": "8.7"
+        "score": "8.6"
     },
     "CVE-2023-20198": {
         "score": "6.9"
@@ -2847,7 +2838,7 @@
         "score": "6.2"
     },
     "CVE-2022-1388": {
-        "score": "6.3"
+        "score": "5.7"
     },
     "CVE-2021-1789": {
         "score": "6.9"
@@ -2991,7 +2982,7 @@
         "score": "8.4"
     },
     "CVE-2022-22675": {
-        "score": "6.8"
+        "score": "6.5"
     },
     "CVE-2022-22674": {
         "score": "6.3"
@@ -4626,7 +4617,7 @@
         "score": "5.4"
     },
     "CVE-2021-22894": {
-        "score": "5.8"
+        "score": "6.5"
     },
     "CVE-2020-8260": {
         "score": "4.7"
