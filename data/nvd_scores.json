@@ -119,14 +119,29 @@
     "CVE-2025-48700": {
         "score": "4.8"
     },
+    "CVE-2026-20128": {
+        "score": "7.1"
+    },
     "CVE-2025-32975": {
         "score": "4.8"
     },
     "CVE-2024-27199": {
         "score": "6.6"
     },
+    "CVE-2026-34197": {
+        "score": "Improper Input Validation, Improper Control of Generation of Code ('Code Injection') vulnerability in Apache ActiveMQ Broker, Apache ActiveMQ.\n\nApache ActiveMQ Classic exposes the Jolokia JMX-HTTP bridge at /api/jolokia/ on the web console. The default Jolokia access policy permits exec operations on all ActiveMQ MBeans (org.apache.activemq:*), including\nBrokerService.addNetworkConnector(String) and BrokerService.addConnector(String).\n\nAn authenticated attacker can invoke these operations with a crafted discovery URI that triggers the VM transport's brokerConfig parameter to load a remote Spring XML application context using ResourceXmlApplicationContext.\nBecause Spring's ResourceXmlApplicationContext instantiates all singleton beans before the BrokerService validates the configuration, arbitrary code execution occurs on the broker's JVM through bean factory methods such as Runtime.exec().\n\n\n\nThis issue affects Apache ActiveMQ Broker: before 5.19.4, from 6.0.0 before 6.2.3; Apache ActiveMQ All: before 5.19.4, from 6.0.0 before 6.2.3; Apache ActiveMQ: before 5.19.4, from 6.0.0 before 6.2.3.\n\n\n\nUsers are recommended to upgrade to version 5.19.4 or 6.2.3, which fixes the issue"
+    },
+    "CVE-2009-0238": {
+        "score": "5.4"
+    },
     "CVE-2026-32201": {
         "score": "Improper input validation in Microsoft Office SharePoint allows an unauthorized attacker to perform spoofing over a network."
+    },
+    "CVE-2012-1854": {
+        "score": "4.3"
+    },
+    "CVE-2025-60710": {
+        "score": "8.0"
     },
     "CVE-2023-21529": {
         "score": "7.7"
@@ -169,6 +184,9 @@
     },
     "CVE-2025-32432": {
         "score": "9.3"
+    },
+    "CVE-2025-54068": {
+        "score": "9.2"
     },
     "CVE-2025-43510": {
         "score": "7.1"
@@ -795,13 +813,13 @@
         "score": "7.0"
     },
     "CVE-2025-32709": {
-        "score": "8.5"
+        "score": "8.4"
     },
     "CVE-2025-30397": {
         "score": "8.0"
     },
     "CVE-2025-32706": {
-        "score": "8.2"
+        "score": "8.1"
     },
     "CVE-2025-32701": {
         "score": "8.4"
@@ -1020,10 +1038,10 @@
         "score": "5.4"
     },
     "CVE-2025-21418": {
-        "score": "8.3"
+        "score": "8.4"
     },
     "CVE-2025-21391": {
-        "score": "8.4"
+        "score": "8.3"
     },
     "CVE-2025-0994": {
         "score": "8.6"
@@ -1356,7 +1374,7 @@
         "score": "6.0"
     },
     "CVE-2022-0185": {
-        "score": "4.7"
+        "score": "4.6"
     },
     "CVE-2021-33045": {
         "score": "5.5"
@@ -1386,7 +1404,7 @@
         "score": "8.4"
     },
     "CVE-2024-38189": {
-        "score": "8.4"
+        "score": "8.3"
     },
     "CVE-2024-32113": {
         "score": "6.2"
@@ -1416,7 +1434,7 @@
         "score": "6.4"
     },
     "CVE-2022-22948": {
-        "score": "6.9"
+        "score": "6.8"
     },
     "CVE-2024-28995": {
         "score": "7.0"
@@ -1743,7 +1761,7 @@
         "score": "7.5"
     },
     "CVE-2023-46604": {
-        "score": "8.0"
+        "score": "8.1"
     },
     "CVE-2023-46748": {
         "score": "4.9"
@@ -1998,7 +2016,7 @@
         "score": "7.1"
     },
     "CVE-2023-34362": {
-        "score": "7.7"
+        "score": "7.8"
     },
     "CVE-2023-28771": {
         "score": "6.7"
@@ -2103,7 +2121,7 @@
         "score": "6.5"
     },
     "CVE-2023-26083": {
-        "score": "7.7"
+        "score": "7.6"
     },
     "CVE-2022-27926": {
         "score": "5.6"
@@ -4614,7 +4632,7 @@
         "score": "6.1"
     },
     "CVE-2021-22900": {
-        "score": "5.4"
+        "score": "6.3"
     },
     "CVE-2021-22894": {
         "score": "6.5"

@@ -1,6 +1,6 @@
 {
     "title": "CISA Intelligence Dashboard",
-    "last_update_check": "2026-06-07T02:41:04.946016Z",
+    "last_update_check": "2026-06-08T02:44:58.105782Z",
     "vulnerabilities": [
         {
             "cveID": "CVE-2026-28318",
