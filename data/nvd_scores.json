@@ -1,4 +1,10 @@
 {
+    "CVE-2026-42271": {
+        "score": "8.7"
+    },
+    "CVE-2026-50751": {
+        "score": "4.2"
+    },
     "CVE-2026-28318": {
         "score": "SolarWinds Serv-U is susceptible to specially crafted POST requests that crash the Serv-U service without authentication using Content-Encoding: deflate. Mitigation steps are provided to secure customer environments in the SolarWinds Trust Center if you are unable to deploy the update"
     },
@@ -267,7 +273,7 @@
         "score": "5.9"
     },
     "CVE-2026-22769": {
-        "score": "6.7"
+        "score": "6.8"
     },
     "CVE-2020-7796": {
         "score": "4.5"
@@ -480,7 +486,7 @@
         "score": "7.6"
     },
     "CVE-2025-24893": {
-        "score": "6.6"
+        "score": "6.5"
     },
     "CVE-2025-6204": {
         "score": "5.6"
@@ -660,7 +666,7 @@
         "score": "3.9"
     },
     "CVE-2022-40799": {
-        "score": "4.4"
+        "score": "4.3"
     },
     "CVE-2023-2533": {
         "score": "5.3"
@@ -999,7 +1005,7 @@
         "score": "5.5"
     },
     "CVE-2024-49035": {
-        "score": "5.3"
+        "score": "5.2"
     },
     "CVE-2024-20953": {
         "score": "7.5"
@@ -1488,7 +1494,7 @@
         "score": "7.9"
     },
     "CVE-2024-24919": {
-        "score": "7.6"
+        "score": "7.4"
     },
     "CVE-2024-4978": {
         "score": "8.7"
@@ -1848,7 +1854,7 @@
         "score": "5.6"
     },
     "CVE-2023-26369": {
-        "score": "7.4"
+        "score": "7.5"
     },
     "CVE-2023-35674": {
         "score": "7.9"
@@ -1938,7 +1944,7 @@
         "score": "7.9"
     },
     "CVE-2023-36874": {
-        "score": "8.7"
+        "score": "8.6"
     },
     "CVE-2022-31199": {
         "score": "6.2"
@@ -2178,7 +2184,7 @@
         "score": "8.7"
     },
     "CVE-2022-35914": {
-        "score": "4.6"
+        "score": "4.9"
     },
     "CVE-2022-36537": {
         "score": "5.5"
