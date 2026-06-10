@@ -1,9 +1,18 @@
 {
+    "CVE-2026-11645": {
+        "score": "5.2"
+    },
+    "CVE-2026-7473": {
+        "score": "6.9"
+    },
+    "CVE-2026-20245": {
+        "score": "6.6"
+    },
     "CVE-2026-42271": {
-        "score": "8.7"
+        "score": "LiteLLM is a proxy server (AI Gateway) to call LLM APIs in OpenAI (or native) format. From version 1.74.2 to before version 1.83.7, two endpoints used to preview an MCP server before saving it \u2014 POST /mcp-rest/test/connection and POST /mcp-rest/test/tools/list \u2014 accepted a full server configuration in the request body, including the command, args, and env fields used by the stdio transport. When called with a stdio configuration, the endpoints attempted to connect, which spawned the supplied command as a subprocess on the proxy host with the privileges of the proxy process. The endpoints were gated only by a valid proxy API key, with no role check. Any authenticated user \u2014 including holders of low-privilege internal-user keys \u2014 could therefore run arbitrary commands on the host. This issue has been patched in version 1.83.7."
     },
     "CVE-2026-50751": {
-        "score": "4.2"
+        "score": "A logic flow weakness in Remote Access and Mobile Access certificate validation in deprecated IKEv1 key exchange allows an unauthenticated remote attacker to bypass user authentication and establish a remote access VPN connection without a valid user password."
     },
     "CVE-2026-28318": {
         "score": "SolarWinds Serv-U is susceptible to specially crafted POST requests that crash the Serv-U service without authentication using Content-Encoding: deflate. Mitigation steps are provided to secure customer environments in the SolarWinds Trust Center if you are unable to deploy the update"
@@ -255,7 +264,7 @@
         "score": "8.1"
     },
     "CVE-2022-20775": {
-        "score": "5.8"
+        "score": "5.5"
     },
     "CVE-2026-20127": {
         "score": "7.9"
@@ -264,7 +273,7 @@
         "score": "8.7"
     },
     "CVE-2025-49113": {
-        "score": "7.2"
+        "score": "7.1"
     },
     "CVE-2025-68461": {
         "score": "7.3"
@@ -612,7 +621,7 @@
         "score": "7.7"
     },
     "CVE-2023-50224": {
-        "score": "6.9"
+        "score": "6.5"
     },
     "CVE-2025-9377": {
         "score": "8.6"
@@ -942,7 +951,7 @@
         "score": "8.2"
     },
     "CVE-2025-24993": {
-        "score": "8.5"
+        "score": "8.6"
     },
     "CVE-2025-24991": {
         "score": "8.5"
@@ -951,7 +960,7 @@
         "score": "8.5"
     },
     "CVE-2025-24984": {
-        "score": "8.4"
+        "score": "8.3"
     },
     "CVE-2025-24983": {
         "score": "8.3"
@@ -1047,7 +1056,7 @@
         "score": "8.4"
     },
     "CVE-2025-21391": {
-        "score": "8.3"
+        "score": "8.4"
     },
     "CVE-2025-0994": {
         "score": "8.6"
@@ -1095,13 +1104,13 @@
         "score": "4.4"
     },
     "CVE-2025-21335": {
-        "score": "8.3"
+        "score": "8.4"
     },
     "CVE-2025-21334": {
-        "score": "8.3"
+        "score": "8.5"
     },
     "CVE-2025-21333": {
-        "score": "7.9"
+        "score": "8.1"
     },
     "CVE-2024-55591": {
         "score": "7.4"
@@ -1254,7 +1263,7 @@
         "score": "9.3"
     },
     "CVE-2024-40711": {
-        "score": "7.5"
+        "score": "7.6"
     },
     "CVE-2024-28987": {
         "score": "6.7"
@@ -1275,10 +1284,10 @@
         "score": "8.5"
     },
     "CVE-2024-43573": {
-        "score": "8.2"
+        "score": "8.3"
     },
     "CVE-2024-43572": {
-        "score": "8.4"
+        "score": "8.5"
     },
     "CVE-2024-43047": {
         "score": "8.0"
@@ -1638,7 +1647,7 @@
         "score": "7.0"
     },
     "CVE-2024-0519": {
-        "score": "8.5"
+        "score": "8.4"
     },
     "CVE-2023-6549": {
         "score": "8.1"
@@ -1725,7 +1734,7 @@
         "score": "A buffer overflow was discovered in the GNU C Library's dynamic loader ld.so while processing the GLIBC_TUNABLES environment variable. This issue could allow a local attacker to use maliciously crafted GLIBC_TUNABLES environment variables when launching binaries with SUID permission to execute code with elevated privileges."
     },
     "CVE-2023-36584": {
-        "score": "9.0"
+        "score": "9.1"
     },
     "CVE-2023-1671": {
         "score": "5.7"
@@ -1863,7 +1872,7 @@
         "score": "6.8"
     },
     "CVE-2023-4863": {
-        "score": "8.4"
+        "score": "8.2"
     },
     "CVE-2023-36761": {
         "score": "8.8"
@@ -3963,7 +3972,7 @@
         "score": "5.1"
     },
     "CVE-2021-40438": {
-        "score": "8.2"
+        "score": "8.3"
     },
     "CVE-2021-44077": {
         "score": "4.8"
@@ -4275,7 +4284,7 @@
         "score": "6.8"
     },
     "CVE-2021-21148": {
-        "score": "6.4"
+        "score": "6.9"
     },
     "CVE-2021-37973": {
         "score": "6.9"
