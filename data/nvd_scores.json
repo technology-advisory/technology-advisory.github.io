@@ -1,12 +1,12 @@
 {
     "CVE-2026-11645": {
-        "score": "5.2"
+        "score": "Out of bounds read and write in V8 in Google Chrome prior to 149.0.7827.103 allowed a remote attacker to execute arbitrary code inside a sandbox via a crafted HTML page. (Chromium security severity: High)"
     },
     "CVE-2026-7473": {
-        "score": "6.9"
+        "score": "On affected platforms running Arista EOS where a tunnel decapsulation configuration\u2014such as VXLAN (Virtual Extensible LAN), decap-groups, or a GRE (Generic Routing Encapsulation) tunnel interface\u2014is present, the switch will incorrectly decapsulate and forward other unexpected tunneled packet with a destination IP matching its configured decapsulation IP. This occurs because the switch does not verify the tunnel protocol type, potentially leading to the unexpected processing of non-configured tunnel traffic.\n\n\n\nThis issue has been reported as being exploited in the wild."
     },
     "CVE-2026-20245": {
-        "score": "6.6"
+        "score": "A vulnerability in the CLI of Cisco Catalyst SD-WAN Controller, formerly SD-WAN vSmart, Cisco Catalyst SD-WAN Manager, formerly SD-WAN vManage, and Cisco Catalyst SD-WAN Validator, formerly SD-WAN vBond, could allow an authenticated, local attacker to execute arbitrary commands as root by supplying a crafted file to the affected system.\r\n\r\nThis vulnerability is due to insufficient validation of user-supplied input. An attacker could exploit this vulnerability by uploading a crafted file to the affected system. A successful exploit could allow the attacker to perform command injection attacks on an affected system and elevate their privileges as the root user.&nbsp;\r\nTo exploit this vulnerability, the attacker must have netadmin privileges on the affected system. This would require valid credentials or exploitation of  or . Cisco is not aware of successful exploitation by other methods. Cisco has observed limited cases where the exploitation of this bug resulted in a configuration change pushed to edge devices.\r\nCisco recommends that customers upgrade to the fixed software that is documented in the  that was published on May 14, 2026, and verify the configuration of the edge devices."
     },
     "CVE-2026-42271": {
         "score": "LiteLLM is a proxy server (AI Gateway) to call LLM APIs in OpenAI (or native) format. From version 1.74.2 to before version 1.83.7, two endpoints used to preview an MCP server before saving it \u2014 POST /mcp-rest/test/connection and POST /mcp-rest/test/tools/list \u2014 accepted a full server configuration in the request body, including the command, args, and env fields used by the stdio transport. When called with a stdio configuration, the endpoints attempted to connect, which spawned the supplied command as a subprocess on the proxy host with the privileges of the proxy process. The endpoints were gated only by a valid proxy API key, with no role check. Any authenticated user \u2014 including holders of low-privilege internal-user keys \u2014 could therefore run arbitrary commands on the host. This issue has been patched in version 1.83.7."
@@ -84,7 +84,7 @@
         "score": "LiteLLM is a proxy server (AI Gateway) to call LLM APIs in OpenAI (or native) format. From version 1.81.16 to before version 1.83.7, a database query used during proxy API key checks mixed the caller-supplied key value into the query text instead of passing it as a separate parameter. An unauthenticated attacker could send a specially crafted Authorization header to any LLM API route (for example POST /chat/completions) and reach this query through the proxy's error-handling path. An attacker could read data from the proxy's database and may be able to modify it, leading to unauthorised access to the proxy and the credentials it manages. This issue has been patched in version 1.83.7."
     },
     "CVE-2026-6973": {
-        "score": "An Improper Input Validation in Ivanti EPMM\u00a0before\u00a0versions 12.6.1.1, 12.7.0.1, and 12.8.0.1\u00a0allows\u00a0a remotely authenticated user with\u00a0administrative access to achieve remote code execution."
+        "score": "A configuration control vulnerability in\u00a0the\u00a0Ivanti\u00a0Endpoint\u00a0Manager\u00a0Mobile\u00a0before\u00a012.9.0.1, 12.8.0.3 and 12.7.0.2\u00a0versions\u00a0allows a remote authenticated attacker to inject arbitrary Apache directives, leading to remote code execution."
     },
     "CVE-2026-0300": {
         "score": "A buffer overflow vulnerability in the User-ID\u2122 Authentication Portal (aka Captive Portal) service of Palo Alto Networks PAN-OS software allows an unauthenticated attacker to execute arbitrary code with root privileges on the PA-Series and VM-Series firewalls by sending specially crafted packets. \n\nThe risk of this issue is greatly reduced if you secure access to the User-ID\u2122 Authentication Portal per the  best practice guidelines https://knowledgebase.paloaltonetworks.com/KCSArticleDetail  by restricting access to only trusted internal IP addresses.\n\nPrisma Access, Cloud NGFW and Panorama appliances are not impacted by this vulnerability."
@@ -120,16 +120,16 @@
         "score": "Insufficient granularity of access control in Microsoft Defender allows an authorized attacker to elevate privileges locally."
     },
     "CVE-2026-20122": {
-        "score": "7.3"
+        "score": "7.4"
     },
     "CVE-2026-20133": {
-        "score": "7.5"
+        "score": "7.2"
     },
     "CVE-2025-2749": {
         "score": "3.9"
     },
     "CVE-2023-27351": {
-        "score": "7.1"
+        "score": "6.7"
     },
     "CVE-2025-48700": {
         "score": "4.8"
@@ -177,7 +177,7 @@
         "score": "6.8"
     },
     "CVE-2026-35616": {
-        "score": "7.4"
+        "score": "7.6"
     },
     "CVE-2026-3502": {
         "score": "5.9"
@@ -309,7 +309,7 @@
         "score": "7.7"
     },
     "CVE-2025-40536": {
-        "score": "6.7"
+        "score": "6.1"
     },
     "CVE-2026-21513": {
         "score": "Protection mechanism failure in MSHTML Framework allows an unauthorized attacker to bypass a security feature over a network."
@@ -486,7 +486,7 @@
         "score": "6.7"
     },
     "CVE-2025-48703": {
-        "score": "4.7"
+        "score": "5.2"
     },
     "CVE-2025-11371": {
         "score": "5.2"
@@ -513,7 +513,7 @@
         "score": "9.3"
     },
     "CVE-2022-48503": {
-        "score": "6.4"
+        "score": "6.5"
     },
     "CVE-2025-2746": {
         "score": "5.2"
@@ -585,7 +585,7 @@
         "score": "8.7"
     },
     "CVE-2025-32463": {
-        "score": "7.0"
+        "score": "7.3"
     },
     "CVE-2025-59689": {
         "score": "6.5"
@@ -594,7 +594,7 @@
         "score": "6.9"
     },
     "CVE-2025-20352": {
-        "score": "7.4"
+        "score": "7.5"
     },
     "CVE-2021-21311": {
         "score": "4.8"
@@ -1410,7 +1410,7 @@
         "score": "8.4"
     },
     "CVE-2024-38193": {
-        "score": "8.3"
+        "score": "8.5"
     },
     "CVE-2024-38213": {
         "score": "8.3"
@@ -1605,7 +1605,7 @@
         "score": "8.6"
     },
     "CVE-2024-1709": {
-        "score": "7.2"
+        "score": "7.0"
     },
     "CVE-2020-3259": {
         "score": "6.2"
@@ -1953,7 +1953,7 @@
         "score": "7.9"
     },
     "CVE-2023-36874": {
-        "score": "8.6"
+        "score": "8.7"
     },
     "CVE-2022-31199": {
         "score": "6.2"
@@ -2898,7 +2898,7 @@
         "score": "8.4"
     },
     "CVE-2022-0847": {
-        "score": "8.0"
+        "score": "7.9"
     },
     "CVE-2021-41357": {
         "score": "8.9"
@@ -3435,7 +3435,7 @@
         "score": "8.8"
     },
     "CVE-2020-1938": {
-        "score": "6.2"
+        "score": "6.3"
     },
     "CVE-2020-11899": {
         "score": "5.4"
@@ -4032,7 +4032,7 @@
         "score": "5.4"
     },
     "CVE-2021-42013": {
-        "score": "7.5"
+        "score": "6.9"
     },
     "CVE-2021-41773": {
         "score": "5.7"
