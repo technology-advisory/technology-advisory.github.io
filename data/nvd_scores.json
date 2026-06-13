@@ -1,6 +1,9 @@
 {
+    "CVE-2026-35273": {
+        "score": "7.3"
+    },
     "CVE-2026-10520": {
-        "score": "6.2"
+        "score": "An OS Command Injection vulnerability\u00a0in Ivanti\u00a0Sentry before\u00a0the\u00a0R10.5.2, R10.6.2 and R10.7.1\u00a0versions\u00a0allows\u00a0a remote unauthenticated user to achieve root-level remote code execution"
     },
     "CVE-2026-11645": {
         "score": "Out of bounds read and write in V8 in Google Chrome prior to 149.0.7827.103 allowed a remote attacker to execute arbitrary code inside a sandbox via a crafted HTML page. (Chromium security severity: High)"
@@ -87,7 +90,7 @@
         "score": "LiteLLM is a proxy server (AI Gateway) to call LLM APIs in OpenAI (or native) format. From version 1.81.16 to before version 1.83.7, a database query used during proxy API key checks mixed the caller-supplied key value into the query text instead of passing it as a separate parameter. An unauthenticated attacker could send a specially crafted Authorization header to any LLM API route (for example POST /chat/completions) and reach this query through the proxy's error-handling path. An attacker could read data from the proxy's database and may be able to modify it, leading to unauthorised access to the proxy and the credentials it manages. This issue has been patched in version 1.83.7."
     },
     "CVE-2026-6973": {
-        "score": "A configuration control vulnerability in\u00a0the\u00a0Ivanti\u00a0Endpoint\u00a0Manager\u00a0Mobile\u00a0before\u00a012.9.0.1, 12.8.0.3 and 12.7.0.2\u00a0versions\u00a0allows a remote authenticated attacker to inject arbitrary Apache directives, leading to remote code execution."
+        "score": "An Improper Input Validation in Ivanti EPMM\u00a0before\u00a0versions 12.6.1.1, 12.7.0.1, and 12.8.0.1\u00a0allows\u00a0a remotely authenticated user with\u00a0administrative access to achieve remote code execution."
     },
     "CVE-2026-0300": {
         "score": "A buffer overflow vulnerability in the User-ID\u2122 Authentication Portal (aka Captive Portal) service of Palo Alto Networks PAN-OS software allows an unauthenticated attacker to execute arbitrary code with root privileges on the PA-Series and VM-Series firewalls by sending specially crafted packets. \n\nThe risk of this issue is greatly reduced if you secure access to the User-ID\u2122 Authentication Portal per the  best practice guidelines https://knowledgebase.paloaltonetworks.com/KCSArticleDetail  by restricting access to only trusted internal IP addresses.\n\nPrisma Access, Cloud NGFW and Panorama appliances are not impacted by this vulnerability."
@@ -291,7 +294,7 @@
         "score": "4.5"
     },
     "CVE-2024-7694": {
-        "score": "5.7"
+        "score": "5.9"
     },
     "CVE-2008-0015": {
         "score": "5.9"
@@ -777,7 +780,7 @@
         "score": "8.6"
     },
     "CVE-2025-21479": {
-        "score": "8.1"
+        "score": "8.0"
     },
     "CVE-2025-21480": {
         "score": "7.1"
@@ -1059,7 +1062,7 @@
         "score": "8.4"
     },
     "CVE-2025-21391": {
-        "score": "8.4"
+        "score": "8.3"
     },
     "CVE-2025-0994": {
         "score": "8.6"
@@ -1071,7 +1074,7 @@
         "score": "5.6"
     },
     "CVE-2024-21413": {
-        "score": "8.5"
+        "score": "8.4"
     },
     "CVE-2022-23748": {
         "score": "5.8"
@@ -1107,13 +1110,13 @@
         "score": "4.4"
     },
     "CVE-2025-21335": {
-        "score": "8.4"
+        "score": "8.3"
     },
     "CVE-2025-21334": {
-        "score": "8.5"
+        "score": "8.3"
     },
     "CVE-2025-21333": {
-        "score": "8.1"
+        "score": "7.9"
     },
     "CVE-2024-55591": {
         "score": "7.3"
@@ -1275,7 +1278,7 @@
         "score": "7.9"
     },
     "CVE-2024-30088": {
-        "score": "8.2"
+        "score": "8.3"
     },
     "CVE-2024-9380": {
         "score": "6.8"
@@ -1290,7 +1293,7 @@
         "score": "8.3"
     },
     "CVE-2024-43572": {
-        "score": "8.5"
+        "score": "8.4"
     },
     "CVE-2024-43047": {
         "score": "8.1"
@@ -1311,7 +1314,7 @@
         "score": "4.1"
     },
     "CVE-2024-7593": {
-        "score": "7.0"
+        "score": "6.8"
     },
     "CVE-2024-8963": {
         "score": "7.3"
@@ -1458,7 +1461,7 @@
         "score": "7.0"
     },
     "CVE-2024-34102": {
-        "score": "7.0"
+        "score": "6.7"
     },
     "CVE-2024-36401": {
         "score": "9.3"
@@ -1524,7 +1527,7 @@
         "score": "6.2"
     },
     "CVE-2024-4761": {
-        "score": "8.0"
+        "score": "7.9"
     },
     "CVE-2021-40655": {
         "score": "4.2"
@@ -1560,7 +1563,7 @@
         "score": "9.0"
     },
     "CVE-2024-3400": {
-        "score": "7.8"
+        "score": "7.5"
     },
     "CVE-2024-3273": {
         "score": "5.1"
@@ -1893,7 +1896,7 @@
         "score": "4.5"
     },
     "CVE-2023-38831": {
-        "score": "7.7"
+        "score": "7.5"
     },
     "CVE-2023-32315": {
         "score": "5.7"
@@ -1911,7 +1914,7 @@
         "score": "7.6"
     },
     "CVE-2023-38180": {
-        "score": "8.5"
+        "score": "8.6"
     },
     "CVE-2017-18368": {
         "score": "6.2"
@@ -1923,7 +1926,7 @@
         "score": "5.7"
     },
     "CVE-2023-38606": {
-        "score": "7.6"
+        "score": "7.5"
     },
     "CVE-2023-35078": {
         "score": "7.8"
@@ -2061,7 +2064,7 @@
         "score": "5.6"
     },
     "CVE-2023-25717": {
-        "score": "4.7"
+        "score": "5.3"
     },
     "CVE-2021-3560": {
         "score": "5.8"
@@ -2244,7 +2247,7 @@
         "score": "5.3"
     },
     "CVE-2022-47966": {
-        "score": "6.9"
+        "score": "6.7"
     },
     "CVE-2022-44877": {
         "score": "5.2"
@@ -2460,7 +2463,7 @@
         "score": "6.8"
     },
     "CVE-2022-32893": {
-        "score": "7.5"
+        "score": "7.4"
     },
     "CVE-2022-2856": {
         "score": "6.7"
@@ -2898,7 +2901,7 @@
         "score": "8.2"
     },
     "CVE-2022-21919": {
-        "score": "8.4"
+        "score": "8.5"
     },
     "CVE-2022-0847": {
         "score": "7.9"
