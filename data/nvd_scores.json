@@ -1,4 +1,10 @@
 {
+    "CVE-2026-54420": {
+        "score": "4.9"
+    },
+    "CVE-2026-20262": {
+        "score": "4.9"
+    },
     "CVE-2026-35273": {
         "score": "Vulnerability in the PeopleSoft Enterprise PeopleTools product of Oracle PeopleSoft (component: Updates Environment Management). Supported versions that are affected are 8.61 and 8.62. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise PeopleSoft Enterprise PeopleTools. Successful attacks of this vulnerability can result in takeover of PeopleSoft Enterprise PeopleTools. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)."
     },
@@ -126,7 +132,7 @@
         "score": "Insufficient granularity of access control in Microsoft Defender allows an authorized attacker to elevate privileges locally."
     },
     "CVE-2026-20122": {
-        "score": "7.4"
+        "score": "7.1"
     },
     "CVE-2026-20133": {
         "score": "7.2"
@@ -138,7 +144,7 @@
         "score": "6.7"
     },
     "CVE-2025-48700": {
-        "score": "4.8"
+        "score": "5.2"
     },
     "CVE-2026-20128": {
         "score": "7.1"
@@ -219,7 +225,7 @@
         "score": "7.4"
     },
     "CVE-2026-20131": {
-        "score": "7.4"
+        "score": "7.6"
     },
     "CVE-2025-66376": {
         "score": "7.5"
@@ -228,7 +234,7 @@
         "score": "8.3"
     },
     "CVE-2025-47813": {
-        "score": "5.1"
+        "score": "5.2"
     },
     "CVE-2026-3910": {
         "score": "6.1"
@@ -243,7 +249,7 @@
         "score": "5.9"
     },
     "CVE-2025-26399": {
-        "score": "6.4"
+        "score": "6.7"
     },
     "CVE-2026-1603": {
         "score": "7.3"
@@ -273,7 +279,7 @@
         "score": "5.5"
     },
     "CVE-2026-20127": {
-        "score": "7.7"
+        "score": "7.9"
     },
     "CVE-2026-25108": {
         "score": "8.7"
@@ -384,10 +390,10 @@
         "score": "9.2"
     },
     "CVE-2025-31125": {
-        "score": "5.6"
+        "score": "5.1"
     },
     "CVE-2025-54313": {
-        "score": "4.6"
+        "score": "4.7"
     },
     "CVE-2026-20045": {
         "score": "6.6"
@@ -447,7 +453,7 @@
         "score": "8.7"
     },
     "CVE-2022-37055": {
-        "score": "4.9"
+        "score": "4.8"
     },
     "CVE-2025-66644": {
         "score": "5.2"
@@ -489,7 +495,7 @@
         "score": "9.3"
     },
     "CVE-2025-21042": {
-        "score": "6.7"
+        "score": "6.6"
     },
     "CVE-2025-48703": {
         "score": "5.2"
@@ -504,13 +510,13 @@
         "score": "6.6"
     },
     "CVE-2025-6204": {
-        "score": "5.6"
+        "score": "5.8"
     },
     "CVE-2025-6205": {
         "score": "6.4"
     },
     "CVE-2025-54236": {
-        "score": "6.7"
+        "score": "6.4"
     },
     "CVE-2025-59287": {
         "score": "7.6"
@@ -522,7 +528,7 @@
         "score": "6.5"
     },
     "CVE-2025-2746": {
-        "score": "5.2"
+        "score": "5.1"
     },
     "CVE-2025-2747": {
         "score": "5.1"
@@ -537,7 +543,7 @@
         "score": "7.1"
     },
     "CVE-2025-47827": {
-        "score": "8.5"
+        "score": "8.4"
     },
     "CVE-2025-24990": {
         "score": "8.5"
@@ -552,7 +558,7 @@
         "score": "6.5"
     },
     "CVE-2025-27915": {
-        "score": "5.3"
+        "score": "5.4"
     },
     "CVE-2021-22555": {
         "score": "5.5"
@@ -585,7 +591,7 @@
         "score": "6.1"
     },
     "CVE-2025-21043": {
-        "score": "6.4"
+        "score": "6.5"
     },
     "CVE-2025-4008": {
         "score": "8.7"
@@ -621,13 +627,13 @@
         "score": "In the Linux kernel, the following vulnerability has been resolved:\n\nposix-cpu-timers: fix race between handle_posix_cpu_timers() and posix_cpu_timer_del()\n\nIf an exiting non-autoreaping task has already passed exit_notify() and\ncalls handle_posix_cpu_timers() from IRQ, it can be reaped by its parent\nor debugger right after unlock_task_sighand().\n\nIf a concurrent posix_cpu_timer_del() runs at that moment, it won't be\nable to detect timer->it.cpu.firing != 0: cpu_timer_task_rcu() and/or\nlock_task_sighand() will fail.\n\nAdd the tsk->exit_state check into run_posix_cpu_timers() to fix this.\n\nThis fix is not needed if CONFIG_POSIX_CPU_TIMERS_TASK_WORK=y, because\nexit_task_work() is called before exit_notify(). But the check still\nmakes sense, task_work_add(&tsk->posix_cputimers_work.work) will fail\nanyway in this case."
     },
     "CVE-2025-48543": {
-        "score": "7.6"
+        "score": "7.5"
     },
     "CVE-2025-53690": {
         "score": "7.7"
     },
     "CVE-2023-50224": {
-        "score": "6.5"
+        "score": "6.4"
     },
     "CVE-2025-9377": {
         "score": "8.6"
@@ -657,7 +663,7 @@
         "score": "6.6"
     },
     "CVE-2025-54948": {
-        "score": "6.3"
+        "score": "6.4"
     },
     "CVE-2025-8876": {
         "score": "9.4"
@@ -690,7 +696,7 @@
         "score": "7.3"
     },
     "CVE-2025-20281": {
-        "score": "7.1"
+        "score": "7.2"
     },
     "CVE-2025-2775": {
         "score": "6.2"
@@ -750,7 +756,7 @@
         "score": "6.0"
     },
     "CVE-2024-0769": {
-        "score": "4.7"
+        "score": "5.0"
     },
     "CVE-2024-54085": {
         "score": "10.0"
@@ -780,10 +786,10 @@
         "score": "8.6"
     },
     "CVE-2025-21479": {
-        "score": "8.0"
+        "score": "8.2"
     },
     "CVE-2025-21480": {
-        "score": "7.1"
+        "score": "7.3"
     },
     "CVE-2025-27038": {
         "score": "8.1"
@@ -792,7 +798,7 @@
         "score": "4.9"
     },
     "CVE-2025-3935": {
-        "score": "6.7"
+        "score": "6.6"
     },
     "CVE-2025-35939": {
         "score": "6.9"
@@ -819,7 +825,7 @@
         "score": "5.3"
     },
     "CVE-2025-4428": {
-        "score": "6.0"
+        "score": "6.2"
     },
     "CVE-2025-4427": {
         "score": "6.3"
@@ -840,7 +846,7 @@
         "score": "8.0"
     },
     "CVE-2025-32706": {
-        "score": "8.1"
+        "score": "8.2"
     },
     "CVE-2025-32701": {
         "score": "8.4"
@@ -849,7 +855,7 @@
         "score": "8.5"
     },
     "CVE-2025-47729": {
-        "score": "6.4"
+        "score": "6.6"
     },
     "CVE-2024-11120": {
         "score": "6.5"
@@ -867,13 +873,13 @@
         "score": "9.3"
     },
     "CVE-2024-58136": {
-        "score": "4.5"
+        "score": "4.7"
     },
     "CVE-2024-38475": {
         "score": "8.2"
     },
     "CVE-2023-44221": {
-        "score": "7.2"
+        "score": "7.3"
     },
     "CVE-2025-31324": {
         "score": "6.4"
@@ -894,7 +900,7 @@
         "score": "7.8"
     },
     "CVE-2025-31200": {
-        "score": "7.7"
+        "score": "7.5"
     },
     "CVE-2021-20035": {
         "score": "7.5"
@@ -915,7 +921,7 @@
         "score": "7.8"
     },
     "CVE-2025-22457": {
-        "score": "7.3"
+        "score": "7.6"
     },
     "CVE-2025-24813": {
         "score": "9.2"
@@ -987,7 +993,7 @@
         "score": "4.8"
     },
     "CVE-2025-25181": {
-        "score": "4.3"
+        "score": "4.4"
     },
     "CVE-2025-22226": {
         "score": "6.9"
@@ -1050,7 +1056,7 @@
         "score": "7.7"
     },
     "CVE-2024-41710": {
-        "score": "7.0"
+        "score": "7.2"
     },
     "CVE-2024-40891": {
         "score": "6.4"
@@ -1122,7 +1128,7 @@
         "score": "7.3"
     },
     "CVE-2023-48365": {
-        "score": "7.0"
+        "score": "6.9"
     },
     "CVE-2024-12686": {
         "score": "6.4"
@@ -1134,7 +1140,7 @@
         "score": "6.2"
     },
     "CVE-2024-55550": {
-        "score": "5.8"
+        "score": "5.6"
     },
     "CVE-2024-41713": {
         "score": "7.2"
@@ -1161,7 +1167,7 @@
         "score": "4.3"
     },
     "CVE-2024-55956": {
-        "score": "5.9"
+        "score": "5.8"
     },
     "CVE-2024-35250": {
         "score": "8.3"
@@ -1194,10 +1200,10 @@
         "score": "7.1"
     },
     "CVE-2024-44309": {
-        "score": "8.0"
+        "score": "7.9"
     },
     "CVE-2024-44308": {
-        "score": "8.2"
+        "score": "8.3"
     },
     "CVE-2024-38813": {
         "score": "7.8"
@@ -1242,7 +1248,7 @@
         "score": "4.8"
     },
     "CVE-2024-43093": {
-        "score": "7.1"
+        "score": "7.4"
     },
     "CVE-2024-5910": {
         "score": "9.3"
@@ -1251,7 +1257,7 @@
         "score": "5.3"
     },
     "CVE-2024-8957": {
-        "score": "4.7"
+        "score": "5.1"
     },
     "CVE-2024-37383": {
         "score": "7.5"
@@ -1281,10 +1287,10 @@
         "score": "8.3"
     },
     "CVE-2024-9380": {
-        "score": "6.8"
+        "score": "6.7"
     },
     "CVE-2024-9379": {
-        "score": "7.1"
+        "score": "7.0"
     },
     "CVE-2024-23113": {
         "score": "8.5"
@@ -1356,7 +1362,7 @@
         "score": "7.9"
     },
     "CVE-2024-38014": {
-        "score": "8.3"
+        "score": "8.4"
     },
     "CVE-2024-38226": {
         "score": "8.5"
@@ -1434,13 +1440,13 @@
         "score": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: fix __dst_negative_advice() race\n\n__dst_negative_advice() does not enforce proper RCU rules when\nsk->dst_cache must be cleared, leading to possible UAF.\n\nRCU rules are that we must first clear sk->sk_dst_cache,\nthen call dst_release(old_dst).\n\nNote that sk_dst_reset(sk) is implementing this protocol correctly,\nwhile __dst_negative_advice() uses the wrong order.\n\nGiven that ip6_negative_advice() has special logic\nagainst RTF_CACHE, this means each of the three ->negative_advice()\nexisting methods must perform the sk_dst_reset() themselves.\n\nNote the check against NULL dst is centralized in\n__dst_negative_advice(), there is no need to duplicate\nit in various callbacks.\n\nMany thanks to Clement Lecigne for tracking this issue.\n\nThis old bug became visible after the blamed commit, using UDP sockets."
     },
     "CVE-2018-0824": {
-        "score": "6.5"
+        "score": "6.3"
     },
     "CVE-2024-37085": {
         "score": "7.9"
     },
     "CVE-2023-45249": {
-        "score": "6.2"
+        "score": "6.3"
     },
     "CVE-2024-5217": {
         "score": "9.2"
@@ -1449,7 +1455,7 @@
         "score": "9.3"
     },
     "CVE-2024-39891": {
-        "score": "5.0"
+        "score": "5.5"
     },
     "CVE-2012-4792": {
         "score": "6.4"
@@ -1491,7 +1497,7 @@
         "score": "6.3"
     },
     "CVE-2024-26169": {
-        "score": "8.4"
+        "score": "8.5"
     },
     "CVE-2024-32896": {
         "score": "7.2"
@@ -1593,13 +1599,13 @@
         "score": "7.0"
     },
     "CVE-2024-23225": {
-        "score": "8.1"
+        "score": "8.0"
     },
     "CVE-2024-23296": {
         "score": "8.3"
     },
     "CVE-2023-21237": {
-        "score": "7.2"
+        "score": "6.9"
     },
     "CVE-2021-36380": {
         "score": "4.6"
@@ -1656,7 +1662,7 @@
         "score": "8.4"
     },
     "CVE-2023-6549": {
-        "score": "8.1"
+        "score": "8.0"
     },
     "CVE-2023-6548": {
         "score": "7.7"
@@ -1701,7 +1707,7 @@
         "score": "5.8"
     },
     "CVE-2023-47565": {
-        "score": "5.9"
+        "score": "5.6"
     },
     "CVE-2023-6448": {
         "score": "6.1"
@@ -1791,7 +1797,7 @@
         "score": "6.0"
     },
     "CVE-2023-5631": {
-        "score": "7.5"
+        "score": "7.1"
     },
     "CVE-2023-20273": {
         "score": "5.7"
@@ -1836,7 +1842,7 @@
         "score": "8.5"
     },
     "CVE-2023-5217": {
-        "score": "7.9"
+        "score": "7.7"
     },
     "CVE-2018-14667": {
         "score": "6.1"
@@ -1854,7 +1860,7 @@
         "score": "5.3"
     },
     "CVE-2023-28434": {
-        "score": "4.8"
+        "score": "5.0"
     },
     "CVE-2022-22265": {
         "score": "5.7"
@@ -1872,7 +1878,7 @@
         "score": "7.5"
     },
     "CVE-2023-35674": {
-        "score": "7.9"
+        "score": "8.0"
     },
     "CVE-2023-20269": {
         "score": "6.8"
@@ -2001,7 +2007,7 @@
         "score": "7.9"
     },
     "CVE-2023-20867": {
-        "score": "6.3"
+        "score": "6.2"
     },
     "CVE-2023-27992": {
         "score": "5.1"
@@ -2046,10 +2052,10 @@
         "score": "6.7"
     },
     "CVE-2023-32409": {
-        "score": "7.0"
+        "score": "7.4"
     },
     "CVE-2023-28204": {
-        "score": "7.5"
+        "score": "7.6"
     },
     "CVE-2023-32373": {
         "score": "7.9"
@@ -2103,7 +2109,7 @@
         "score": "6.1"
     },
     "CVE-2023-2136": {
-        "score": "8.3"
+        "score": "8.4"
     },
     "CVE-2017-6742": {
         "score": "6.2"
@@ -2172,7 +2178,7 @@
         "score": "7.6"
     },
     "CVE-2022-22706": {
-        "score": "8.2"
+        "score": "8.5"
     },
     "CVE-2023-26360": {
         "score": "6.6"
@@ -2253,7 +2259,7 @@
         "score": "5.2"
     },
     "CVE-2022-41080": {
-        "score": "6.7"
+        "score": "6.9"
     },
     "CVE-2023-21674": {
         "score": "8.4"
@@ -2367,7 +2373,7 @@
         "score": "5.1"
     },
     "CVE-2022-40139": {
-        "score": "5.3"
+        "score": "5.2"
     },
     "CVE-2013-6282": {
         "score": "6.2"
@@ -2460,7 +2466,7 @@
         "score": "7.4"
     },
     "CVE-2022-32894": {
-        "score": "6.8"
+        "score": "6.5"
     },
     "CVE-2022-32893": {
         "score": "7.4"
@@ -2526,7 +2532,7 @@
         "score": "5.9"
     },
     "CVE-2022-30190": {
-        "score": "8.3"
+        "score": "8.6"
     },
     "CVE-2021-38163": {
         "score": "5.7"
@@ -2643,7 +2649,7 @@
         "score": "5.1"
     },
     "CVE-2022-26134": {
-        "score": "5.8"
+        "score": "5.3"
     },
     "CVE-2019-3010": {
         "score": "6.2"
@@ -2808,7 +2814,7 @@
         "score": "7.2"
     },
     "CVE-2022-20821": {
-        "score": "6.1"
+        "score": "6.0"
     },
     "CVE-2021-1048": {
         "score": "5.6"
@@ -2922,7 +2928,7 @@
         "score": "5.7"
     },
     "CVE-2022-22718": {
-        "score": "9.0"
+        "score": "8.9"
     },
     "CVE-2022-22960": {
         "score": "5.4"
@@ -2988,13 +2994,13 @@
         "score": "6.1"
     },
     "CVE-2021-42287": {
-        "score": "7.7"
+        "score": "7.8"
     },
     "CVE-2021-42278": {
         "score": "7.8"
     },
     "CVE-2021-39793": {
-        "score": "7.4"
+        "score": "7.6"
     },
     "CVE-2021-27852": {
         "score": "5.9"
@@ -3393,7 +3399,7 @@
         "score": "7.5"
     },
     "CVE-2022-26485": {
-        "score": "7.2"
+        "score": "7.3"
     },
     "CVE-2021-21973": {
         "score": "6.4"
@@ -3987,7 +3993,7 @@
         "score": "6.5"
     },
     "CVE-2021-40449": {
-        "score": "8.3"
+        "score": "8.4"
     },
     "CVE-2021-42321": {
         "score": "6.6"
