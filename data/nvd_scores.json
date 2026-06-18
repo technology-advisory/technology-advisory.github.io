@@ -1,6 +1,6 @@
 {
     "CVE-2026-48907": {
-        "score": "10.0"
+        "score": "A vulnerability in the JCE editor extension for Joomla allows the creation of new editor profiles for unauthenticated users, ultimately resulting in PHP code upload and execution."
     },
     "CVE-2026-54420": {
         "score": "LiteSpeed cPanel plugin before 2.4.8 (as distributed in LiteSpeed WHM PlugIn before 5.3.2.0) mishandles symlinks provided by a user with FTP or web shell access on a shared hosting server running CloudLinux/CageFS, as exploited in the wild in May 2026."
@@ -71,9 +71,6 @@
     "CVE-2008-4250": {
         "score": "The Server service in Microsoft Windows 2000 SP4, XP SP2 and SP3, Server 2003 SP1 and SP2, Vista Gold and SP1, Server 2008, and 7 Pre-Beta allows remote attackers to execute arbitrary code via a crafted RPC request that triggers the overflow during path canonicalization, as exploited in the wild by Gimmiv.A in October 2008, aka \"Server Service Vulnerability.\""
     },
-    "CVE-2009-1537": {
-        "score": "Unspecified vulnerability in the QuickTime Movie Parser Filter in quartz.dll in DirectShow in Microsoft DirectX 7.0 through 9.0c on Windows 2000 SP4, Windows XP SP2 and SP3, and Windows Server 2003 SP2 allows remote attackers to execute arbitrary code via a crafted QuickTime media file, as exploited in the wild in May 2009, aka \"DirectX NULL Byte Overwrite Vulnerability.\""
-    },
     "CVE-2009-3459": {
         "score": "Heap-based buffer overflow in Adobe Reader and Acrobat 7.x before 7.1.4, 8.x before 8.1.7, and 9.x before 9.2 allows remote attackers to execute arbitrary code via a crafted PDF file that triggers memory corruption, as exploited in the wild in October 2009. NOTE: some of these details are obtained from third party information."
     },
@@ -93,7 +90,7 @@
         "score": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Exchange Server allows an unauthorized attacker to perform spoofing over a network."
     },
     "CVE-2026-20182": {
-        "score": "May 2026: This security advisory provides the details and fix information for a vulnerability that was discovered and fixed after the  was disclosed in February 2026. This new advisory is for a new vulnerability in the control connection handshaking. The  section of this advisory includes Show Control Connections guidance to help with system checks.&nbsp;\r\n\r\nA vulnerability in the peering authentication in Cisco Catalyst SD-WAN Controller, formerly SD-WAN vSmart, and Cisco Catalyst SD-WAN Manager, formerly SD-WAN vManage, could allow an unauthenticated, remote attacker to bypass authentication and obtain administrative privileges on an affected system.\r\nThis vulnerability exists because the peering authentication mechanism in an affected system is not working properly. An attacker could exploit this vulnerability by sending crafted requests to the affected system. A successful exploit could allow the attacker to log in to an affected Cisco Catalyst SD-WAN Controller as an internal, high-privileged, non-root user account. Using this account, the attacker could access NETCONF, which would then allow the attacker to manipulate network configuration for the SD-WAN fabric."
+        "score": "May 2026: This security advisory provides the details and fix information for a vulnerability that was discovered and fixed after the  was disclosed in February 2026. This new advisory is for a new vulnerability in the control connection handshaking. The  section of this advisory includes Show Control Connections guidance to help with system checks.&nbsp;\r\n\r\nA vulnerability in the peering authentication in Cisco Catalyst SD-WAN Controller, formerly SD-WAN vSmart, Cisco Catalyst SD-WAN Manager, formerly SD-WAN vManage, and Cisco Catalyst SD-WAN Validator, formerly SD-WAN vBond, could allow an unauthenticated, remote attacker to bypass authentication and obtain administrative privileges on an affected system.\r\nThis vulnerability exists because the peering authentication mechanism in an affected system is not working properly. An attacker could exploit this vulnerability by sending crafted requests to the affected system. A successful exploit could allow the attacker to log in to an affected Cisco Catalyst SD-WAN Controller as an internal, high-privileged, non-root user account. Using this account, the attacker could access NETCONF, which would then allow the attacker to manipulate network configuration for the SD-WAN fabric."
     },
     "CVE-2026-42208": {
         "score": "LiteLLM is a proxy server (AI Gateway) to call LLM APIs in OpenAI (or native) format. From version 1.81.16 to before version 1.83.7, a database query used during proxy API key checks mixed the caller-supplied key value into the query text instead of passing it as a separate parameter. An unauthenticated attacker could send a specially crafted Authorization header to any LLM API route (for example POST /chat/completions) and reach this query through the proxy's error-handling path. An attacker could read data from the proxy's database and may be able to modify it, leading to unauthorised access to the proxy and the credentials it manages. This issue has been patched in version 1.83.7."
@@ -134,9 +131,6 @@
     "CVE-2026-33825": {
         "score": "Insufficient granularity of access control in Microsoft Defender allows an authorized attacker to elevate privileges locally."
     },
-    "CVE-2026-20122": {
-        "score": "7.4"
-    },
     "CVE-2026-20133": {
         "score": "7.5"
     },
@@ -156,7 +150,7 @@
         "score": "4.8"
     },
     "CVE-2024-27199": {
-        "score": "6.6"
+        "score": "6.5"
     },
     "CVE-2026-34197": {
         "score": "Improper Input Validation, Improper Control of Generation of Code ('Code Injection') vulnerability in Apache ActiveMQ Broker, Apache ActiveMQ.\n\nApache ActiveMQ Classic exposes the Jolokia JMX-HTTP bridge at /api/jolokia/ on the web console. The default Jolokia access policy permits exec operations on all ActiveMQ MBeans (org.apache.activemq:*), including\nBrokerService.addNetworkConnector(String) and BrokerService.addConnector(String).\n\nAn authenticated attacker can invoke these operations with a crafted discovery URI that triggers the VM transport's brokerConfig parameter to load a remote Spring XML application context using ResourceXmlApplicationContext.\nBecause Spring's ResourceXmlApplicationContext instantiates all singleton beans before the BrokerService validates the configuration, arbitrary code execution occurs on the broker's JVM through bean factory methods such as Runtime.exec().\n\n\n\nThis issue affects Apache ActiveMQ Broker: before 5.19.4, from 6.0.0 before 6.2.3; Apache ActiveMQ All: before 5.19.4, from 6.0.0 before 6.2.3; Apache ActiveMQ: before 5.19.4, from 6.0.0 before 6.2.3.\n\n\n\nUsers are recommended to upgrade to version 5.19.4 or 6.2.3, which fixes the issue"
@@ -164,14 +158,11 @@
     "CVE-2009-0238": {
         "score": "5.4"
     },
-    "CVE-2026-32201": {
-        "score": "Improper input validation in Microsoft Office SharePoint allows an unauthorized attacker to perform spoofing over a network."
-    },
     "CVE-2012-1854": {
         "score": "4.3"
     },
     "CVE-2025-60710": {
-        "score": "8.0"
+        "score": "8.1"
     },
     "CVE-2023-21529": {
         "score": "7.7"
@@ -186,10 +177,10 @@
         "score": "6.2"
     },
     "CVE-2026-34621": {
-        "score": "7.4"
+        "score": "7.5"
     },
     "CVE-2026-1340": {
-        "score": "6.7"
+        "score": "6.8"
     },
     "CVE-2026-35616": {
         "score": "7.7"
@@ -212,9 +203,6 @@
     "CVE-2026-33017": {
         "score": "Langflow is a tool for building and deploying AI-powered agents and workflows. In versions prior to 1.9.0, the POST /api/v1/build_public_tmp/{flow_id}/flow endpoint allows building public flows without requiring authentication. When the optional data parameter is supplied, the endpoint uses attacker-controlled flow data (containing arbitrary Python code in node definitions) instead of the stored flow data from the database. This code is passed to exec() with zero sandboxing, resulting in unauthenticated remote code execution. This is distinct from CVE-2025-3248, which fixed /api/v1/validate/code by adding authentication. The build_public_tmp endpoint is designed to be unauthenticated (for public flows) but incorrectly accepts attacker-supplied flow data containing arbitrary executable code. This issue has been fixed in version 1.9.0."
     },
-    "CVE-2025-32432": {
-        "score": "9.3"
-    },
     "CVE-2025-54068": {
         "score": "9.2"
     },
@@ -222,7 +210,7 @@
         "score": "7.1"
     },
     "CVE-2025-43520": {
-        "score": "6.6"
+        "score": "6.4"
     },
     "CVE-2025-31277": {
         "score": "7.4"
@@ -244,9 +232,6 @@
     },
     "CVE-2026-3909": {
         "score": "6.1"
-    },
-    "CVE-2025-68613": {
-        "score": "6.0"
     },
     "CVE-2021-22054": {
         "score": "5.9"
@@ -273,10 +258,10 @@
         "score": "6.9"
     },
     "CVE-2026-22719": {
-        "score": "6.8"
+        "score": "7.0"
     },
     "CVE-2026-21385": {
-        "score": "8.1"
+        "score": "8.4"
     },
     "CVE-2022-20775": {
         "score": "5.9"
@@ -291,13 +276,13 @@
         "score": "7.1"
     },
     "CVE-2025-68461": {
-        "score": "7.3"
+        "score": "7.4"
     },
     "CVE-2021-22175": {
         "score": "5.9"
     },
     "CVE-2026-22769": {
-        "score": "6.7"
+        "score": "6.8"
     },
     "CVE-2020-7796": {
         "score": "4.5"
@@ -315,7 +300,7 @@
         "score": "9.9"
     },
     "CVE-2026-20700": {
-        "score": "7.0"
+        "score": "7.2"
     },
     "CVE-2024-43468": {
         "score": "Microsoft Configuration Manager Remote Code Execution Vulnerability"
@@ -324,7 +309,7 @@
         "score": "7.7"
     },
     "CVE-2025-40536": {
-        "score": "6.1"
+        "score": "6.3"
     },
     "CVE-2026-21513": {
         "score": "Protection mechanism failure in MSHTML Framework allows an unauthorized attacker to bypass a security feature over a network."
@@ -345,13 +330,10 @@
         "score": "Reliance on untrusted inputs in a security decision in Microsoft Office Word allows an unauthorized attacker to bypass a security feature locally."
     },
     "CVE-2025-11953": {
-        "score": "5.7"
-    },
-    "CVE-2026-24423": {
-        "score": "9.3"
+        "score": "5.8"
     },
     "CVE-2021-39935": {
-        "score": "7.2"
+        "score": "7.3"
     },
     "CVE-2025-64328": {
         "score": "8.6"
@@ -381,13 +363,13 @@
         "score": "7.0"
     },
     "CVE-2026-21509": {
-        "score": "7.9"
+        "score": "8.0"
     },
     "CVE-2024-37079": {
         "score": "7.6"
     },
     "CVE-2025-68645": {
-        "score": "5.7"
+        "score": "5.6"
     },
     "CVE-2025-34026": {
         "score": "9.2"
@@ -411,7 +393,7 @@
         "score": "6.5"
     },
     "CVE-2025-37164": {
-        "score": "6.0"
+        "score": "5.9"
     },
     "CVE-2025-14847": {
         "score": "8.7"
@@ -426,7 +408,7 @@
         "score": "9.3"
     },
     "CVE-2025-40602": {
-        "score": "7.5"
+        "score": "7.7"
     },
     "CVE-2025-20393": {
         "score": "6.9"
@@ -438,7 +420,7 @@
         "score": "7.1"
     },
     "CVE-2025-43529": {
-        "score": "7.1"
+        "score": "7.3"
     },
     "CVE-2018-4063": {
         "score": "An exploitable remote code execution vulnerability exists in the upload.cgi functionality of Sierra Wireless AirLink ES450 FW 4.9.3. A specially crafted HTTP request can upload a file, resulting in executable code being uploaded, and routable, to the webserver. An attacker can make an authenticated HTTP request to trigger this vulnerability."
@@ -447,22 +429,19 @@
         "score": "6.1"
     },
     "CVE-2025-58360": {
-        "score": "7.0"
+        "score": "6.9"
     },
     "CVE-2025-6218": {
-        "score": "6.8"
+        "score": "7.1"
     },
     "CVE-2025-62221": {
-        "score": "8.7"
+        "score": "8.6"
     },
     "CVE-2022-37055": {
         "score": "4.8"
     },
     "CVE-2025-66644": {
         "score": "5.2"
-    },
-    "CVE-2025-55182": {
-        "score": "6.7"
     },
     "CVE-2021-26828": {
         "score": "4.4"
@@ -483,13 +462,10 @@
         "score": "6.1"
     },
     "CVE-2025-58034": {
-        "score": "5.3"
-    },
-    "CVE-2025-64446": {
-        "score": "5.9"
+        "score": "5.4"
     },
     "CVE-2025-12480": {
-        "score": "6.8"
+        "score": "7.0"
     },
     "CVE-2025-62215": {
         "score": "8.4"
@@ -501,28 +477,25 @@
         "score": "6.6"
     },
     "CVE-2025-48703": {
-        "score": "5.2"
+        "score": "5.0"
     },
     "CVE-2025-11371": {
         "score": "5.4"
     },
     "CVE-2025-41244": {
-        "score": "7.6"
+        "score": "8.0"
     },
     "CVE-2025-24893": {
         "score": "6.6"
     },
     "CVE-2025-6204": {
-        "score": "5.8"
-    },
-    "CVE-2025-6205": {
         "score": "6.4"
     },
     "CVE-2025-54236": {
-        "score": "6.4"
+        "score": "6.3"
     },
     "CVE-2025-59287": {
-        "score": "7.6"
+        "score": "7.5"
     },
     "CVE-2025-61932": {
         "score": "9.3"
@@ -542,9 +515,6 @@
     "CVE-2025-61884": {
         "score": "6.7"
     },
-    "CVE-2025-54253": {
-        "score": "7.1"
-    },
     "CVE-2025-47827": {
         "score": "8.4"
     },
@@ -558,7 +528,7 @@
         "score": "5.1"
     },
     "CVE-2021-43798": {
-        "score": "6.5"
+        "score": "6.1"
     },
     "CVE-2025-27915": {
         "score": "5.4"
@@ -570,7 +540,7 @@
         "score": "6.5"
     },
     "CVE-2021-43226": {
-        "score": "9.0"
+        "score": "9.1"
     },
     "CVE-2013-3918": {
         "score": "7.2"
@@ -603,7 +573,7 @@
         "score": "7.3"
     },
     "CVE-2025-59689": {
-        "score": "6.5"
+        "score": "6.4"
     },
     "CVE-2025-10035": {
         "score": "6.9"
@@ -615,7 +585,7 @@
         "score": "4.8"
     },
     "CVE-2025-20362": {
-        "score": "7.4"
+        "score": "7.3"
     },
     "CVE-2025-20333": {
         "score": "7.8"
@@ -624,10 +594,7 @@
         "score": "6.1"
     },
     "CVE-2025-5086": {
-        "score": "4.4"
-    },
-    "CVE-2025-38352": {
-        "score": "In the Linux kernel, the following vulnerability has been resolved:\n\nposix-cpu-timers: fix race between handle_posix_cpu_timers() and posix_cpu_timer_del()\n\nIf an exiting non-autoreaping task has already passed exit_notify() and\ncalls handle_posix_cpu_timers() from IRQ, it can be reaped by its parent\nor debugger right after unlock_task_sighand().\n\nIf a concurrent posix_cpu_timer_del() runs at that moment, it won't be\nable to detect timer->it.cpu.firing != 0: cpu_timer_task_rcu() and/or\nlock_task_sighand() will fail.\n\nAdd the tsk->exit_state check into run_posix_cpu_timers() to fix this.\n\nThis fix is not needed if CONFIG_POSIX_CPU_TIMERS_TASK_WORK=y, because\nexit_task_work() is called before exit_notify(). But the check still\nmakes sense, task_work_add(&tsk->posix_cputimers_work.work) will fail\nanyway in this case."
+        "score": "4.7"
     },
     "CVE-2025-48543": {
         "score": "7.5"
@@ -645,7 +612,7 @@
         "score": "6.2"
     },
     "CVE-2025-55177": {
-        "score": "6.2"
+        "score": "5.4"
     },
     "CVE-2025-57819": {
         "score": "10.0"
@@ -655,9 +622,6 @@
     },
     "CVE-2025-48384": {
         "score": "7.1"
-    },
-    "CVE-2024-8068": {
-        "score": "5.1"
     },
     "CVE-2024-8069": {
         "score": "5.1"
@@ -714,7 +678,7 @@
         "score": "7.2"
     },
     "CVE-2025-49704": {
-        "score": "7.7"
+        "score": "7.6"
     },
     "CVE-2025-49706": {
         "score": "7.6"
@@ -723,7 +687,7 @@
         "score": "7.1"
     },
     "CVE-2025-25257": {
-        "score": "6.7"
+        "score": "6.4"
     },
     "CVE-2025-47812": {
         "score": "5.3"
@@ -747,7 +711,7 @@
         "score": "8.6"
     },
     "CVE-2025-48928": {
-        "score": "5.9"
+        "score": "6.2"
     },
     "CVE-2025-48927": {
         "score": "7.1"
@@ -765,7 +729,7 @@
         "score": "10.0"
     },
     "CVE-2023-0386": {
-        "score": "5.7"
+        "score": "5.9"
     },
     "CVE-2023-33538": {
         "score": "5.6"
@@ -819,7 +783,7 @@
         "score": "4.7"
     },
     "CVE-2024-27443": {
-        "score": "5.6"
+        "score": "5.5"
     },
     "CVE-2025-27920": {
         "score": "6.7"
@@ -834,7 +798,7 @@
         "score": "6.3"
     },
     "CVE-2025-42999": {
-        "score": "6.5"
+        "score": "6.7"
     },
     "CVE-2024-12987": {
         "score": "6.9"
@@ -852,7 +816,7 @@
         "score": "8.2"
     },
     "CVE-2025-32701": {
-        "score": "8.4"
+        "score": "8.3"
     },
     "CVE-2025-30400": {
         "score": "8.5"
@@ -966,7 +930,7 @@
         "score": "8.2"
     },
     "CVE-2025-24993": {
-        "score": "8.6"
+        "score": "8.5"
     },
     "CVE-2025-24991": {
         "score": "8.5"
@@ -1023,7 +987,7 @@
         "score": "6.0"
     },
     "CVE-2023-20118": {
-        "score": "6.4"
+        "score": "6.3"
     },
     "CVE-2023-34192": {
         "score": "5.5"
@@ -1152,13 +1116,13 @@
         "score": "8.7"
     },
     "CVE-2021-44207": {
-        "score": "5.9"
+        "score": "5.7"
     },
     "CVE-2024-12356": {
         "score": "7.4"
     },
     "CVE-2021-40407": {
-        "score": "4.4"
+        "score": "4.6"
     },
     "CVE-2019-11001": {
         "score": "4.1"
@@ -1200,7 +1164,7 @@
         "score": "5.7"
     },
     "CVE-2024-21287": {
-        "score": "7.1"
+        "score": "7.6"
     },
     "CVE-2024-44309": {
         "score": "7.9"
@@ -1257,7 +1221,7 @@
         "score": "9.3"
     },
     "CVE-2024-8956": {
-        "score": "5.3"
+        "score": "4.8"
     },
     "CVE-2024-8957": {
         "score": "5.6"
@@ -1297,9 +1261,6 @@
     },
     "CVE-2024-23113": {
         "score": "8.5"
-    },
-    "CVE-2024-43573": {
-        "score": "Windows MSHTML Platform Spoofing Vulnerability"
     },
     "CVE-2024-43572": {
         "score": "Microsoft Management Console Remote Code Execution Vulnerability"
@@ -1359,13 +1320,13 @@
         "score": "8.1"
     },
     "CVE-2024-8190": {
-        "score": "6.7"
+        "score": "6.6"
     },
     "CVE-2024-38217": {
         "score": "8.0"
     },
     "CVE-2024-38014": {
-        "score": "8.4"
+        "score": "8.3"
     },
     "CVE-2024-38226": {
         "score": "8.5"
@@ -1467,7 +1428,7 @@
         "score": "6.9"
     },
     "CVE-2024-28995": {
-        "score": "7.0"
+        "score": "7.1"
     },
     "CVE-2024-34102": {
         "score": "6.7"
@@ -1503,7 +1464,7 @@
         "score": "8.5"
     },
     "CVE-2024-32896": {
-        "score": "7.2"
+        "score": "7.6"
     },
     "CVE-2024-4577": {
         "score": "7.7"
@@ -1548,7 +1509,7 @@
         "score": "8.5"
     },
     "CVE-2024-30051": {
-        "score": "8.6"
+        "score": "8.7"
     },
     "CVE-2024-4671": {
         "score": "8.2"
@@ -1584,7 +1545,7 @@
         "score": "6.9"
     },
     "CVE-2024-29745": {
-        "score": "7.4"
+        "score": "7.3"
     },
     "CVE-2023-24955": {
         "score": "7.2"
@@ -1605,7 +1566,7 @@
         "score": "8.0"
     },
     "CVE-2024-23296": {
-        "score": "8.3"
+        "score": "8.2"
     },
     "CVE-2023-21237": {
         "score": "6.9"
@@ -1680,7 +1641,7 @@
         "score": "7.8"
     },
     "CVE-2024-21887": {
-        "score": "7.8"
+        "score": "7.7"
     },
     "CVE-2023-23752": {
         "score": "6.5"
@@ -1803,7 +1764,7 @@
         "score": "7.1"
     },
     "CVE-2023-20273": {
-        "score": "5.7"
+        "score": "5.8"
     },
     "CVE-2023-4966": {
         "score": "8.6"
@@ -1812,10 +1773,10 @@
         "score": "6.9"
     },
     "CVE-2023-21608": {
-        "score": "7.1"
+        "score": "7.0"
     },
     "CVE-2023-20109": {
-        "score": "7.1"
+        "score": "6.7"
     },
     "CVE-2023-41763": {
         "score": "7.9"
@@ -1884,7 +1845,7 @@
         "score": "8.0"
     },
     "CVE-2023-20269": {
-        "score": "6.8"
+        "score": "6.5"
     },
     "CVE-2023-4863": {
         "score": "8.4"
@@ -2025,7 +1986,7 @@
         "score": "5.8"
     },
     "CVE-2021-44026": {
-        "score": "7.6"
+        "score": "7.5"
     },
     "CVE-2016-9079": {
         "score": "5.4"
@@ -2232,10 +2193,10 @@
         "score": "8.3"
     },
     "CVE-2023-23529": {
-        "score": "7.9"
+        "score": "8.1"
     },
     "CVE-2023-21823": {
-        "score": "8.4"
+        "score": "8.5"
     },
     "CVE-2015-2291": {
         "score": "5.4"
@@ -2250,7 +2211,7 @@
         "score": "6.6"
     },
     "CVE-2023-22952": {
-        "score": "5.8"
+        "score": "5.7"
     },
     "CVE-2017-11357": {
         "score": "5.3"
@@ -2913,7 +2874,7 @@
         "score": "8.6"
     },
     "CVE-2022-0847": {
-        "score": "7.9"
+        "score": "8.0"
     },
     "CVE-2021-41357": {
         "score": "8.9"
@@ -3060,7 +3021,7 @@
         "score": "5.0"
     },
     "CVE-2022-1096": {
-        "score": "7.5"
+        "score": "7.6"
     },
     "CVE-2022-0543": {
         "score": "6.0"
@@ -3162,13 +3123,10 @@
         "score": "4.3"
     },
     "CVE-2022-21999": {
-        "score": "8.6"
+        "score": "8.3"
     },
     "CVE-2021-42237": {
         "score": "5.2"
-    },
-    "CVE-2021-22941": {
-        "score": "5.9"
     },
     "CVE-2020-9377": {
         "score": "3.9"
@@ -3240,7 +3198,7 @@
         "score": "4.4"
     },
     "CVE-2018-1273": {
-        "score": "6.2"
+        "score": "6.0"
     },
     "CVE-2018-11138": {
         "score": "5.0"
@@ -3304,9 +3262,6 @@
     },
     "CVE-2014-6332": {
         "score": "5.9"
-    },
-    "CVE-2014-6324": {
-        "score": "6.7"
     },
     "CVE-2014-6287": {
         "score": "4.9"
@@ -3377,9 +3332,6 @@
     "CVE-2019-1069": {
         "score": "7.2"
     },
-    "CVE-2019-1064": {
-        "score": "7.0"
-    },
     "CVE-2019-0841": {
         "score": "6.8"
     },
@@ -3410,9 +3362,6 @@
     "CVE-2020-8218": {
         "score": "4.4"
     },
-    "CVE-2019-11581": {
-        "score": "5.9"
-    },
     "CVE-2017-6077": {
         "score": "4.1"
     },
@@ -3422,32 +3371,26 @@
     "CVE-2013-0631": {
         "score": "5.8"
     },
-    "CVE-2013-0629": {
-        "score": "5.7"
-    },
     "CVE-2013-0625": {
         "score": "6.3"
     },
     "CVE-2009-3960": {
         "score": "5.7"
     },
-    "CVE-2022-20708": {
-        "score": "5.6"
-    },
     "CVE-2022-20703": {
-        "score": "5.8"
+        "score": "6.1"
     },
     "CVE-2022-20701": {
         "score": "6.1"
     },
     "CVE-2022-20700": {
-        "score": "5.7"
+        "score": "5.8"
     },
     "CVE-2022-20699": {
         "score": "4.8"
     },
     "CVE-2021-41379": {
-        "score": "8.8"
+        "score": "8.7"
     },
     "CVE-2020-1938": {
         "score": "6.3"
@@ -3485,9 +3428,6 @@
     "CVE-2018-0173": {
         "score": "5.9"
     },
-    "CVE-2018-0172": {
-        "score": "6.0"
-    },
     "CVE-2018-0167": {
         "score": "6.0"
     },
@@ -3511,9 +3451,6 @@
     },
     "CVE-2018-0151": {
         "score": "6.9"
-    },
-    "CVE-2017-8540": {
-        "score": "4.9"
     },
     "CVE-2017-6744": {
         "score": "5.8"
@@ -3614,9 +3551,6 @@
     "CVE-2015-4902": {
         "score": "5.4"
     },
-    "CVE-2015-3043": {
-        "score": "4.6"
-    },
     "CVE-2015-2590": {
         "score": "5.8"
     },
@@ -3677,9 +3611,6 @@
     "CVE-2012-1535": {
         "score": "6.2"
     },
-    "CVE-2012-0507": {
-        "score": "4.6"
-    },
     "CVE-2011-3544": {
         "score": "6.5"
     },
@@ -3738,7 +3669,7 @@
         "score": "7.8"
     },
     "CVE-2022-0609": {
-        "score": "7.3"
+        "score": "7.2"
     },
     "CVE-2019-0752": {
         "score": "6.8"
@@ -3781,9 +3712,6 @@
     },
     "CVE-2017-10271": {
         "score": "4.8"
-    },
-    "CVE-2017-0263": {
-        "score": "6.6"
     },
     "CVE-2017-0262": {
         "score": "7.0"
@@ -3933,7 +3861,7 @@
         "score": "5.1"
     },
     "CVE-2021-43890": {
-        "score": "7.1"
+        "score": "7.2"
     },
     "CVE-2021-4102": {
         "score": "6.8"
@@ -3951,9 +3879,6 @@
         "score": "5.5"
     },
     "CVE-2019-0193": {
-        "score": "5.8"
-    },
-    "CVE-2021-44168": {
         "score": "5.8"
     },
     "CVE-2017-17562": {
@@ -3987,7 +3912,7 @@
         "score": "5.5"
     },
     "CVE-2021-40438": {
-        "score": "8.3"
+        "score": "8.2"
     },
     "CVE-2021-44077": {
         "score": "4.8"
@@ -4031,9 +3956,6 @@
     "CVE-2018-4878": {
         "score": "5.2"
     },
-    "CVE-2020-5735": {
-        "score": "5.1"
-    },
     "CVE-2019-2215": {
         "score": "7.5"
     },
@@ -4047,10 +3969,10 @@
         "score": "5.4"
     },
     "CVE-2021-42013": {
-        "score": "6.9"
+        "score": "7.1"
     },
     "CVE-2021-41773": {
-        "score": "5.7"
+        "score": "5.8"
     },
     "CVE-2019-0211": {
         "score": "4.4"
@@ -4096,9 +4018,6 @@
     },
     "CVE-2020-9819": {
         "score": "7.0"
-    },
-    "CVE-2021-30762": {
-        "score": "5.5"
     },
     "CVE-2021-1782": {
         "score": "6.2"
@@ -4164,7 +4083,7 @@
         "score": "4.6"
     },
     "CVE-2021-42258": {
-        "score": "5.5"
+        "score": "5.6"
     },
     "CVE-2020-3452": {
         "score": "6.6"
@@ -4174,9 +4093,6 @@
     },
     "CVE-2021-1497": {
         "score": "5.3"
-    },
-    "CVE-2021-1498": {
-        "score": "5.6"
     },
     "CVE-2018-0171": {
         "score": "7.6"
@@ -4212,9 +4128,6 @@
         "score": "6.2"
     },
     "CVE-2019-19781": {
-        "score": "5.6"
-    },
-    "CVE-2019-11634": {
         "score": "5.6"
     },
     "CVE-2020-29557": {
@@ -4259,9 +4172,6 @@
     "CVE-2021-22986": {
         "score": "5.7"
     },
-    "CVE-2021-35464": {
-        "score": "6.4"
-    },
     "CVE-2019-5591": {
         "score": "5.6"
     },
@@ -4286,9 +4196,6 @@
     "CVE-2021-37976": {
         "score": "6.8"
     },
-    "CVE-2020-16009": {
-        "score": "6.1"
-    },
     "CVE-2021-30632": {
         "score": "7.2"
     },
@@ -4312,9 +4219,6 @@
     },
     "CVE-2020-6418": {
         "score": "5.9"
-    },
-    "CVE-2021-30554": {
-        "score": "6.6"
     },
     "CVE-2021-21206": {
         "score": "6.4"
@@ -4384,9 +4288,6 @@
     },
     "CVE-2020-0878": {
         "score": "7.3"
-    },
-    "CVE-2021-31955": {
-        "score": "8.2"
     },
     "CVE-2021-1647": {
         "score": "7.1"
@@ -4544,9 +4445,6 @@
     "CVE-2017-0199": {
         "score": "7.3"
     },
-    "CVE-2020-1380": {
-        "score": "7.5"
-    },
     "CVE-2019-1429": {
         "score": "7.2"
     },
@@ -4609,9 +4507,6 @@
     },
     "CVE-2021-38648": {
         "score": "7.1"
-    },
-    "CVE-2020-6819": {
-        "score": "5.4"
     },
     "CVE-2020-6820": {
         "score": "5.5"
@@ -4723,9 +4618,6 @@
     },
     "CVE-2019-16256": {
         "score": "4.4"
-    },
-    "CVE-2020-10148": {
-        "score": "6.0"
     },
     "CVE-2021-35211": {
         "score": "7.1"
@@ -4858,9 +4750,6 @@
     },
     "CVE-2020-10189": {
         "score": "5.8"
-    },
-    "CVE-2019-8394": {
-        "score": "4.6"
     },
     "CVE-2020-29583": {
         "score": "5.6"
