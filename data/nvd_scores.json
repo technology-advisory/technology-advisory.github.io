@@ -1,6 +1,6 @@
 {
     "CVE-2026-20253": {
-        "score": "6.3"
+        "score": "In Splunk Enterprise 10.2 versions below 10.2.4 and 10 versions below 10.0.7, an unauthenticated user could create or truncate arbitrary files through a PostgreSQL sidecar service endpoint. The vulnerability exists because the PostgreSQL sidecar service endpoint lacks authentication controls, allowing any network-reachable user to invoke file operations without credentials. Splunk Enterprise versions 9.4 and earlier are not affected. If you cannot immediately upgrade to a fixed version, you can mitigate this vulnerability by disabling the PostgreSQL sidecar service."
     },
     "CVE-2026-48907": {
         "score": "A vulnerability in the JCE editor extension for Joomla allows the creation of new editor profiles for unauthenticated users, ultimately resulting in PHP code upload and execution."
@@ -1485,7 +1485,7 @@
         "score": "8.3"
     },
     "CVE-2024-38112": {
-        "score": "7.9"
+        "score": "8.1"
     },
     "CVE-2024-20399": {
         "score": "7.8"
@@ -2142,7 +2142,7 @@
         "score": "7.8"
     },
     "CVE-2021-27876": {
-        "score": "4.2"
+        "score": "4.4"
     },
     "CVE-2021-27877": {
         "score": "4.3"
@@ -3201,7 +3201,7 @@
         "score": "6.2"
     },
     "CVE-2019-6340": {
-        "score": "5.3"
+        "score": "5.7"
     },
     "CVE-2019-2616": {
         "score": "5.7"
