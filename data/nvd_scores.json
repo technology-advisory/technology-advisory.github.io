@@ -63,7 +63,7 @@
         "score": "LiteSpeed User-End cPanel Plugin before 2.4.5 allows privilege escalation (possibly to root), as exploited in the wild in May 2026. Detection is best done via a command line of grep -rE \"cpanel_jsonapi_func=redisAble\" /var/cpanel/logs /usr/local/cpanel/logs/ 2>/dev/null in Bash. If you get no output, you have not been hit with exploitation of the vulnerability. If there is output, we recommend you examine the IP addresses in the list, determine if they are valid IP addresses, and if not, block them. To determine damage done, examine the system logs for use by the detected IP addresses. The issue is related to mishandling of Redis enable/disable features. The recommended minimum version is 2.4.7."
     },
     "CVE-2026-9082": {
-        "score": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Drupal Drupal core allows SQL Injection.\n\nThis issue affects Drupal core: from 8.9.0 before 10.4.10, from 10.5.0 before 10.5.10, from 10.6.0 before 10.6.9, from 11.0.0 before 11.1.10, from 11.2.0 before 11.2.12, from 11.3.0 before 11.3.10."
+        "score": "Drupal Core has a SQL Injection issue"
     },
     "CVE-2025-34291": {
         "score": "Langflow versions up to and including 1.6.9 contain a chained vulnerability that enables account takeover and remote code execution. An overly permissive CORS configuration (allow_origins='*' with allow_credentials=True) combined with a refresh token cookie configured as SameSite=None allows a malicious webpage to perform cross-origin requests that include credentials and successfully call the refresh endpoint. An attacker-controlled origin can therefore obtain fresh access_token / refresh_token pairs for a victim session. Obtained tokens permit access to authenticated endpoints \u2014 including built-in code-execution functionality \u2014 allowing the attacker to execute arbitrary code and achieve full system compromise."
@@ -285,7 +285,7 @@
         "score": "5.9"
     },
     "CVE-2026-20127": {
-        "score": "7.9"
+        "score": "A vulnerability in the peering authentication in Cisco Catalyst SD-WAN Controller, formerly SD-WAN vSmart, Cisco Catalyst SD-WAN Manager, formerly SD-WAN vManage, and Cisco Catalyst SD-WAN Validator, formerly SD-WAN vBond, could allow an unauthenticated, remote attacker to bypass authentication and obtain administrative privileges on an affected system.\r\n\r\nThis vulnerability exists because the peering authentication mechanism in an affected system is not working properly. An attacker could exploit this vulnerability by sending crafted requests to an affected system. A successful exploit could allow the attacker to log in to an affected Cisco Catalyst SD-WAN Controller as an internal, high-privileged, non-root&nbsp;user account. Using this account, the attacker could access NETCONF, which would then allow the attacker to manipulate network configuration for the SD-WAN fabric.&nbsp;"
     },
     "CVE-2026-25108": {
         "score": "8.7"
@@ -1602,7 +1602,7 @@
         "score": "6.2"
     },
     "CVE-2024-27198": {
-        "score": "7.0"
+        "score": "6.8"
     },
     "CVE-2024-23225": {
         "score": "8.0"
@@ -1620,7 +1620,7 @@
         "score": "8.6"
     },
     "CVE-2023-29360": {
-        "score": "8.5"
+        "score": "8.6"
     },
     "CVE-2024-1709": {
         "score": "7.0"
@@ -2079,7 +2079,7 @@
         "score": "5.3"
     },
     "CVE-2021-3560": {
-        "score": "5.8"
+        "score": "6.2"
     },
     "CVE-2014-0196": {
         "score": "4.0"
@@ -3066,7 +3066,7 @@
         "score": "7.6"
     },
     "CVE-2022-0543": {
-        "score": "6.0"
+        "score": "6.1"
     },
     "CVE-2021-38646": {
         "score": "7.4"
