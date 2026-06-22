@@ -63,7 +63,7 @@
         "score": "LiteSpeed User-End cPanel Plugin before 2.4.5 allows privilege escalation (possibly to root), as exploited in the wild in May 2026. Detection is best done via a command line of grep -rE \"cpanel_jsonapi_func=redisAble\" /var/cpanel/logs /usr/local/cpanel/logs/ 2>/dev/null in Bash. If you get no output, you have not been hit with exploitation of the vulnerability. If there is output, we recommend you examine the IP addresses in the list, determine if they are valid IP addresses, and if not, block them. To determine damage done, examine the system logs for use by the detected IP addresses. The issue is related to mishandling of Redis enable/disable features. The recommended minimum version is 2.4.7."
     },
     "CVE-2026-9082": {
-        "score": "Drupal Core has a SQL Injection issue"
+        "score": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Drupal Drupal core allows SQL Injection.\n\nThis issue affects Drupal core: from 8.9.0 before 10.4.10, from 10.5.0 before 10.5.10, from 10.6.0 before 10.6.9, from 11.0.0 before 11.1.10, from 11.2.0 before 11.2.12, from 11.3.0 before 11.3.10."
     },
     "CVE-2025-34291": {
         "score": "Langflow versions up to and including 1.6.9 contain a chained vulnerability that enables account takeover and remote code execution. An overly permissive CORS configuration (allow_origins='*' with allow_credentials=True) combined with a refresh token cookie configured as SameSite=None allows a malicious webpage to perform cross-origin requests that include credentials and successfully call the refresh endpoint. An attacker-controlled origin can therefore obtain fresh access_token / refresh_token pairs for a victim session. Obtained tokens permit access to authenticated endpoints \u2014 including built-in code-execution functionality \u2014 allowing the attacker to execute arbitrary code and achieve full system compromise."
@@ -855,7 +855,7 @@
         "score": "8.2"
     },
     "CVE-2025-32701": {
-        "score": "8.3"
+        "score": "8.5"
     },
     "CVE-2025-30400": {
         "score": "8.5"
@@ -1794,7 +1794,7 @@
         "score": "7.5"
     },
     "CVE-2023-46604": {
-        "score": "8.0"
+        "score": "8.1"
     },
     "CVE-2023-46748": {
         "score": "4.9"
@@ -3741,7 +3741,7 @@
         "score": "7.8"
     },
     "CVE-2022-0609": {
-        "score": "7.2"
+        "score": "7.3"
     },
     "CVE-2019-0752": {
         "score": "6.8"
