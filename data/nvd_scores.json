@@ -1,4 +1,16 @@
 {
+    "CVE-2025-67038": {
+        "score": "5.1"
+    },
+    "CVE-2026-34910": {
+        "score": "6.5"
+    },
+    "CVE-2026-34909": {
+        "score": "7.1"
+    },
+    "CVE-2026-34908": {
+        "score": "6.2"
+    },
     "CVE-2026-20253": {
         "score": "In Splunk Enterprise 10.2 versions below 10.2.4 and 10 versions below 10.0.7, an unauthenticated user could create or truncate arbitrary files through a PostgreSQL sidecar service endpoint. The vulnerability exists because the PostgreSQL sidecar service endpoint lacks authentication controls, allowing any network-reachable user to invoke file operations without credentials. Splunk Enterprise versions 9.4 and earlier are not affected. If you cannot immediately upgrade to a fixed version, you can mitigate this vulnerability by disabling the PostgreSQL sidecar service."
     },
@@ -138,10 +150,10 @@
         "score": "Insufficient granularity of access control in Microsoft Defender allows an authorized attacker to elevate privileges locally."
     },
     "CVE-2026-20122": {
-        "score": "7.4"
+        "score": "7.0"
     },
     "CVE-2026-20133": {
-        "score": "7.5"
+        "score": "7.3"
     },
     "CVE-2025-2749": {
         "score": "3.9"
@@ -153,7 +165,7 @@
         "score": "5.2"
     },
     "CVE-2026-20128": {
-        "score": "7.4"
+        "score": "7.0"
     },
     "CVE-2025-32975": {
         "score": "5.2"
@@ -249,7 +261,7 @@
         "score": "6.1"
     },
     "CVE-2025-68613": {
-        "score": "6.4"
+        "score": "6.2"
     },
     "CVE-2021-22054": {
         "score": "5.9"
@@ -453,7 +465,7 @@
         "score": "6.9"
     },
     "CVE-2025-6218": {
-        "score": "7.1"
+        "score": "6.9"
     },
     "CVE-2025-62221": {
         "score": "8.7"
@@ -603,7 +615,7 @@
         "score": "8.7"
     },
     "CVE-2025-32463": {
-        "score": "7.0"
+        "score": "7.3"
     },
     "CVE-2025-59689": {
         "score": "6.4"
@@ -1374,7 +1386,7 @@
         "score": "8.5"
     },
     "CVE-2024-40766": {
-        "score": "8.5"
+        "score": "8.4"
     },
     "CVE-2017-1000253": {
         "score": "4.6"
@@ -1479,7 +1491,7 @@
         "score": "9.3"
     },
     "CVE-2024-23692": {
-        "score": "5.9"
+        "score": "6.1"
     },
     "CVE-2024-38080": {
         "score": "8.3"
@@ -1488,7 +1500,7 @@
         "score": "8.1"
     },
     "CVE-2024-20399": {
-        "score": "7.8"
+        "score": "7.5"
     },
     "CVE-2020-13965": {
         "score": "6.6"
@@ -1517,11 +1529,17 @@
     "CVE-2017-3506": {
         "score": "5.7"
     },
+    "CVE-2024-1086": {
+        "score": "7.9"
+    },
     "CVE-2024-24919": {
         "score": "7.4"
     },
     "CVE-2024-4978": {
         "score": "8.7"
+    },
+    "CVE-2024-5274": {
+        "score": "8.2"
     },
     "CVE-2020-17519": {
         "score": "4.3"
@@ -1538,6 +1556,9 @@
     "CVE-2021-40655": {
         "score": "4.2"
     },
+    "CVE-2014-100005": {
+        "score": "4.7"
+    },
     "CVE-2024-30040": {
         "score": "8.5"
     },
@@ -1552,6 +1573,9 @@
     },
     "CVE-2024-29988": {
         "score": "8.5"
+    },
+    "CVE-2024-4040": {
+        "score": "6.0"
     },
     "CVE-2024-20359": {
         "score": "6.1"
@@ -1587,7 +1611,7 @@
         "score": "5.6"
     },
     "CVE-2023-48788": {
-        "score": "6.2"
+        "score": "6.3"
     },
     "CVE-2024-27198": {
         "score": "6.8"
@@ -1938,7 +1962,7 @@
         "score": "7.5"
     },
     "CVE-2023-3519": {
-        "score": "8.2"
+        "score": "8.3"
     },
     "CVE-2023-36884": {
         "score": "8.4"
@@ -2633,6 +2657,9 @@
     "CVE-2009-0557": {
         "score": "5.5"
     },
+    "CVE-2008-0655": {
+        "score": "5.1"
+    },
     "CVE-2007-5659": {
         "score": "6.1"
     },
@@ -3015,7 +3042,7 @@
         "score": "7.3"
     },
     "CVE-2022-22965": {
-        "score": "8.4"
+        "score": "8.3"
     },
     "CVE-2022-22675": {
         "score": "6.9"
