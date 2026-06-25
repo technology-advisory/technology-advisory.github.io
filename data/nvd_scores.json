@@ -1,15 +1,15 @@
 {
     "CVE-2025-67038": {
-        "score": "5.1"
+        "score": "5.8"
     },
     "CVE-2026-34910": {
-        "score": "6.5"
+        "score": "A malicious actor with access to the network could exploit an Improper Input Validation vulnerability found in UniFi OS devices to execute a Command Injection."
     },
     "CVE-2026-34909": {
-        "score": "7.1"
+        "score": "A malicious actor with access to the network could exploit a Path Traversal vulnerability found in UniFi OS devices to access files on the underlying system that could be manipulated to access an underlying account."
     },
     "CVE-2026-34908": {
-        "score": "6.2"
+        "score": "A malicious actor with access to the network could exploit an Improper Access Control vulnerability found in UniFi OS devices to make unauthorized changes to the system."
     },
     "CVE-2026-20253": {
         "score": "In Splunk Enterprise 10.2 versions below 10.2.4 and 10 versions below 10.0.7, an unauthenticated user could create or truncate arbitrary files through a PostgreSQL sidecar service endpoint. The vulnerability exists because the PostgreSQL sidecar service endpoint lacks authentication controls, allowing any network-reachable user to invoke file operations without credentials. Splunk Enterprise versions 9.4 and earlier are not affected. If you cannot immediately upgrade to a fixed version, you can mitigate this vulnerability by disabling the PostgreSQL sidecar service."
@@ -134,9 +134,6 @@
     "CVE-2025-29635": {
         "score": "A command injection vulnerability in D-Link DIR-823X 240126 and 240802 allows an authorized attacker to execute arbitrary commands on remote devices by sending a POST request to /goform/set_prohibiting via the corresponding function, triggering remote command execution."
     },
-    "CVE-2024-7399": {
-        "score": "Improper limitation of a pathname to a restricted directory vulnerability in Samsung MagicINFO 9 Server version before 21.1050 allows attackers to write arbitrary file as system authority."
-    },
     "CVE-2024-57728": {
         "score": "SimpleHelp remote support software v5.5.7 and before allows admin users to upload arbitrary files anywhere on the file system by uploading a crafted zip file (i.e. zip slip). This can be exploited to execute arbitrary code on the host in the context of the SimpleHelp server user."
     },
@@ -240,7 +237,7 @@
         "score": "6.4"
     },
     "CVE-2025-31277": {
-        "score": "7.4"
+        "score": "7.5"
     },
     "CVE-2026-20131": {
         "score": "7.6"
@@ -414,7 +411,7 @@
         "score": "4.7"
     },
     "CVE-2026-20045": {
-        "score": "6.6"
+        "score": "6.9"
     },
     "CVE-2026-20805": {
         "score": "8.7"
@@ -453,7 +450,7 @@
         "score": "7.1"
     },
     "CVE-2025-43529": {
-        "score": "7.3"
+        "score": "7.4"
     },
     "CVE-2018-4063": {
         "score": "An exploitable remote code execution vulnerability exists in the upload.cgi functionality of Sierra Wireless AirLink ES450 FW 4.9.3. A specially crafted HTTP request can upload a file, resulting in executable code being uploaded, and routable, to the webserver. An attacker can make an authenticated HTTP request to trigger this vulnerability."
@@ -1098,7 +1095,7 @@
         "score": "5.6"
     },
     "CVE-2024-21413": {
-        "score": "8.4"
+        "score": "8.5"
     },
     "CVE-2022-23748": {
         "score": "5.8"
@@ -1218,7 +1215,7 @@
         "score": "7.6"
     },
     "CVE-2024-44309": {
-        "score": "7.9"
+        "score": "8.0"
     },
     "CVE-2024-44308": {
         "score": "8.3"
