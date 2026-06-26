@@ -1,6 +1,12 @@
 {
+    "CVE-2026-12569": {
+        "score": "9.3"
+    },
+    "CVE-2026-20230": {
+        "score": "6.6"
+    },
     "CVE-2025-67038": {
-        "score": "5.8"
+        "score": "5.2"
     },
     "CVE-2026-34910": {
         "score": "A malicious actor with access to the network could exploit an Improper Input Validation vulnerability found in UniFi OS devices to execute a Command Injection."
@@ -133,6 +139,9 @@
     },
     "CVE-2025-29635": {
         "score": "A command injection vulnerability in D-Link DIR-823X 240126 and 240802 allows an authorized attacker to execute arbitrary commands on remote devices by sending a POST request to /goform/set_prohibiting via the corresponding function, triggering remote command execution."
+    },
+    "CVE-2024-7399": {
+        "score": "Improper limitation of a pathname to a restricted directory vulnerability in Samsung MagicINFO 9 Server version before 21.1050 allows attackers to write arbitrary file as system authority."
     },
     "CVE-2024-57728": {
         "score": "SimpleHelp remote support software v5.5.7 and before allows admin users to upload arbitrary files anywhere on the file system by uploading a crafted zip file (i.e. zip slip). This can be exploited to execute arbitrary code on the host in the context of the SimpleHelp server user."
@@ -288,7 +297,7 @@
         "score": "7.0"
     },
     "CVE-2026-21385": {
-        "score": "8.4"
+        "score": "8.3"
     },
     "CVE-2022-20775": {
         "score": "5.9"
@@ -495,10 +504,10 @@
         "score": "6.1"
     },
     "CVE-2025-58034": {
-        "score": "5.4"
+        "score": "5.7"
     },
     "CVE-2025-64446": {
-        "score": "5.9"
+        "score": "6.0"
     },
     "CVE-2025-12480": {
         "score": "7.0"
@@ -624,7 +633,7 @@
         "score": "7.5"
     },
     "CVE-2021-21311": {
-        "score": "4.8"
+        "score": "5.0"
     },
     "CVE-2025-20362": {
         "score": "7.3"
@@ -1080,9 +1089,6 @@
         "score": "5.4"
     },
     "CVE-2025-21418": {
-        "score": "8.5"
-    },
-    "CVE-2025-21391": {
         "score": "8.4"
     },
     "CVE-2025-0994": {
@@ -1133,9 +1139,6 @@
     "CVE-2025-21335": {
         "score": "Windows Hyper-V NT Kernel Integration VSP Elevation of Privilege Vulnerability"
     },
-    "CVE-2025-21334": {
-        "score": "Windows Hyper-V NT Kernel Integration VSP Elevation of Privilege Vulnerability"
-    },
     "CVE-2025-21333": {
         "score": "Windows Hyper-V NT Kernel Integration VSP Elevation of Privilege Vulnerability"
     },
@@ -1143,7 +1146,7 @@
         "score": "7.4"
     },
     "CVE-2023-48365": {
-        "score": "6.9"
+        "score": "7.0"
     },
     "CVE-2024-12686": {
         "score": "6.2"
@@ -1488,7 +1491,7 @@
         "score": "9.3"
     },
     "CVE-2024-23692": {
-        "score": "6.1"
+        "score": "5.9"
     },
     "CVE-2024-38080": {
         "score": "8.3"
@@ -1500,7 +1503,7 @@
         "score": "7.5"
     },
     "CVE-2020-13965": {
-        "score": "6.6"
+        "score": "6.5"
     },
     "CVE-2022-2586": {
         "score": "5.8"
@@ -2031,7 +2034,7 @@
         "score": "6.9"
     },
     "CVE-2020-35730": {
-        "score": "6.5"
+        "score": "6.7"
     },
     "CVE-2020-12641": {
         "score": "5.8"
@@ -2529,7 +2532,7 @@
         "score": "6.5"
     },
     "CVE-2021-4034": {
-        "score": "7.8"
+        "score": "8.1"
     },
     "CVE-2021-30983": {
         "score": "7.0"
@@ -2979,7 +2982,7 @@
         "score": "8.5"
     },
     "CVE-2018-7602": {
-        "score": "5.7"
+        "score": "5.6"
     },
     "CVE-2018-20753": {
         "score": "4.2"
@@ -3039,7 +3042,7 @@
         "score": "7.3"
     },
     "CVE-2022-22965": {
-        "score": "8.3"
+        "score": "8.4"
     },
     "CVE-2022-22675": {
         "score": "6.9"
@@ -3999,13 +4002,13 @@
         "score": "5.5"
     },
     "CVE-2021-40438": {
-        "score": "8.2"
+        "score": "8.3"
     },
     "CVE-2021-44077": {
         "score": "4.8"
     },
     "CVE-2021-22204": {
-        "score": "6.5"
+        "score": "6.4"
     },
     "CVE-2021-40449": {
         "score": "8.4"
@@ -4059,7 +4062,7 @@
         "score": "5.4"
     },
     "CVE-2021-42013": {
-        "score": "7.1"
+        "score": "6.9"
     },
     "CVE-2021-41773": {
         "score": "5.8"
