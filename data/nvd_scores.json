@@ -1,12 +1,12 @@
 {
     "CVE-2026-12569": {
-        "score": "9.3"
+        "score": "A critical remote code execution (RCE) vulnerability has been reported in PTC Windchill PDMlink and PTC FlexPLM. The vulnerability may be exploited through the deserialization of untrusted data.\u00a0  *  This advisory also applies to all CPS versions\n  *  The identified vulnerability also impacts Windchill and FlexPLM releases prior to 11.0 M030"
     },
     "CVE-2026-20230": {
-        "score": "6.6"
+        "score": "A vulnerability in Cisco Unified Communications Manager (Unified CM) and Cisco Unified Communications Manager Session Management Edition (Unified CM SME) could allow an unauthenticated, remote attacker to conduct server-side request forgery (SSRF) attacks through an affected device.\r\n\r This vulnerability is due to improper input validation for specific HTTP requests. An attacker could exploit this vulnerability by sending a crafted HTTP request to an affected device. A successful exploit could allow the attacker to write files to the underlying operating system that could be used later to elevate to root.\r\n\r Note: Cisco has assigned this security advisory a Security Impact Rating (SIR) of Critical rather than High as the score indicates. The reason is that exploitation of this vulnerability could result in an attacker elevating privileges to root.\r\n\r Note: To exploit this vulnerability, the WebDialer service must be enabled. WebDialer is disabled by default."
     },
     "CVE-2025-67038": {
-        "score": "5.2"
+        "score": "5.4"
     },
     "CVE-2026-34910": {
         "score": "A malicious actor with access to the network could exploit an Improper Input Validation vulnerability found in UniFi OS devices to execute a Command Injection."
@@ -918,7 +918,7 @@
         "score": "8.7"
     },
     "CVE-2025-24054": {
-        "score": "8.4"
+        "score": "8.3"
     },
     "CVE-2025-31201": {
         "score": "7.7"
@@ -1091,6 +1091,9 @@
     "CVE-2025-21418": {
         "score": "8.4"
     },
+    "CVE-2025-21391": {
+        "score": "8.4"
+    },
     "CVE-2025-0994": {
         "score": "8.6"
     },
@@ -1137,6 +1140,9 @@
         "score": "4.4"
     },
     "CVE-2025-21335": {
+        "score": "Windows Hyper-V NT Kernel Integration VSP Elevation of Privilege Vulnerability"
+    },
+    "CVE-2025-21334": {
         "score": "Windows Hyper-V NT Kernel Integration VSP Elevation of Privilege Vulnerability"
     },
     "CVE-2025-21333": {
@@ -1632,7 +1638,7 @@
         "score": "8.6"
     },
     "CVE-2023-29360": {
-        "score": "8.6"
+        "score": "8.5"
     },
     "CVE-2024-1709": {
         "score": "7.0"
@@ -1812,19 +1818,19 @@
         "score": "4.9"
     },
     "CVE-2023-46747": {
-        "score": "6.0"
+        "score": "6.5"
     },
     "CVE-2023-5631": {
         "score": "7.1"
     },
     "CVE-2023-20273": {
-        "score": "5.8"
+        "score": "6.1"
     },
     "CVE-2023-4966": {
         "score": "8.6"
     },
     "CVE-2023-20198": {
-        "score": "6.9"
+        "score": "7.1"
     },
     "CVE-2023-21608": {
         "score": "7.0"
@@ -2370,13 +2376,13 @@
         "score": "5.4"
     },
     "CVE-2022-40684": {
-        "score": "6.3"
+        "score": "6.7"
     },
     "CVE-2022-41033": {
         "score": "8.7"
     },
     "CVE-2022-41082": {
-        "score": "6.8"
+        "score": "7.0"
     },
     "CVE-2022-41040": {
         "score": "6.1"
@@ -2502,7 +2508,7 @@
         "score": "4.5"
     },
     "CVE-2022-27925": {
-        "score": "4.3"
+        "score": "4.5"
     },
     "CVE-2022-37042": {
         "score": "4.7"
@@ -3255,7 +3261,7 @@
         "score": "4.4"
     },
     "CVE-2018-1273": {
-        "score": "6.0"
+        "score": "6.7"
     },
     "CVE-2018-11138": {
         "score": "5.0"
@@ -3906,7 +3912,7 @@
         "score": "6.3"
     },
     "CVE-2021-36260": {
-        "score": "5.4"
+        "score": "5.8"
     },
     "CVE-2020-6572": {
         "score": "6.4"
