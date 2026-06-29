@@ -399,7 +399,7 @@
         "score": "9.3"
     },
     "CVE-2026-24061": {
-        "score": "7.1"
+        "score": "6.8"
     },
     "CVE-2026-21509": {
         "score": "Reliance on untrusted inputs in a security decision in Microsoft Office allows an unauthorized attacker to bypass a security feature locally."
@@ -612,7 +612,7 @@
         "score": "6.0"
     },
     "CVE-2015-7755": {
-        "score": "6.1"
+        "score": "6.0"
     },
     "CVE-2025-21043": {
         "score": "6.5"
@@ -1377,7 +1377,7 @@
         "score": "6.4"
     },
     "CVE-2024-43461": {
-        "score": "8.1"
+        "score": "8.2"
     },
     "CVE-2024-8190": {
         "score": "6.6"
