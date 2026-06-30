@@ -1,4 +1,7 @@
 {
+    "CVE-2026-48558": {
+        "score": "9.5"
+    },
     "CVE-2026-12569": {
         "score": "A critical remote code execution (RCE) vulnerability has been reported in PTC Windchill PDMlink and PTC FlexPLM. The vulnerability may be exploited through the deserialization of untrusted data.\u00a0  *  This advisory also applies to all CPS versions\n  *  The identified vulnerability also impacts Windchill and FlexPLM releases prior to 11.0 M030"
     },
@@ -528,7 +531,7 @@
         "score": "5.4"
     },
     "CVE-2025-41244": {
-        "score": "8.0"
+        "score": "7.7"
     },
     "CVE-2025-24893": {
         "score": "6.6"
@@ -786,7 +789,7 @@
         "score": "10.0"
     },
     "CVE-2023-0386": {
-        "score": "5.9"
+        "score": "6.0"
     },
     "CVE-2023-33538": {
         "score": "5.6"
@@ -1065,7 +1068,7 @@
         "score": "7.1"
     },
     "CVE-2025-23209": {
-        "score": "5.2"
+        "score": "5.4"
     },
     "CVE-2025-0108": {
         "score": "8.8"
@@ -1452,7 +1455,7 @@
         "score": "8.3"
     },
     "CVE-2024-38178": {
-        "score": "8.4"
+        "score": "8.3"
     },
     "CVE-2024-38189": {
         "score": "8.4"
@@ -2154,7 +2157,7 @@
         "score": "8.6"
     },
     "CVE-2023-28205": {
-        "score": "7.7"
+        "score": "7.8"
     },
     "CVE-2023-28206": {
         "score": "7.8"
