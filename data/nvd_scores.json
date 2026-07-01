@@ -1,6 +1,6 @@
 {
     "CVE-2026-48558": {
-        "score": "9.5"
+        "score": "SimpleHelp versions 5.5.15 and prior and 6.0 pre-release versions contain an authentication bypass vulnerability in the OIDC authentication flow. When OIDC authentication is configured, identity tokens submitted during login are accepted without verifying their cryptographic signature. In a vulnerable configuration, a remote, unauthenticated attacker can submit a forged token containing arbitrary identity claims to obtain a fully authenticated technician session. In some configurations, this may also allow bypass of multi-factor authentication. No user interaction is required."
     },
     "CVE-2026-12569": {
         "score": "A critical remote code execution (RCE) vulnerability has been reported in PTC Windchill PDMlink and PTC FlexPLM. The vulnerability may be exploited through the deserialization of untrusted data.\u00a0  *  This advisory also applies to all CPS versions\n  *  The identified vulnerability also impacts Windchill and FlexPLM releases prior to 11.0 M030"
@@ -315,7 +315,7 @@
         "score": "7.1"
     },
     "CVE-2025-68461": {
-        "score": "7.4"
+        "score": "7.7"
     },
     "CVE-2021-22175": {
         "score": "5.9"
@@ -423,7 +423,7 @@
         "score": "4.7"
     },
     "CVE-2026-20045": {
-        "score": "6.9"
+        "score": "7.3"
     },
     "CVE-2026-20805": {
         "score": "8.7"
@@ -534,7 +534,7 @@
         "score": "7.7"
     },
     "CVE-2025-24893": {
-        "score": "6.6"
+        "score": "6.5"
     },
     "CVE-2025-6204": {
         "score": "6.4"
@@ -552,7 +552,7 @@
         "score": "9.3"
     },
     "CVE-2022-48503": {
-        "score": "6.4"
+        "score": "6.5"
     },
     "CVE-2025-2746": {
         "score": "5.1"
@@ -789,7 +789,7 @@
         "score": "10.0"
     },
     "CVE-2023-0386": {
-        "score": "6.0"
+        "score": "5.9"
     },
     "CVE-2023-33538": {
         "score": "5.6"
@@ -990,7 +990,7 @@
         "score": "8.2"
     },
     "CVE-2025-24993": {
-        "score": "8.5"
+        "score": "8.6"
     },
     "CVE-2025-24991": {
         "score": "8.6"
@@ -999,7 +999,7 @@
         "score": "8.4"
     },
     "CVE-2025-24984": {
-        "score": "8.4"
+        "score": "8.5"
     },
     "CVE-2025-24983": {
         "score": "8.4"
@@ -1677,7 +1677,7 @@
         "score": "7.1"
     },
     "CVE-2024-23222": {
-        "score": "8.2"
+        "score": "8.3"
     },
     "CVE-2023-34048": {
         "score": "8.4"
@@ -4080,7 +4080,7 @@
         "score": "4.4"
     },
     "CVE-2016-4437": {
-        "score": "5.5"
+        "score": "5.3"
     },
     "CVE-2019-17558": {
         "score": "5.8"
@@ -4371,7 +4371,7 @@
         "score": "6.2"
     },
     "CVE-2019-4716": {
-        "score": "5.4"
+        "score": "5.6"
     },
     "CVE-2016-3715": {
         "score": "4.8"
