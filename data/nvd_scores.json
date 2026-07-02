@@ -1,4 +1,7 @@
 {
+    "CVE-2026-45659": {
+        "score": "5.7"
+    },
     "CVE-2026-48558": {
         "score": "SimpleHelp versions 5.5.15 and prior and 6.0 pre-release versions contain an authentication bypass vulnerability in the OIDC authentication flow. When OIDC authentication is configured, identity tokens submitted during login are accepted without verifying their cryptographic signature. In a vulnerable configuration, a remote, unauthenticated attacker can submit a forged token containing arbitrary identity claims to obtain a fully authenticated technician session. In some configurations, this may also allow bypass of multi-factor authentication. No user interaction is required."
     },
@@ -249,7 +252,7 @@
         "score": "6.4"
     },
     "CVE-2025-31277": {
-        "score": "7.5"
+        "score": "7.6"
     },
     "CVE-2026-20131": {
         "score": "7.6"
@@ -486,7 +489,7 @@
         "score": "5.2"
     },
     "CVE-2025-55182": {
-        "score": "6.7"
+        "score": "6.5"
     },
     "CVE-2021-26828": {
         "score": "4.4"
@@ -507,7 +510,7 @@
         "score": "6.1"
     },
     "CVE-2025-58034": {
-        "score": "5.7"
+        "score": "5.4"
     },
     "CVE-2025-64446": {
         "score": "6.0"
@@ -528,10 +531,10 @@
         "score": "5.0"
     },
     "CVE-2025-11371": {
-        "score": "5.4"
+        "score": "4.9"
     },
     "CVE-2025-41244": {
-        "score": "7.7"
+        "score": "8.0"
     },
     "CVE-2025-24893": {
         "score": "6.5"
@@ -903,7 +906,7 @@
         "score": "4.7"
     },
     "CVE-2024-38475": {
-        "score": "8.2"
+        "score": "8.3"
     },
     "CVE-2023-44221": {
         "score": "7.3"
@@ -1036,9 +1039,6 @@
     },
     "CVE-2024-4885": {
         "score": "6.7"
-    },
-    "CVE-2018-8639": {
-        "score": "7.6"
     },
     "CVE-2022-43769": {
         "score": "5.8"
@@ -1911,7 +1911,7 @@
         "score": "6.5"
     },
     "CVE-2023-4863": {
-        "score": "8.4"
+        "score": "8.2"
     },
     "CVE-2023-36761": {
         "score": "8.7"
@@ -2379,7 +2379,7 @@
         "score": "5.4"
     },
     "CVE-2022-40684": {
-        "score": "6.7"
+        "score": "6.9"
     },
     "CVE-2022-41033": {
         "score": "8.7"
@@ -2787,7 +2787,7 @@
         "score": "5.2"
     },
     "CVE-2018-19949": {
-        "score": "4.5"
+        "score": "5.0"
     },
     "CVE-2018-19943": {
         "score": "5.5"
